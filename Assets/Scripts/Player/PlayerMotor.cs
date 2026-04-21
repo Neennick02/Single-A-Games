@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Windows;
 
 public class PlayerMotor : MonoBehaviour
 {
@@ -26,9 +28,11 @@ public class PlayerMotor : MonoBehaviour
 
     //slide
     private bool _isSliding = false;
-    private float _slideIntervalTimer;
-    private bool _slideEnded;
     private Coroutine _slideRoutine;
+
+    //fov
+    private float startFov;
+    private float currentFov;
 
     void Start()
     {
@@ -36,6 +40,7 @@ public class PlayerMotor : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _mainCam = GetComponentInChildren<Camera>();
         _controller.height = _movementObject.DefaultHeight;
+        startFov = _mainCam.fieldOfView;
     }
 
     // Update is called once per frame
@@ -54,13 +59,38 @@ public class PlayerMotor : MonoBehaviour
             _isSprinting = false;
         }
 
-        HandleSlideInput(); //check for crouch input
+        HandleSlideInput(); //check for slide input
+    }
+
+    private void Update()
+    {
+        //scale fov with current speed
+        Vector3 fovVelocity = _controller.velocity;
+        fovVelocity.y = 0f;
+
+        if(fovVelocity.magnitude > 0.1f)
+        {
+            //scale with speed?
+        }
     }
 
     public void Jump()
     {
         if (_isGrounded)
         {
+            //cancel current slide
+            if(_slideRoutine != null)
+            {
+                StopCoroutine(_slideRoutine);
+                //reset player height
+                _controller.height = _movementObject.DefaultHeight;
+
+                //transfer velocity to movement
+                _playerVelocity = Vector3.zero;
+
+                _isSliding = false;
+            }
+
             _playerVelocity.y = Mathf.Sqrt((_movementObject.JumpHeight * -3) * _movementObject.Gravity);
         }
     }
@@ -110,53 +140,33 @@ public class PlayerMotor : MonoBehaviour
 
     void HandleSlideInput()
     {
-        //calculate slide interval
-        if (_slideEnded)
-        {
-            _slideIntervalTimer += Time.fixedDeltaTime;
-            if( _slideIntervalTimer >= _movementObject.SlideInterval)
-            {
-                _slideEnded = false;
-            } 
-        }
-
         if (_isSliding) return; // ignore crouch input during slide
 
         Vector2 moveInput = _input.onFoot.Movement.ReadValue<Vector2>();
         bool dashPressed = _input.onFoot.Dash.triggered;
 
         //check if player is moving forward
-
-/*        Vector3 moveDir = new Vector3(_playerVelocity.x, 0f, _playerVelocity.z).normalized;
-        Vector3 camForward = _mainCam.transform.forward;
-        camForward.y = 0f;
-        camForward.Normalize();
-
-        float alignment = Vector3.Dot(moveDir, camForward);*/
+        bool aligned = IsAlignedWithDirection(moveInput);
 
         //check if player is sliding
-        if (!_slideEnded && dashPressed && !_isSliding && _playerVelocity.magnitude > 0.1f)
+        if (dashPressed && !_isSliding && _playerVelocity.magnitude > 0.1f && aligned)
         {
             //empty coroutine reference
             if(_slideRoutine != null) StopCoroutine(_slideRoutine);
 
             //start new slide
             _isSliding = true;
-            _slideRoutine = StartCoroutine(Slide(moveInput));
+            _slideRoutine = StartCoroutine(SlideRoutine());
         }
     }
 
-    IEnumerator Slide(Vector2 inputDir)
+    IEnumerator SlideRoutine()
     {
         //make player smaller
         _controller.height = _movementObject.SlideHeight;
 
         //add gravity
         _playerVelocity.y = -2f;
-
-        //calculate direction
-        Vector3 moveDir = transform.forward;
-        Vector3 slideVelocity = moveDir * _movementObject.SlideSpeed;
 
         float slideTimer = 0f;
         float duration = _movementObject.SlideDuration;
@@ -165,21 +175,44 @@ public class PlayerMotor : MonoBehaviour
         {
             slideTimer += Time.fixedDeltaTime;
 
+            //calculate direction
+            Vector3 slideVelocity = transform.forward * _movementObject.SlideSpeed;
+
             _playerVelocity = Vector3.Lerp(_playerVelocity, slideVelocity, slideTimer / duration);
             _controller.Move(_playerVelocity * Time.fixedDeltaTime);
-            
             yield return null;
         }
 
         //reset player height
         _controller.height = _movementObject.DefaultHeight;
 
-        //reset variables
-        _isSliding = false;
-        _slideEnded = true;
-        _slideIntervalTimer = 0;
-
         //transfer velocity to movement
         _playerVelocity = Vector3.zero;
+
+        _isSliding = false;
+    }
+
+    private bool IsAlignedWithDirection(Vector2 moveInput)
+    {
+        Vector3 moveDir = new Vector3(moveInput.x, 0f, moveInput.y);
+
+        if (moveDir.magnitude > 0.1f)
+        {
+            moveDir = transform.TransformDirection(moveDir).normalized;
+        }
+        Vector3 camForward = _mainCam.transform.forward;
+        camForward.y = 0f;
+        camForward.Normalize();
+
+        float alignment = Vector3.Dot(moveDir, camForward);
+
+        if(alignment > 0.7f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
