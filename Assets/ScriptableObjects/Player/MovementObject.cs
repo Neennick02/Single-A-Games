@@ -9,10 +9,10 @@ public class MovementObject : ScriptableObject
 
     //slide
     public float SlideSpeed = 10;
+    public float SlideHeight = 0.5f;
     public float SlideDuration;
+    public float SlideInterval;
 
-    public float CrouchSpeed = 1;
-    public float CrouchHeight = 0.5f;
     public float DefaultHeight = 1;
     //jump
     public float Gravity = 10f;

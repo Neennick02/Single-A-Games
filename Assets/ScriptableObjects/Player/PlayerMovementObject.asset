@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86474562a2e31441a62a5e4611d71df, type: 3}
   m_Name: PlayerMovementObject
   m_EditorClassIdentifier: Assembly-CSharp::MovementObject
-  Speed: 5.63
-  SprintSpeed: 13.08
-  SlideSpeed: 10
-  SlideDuration: 0.92
-  CrouchSpeed: 1
-  CrouchHeight: 0.5
-  DefaultHeight: 1
+  Speed: 7
+  SprintSpeed: 15
+  SlideSpeed: 5
+  SlideHeight: 2
+  SlideDuration: 1
+  SlideInterval: 1
+  DefaultHeight: 3
   Gravity: -14.36
   JumpHeight: 1

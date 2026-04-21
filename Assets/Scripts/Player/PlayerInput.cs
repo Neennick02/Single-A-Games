@@ -145,15 +145,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Crouch"",
-                    ""type"": ""Button"",
-                    ""id"": ""5a5432eb-e532-4114-a237-a2f0d43941e9"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -193,7 +184,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""99506989-96aa-4db4-b760-8fc1d7eaf4d8"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -259,22 +250,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""cffd8b60-a910-40e9-a15d-9a463391a88e"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""240634e7-8d6c-43fd-bf18-ccea28082d74"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -813,7 +793,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Dash = m_OnFoot.FindAction("Dash", throwIfNotFound: true);
         m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
-        m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -913,7 +892,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Dash;
     private readonly InputAction m_OnFoot_Sprint;
-    private readonly InputAction m_OnFoot_Crouch;
     /// <summary>
     /// Provides access to input actions defined in input action map "OnFoot".
     /// </summary>
@@ -949,10 +927,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "OnFoot/Sprint".
         /// </summary>
         public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
-        /// <summary>
-        /// Provides access to the underlying input action "OnFoot/Crouch".
-        /// </summary>
-        public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -997,9 +971,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Crouch.started += instance.OnCrouch;
-            @Crouch.performed += instance.OnCrouch;
-            @Crouch.canceled += instance.OnCrouch;
         }
 
         /// <summary>
@@ -1029,9 +1000,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Crouch.started -= instance.OnCrouch;
-            @Crouch.performed -= instance.OnCrouch;
-            @Crouch.canceled -= instance.OnCrouch;
         }
 
         /// <summary>
@@ -1322,13 +1290,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSprint(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Crouch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnCrouch(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
