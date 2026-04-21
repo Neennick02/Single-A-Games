@@ -1,0 +1,53 @@
+using UnityEngine;
+
+public class PlayerLook : MonoBehaviour
+{
+    [SerializeField] private float lookSensitivity = 30;
+    Camera _cam;
+    float xRotation = 0f;
+    float yRotation = 0f;
+    float xSensitivity = 30f;
+    float ySensitivity = 30f;
+
+    float recoilX = 0;
+    float recoilY = 0;
+
+
+    [SerializeField] float recoilReturnSpeed = 8;
+
+    private void Start()
+    {
+        _cam = Camera.main;
+    }
+    public void ProcessLook(Vector2 input)
+    {
+        xSensitivity = lookSensitivity;
+        ySensitivity = lookSensitivity;
+
+        float mouseX = input.x * xSensitivity * Time.deltaTime;
+        float mouseY = input.y * xSensitivity * Time.deltaTime;
+
+        // Apply vertical rotation (pitch) with recoil
+        xRotation -= mouseY;
+        xRotation += recoilX; // Add recoil pitch
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+
+        // Apply horizontal rotation (yaw) with recoil
+        yRotation += mouseX;
+        yRotation += recoilY;
+
+        // Apply rotations
+        _cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        // Smoothly reset recoil over time
+        recoilX = Mathf.Lerp(recoilX, 0, Time.deltaTime * recoilReturnSpeed);
+        recoilY = Mathf.Lerp(recoilY, 0, Time.deltaTime * recoilReturnSpeed);
+    }
+
+    public void AddCamRecoil(float up, float side)
+    {
+        recoilX += up;
+        recoilY += side;
+    }
+}
