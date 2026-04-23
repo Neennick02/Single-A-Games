@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -8.23879, y: 1, z: -26.90606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -236,7 +236,9 @@ MonoBehaviour:
   CurrentState: 0
   minFov: 60
   maxFov: 80
+  _camera: {fileID: 0}
   fovSmoothSpeed: 5
+  headTransform: {fileID: 7952220888164284764}
 --- !u!114 &3127123715557443963
 MonoBehaviour:
   m_ObjectHideFlags: 0
