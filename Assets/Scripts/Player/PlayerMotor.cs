@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -34,6 +35,9 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] float maxFov = 90;
 
     [SerializeField] float fovSmoothSpeed = 8;
+
+
+    [SerializeField] private Transform headTransform; 
 
     private void OnEnable()
     {
@@ -98,8 +102,21 @@ public class PlayerMotor : MonoBehaviour
     void NormalMovement(Vector2 input)
     {
         // Input direction
-        Vector3 inputDir = new Vector3(input.x, 0f, input.y);
-        inputDir = transform.TransformDirection(inputDir);
+        Transform cam = Camera.main.transform;
+
+        Vector3 forward = cam.forward;
+        Vector3 right = cam.right;
+
+        // flatten camera vectors
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 inputDir = forward * input.y + right * input.x;
+
+
 
         float speed = _isSprinting ? _movementObject.SprintSpeed : _movementObject.Speed;
 
@@ -179,7 +196,8 @@ public class PlayerMotor : MonoBehaviour
         CurrentState = PlayerStates.Sliding;
 
         //make player smaller
-        _controller.height = _movementObject.SlideHeight;
+        Vector3 height = new Vector3(headTransform.position.x, _movementObject.SlideHeight, headTransform.position.z);
+        headTransform.position = height;
 
         //add gravity
         _playerVelocity.y = -2f;
@@ -192,15 +210,30 @@ public class PlayerMotor : MonoBehaviour
             slideTimer += Time.deltaTime;
 
             //calculate direction
-            Vector3 slideVelocity = transform.forward * _movementObject.SlideSpeed;
+            Transform cam = Camera.main.transform;
 
-            _playerVelocity = Vector3.Lerp(_playerVelocity, slideVelocity, slideTimer / duration);
-            _controller.Move(_playerVelocity * Time.deltaTime);
+            Vector3 forward = cam.forward;
+            forward.y = 0f;
+            forward.Normalize();
+
+            Vector3 slideVelocity = forward * _movementObject.SlideSpeed;
+
+            Vector3 horizontalSlide = Vector3.Lerp(
+                new Vector3(_playerVelocity.x, 0, _playerVelocity.z),
+                slideVelocity,
+                slideTimer / duration
+            );
+
+            //apply slide force
+            _playerVelocity.x = horizontalSlide.x;
+            _playerVelocity.z = horizontalSlide.z; _controller.Move(_playerVelocity * Time.deltaTime);
+
             yield return null;
         }
 
         //reset player height
-        _controller.height = _movementObject.DefaultHeight;
+        height = new Vector3(headTransform.position.x, _movementObject.DefaultHeight, headTransform.position.z);
+        headTransform.position = height;
 
         //transfer velocity to movement
         _playerVelocity = Vector3.zero;

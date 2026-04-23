@@ -17,8 +17,9 @@ MonoBehaviour:
   SlideSpeed: 25
   SlideDuration: 0.5
   SlideInterval: 0
-  SlideHeight: 1
+  SlideHeight: 1.5
   DefaultHeight: 3
   Gravity: -14.36
   JumpHeight: 1
   MaxHealth: 20
+  Damage: 0
