@@ -35,7 +35,15 @@ public class PlayerMotor : MonoBehaviour
 
     [SerializeField] float fovSmoothSpeed = 8;
 
+    private void OnEnable()
+    {
+        PlayerHealth.OnDeath += Die;
+    }
 
+    private void OnDisable()
+    {
+        PlayerHealth.OnDeath -= Die;
+    }
     void Start()
     {
         _input = GetComponent<InputManager>();
@@ -104,8 +112,18 @@ public class PlayerMotor : MonoBehaviour
 
         _playerVelocity.y += _movementObject.Gravity * Time.deltaTime;
 
-        Vector3 finalMove = horizontal + new Vector3(0, _playerVelocity.y, 0);
-        _controller.Move(finalMove * Time.deltaTime);
+        if (CurrentState != PlayerStates.Dead)
+        {
+            //apply normal velocity
+            Vector3 finalMove = horizontal + new Vector3(0, _playerVelocity.y, 0);
+            _controller.Move(finalMove * Time.deltaTime);
+        }
+        else
+        {
+            //only apply y velocity when dead
+            Vector3 finalMove = new Vector3(0, _playerVelocity.y, 0);
+            _controller.Move(finalMove * Time.deltaTime);
+        }
     }
     public void Jump()
     {
@@ -232,5 +250,12 @@ public class PlayerMotor : MonoBehaviour
             _mainCam.fieldOfView,
             targetFov,
             fovSmoothSpeed * Time.deltaTime);
+    }
+
+    private void Die()
+    {
+        CurrentState = PlayerStates.Dead;
+        _controller.height = _movementObject.SlideHeight-1;
+
     }
 }
