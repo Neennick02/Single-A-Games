@@ -308,7 +308,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -651,7 +651,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2139746461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,7 +665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
   lookSensitivity: 30
-  recoilReturnSpeed: 8
 --- !u!114 &2139746462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,7 +678,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
   _movementObject: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
-  currentSpeed: 5
+  CurrentState: 0
+  minFov: 60
+  maxFov: 80
+  fovSmoothSpeed: 5
 --- !u!114 &2139746463
 MonoBehaviour:
   m_ObjectHideFlags: 0
