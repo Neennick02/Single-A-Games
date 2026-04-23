@@ -22,4 +22,7 @@ public class PlayerObject : ScriptableObject
 
     [Header("Health")]
     public float MaxHealth;
+
+    [Header("Damage")]
+    public float Damage;
 }
