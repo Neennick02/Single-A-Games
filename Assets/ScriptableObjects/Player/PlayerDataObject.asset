@@ -22,3 +22,4 @@ MonoBehaviour:
   Gravity: -14.36
   JumpHeight: 1
   MaxHealth: 20
+  Damage: 1

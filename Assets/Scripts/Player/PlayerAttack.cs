@@ -8,9 +8,15 @@ public class PlayerAttack : MonoBehaviour
 
     private GameObject _camera;
 
+    private PlayerHealth _healthScript;
+
     private void Start()
     {
         _camera = FindAnyObjectByType<Camera>().gameObject;
+
+        _healthScript = GetComponent<PlayerHealth>();
+
+        Cursor.lockState = CursorLockMode.Locked;
 
     }
     private void OnEnable()
@@ -24,14 +30,12 @@ public class PlayerAttack : MonoBehaviour
         _inputActions.Enable();
 
         _inputActions.OnFoot.Attack.performed += Attack;
-        _inputActions.OnFoot.Attack.canceled += Attack;
 
     }
 
     private void OnDisable()
     {
         _inputActions.OnFoot.Attack.performed -= Attack;
-        _inputActions.OnFoot.Attack.canceled -= Attack;
         _inputActions.Disable();
     }
 
@@ -44,7 +48,11 @@ public class PlayerAttack : MonoBehaviour
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, 3f))
         {
 
-            Debug.Log("Hit: " + hit.collider.name);
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<EnemyHealth>().TakeDamage(_healthScript.PlayerObject.Damage);
+            }
+
         }
 
     }
