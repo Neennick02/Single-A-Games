@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CoinEnemy : Enemy
 {
+    [Header("Child")]
 
     private bool _attacking;
 
@@ -12,9 +13,6 @@ public class CoinEnemy : Enemy
         {
             if (CheckIfInRange())
             {
-
-                Debug.Log("Enemy is close to the player!");
-
 
                 _agent.ResetPath();
                 StartCoroutine(Attack());
@@ -69,6 +67,14 @@ public class CoinEnemy : Enemy
         transform.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
 
         _attacking = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(_healthScript.EnemyObject.Damage);
+        }
     }
 
 }

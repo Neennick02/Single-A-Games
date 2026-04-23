@@ -129,12 +129,13 @@ GameObject:
   m_Component:
   - component: {fileID: 97386684}
   - component: {fileID: 97386685}
+  - component: {fileID: 97386688}
   - component: {fileID: 97386681}
   - component: {fileID: 97386687}
   - component: {fileID: 97386686}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,6 +239,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &97386688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97386680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f3dd24b593c1e4691f710055a84b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  currentHealth: 0
+  EnemyObject: {fileID: 11400000, guid: a5dd25e28f4d84140bb0a2283af87f97, type: 2}
 --- !u!1 &245426229
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +477,55 @@ Transform:
   - {fileID: 2136397236}
   m_Father: {fileID: 97386684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &452482321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452482323}
+  - component: {fileID: 452482322}
+  m_Layer: 0
+  m_Name: DamageIndactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &452482322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452482321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 1
+  blendDistance: 0
+  weight: 0.037
+  sharedProfile: {fileID: 11400000, guid: d82240a18734fea488a0acdc6938d656, type: 2}
+--- !u!4 &452482323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452482321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.945826, y: 0.017007455, z: 7.152822}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &552861890
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,10 +539,11 @@ GameObject:
   - component: {fileID: 552861893}
   - component: {fileID: 552861892}
   - component: {fileID: 552861896}
+  - component: {fileID: 552861897}
   - component: {fileID: 552861891}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,7 +586,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
   lookSensitivity: 30
-  recoilReturnSpeed: 8
 --- !u!114 &552861893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,7 +599,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
   _movementObject: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
-  currentSpeed: 5
+  CurrentState: 0
+  minFov: 60
+  maxFov: 90
+  fovSmoothSpeed: 8
 --- !u!114 &552861894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,6 +643,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c919dd213f5a8d84386386ee862cf1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+--- !u!114 &552861897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552861890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a137b33e015d11b4ebfdb006e7c573bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  currentHealth: 0
+  PlayerObject: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
+  _damageEffect: {fileID: 452482322}
 --- !u!1 &652261517
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +715,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1140,3 +1222,4 @@ SceneRoots:
   - {fileID: 920916814}
   - {fileID: 2064280651}
   - {fileID: 97386684}
+  - {fileID: 452482323}
