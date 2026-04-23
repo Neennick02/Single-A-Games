@@ -6,10 +6,17 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] private PlayerObject PlayerData;
     private Image _healthBar;
 
+    private void OnEnable()
+    {
+        PlayerHealth.OnHealthChange += UpdateHealth;
+    }
+    private void OnDisable()
+    {
+        PlayerHealth.OnHealthChange -= UpdateHealth;
+    }
     private void Start()
     {
         _healthBar = GetComponent<Image>();
-        PlayerHealth.OnHealthChange += UpdateHealth;
     }
 
     private void UpdateHealth(float amount)
