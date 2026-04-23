@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f86474562a2e31441a62a5e4611d71df, type: 3}
-  m_Name: PlayerMovementObject
+  m_Name: PlayerDataObject
   m_EditorClassIdentifier: Assembly-CSharp::MovementObject
   Speed: 7
   SprintSpeed: 14.63
@@ -21,3 +21,4 @@ MonoBehaviour:
   DefaultHeight: 3
   Gravity: -14.36
   JumpHeight: 1
+  MaxHealth: 20

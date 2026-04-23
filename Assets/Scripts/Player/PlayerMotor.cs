@@ -6,7 +6,7 @@ using UnityEngine.Windows;
 
 public class PlayerMotor : MonoBehaviour
 {
-    [SerializeField] private MovementObject _movementObject;
+    [SerializeField] private PlayerObject _movementObject;
     private InputManager _input;
     private CharacterController _controller;
     private Camera _mainCam;

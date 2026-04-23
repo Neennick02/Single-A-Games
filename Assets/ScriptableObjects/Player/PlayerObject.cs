@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MovementObject", menuName = "Scriptable Objects/MovementObject")]
-public class MovementObject : ScriptableObject
+public class PlayerObject : ScriptableObject
 {
     [Header("Speed")]
     public float Speed = 3;
@@ -20,5 +20,6 @@ public class MovementObject : ScriptableObject
     public float Gravity = 10f;
     public float JumpHeight = 2;
 
-
+    [Header("Health")]
+    public float MaxHealth;
 }
