@@ -29,9 +29,12 @@ public class PlayerMotor : MonoBehaviour
     private bool _isSliding = false;
     private Coroutine _slideRoutine;
 
-    //fov
-    private float startFov;
-    private float currentFov;
+    [Header("Fov")]
+    [SerializeField] float minFov = 60;
+    [SerializeField] float maxFov = 90;
+
+    [SerializeField] float fovSmoothSpeed = 8;
+
 
     void Start()
     {
@@ -39,7 +42,6 @@ public class PlayerMotor : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _mainCam = GetComponentInChildren<Camera>();
         _controller.height = _movementObject.DefaultHeight;
-        startFov = _mainCam.fieldOfView;
 
         CurrentState = PlayerStates.Locomotion;
     }
@@ -215,13 +217,20 @@ public class PlayerMotor : MonoBehaviour
 
     private void UpdateFOV()
     {
-        //scale fov with current speed
         Vector3 fovVelocity = _controller.velocity;
         fovVelocity.y = 0f;
 
-        if (fovVelocity.magnitude > 0.1f)
-        {
-            //scale with speed?
-        }
+        float speed = fovVelocity.magnitude;
+        float maxSpeed = _movementObject.SprintSpeed;
+
+        float t = Mathf.Clamp01(speed / maxSpeed);
+        
+        float targetFov = Mathf.Lerp(minFov, maxFov, t);
+
+        //apply fov
+        _mainCam.fieldOfView = Mathf.Lerp(
+            _mainCam.fieldOfView,
+            targetFov,
+            fovSmoothSpeed * Time.deltaTime);
     }
 }

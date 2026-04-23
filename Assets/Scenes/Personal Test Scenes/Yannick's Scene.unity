@@ -679,6 +679,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
   _movementObject: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
   CurrentState: 0
+  minFov: 60
+  maxFov: 80
+  fovSmoothSpeed: 5
 --- !u!114 &2139746463
 MonoBehaviour:
   m_ObjectHideFlags: 0
