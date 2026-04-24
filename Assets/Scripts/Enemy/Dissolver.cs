@@ -19,9 +19,6 @@ public class Dissolver : MonoBehaviour
     }
     public IEnumerator DissolveRoutine(string strength)
     {
-
-
-        yield return new WaitForSeconds(2f);
         float elapsedTime = 0;
         Material dissolveMaterial = GetComponent<Renderer>().material;
 
