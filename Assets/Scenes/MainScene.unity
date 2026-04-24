@@ -176,6 +176,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2940731300242600581, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: UpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940731300242600581, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: DefaultBlend.Time
       value: 1
       objectReference: {fileID: 0}
