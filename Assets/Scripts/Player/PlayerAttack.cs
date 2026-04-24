@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     private GameObject _camera;
 
     private PlayerHealth _healthScript;
+
+    private bool _isAttacking;
 
     private void Start()
     {
@@ -41,7 +44,23 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext context)
     {
+        if (!_isAttacking)
+        {
 
+            StartCoroutine(Attack());
+            _isAttacking = true;
+
+        }
+
+    }
+
+    private void Update()
+    {
+        Debug.DrawRay(new Vector3(_camera.transform.position.x, _camera.transform.position.y, _camera.transform.position.z), _camera.transform.forward, Color.red);
+    }
+
+    private IEnumerator Attack()
+    {
         RaycastHit hit;
 
 
@@ -55,10 +74,7 @@ public class PlayerAttack : MonoBehaviour
 
         }
 
-    }
-
-    private void Update()
-    {
-        Debug.DrawRay(new Vector3(_camera.transform.position.x, _camera.transform.position.y, _camera.transform.position.z), _camera.transform.forward, Color.red);
+        yield return new WaitForSeconds(0.5f);
+        _isAttacking = false;
     }
 }

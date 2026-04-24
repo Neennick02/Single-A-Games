@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Windows;
@@ -9,7 +11,6 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private PlayerObject _movementObject;
     private InputManager _input;
     private CharacterController _controller;
-    private Camera _mainCam;
 
     public PlayerStates CurrentState;
     public enum PlayerStates
@@ -32,8 +33,12 @@ public class PlayerMotor : MonoBehaviour
     [Header("Fov")]
     [SerializeField] float minFov = 60;
     [SerializeField] float maxFov = 90;
+    [SerializeField] private CinemachineCamera _camera;
 
     [SerializeField] float fovSmoothSpeed = 8;
+
+
+    [SerializeField] private Transform headTransform; 
 
     private void OnEnable()
     {
@@ -48,10 +53,12 @@ public class PlayerMotor : MonoBehaviour
     {
         _input = GetComponent<InputManager>();
         _controller = GetComponent<CharacterController>();
-        _mainCam = GetComponentInChildren<Camera>();
         _controller.height = _movementObject.DefaultHeight;
 
         CurrentState = PlayerStates.Locomotion;
+
+        Vector3 height = new Vector3(headTransform.position.x, _movementObject.DefaultHeight, headTransform.position.z);
+        headTransform.position = height;
     }
 
     // Update is called once per frame
@@ -98,8 +105,21 @@ public class PlayerMotor : MonoBehaviour
     void NormalMovement(Vector2 input)
     {
         // Input direction
-        Vector3 inputDir = new Vector3(input.x, 0f, input.y);
-        inputDir = transform.TransformDirection(inputDir);
+        Transform cam = Camera.main.transform;
+
+        Vector3 forward = cam.forward;
+        Vector3 right = cam.right;
+
+        // flatten camera vectors
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 inputDir = forward * input.y + right * input.x;
+
+
 
         float speed = _isSprinting ? _movementObject.SprintSpeed : _movementObject.Speed;
 
@@ -179,7 +199,8 @@ public class PlayerMotor : MonoBehaviour
         CurrentState = PlayerStates.Sliding;
 
         //make player smaller
-        _controller.height = _movementObject.SlideHeight;
+        Vector3 height = new Vector3(headTransform.position.x, _movementObject.SlideHeight, headTransform.position.z);
+        headTransform.position = height;
 
         //add gravity
         _playerVelocity.y = -2f;
@@ -192,15 +213,30 @@ public class PlayerMotor : MonoBehaviour
             slideTimer += Time.deltaTime;
 
             //calculate direction
-            Vector3 slideVelocity = transform.forward * _movementObject.SlideSpeed;
+            Transform cam = Camera.main.transform;
 
-            _playerVelocity = Vector3.Lerp(_playerVelocity, slideVelocity, slideTimer / duration);
-            _controller.Move(_playerVelocity * Time.deltaTime);
+            Vector3 forward = cam.forward;
+            forward.y = 0f;
+            forward.Normalize();
+
+            Vector3 slideVelocity = forward * _movementObject.SlideSpeed;
+
+            Vector3 horizontalSlide = Vector3.Lerp(
+                new Vector3(_playerVelocity.x, 0, _playerVelocity.z),
+                slideVelocity,
+                slideTimer / duration
+            );
+
+            //apply slide force
+            _playerVelocity.x = horizontalSlide.x;
+            _playerVelocity.z = horizontalSlide.z; _controller.Move(_playerVelocity * Time.deltaTime);
+
             yield return null;
         }
 
         //reset player height
-        _controller.height = _movementObject.DefaultHeight;
+        height = new Vector3(headTransform.position.x, _movementObject.DefaultHeight, headTransform.position.z);
+        headTransform.position = height;
 
         //transfer velocity to movement
         _playerVelocity = Vector3.zero;
@@ -213,24 +249,14 @@ public class PlayerMotor : MonoBehaviour
     {
         Vector3 moveDir = new Vector3(moveInput.x, 0f, moveInput.y);
 
-        if (moveDir.magnitude > 0.1f)
-        {
-            moveDir = transform.TransformDirection(moveDir).normalized;
-        }
-        Vector3 camForward = _mainCam.transform.forward;
-        camForward.y = 0f;
-        camForward.Normalize();
-
-        float alignment = Vector3.Dot(moveDir, camForward);
-
-        if(alignment > 0.4f)
-        {
-            return true;
-        }
-        else
-        {
+        if (moveDir.sqrMagnitude < 0.01f)
             return false;
-        }
+
+        moveDir = transform.TransformDirection(moveDir).normalized;
+
+        float alignment = Vector3.Dot(transform.forward, moveDir);
+
+        return alignment > 0.2f;
     }
 
     private void UpdateFOV()
@@ -246,8 +272,8 @@ public class PlayerMotor : MonoBehaviour
         float targetFov = Mathf.Lerp(minFov, maxFov, t);
 
         //apply fov
-        _mainCam.fieldOfView = Mathf.Lerp(
-            _mainCam.fieldOfView,
+        _camera.Lens.FieldOfView = Mathf.Lerp(
+            _camera.Lens.FieldOfView,
             targetFov,
             fovSmoothSpeed * Time.deltaTime);
     }
