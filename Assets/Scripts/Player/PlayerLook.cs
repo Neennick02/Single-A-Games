@@ -19,7 +19,7 @@ public class PlayerLook : MonoBehaviour
         ySensitivity = lookSensitivity;
 
         float mouseX = input.x * xSensitivity * Time.deltaTime;
-        float mouseY = input.y * xSensitivity * Time.deltaTime;
+        float mouseY = input.y * ySensitivity * Time.deltaTime;
 
         // Apply vertical rotation (pitch) with recoil
         xRotation -= mouseY;
