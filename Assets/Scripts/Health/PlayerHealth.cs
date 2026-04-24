@@ -41,6 +41,7 @@ public class PlayerHealth : BaseHealth
     protected override void Die()
     {
         Debug.Log("Player is dead");
+        Cursor.lockState = CursorLockMode.None;
         OnDeath?.Invoke();
     }
 }
