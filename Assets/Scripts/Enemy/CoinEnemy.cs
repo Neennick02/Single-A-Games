@@ -21,7 +21,7 @@ public class CoinEnemy : Enemy
             }
 
             else
-            {
+            {   
                 _agent.SetDestination(_target.transform.position);
             }
         }
