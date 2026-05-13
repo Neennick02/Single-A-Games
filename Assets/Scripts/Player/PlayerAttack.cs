@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        _camera = FindAnyObjectByType<Camera>().gameObject;
+        _camera = GetComponentInChildren<Camera>().gameObject;
 
         _healthScript = GetComponent<PlayerHealth>();
 
@@ -46,7 +46,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!_isAttacking)
         {
-
             StartCoroutine(Attack());
             _isAttacking = true;
 
@@ -69,7 +68,14 @@ public class PlayerAttack : MonoBehaviour
 
             if (hit.collider.CompareTag("Enemy"))
             {
-                hit.collider.GetComponent<EnemyHealth>().TakeDamage(_healthScript.PlayerObject.Damage);
+                EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
+
+                if(health == null)
+                {
+                    health = hit.collider.GetComponentInParent<EnemyHealth>();
+                }
+
+                health.TakeDamage(_healthScript.PlayerObject.Damage);
             }
 
         }
