@@ -7,7 +7,7 @@ public class Dissolver : MonoBehaviour
     [SerializeField] private float _dissolveAmount = 1f;
     private float _dissolveStrength;
     [SerializeField] private float _dissolveProgress;
-
+    [SerializeField] private Renderer _renderer;
     public void StartDissolve()
     {
         StartCoroutine(DissolveRoutine("_DissolveStrength"));
@@ -20,7 +20,9 @@ public class Dissolver : MonoBehaviour
     public IEnumerator DissolveRoutine(string strength)
     {
         float elapsedTime = 0;
-        Material dissolveMaterial = GetComponent<Renderer>().material;
+
+        Material dissolveMaterial = _renderer.material;
+        Debug.Log(dissolveMaterial.ToString());
 
         while (elapsedTime < _dissolveDuration)
         {

@@ -68,6 +68,7 @@ public class PlayerAttack : MonoBehaviour
 
             if (hit.collider.CompareTag("Enemy"))
             {
+                //find health script
                 EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
 
                 if(health == null)
@@ -76,11 +77,12 @@ public class PlayerAttack : MonoBehaviour
                 }
 
                 health.TakeDamage(_healthScript.PlayerObject.Damage);
+                Debug.Log("hit " + hit.transform.name);
             }
 
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         _isAttacking = false;
     }
 }

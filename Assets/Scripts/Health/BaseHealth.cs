@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class BaseHealth : MonoBehaviour
 {
 
-    [SerializeField] protected float currentHealth;
+    public float currentHealth;
     protected float maxHealth;
     public virtual void TakeDamage(float amount)
     {

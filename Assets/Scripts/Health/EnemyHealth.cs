@@ -10,8 +10,7 @@ public class EnemyHealth : BaseHealth
     private MeshRenderer _meshRenderer;
     private Material _startMat;
     [SerializeField] private Material _damageMat;
-
-    public static event Action<float> OnHealthAmountChange;
+    [SerializeField] private EnemyHealthBar _healthBar;
 
 
     private void Start()
@@ -28,21 +27,21 @@ public class EnemyHealth : BaseHealth
         _startMat = _meshRenderer.material;
     }
 
-    private void Update()
-    {
-        OnHealthAmountChange?.Invoke(currentHealth);
-    }
     public override void TakeDamage(float amount)
     {
-        StartCoroutine(FlashRed());
-
         if (currentHealth <= 0)
         {
             Die();
-            return;
+            //return;
         }
 
+
         currentHealth -= amount;
+        if (currentHealth > 0)
+        {
+            StartCoroutine(FlashRed());
+        }
+        _healthBar.UpdateHealth(currentHealth);
     }
 
     public override void Heal(float amount)
@@ -50,11 +49,12 @@ public class EnemyHealth : BaseHealth
         if (currentHealth >= maxHealth) return;
 
         currentHealth += amount;
+        _healthBar.UpdateHealth(currentHealth);
     }
 
     protected override void Die()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
         Debug.Log(transform.name + " died");
     }
 
