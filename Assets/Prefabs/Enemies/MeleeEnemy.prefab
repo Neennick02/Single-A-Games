@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 1240841317678988261}
   - component: {fileID: 6490957059906959230}
   - component: {fileID: 8034636817714942167}
-  - component: {fileID: 3923998602856633318}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Enemy
@@ -219,21 +218,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &3923998602856633318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933775573116875574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0de864262d2e2994b971d2da2f50973d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Dissolver
-  _dissolveDuration: 1
-  _dissolveAmount: 1
-  _dissolveProgress: 0
 --- !u!1 &5630771396797374058
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +445,7 @@ GameObject:
   - component: {fileID: 4459711739515201064}
   - component: {fileID: 3243777513197926933}
   - component: {fileID: 6437670484343410198}
+  - component: {fileID: 8775004657193847667}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -539,6 +524,24 @@ MonoBehaviour:
   EnemyObject: {fileID: 11400000, guid: 0bb70e6ad6ecca54ba8b992caf37841c, type: 2}
   _damageMat: {fileID: 2100000, guid: 223032c97a0361d468acc4cab2b0a77d, type: 2}
   _healthBar: {fileID: 1024158407375621483}
+--- !u!114 &8775004657193847667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7938202942073689913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de864262d2e2994b971d2da2f50973d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dissolver
+  _dissolveDuration: 0.5
+  _dissolveAmount: 1
+  _dissolveProgress: 0
+  _renderers:
+  - {fileID: 1240841317678988261}
+  - {fileID: 7453998311431290355}
 --- !u!1 &9029045984588547145
 GameObject:
   m_ObjectHideFlags: 0

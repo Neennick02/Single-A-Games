@@ -8,4 +8,6 @@ public class EnemyObject : ScriptableObject
     public float Damage;
 
     public float StoppingDistance;
+
+    public float SanityRestoreAmount;
 }

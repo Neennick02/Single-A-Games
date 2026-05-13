@@ -11,7 +11,7 @@ public class EnemyHealth : BaseHealth
     private Material _startMat;
     [SerializeField] private Material _damageMat;
     [SerializeField] private EnemyHealthBar _healthBar;
-
+    public static event Action<float> OnRestoreSanity;
 
     private void Start()
     {
@@ -29,18 +29,17 @@ public class EnemyHealth : BaseHealth
 
     public override void TakeDamage(float amount)
     {
+        currentHealth -= amount;
+
         if (currentHealth <= 0)
         {
             Die();
-            //return;
         }
-
-
-        currentHealth -= amount;
-        if (currentHealth > 0)
+        else
         {
             StartCoroutine(FlashRed());
         }
+
         _healthBar.UpdateHealth(currentHealth);
     }
 
@@ -54,8 +53,7 @@ public class EnemyHealth : BaseHealth
 
     protected override void Die()
     {
-        //Destroy(gameObject);
-        Debug.Log(transform.name + " died");
+        StartCoroutine(FadeOutAndDie());
     }
 
     private IEnumerator FlashRed()
@@ -63,5 +61,14 @@ public class EnemyHealth : BaseHealth
         _meshRenderer.material = _damageMat;
         yield return new WaitForSeconds(0.1f);
         _meshRenderer.material = _startMat;
+    }
+    IEnumerator FadeOutAndDie()
+    {
+        Dissolver dissolve = GetComponent<Dissolver>();
+        dissolve.StartDissolve();
+
+        yield return new WaitForSeconds(0.5f);
+        OnRestoreSanity?.Invoke(EnemyObject.SanityRestoreAmount);
+        Destroy(gameObject);
     }
 }

@@ -73,13 +73,11 @@ public class MeleeEnemy : Enemy
     public override void Die()
     {
         _dead = true;
-       /* Destroy(_agent);
+        Destroy(_agent);
         
         //fall over [not working properly]
         Rigidbody rb = GetComponentInChildren<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
-*/
-        StartCoroutine(FadeOutAndDie());
     }
 
     private void RunAway()
@@ -92,14 +90,5 @@ public class MeleeEnemy : Enemy
         Vector3 direction = (_target.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-    }
-
-    IEnumerator FadeOutAndDie()
-    {
-        Dissolver dissolve = GetComponentInChildren<Dissolver>();
-        dissolve.StartDissolve();
-
-        yield return new WaitForSeconds(3f);
-       // Destroy(gameObject);
     }
 }

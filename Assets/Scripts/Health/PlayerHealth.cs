@@ -10,6 +10,17 @@ public class PlayerHealth : BaseHealth
     public static event Action OnDeath;
     [SerializeField] private Volume _damageEffect;
 
+    #region OnEnable
+    private void OnEnable()
+    {
+        SanityManager.OnTakeSanityDamage += TakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        SanityManager.OnTakeSanityDamage -= TakeDamage;
+    }
+    #endregion
     private void Start()
     {
         maxHealth = PlayerObject.MaxHealth;
