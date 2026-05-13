@@ -6,4 +6,6 @@ public class EnemyObject : ScriptableObject
     public float MaxHealth;
 
     public float Damage;
+
+    public float StoppingDistance;
 }

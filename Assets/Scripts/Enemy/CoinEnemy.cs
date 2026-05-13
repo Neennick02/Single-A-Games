@@ -27,17 +27,9 @@ public class CoinEnemy : Enemy
         }
     }
 
-    private bool CheckIfInRange()
-    {
-        byte maxDistance = 3;
-
-
-        //Check if the object is within a certain distance of the player on the x and z axis.
-        return (transform.position.x <= _target.transform.position.x + maxDistance && transform.position.x >= _target.transform.position.x - maxDistance && transform.position.z <= _target.transform.position.z + maxDistance && transform.position.z >= _target.transform.position.z - maxDistance);
-    }
-
     private IEnumerator Attack()
     {
+        CurrentState = EnemyState.Attacking;
 
         //Look at the player and set every bit of velocity to 0 before applying the force to the object and disable their navmesh agent.
         transform.LookAt(_target.transform);
@@ -67,13 +59,15 @@ public class CoinEnemy : Enemy
         transform.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
 
         _attacking = false;
+
+        CurrentState = EnemyState.Moving;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(_healthScript.EnemyObject.Damage);
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(enemyObject.Damage);
         }
     }
 

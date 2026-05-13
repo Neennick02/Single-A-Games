@@ -6,6 +6,18 @@ public abstract class Enemy : MonoBehaviour
 
     [Header("Parent")]
 
+    [SerializeField] protected EnemyObject enemyObject;
+
+    public enum EnemyState
+    {
+        Moving,
+        Attacking,
+        Fleeing,
+        Dead,
+    }
+
+    public EnemyState CurrentState;
+
     protected NavMeshAgent _agent;
 
     protected Rigidbody _rb;
@@ -25,6 +37,8 @@ public abstract class Enemy : MonoBehaviour
 
         _healthScript = GetComponent<EnemyHealth>();
 
+        CurrentState = EnemyState.Moving;
+
         MyStart();
     }
 
@@ -39,4 +53,18 @@ public abstract class Enemy : MonoBehaviour
 
 
     protected virtual void MyUpdate() { }
+
+    public virtual void Die()
+    {
+        CurrentState = EnemyState.Dead;
+    }
+
+    protected virtual bool CheckIfInRange()
+    {
+        //Check if the object is within a certain distance of the player on the x and z axis.
+        return (transform.position.x <= _target.transform.position.x + enemyObject.StoppingDistance &&
+            transform.position.x >= _target.transform.position.x - enemyObject.StoppingDistance &&
+            transform.position.z <= _target.transform.position.z + enemyObject.StoppingDistance &&
+            transform.position.z >= _target.transform.position.z - enemyObject.StoppingDistance);
+    }
 }
