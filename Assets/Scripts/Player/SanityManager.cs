@@ -18,15 +18,21 @@ public class SanityManager : MonoBehaviour
     public static event Action<float> OnTakeSanityDamage;
     private float timer = 0;
 
+    //fog
     [Header("Effect Settings")]
-
-    private FogManager _fogManager;
     [SerializeField] private float _lowSanityRestoreMultiplier = 1.5f;
     [SerializeField] private float _sanityMultiplierThreshold = 60f;
+    private FogManager _fogManager;
 
+
+    //damage increase
     [SerializeField] private float _increaseDamageThreshold = 15;
     [SerializeField] private float _damageMultiplier = 1.5f;
     public static event Action<float> OnDamageOutputChange;
+
+    //lens distortion
+    [SerializeField] private float _lensDistortThreshold = 20f;
+
     private void Awake()
     {
         MaxSanity = _sanityAmount;
@@ -68,7 +74,7 @@ public class SanityManager : MonoBehaviour
         }
 
         //update fog amount
-        float fogAmount = (MaxSanity - _sanityAmount) / 700;
+        float fogAmount = (MaxSanity - _sanityAmount) / 800;
         if(_sanityAmount < _sanityMultiplierThreshold)
         {
             _fogManager.UpdateFogAmount(fogAmount);
@@ -82,6 +88,16 @@ public class SanityManager : MonoBehaviour
         else
         {
             OnDamageOutputChange?.Invoke(1);
+        }
+
+        //update lens distortion
+        if(_sanityAmount < _lensDistortThreshold)
+        {
+            LensDistortionManager.Distort = true;
+        }
+        else
+        {
+            LensDistortionManager.Distort = false;
         }
     }
 

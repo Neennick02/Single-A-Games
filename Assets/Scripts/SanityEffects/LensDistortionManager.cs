@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class LensDistortionManager : MonoBehaviour
 {
-    public bool _distort;
+    public static bool Distort;
     private Volume _volume;
     private VolumeProfile profile;
     private LensDistortion lensDistortion;
@@ -26,7 +26,7 @@ public class LensDistortionManager : MonoBehaviour
     }
     private void Update()
     {
-        if (_distort)
+        if (Distort)
         {
             _currentValue = Mathf.PingPong(Time.time * _speed, _distortionRange);
             lensDistortion.intensity.value = _currentValue;
