@@ -7,6 +7,7 @@ public class FogManager : MonoBehaviour
     [SerializeField] private float _defaultFogAmount;
     [SerializeField] private float _maxFogAmount;
     public float fog;
+
     private void Start()
     {
         UpdateFogAmount(_defaultFogAmount);

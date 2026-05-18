@@ -2738,7 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fdc92ed168b6645a5fcf02ee33cdc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SanityBar
-  _drainRate: 10
+  _drainRate: 1
   _damageAmount: 1
   _damageInterval: 1.5
   _damageThreshhold: 30
@@ -2770,7 +2770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FogManager
   _defaultFogAmount: 0.01
-  _maxFogAmount: 0.4
+  _maxFogAmount: 0.2
   fog: 0
 --- !u!4 &1893596864 stripped
 Transform:
