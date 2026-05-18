@@ -66,8 +66,10 @@ public class PlayerAttack : MonoBehaviour
     {
         RaycastHit hit;
 
+        byte range = 5;
 
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, 3f))
+
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range))
         {
 
             if (hit.collider.CompareTag("Enemy"))
