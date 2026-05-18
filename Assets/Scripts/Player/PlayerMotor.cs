@@ -38,8 +38,8 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] float fovSmoothSpeed = 8;
 
 
-    [SerializeField] private Transform headTransform; 
-
+    [SerializeField] private Transform headTransform;
+    private float _moveSpeedMultilier = 1;
     private void OnEnable()
     {
         PlayerHealth.OnDeath += Die;
@@ -121,7 +121,7 @@ public class PlayerMotor : MonoBehaviour
 
 
 
-        float speed = _isSprinting ? _movementObject.SprintSpeed : _movementObject.Speed;
+        float speed = _isSprinting ? _movementObject.SprintSpeed * _moveSpeedMultilier : _movementObject.Speed * _moveSpeedMultilier;
 
         // Horizontal velocity
         Vector3 horizontal = inputDir * speed;
@@ -283,5 +283,10 @@ public class PlayerMotor : MonoBehaviour
         CurrentState = PlayerStates.Dead;
         _controller.height = _movementObject.SlideHeight-1;
 
+    }
+
+    public void IncreaseMultiplier(float multiplier)
+    {
+        _moveSpeedMultilier = multiplier;
     }
 }

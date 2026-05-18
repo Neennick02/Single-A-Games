@@ -135,4 +135,8 @@ public class SanityManager : MonoBehaviour
         _draining = true;
     }
     
+    public void IncreaseDrainAmount(float amount)
+    {
+        
+    }
 }
