@@ -8,6 +8,7 @@ public class SanityManager : MonoBehaviour
     private float _sanityAmount = 100;
 
     [SerializeField] float _drainRate = 1f;
+    private float _drainRateMultiplier = 1;
     private bool _draining = true;
     public static event Action<float> OnDrainAmountChanged;
 
@@ -57,7 +58,7 @@ public class SanityManager : MonoBehaviour
         //drain over time
         if (_draining)
         {
-            _sanityAmount -= _drainRate * Time.deltaTime;
+            _sanityAmount -= (_drainRate * _drainRateMultiplier) * Time.deltaTime;
         }
 
         OnDrainAmountChanged?.Invoke(_sanityAmount);
@@ -137,6 +138,6 @@ public class SanityManager : MonoBehaviour
     
     public void IncreaseDrainAmount(float amount)
     {
-        
+        _drainRateMultiplier = amount;
     }
 }
