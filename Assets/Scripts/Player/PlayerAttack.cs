@@ -13,6 +13,8 @@ public class PlayerAttack : MonoBehaviour
 
     private bool _isAttacking;
 
+    private float _damageMultiplier = 1;
+
     private void Start()
     {
         _camera = GetComponentInChildren<Camera>().gameObject;
@@ -34,11 +36,13 @@ public class PlayerAttack : MonoBehaviour
 
         _inputActions.OnFoot.Attack.performed += Attack;
 
+        SanityManager.OnDamageOutputChange += IncreaseDamageOutput;
     }
 
     private void OnDisable()
     {
         _inputActions.OnFoot.Attack.performed -= Attack;
+        SanityManager.OnDamageOutputChange -= IncreaseDamageOutput;
         _inputActions.Disable();
     }
 
@@ -62,8 +66,10 @@ public class PlayerAttack : MonoBehaviour
     {
         RaycastHit hit;
 
+        byte range = 5;
 
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, 3f))
+
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range))
         {
 
             if (hit.collider.CompareTag("Enemy"))
@@ -76,7 +82,7 @@ public class PlayerAttack : MonoBehaviour
                     health = hit.collider.GetComponentInParent<EnemyHealth>();
                 }
 
-                health.TakeDamage(_healthScript.PlayerObject.Damage);
+                health.TakeDamage(_healthScript.PlayerObject.Damage * _damageMultiplier);
                 Debug.Log("hit " + hit.transform.name);
             }
 
@@ -84,5 +90,10 @@ public class PlayerAttack : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
         _isAttacking = false;
+    }
+
+    public void IncreaseDamageOutput(float multiplier)
+    {
+        _damageMultiplier += multiplier;
     }
 }

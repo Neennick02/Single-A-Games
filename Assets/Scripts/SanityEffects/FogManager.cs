@@ -6,7 +6,6 @@ public class FogManager : MonoBehaviour
 {
     [SerializeField] private float _defaultFogAmount;
     [SerializeField] private float _maxFogAmount;
-    public float fog;
 
     private void Start()
     {
@@ -18,8 +17,6 @@ public class FogManager : MonoBehaviour
         if (amount < _defaultFogAmount ||
             amount > _maxFogAmount) return;
         
-        fog = amount;
-
         RenderSettings.fogDensity = amount;
     }
 }

@@ -11,14 +11,27 @@ public class SanityManager : MonoBehaviour
     private bool _draining = true;
     public static event Action<float> OnDrainAmountChanged;
 
+    [Header("Damage Settings")]
     [SerializeField] private float _damageAmount;
     [SerializeField] private float _damageInterval;
     [SerializeField] private float _damageThreshhold;
     public static event Action<float> OnTakeSanityDamage;
     private float timer = 0;
 
-    //effects events
+    //fog
+    [Header("Effect Settings")]
+    [SerializeField] private float _lowSanityRestoreMultiplier = 1.5f;
+    [SerializeField] private float _sanityMultiplierThreshold = 60f;
     private FogManager _fogManager;
+
+
+    //damage increase
+    [SerializeField] private float _increaseDamageThreshold = 15;
+    [SerializeField] private float _damageMultiplier = 1.5f;
+    public static event Action<float> OnDamageOutputChange;
+
+    //lens distortion
+    [SerializeField] private float _lensDistortThreshold = 20f;
 
     private void Awake()
     {
@@ -61,8 +74,31 @@ public class SanityManager : MonoBehaviour
         }
 
         //update fog amount
-        float fogAmount = (MaxSanity - _sanityAmount) / 270;
-        _fogManager.UpdateFogAmount(fogAmount);
+        float fogAmount = (MaxSanity - _sanityAmount) / 800;
+        if(_sanityAmount < _sanityMultiplierThreshold)
+        {
+            _fogManager.UpdateFogAmount(fogAmount);
+        }
+
+        //update damage amount
+        if(_sanityAmount <= _increaseDamageThreshold)
+        {
+            OnDamageOutputChange?.Invoke(_damageMultiplier);
+        }
+        else
+        {
+            OnDamageOutputChange?.Invoke(1);
+        }
+
+        //update lens distortion
+        if(_sanityAmount < _lensDistortThreshold)
+        {
+            LensDistortionManager.Distort = true;
+        }
+        else
+        {
+            LensDistortionManager.Distort = false;
+        }
     }
 
     public void StopStartDrain(bool active)
@@ -71,6 +107,11 @@ public class SanityManager : MonoBehaviour
     }
     public void AddSanity(float amount)
     {
+        //increase amount if sanity is low
+        if(_sanityAmount < MaxSanity / 3)
+        {
+            amount = amount * _lowSanityRestoreMultiplier;
+        }
         StartCoroutine(AddRoutine(amount));
     }
 
@@ -94,4 +135,8 @@ public class SanityManager : MonoBehaviour
         _draining = true;
     }
     
+    public void IncreaseDrainAmount(float amount)
+    {
+        
+    }
 }
