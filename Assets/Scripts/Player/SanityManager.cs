@@ -18,11 +18,12 @@ public class SanityManager : MonoBehaviour
     private float timer = 0;
 
     //effects events
-
+    private FogManager _fogManager;
 
     private void Awake()
     {
         MaxSanity = _sanityAmount;
+        _fogManager = GetComponent<FogManager>();
     }
 
     #region OnEnable
@@ -58,6 +59,10 @@ public class SanityManager : MonoBehaviour
                 timer = 0;
             }
         }
+
+        //update fog amount
+        float fogAmount = (MaxSanity - _sanityAmount) / 270;
+        _fogManager.UpdateFogAmount(fogAmount);
     }
 
     public void StopStartDrain(bool active)
