@@ -19,14 +19,17 @@ public class ShootingArm : MonoBehaviour
 
         _rb = GetComponent<Rigidbody>();
 
-        int force = 1000;
+        int _Force = 1000;
 
-        _rb.AddRelativeForce(Vector3.forward * force);
+
+        //Apply a starting force to "shoot" the arm forward
+        _rb.AddRelativeForce(Vector3.forward * _Force);
     }
 
     private void FixedUpdate()
     {
 
+        //Keep setting the current magnitude of the arm's velocity to a variable to check for damage on collision
         speed = _rb.linearVelocity.magnitude;
 
     }
@@ -34,6 +37,8 @@ public class ShootingArm : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        //If the arm collides with anything that isn't the player, make it solid so it can interact with the environment and enemies
         if (!other.gameObject.CompareTag("Player"))
         {
             if (!_isOut)
@@ -50,6 +55,8 @@ public class ShootingArm : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+
+            //If the speed is fast enough make it do damage.
             if (speed > 5)
             {
                 collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(4);

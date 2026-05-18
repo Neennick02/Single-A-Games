@@ -55,25 +55,28 @@ public class ShootArm : MonoBehaviour
     private void TryAndCollectArm()
     {
 
-        RaycastHit hit;
+        RaycastHit _Hit;
 
-        byte range = 5;
+        byte _Range = 5;
 
 
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range))
+        //Send out to detect arm
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _Hit, _Range))
         {
 
-            if (hit.collider.CompareTag("Arm"))
+            if (_Hit.collider.CompareTag("Arm"))
             {
 
                 Debug.Log("Arm Detected");
-                PickUpArm(hit.collider.gameObject);
+                PickUpArm(_Hit.collider.gameObject);
             }
         }
     }
 
     private void Attack(InputAction.CallbackContext context)
     {
+
+        //If the player has the arm, they can attack, if not they can try and collect it
         if (_arm)
         {
             _isAttacking = context.performed;
@@ -105,6 +108,9 @@ public class ShootArm : MonoBehaviour
 
     private IEnumerator Attack()
     {
+
+        //Wait 2 seconds to see if there holding click.
+
         yield return new WaitForSeconds(2f);
 
         if (_isAttacking)
@@ -116,7 +122,7 @@ public class ShootArm : MonoBehaviour
 
     private void Shoot()
     {
-
+        //Set arm to false, disable the attack script and attached arm, then instantiate the shooting arm prefab
         _isAttacking = false;
 
         _attachedArm.SetActive(false);
@@ -131,6 +137,7 @@ public class ShootArm : MonoBehaviour
     private void PickUpArm(GameObject arm)
     {
 
+        //Reset the arm, enable the attached arm and attack script, then destroy the arm on the ground
         Destroy(arm);
 
         _attachedArm.SetActive(true);
