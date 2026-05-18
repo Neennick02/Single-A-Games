@@ -11,15 +11,17 @@ public class SanityManager : MonoBehaviour
     private bool _draining = true;
     public static event Action<float> OnDrainAmountChanged;
 
+    [Header("Damage Settings")]
     [SerializeField] private float _damageAmount;
     [SerializeField] private float _damageInterval;
     [SerializeField] private float _damageThreshhold;
     public static event Action<float> OnTakeSanityDamage;
     private float timer = 0;
 
-    //effects events
-    private FogManager _fogManager;
+    [Header("Effect Settings")]
 
+    private FogManager _fogManager;
+    [SerializeField] private float _lowSanityRestoreMultiplier = 1.5f;
     private void Awake()
     {
         MaxSanity = _sanityAmount;
@@ -71,6 +73,11 @@ public class SanityManager : MonoBehaviour
     }
     public void AddSanity(float amount)
     {
+        //increase amount if sanity is low
+        if(_sanityAmount < MaxSanity / 3)
+        {
+            amount = amount * _lowSanityRestoreMultiplier;
+        }
         StartCoroutine(AddRoutine(amount));
     }
 
