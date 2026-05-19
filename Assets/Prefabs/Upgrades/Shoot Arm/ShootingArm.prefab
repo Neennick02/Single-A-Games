@@ -61,9 +61,17 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 54de2a7ddc2f57b48a07ca64f7216f7c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 54de2a7ddc2f57b48a07ca64f7216f7c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: eadab92815ccf1548987fda87ee2f54e, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 54de2a7ddc2f57b48a07ca64f7216f7c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30683c8b291706745bfeced8854e7b03, type: 2}
     - target: {fileID: 919132149155446097, guid: 54de2a7ddc2f57b48a07ca64f7216f7c, type: 3}
       propertyPath: m_Name
       value: Visual
@@ -183,7 +191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4798704437540823026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324537e940d719c4d8ba474cc605d45c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3494a03c6155a9b4daaa86809b59c90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootingArm
 --- !u!54 &5397137680292529016

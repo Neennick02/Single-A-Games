@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6691947804989590208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1bac526c57245c4197d2fc4802eea66, type: 3}
+  m_Script: {fileID: 11500000, guid: aae50fa633d1610439d99635cd1a0547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootArm
   _isAttacking: 0
