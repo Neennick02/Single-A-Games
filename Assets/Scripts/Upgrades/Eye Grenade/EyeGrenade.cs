@@ -12,6 +12,7 @@ public class EyeGrenade : MonoBehaviour
     [SerializeField] private Transform _throwPoint;
 
     public static event Action OnBlindEye;
+    public static event Action OnHealEye;
 
     [SerializeField] private float _eyeRegenerationTime = 5f;
     private float timer;
@@ -22,7 +23,7 @@ public class EyeGrenade : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.OnThrowGrenade += Throw;
+        InputManager.OnThrowGrenade += UseEye;
 
         //hook firepoint to main cam
 
@@ -41,39 +42,49 @@ public class EyeGrenade : MonoBehaviour
             timer += Time.deltaTime;
             if(timer > _eyeRegenerationTime)
             {
+                OnHealEye?.Invoke();    
                 _canUseEye = true;
+                timer = 0f;
             }
         }
     }
 
-    public void Throw()
+    public void UseEye()
     {
-        if (!_isHolding)
+        if (!_isHolding && _canUseEye)
         {
             Grab();
         }
-        else
+        else if(_isHolding)
         {
-            StartCoroutine(ThrowRoutine());
+            Throw();
         }
     }
 
     private void Grab()
     {
+        OnBlindEye?.Invoke();
         _canUseEye = false;
         grenade = Instantiate(GrenadePrefab, _throwPoint);
         grenade.transform.parent = _throwPoint;
         _isHolding = true;
     }
 
-    IEnumerator ThrowRoutine()
+    private void Throw()
     {
+        //if already exploded in hand
+        if (grenade == null)
+        {
+            _isHolding = false;
+            return;
+        }
+
         Rigidbody rb = grenade.GetComponentInChildren<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
+        grenade.transform.parent = null;
         rb.AddForce(_throwForce * _throwPoint.forward, ForceMode.Impulse);
-        Debug.Log("throw");
+
         _isHolding = false;
-        yield return null;
     }
 }
 

@@ -17,12 +17,14 @@ public class BlindEye : MonoBehaviour
     private void OnEnable()
     {
         EyeGrenade.OnBlindEye += BlindEyes;
+        EyeGrenade.OnHealEye += HealEyes;
         _imagePanel = GetComponent<Image>();
     }
 
     private void OnDisable()
     {
         EyeGrenade.OnBlindEye -= BlindEyes;
+        EyeGrenade.OnHealEye -= HealEyes;
     }
 
     private void BlindEyes()
@@ -33,25 +35,34 @@ public class BlindEye : MonoBehaviour
         StartCoroutine(FadeIn());
     }
 
+    private void HealEyes()
+    {
+        StartCoroutine(FadeOut());
+    }
+
     IEnumerator FadeIn()
     {
-        
-
         float timer = 0;
         while(timer < FadeOutTime)
         {
             timer += Time.deltaTime;
 
-            _imagePanel.color = Color.Lerp(_startC, _endC, timer / 5);
+            _imagePanel.color = Color.Lerp(_startC, _endC, timer / 1);
 
             yield return null;  
         }
-
-        yield return new WaitForSeconds(5f);
     }
 
     IEnumerator FadeOut()
     {
-        yield return null;
+        float timer = 0;
+        while (timer < FadeOutTime)
+        {
+            timer += Time.deltaTime;
+
+            _imagePanel.color = Color.Lerp(_endC, _startC, timer / 1);
+
+            yield return null;
+        }
     }
 }

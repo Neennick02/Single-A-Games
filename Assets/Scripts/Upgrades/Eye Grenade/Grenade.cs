@@ -11,7 +11,7 @@ public class Grenade : MonoBehaviour
     private float _timer = 0;
     private Collider _rangeCollider;
 
-    private List<EnemyHealth> _enemyList = new List<EnemyHealth>();
+    public List<EnemyHealth> EnemyList = new List<EnemyHealth>();
 
     private void Start()
     {
@@ -29,11 +29,13 @@ public class Grenade : MonoBehaviour
 
     private void Explode()
     {
-        Debug.Log("Boom");
-
-        for (int i = 0; i < _enemyList.Count; i++)
+        for (int i = 0; i < EnemyList.Count; i++)
         {
-            _enemyList[i].TakeDamage(_damage);
+            if( EnemyList[i] == null ) EnemyList.RemoveAt(i);
+
+            Debug.Log("Boom" + EnemyList[i].name);
+
+            EnemyList[i].TakeDamage(_damage);
         }
 
         Destroy(gameObject);
@@ -49,7 +51,7 @@ public class Grenade : MonoBehaviour
                 current = other.GetComponentInChildren<EnemyHealth>();
             }
 
-            _enemyList.Add(current);
+            EnemyList.Add(current);
         }
     }
 
@@ -63,7 +65,22 @@ public class Grenade : MonoBehaviour
                 current = other.GetComponentInChildren<EnemyHealth>();
             }
 
-            _enemyList.Remove(current);
+            EnemyList.Remove(current);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyHealth current = collision.gameObject.GetComponentInChildren<EnemyHealth>();
+            if (current == null)
+            {
+                current = collision.gameObject.GetComponentInParent<EnemyHealth>();
+            }
+
+            if(current != null) 
+            current.TakeDamage(1f);
         }
     }
 }
