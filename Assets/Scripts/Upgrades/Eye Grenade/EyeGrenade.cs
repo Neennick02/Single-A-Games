@@ -7,7 +7,7 @@ public class EyeGrenade : MonoBehaviour
 {
     public GameObject GrenadePrefab;
     private bool _canUseEye = true;
-    private bool _isHolding = false;
+    public bool _isHolding = false;
 
     [SerializeField] private Transform _throwPoint;
 
@@ -18,7 +18,7 @@ public class EyeGrenade : MonoBehaviour
     private float timer;
 
 
-    GameObject grenade;
+    public GameObject grenade;
     [SerializeField] private float _throwForce = 1;
 
     private void OnEnable()
@@ -51,11 +51,11 @@ public class EyeGrenade : MonoBehaviour
 
     public void UseEye()
     {
-        if (!_isHolding && _canUseEye)
+        if (!_isHolding && _canUseEye && grenade == null)
         {
             Grab();
         }
-        else if(_isHolding)
+        else if (_isHolding && grenade != null)
         {
             Throw();
         }
@@ -63,28 +63,30 @@ public class EyeGrenade : MonoBehaviour
 
     private void Grab()
     {
-        OnBlindEye?.Invoke();
         _canUseEye = false;
+        _isHolding = true;
+
+        OnBlindEye?.Invoke();
+
+        //spawn grenade
         grenade = Instantiate(GrenadePrefab, _throwPoint);
         grenade.transform.parent = _throwPoint;
-        _isHolding = true;
+
+        //assign script
+        Grenade script = grenade.GetComponent<Grenade>();
+        script.parentScript = this;
     }
 
     private void Throw()
     {
-        //if already exploded in hand
-        if (grenade == null)
-        {
-            _isHolding = false;
-            return;
-        }
+        //empty hands
+        grenade.transform.parent = null;
+        _isHolding = false;
 
         Rigidbody rb = grenade.GetComponentInChildren<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
-        grenade.transform.parent = null;
+        //add force
         rb.AddForce(_throwForce * _throwPoint.forward, ForceMode.Impulse);
-
-        _isHolding = false;
     }
 }
 

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
+    public EyeGrenade parentScript;
+
     [SerializeField] private float _detonationTime = 3f;
     [SerializeField] private float _damage = 1;
 
@@ -29,12 +31,32 @@ public class Grenade : MonoBehaviour
 
     private void Explode()
     {
+        //damage player
+        if (parentScript._isHolding)
+        {
+            Debug.Log("Damage player");
+            PlayerHealth health = parentScript.GetComponentInParent<PlayerHealth>();
+            health.TakeDamage(_damage);
+
+            //remove from hand if still holding
+            parentScript._isHolding = false;
+            parentScript.grenade = null;
+
+        }
+        
+        //loop over enemy list
         for (int i = 0; i < EnemyList.Count; i++)
         {
-            if( EnemyList[i] == null ) EnemyList.RemoveAt(i);
+            if (EnemyList[i] == null)
+            {
+                EnemyList.RemoveAt(i);
+                return;
+            }
+
 
             Debug.Log("Boom" + EnemyList[i].name);
 
+            //damage enemies
             EnemyList[i].TakeDamage(_damage);
         }
 
