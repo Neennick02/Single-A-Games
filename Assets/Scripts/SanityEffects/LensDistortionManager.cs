@@ -12,7 +12,7 @@ public class LensDistortionManager : MonoBehaviour
     public float _currentValue = 0;
     [SerializeField] private float _distortionRange = 0.5f;
     [SerializeField] private float _speed = 0.5f;
-
+    private float timer = 0f;
     private void Start()
     {
         _volume = GetComponent<Volume>();
@@ -28,7 +28,8 @@ public class LensDistortionManager : MonoBehaviour
     {
         if (Distort)
         {
-            _currentValue = Mathf.PingPong(Time.time * _speed, _distortionRange);
+            timer += Time.deltaTime;
+            _currentValue = Mathf.PingPong(timer * _speed, _distortionRange);
             lensDistortion.intensity.value = _currentValue;
         }
     }
