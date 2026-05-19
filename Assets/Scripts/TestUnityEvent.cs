@@ -7,6 +7,7 @@ public class TestUnityEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player")) return;
         Event?.Invoke();
     }
 }
