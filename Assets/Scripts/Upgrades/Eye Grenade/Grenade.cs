@@ -53,12 +53,15 @@ public class Grenade : MonoBehaviour
                 return;
             }
 
-
-            Debug.Log("Boom" + EnemyList[i].name);
-
             //damage enemies
             EnemyList[i].TakeDamage(_damage);
         }
+
+        //play effect
+
+
+        //play sound
+
 
         Destroy(gameObject);
     }

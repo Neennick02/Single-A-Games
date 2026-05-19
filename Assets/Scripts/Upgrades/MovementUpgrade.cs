@@ -8,7 +8,7 @@ public class MovementUpgrade : MonoBehaviour
     private SanityManager manager;
     private void Start()
     {
-        motor = GetComponent<PlayerMotor>();
+        motor = GetComponentInParent<PlayerMotor>();
         manager = FindFirstObjectByType<SanityManager>();
 
         motor.IncreaseMultiplier(DamageIncrease);

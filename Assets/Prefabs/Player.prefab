@@ -580,6 +580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hand low
       objectReference: {fileID: 0}
+    - target: {fileID: 9153893531239977444, guid: aea0378c84a72f0439aee7623e3a3fa4, type: 3}
+      propertyPath: m_TagString
+      value: DefaultArm
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

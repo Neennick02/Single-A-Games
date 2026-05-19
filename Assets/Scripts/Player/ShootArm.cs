@@ -45,10 +45,11 @@ public class ShootArm : MonoBehaviour
 
     private void Start()
     {
+        _attachedArm = GameObject.FindGameObjectWithTag("DefaultArm");
 
-        _playerAttackScript = GetComponent<PlayerAttack>();
+        _playerAttackScript = GetComponentInParent<PlayerAttack>();
 
-        _cc = GetComponent<CharacterController>();
+        _cc = GetComponentInParent<CharacterController>();
 
         _cc.detectCollisions = true;
 

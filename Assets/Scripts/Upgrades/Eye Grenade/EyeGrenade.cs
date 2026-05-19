@@ -75,6 +75,9 @@ public class EyeGrenade : MonoBehaviour
         //assign script
         Grenade script = grenade.GetComponent<Grenade>();
         script.parentScript = this;
+
+
+        //effect
     }
 
     private void Throw()
