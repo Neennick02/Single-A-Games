@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovementUpgrade : BaseUpgrade
+public class MovementUpgrade : MonoBehaviour
 {
     public float DamageIncrease = 1.5f;
     public float DrainRateIncrease = 1.5f;

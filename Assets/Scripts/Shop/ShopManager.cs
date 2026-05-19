@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    public List<BaseUpgrade> Upgrades;
+    public List<MonoBehaviour> Upgrades;
     private PlayerHealth player;
 
     private void Start()
@@ -15,7 +15,7 @@ public class ShopManager : MonoBehaviour
 
     public void BuyUpgrade(int current)
     {
-        BaseUpgrade script = Upgrades[current];
+        MonoBehaviour script = Upgrades[current];
         player.gameObject.AddComponent(script.GetType());
     }
 }
