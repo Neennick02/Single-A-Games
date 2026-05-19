@@ -1,4 +1,7 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
@@ -9,6 +12,8 @@ public class InputManager : MonoBehaviour
     PlayerLook look;
 
     bool blockInputs = false;
+
+    public static event Action OnThrowGrenade;
     void Awake()
     {
         playerInput = new PlayerInput();
@@ -19,6 +24,9 @@ public class InputManager : MonoBehaviour
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
         onFoot.Jump.performed += ctx => motor.Jump();
+
+        playerInput.OnFoot.ThrowGrenade.performed += ThrowGrenade;
+
     }
     void OnEnable()
     {
@@ -49,5 +57,10 @@ public class InputManager : MonoBehaviour
     public void BlockInput(bool value)
     {
         blockInputs = value;
+    }
+
+    public void ThrowGrenade(InputAction.CallbackContext context)
+    {
+        OnThrowGrenade?.Invoke();
     }
 }

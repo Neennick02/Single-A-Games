@@ -51,6 +51,8 @@ public class ShootArm : MonoBehaviour
         _cc = GetComponent<CharacterController>();
 
         _cc.detectCollisions = true;
+
+        _camera = Camera.main.gameObject;
     }
     private void TryAndCollectArm()
     {
