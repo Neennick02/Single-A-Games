@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     public List<UpgradeObject> TotalUpgrades;
-    public List<UpgradeObject> AvailableUpgrades;
+    private List<UpgradeObject> _availableUpgrades;
+    private List<UpgradeObject> _assignedUpgrades;
 
     public List<GameObject> Buttons;
-    public List<UpgradeObject> _assignedUpgrades;
 
     private PlayerHealth player;
     private SanityManager sanityManager;
@@ -24,7 +24,7 @@ public class ShopManager : MonoBehaviour
         sanityManager = FindFirstObjectByType<SanityManager>();
 
         //fill available upgrades list
-        AvailableUpgrades = new List<UpgradeObject> (TotalUpgrades);
+        _availableUpgrades = new List<UpgradeObject> (TotalUpgrades);
 
     }
     private void OnEnable()
@@ -40,12 +40,12 @@ public class ShopManager : MonoBehaviour
             TextMeshProUGUI text = Buttons[i].GetComponentInChildren<TextMeshProUGUI>();
 
             //assign text
-            if (AvailableUpgrades.Count > 0)
+            if (_availableUpgrades.Count > 0)
             {
                 //find upgrade to display
-                int index = UnityEngine.Random.Range(0, AvailableUpgrades.Count - 1);
+                int index = UnityEngine.Random.Range(0, _availableUpgrades.Count - 1);
 
-                var upgrade = AvailableUpgrades[index];
+                var upgrade = _availableUpgrades[index];
 
                 text.text = upgrade.Title;
 
@@ -59,7 +59,7 @@ public class ShopManager : MonoBehaviour
 
 
                 //remove upgrade from available list (prevent assigning the same button)
-                AvailableUpgrades.RemoveAt(index);
+                _availableUpgrades.RemoveAt(index);
             }
             else //if no upgrades left
             {
@@ -70,6 +70,18 @@ public class ShopManager : MonoBehaviour
 
 
     //refill available if no upgrade bought
+    public void SkipShop()
+    {
+        for (int i = 0; i < _assignedUpgrades.Count; i++)
+        {
+            _availableUpgrades.Add(_assignedUpgrades[i]);
+        }
+
+        //clear list
+        _assignedUpgrades.Clear();
+
+        gameObject.SetActive(false);
+    }
 
     private void OnDisable()
     {
@@ -97,7 +109,7 @@ public class ShopManager : MonoBehaviour
                 //find other upgrade
                 _assignedUpgrades.Remove(upgrade);
                 //add so other upgrade is back in pool
-                AvailableUpgrades.Add(_assignedUpgrades[0]);
+                _availableUpgrades.Add(_assignedUpgrades[0]);
             }
 
 
