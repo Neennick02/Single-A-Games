@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,6 +20,8 @@ public class ShootArm : MonoBehaviour
     [SerializeField] private bool _arm = true;
 
     private CharacterController _cc;
+
+    public static event Action<string> OnGrabArmAvailable;
 
     private void OnEnable()
     {
@@ -45,19 +48,22 @@ public class ShootArm : MonoBehaviour
 
     private void Start()
     {
+        _attachedArm = GameObject.FindGameObjectWithTag("DefaultArm");
 
-        _playerAttackScript = GetComponent<PlayerAttack>();
+        _playerAttackScript = GetComponentInParent<PlayerAttack>();
 
-        _cc = GetComponent<CharacterController>();
+        _cc = GetComponentInParent<CharacterController>();
 
         _cc.detectCollisions = true;
+
+        _camera = Camera.main.gameObject;
     }
     private void TryAndCollectArm()
     {
 
         RaycastHit _Hit;
 
-        byte _Range = 5;
+        byte _Range = 10;
 
 
         //Send out to detect arm
@@ -68,6 +74,8 @@ public class ShootArm : MonoBehaviour
             {
 
                 Debug.Log("Arm Detected");
+                OnGrabArmAvailable?.Invoke("Grab Arm");
+
                 PickUpArm(_Hit.collider.gameObject);
             }
         }
