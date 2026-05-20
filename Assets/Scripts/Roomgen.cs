@@ -48,7 +48,7 @@ public class Roomgen : MonoBehaviour
 
                 _Attachment = _PrevRoom.GetComponentInChildren<Attach>().gameObject;
 
-                _Room.transform.TransformPoint(_Attachment.transform.position);
+                _Room.transform.position = _Attachment.transform.position;
 
 
             }
@@ -58,11 +58,11 @@ public class Roomgen : MonoBehaviour
 
                 _Random = Random.Range(0, _rooms.Count);
 
-                _Rotation += _rooms[_Random]._RotationModifier;
-
                 _Room = Instantiate(_rooms[_Random]._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z));
 
                 _Attachment = _PrevRoom.GetComponentInChildren<Attach>().gameObject;
+
+                _Rotation += _rooms[_Random]._RotationModifier;
 
                 _Room.transform.position = _Attachment.transform.position;
 
