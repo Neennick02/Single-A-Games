@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     public List<UpgradeObject> TotalUpgrades;
-    private List<UpgradeObject> _availableUpgrades;
-    private List<UpgradeObject> _assignedUpgrades;
+    private List<UpgradeObject> _availableUpgrades = new List<UpgradeObject>();
+    private List<UpgradeObject> _assignedUpgrades = new List<UpgradeObject>();
 
     public List<GameObject> Buttons;
 
@@ -64,6 +64,12 @@ public class ShopManager : MonoBehaviour
             else //if no upgrades left
             {
                 text.text = "Sold Out";
+
+                for (int j = 0; j < Buttons.Count; j++)
+                {
+                    Button button = Buttons[i].GetComponent<Button>();
+                    button.onClick.RemoveAllListeners();
+                }
             }
         }
     }
