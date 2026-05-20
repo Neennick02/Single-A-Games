@@ -21,7 +21,7 @@ public class ShootArm : MonoBehaviour
 
     private CharacterController _cc;
 
-    public static event Action<string> OnGrabArmAvailable;
+    public static event Action<string, bool> InstantMessage;
 
     private void OnEnable()
     {
@@ -58,13 +58,24 @@ public class ShootArm : MonoBehaviour
 
         _camera = Camera.main.gameObject;
     }
+
+    private void Update()
+    {
+
+        if (!_arm)
+        {
+            TryAndCollectArm();
+        }
+
+    }
     private void TryAndCollectArm()
     {
 
         RaycastHit _Hit;
 
-        byte _Range = 10;
+        byte _Range = 5;
 
+        Debug.DrawRay(_camera.transform.position, _camera.transform.forward, Color.red, 0.1f);
 
         //Send out to detect arm
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _Hit, _Range))
@@ -73,11 +84,26 @@ public class ShootArm : MonoBehaviour
             if (_Hit.collider.CompareTag("Arm"))
             {
 
-                Debug.Log("Arm Detected");
-                OnGrabArmAvailable?.Invoke("Grab Arm");
+                InstantMessage?.Invoke("Grab Arm", false);
 
-                PickUpArm(_Hit.collider.gameObject);
+                if (_isAttacking)
+                {
+
+                    PickUpArm(_Hit.collider.gameObject);
+
+                    InstantMessage?.Invoke("Grab Arm", true);
+                }
             }
+
+            else
+            {
+                InstantMessage?.Invoke("Grab Arm", true);
+            }
+        }
+
+        else
+        {
+            InstantMessage?.Invoke("Grab Arm", true);
         }
     }
 
@@ -104,11 +130,6 @@ public class ShootArm : MonoBehaviour
         else
         {
             _isAttacking = context.performed;
-
-            if (_isAttacking)
-            {
-                TryAndCollectArm();
-            }
 
         }
 

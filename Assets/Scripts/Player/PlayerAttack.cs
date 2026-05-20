@@ -62,7 +62,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(new Vector3(_camera.transform.position.x, _camera.transform.position.y, _camera.transform.position.z), _camera.transform.forward, Color.red);
+        Debug.DrawRay(new Vector3(_camera.transform.position.x, _camera.transform.position.y, _camera.transform.position.z), _camera.transform.forward, Color.blue);
     }
 
     private IEnumerator Attack()
@@ -81,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
                 //find health script
                 EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
 
-                if(health == null)
+                if (health == null)
                 {
                     health = hit.collider.GetComponentInParent<EnemyHealth>();
                 }

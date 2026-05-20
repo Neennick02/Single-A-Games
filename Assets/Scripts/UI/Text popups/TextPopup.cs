@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TextPopup : MonoBehaviour
@@ -13,21 +12,32 @@ public class TextPopup : MonoBehaviour
 
     private void OnEnable()
     {
-        ShopManager.OnShopMessage += DisplayMessage;
-        ShootArm.OnGrabArmAvailable += DisplayMessage;
+        ShopManager.FadeInMessage += FadingMessage;
+        ShootArm.InstantMessage += InstantMessage;
         _textObject.color = Color.clear;
     }
 
     private void OnDisable()
     {
-        ShopManager.OnShopMessage -= DisplayMessage;
-        ShootArm.OnGrabArmAvailable -= DisplayMessage;
+        ShopManager.FadeInMessage -= FadingMessage;
+        ShootArm.InstantMessage -= InstantMessage;
     }
-    public void DisplayMessage(string message)
+    public void FadingMessage(string message)
     {
         _textObject.text = message;
         StopAllCoroutines();
         StartCoroutine(FadeInAndOut());
+    }
+
+    public void InstantMessage(string message, bool clear)
+    {
+        _textObject.color = Color.black;
+        _textObject.text = message;
+
+        if (clear)
+        {
+            _textObject.color = Color.clear;
+        }
     }
 
     IEnumerator FadeInAndOut()

@@ -13,7 +13,7 @@ public class ShopManager : MonoBehaviour
     private PlayerHealth player;
     private SanityManager sanityManager;
 
-    public static event Action<string> OnShopMessage;
+    public static event Action<string> FadeInMessage;
 
     private void Start()
     {
@@ -32,14 +32,14 @@ public class ShopManager : MonoBehaviour
 
             GameObject upgrade = Instantiate(Upgrades[current]);
             upgrade.gameObject.transform.parent = player.transform;
-            OnShopMessage?.Invoke(UpgradeMessages[current]);
+            FadeInMessage?.Invoke(UpgradeMessages[current]);
 
             Cursor.lockState = CursorLockMode.Locked;
             gameObject.SetActive(false);
         }
         else
         {
-            OnShopMessage?.Invoke("Not enough Sanity");
+            FadeInMessage?.Invoke("Not enough Sanity");
         }
     }
 }
