@@ -15,9 +15,19 @@ public class ShopManager : MonoBehaviour
 
     public static event Action<string> OnShopMessage;
 
-    private void Start()
+    private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+
+    }
+
+    private void Start()
+    {
         player = FindFirstObjectByType<PlayerHealth>();
         sanityManager = FindFirstObjectByType<SanityManager>();
     }
@@ -34,7 +44,6 @@ public class ShopManager : MonoBehaviour
             upgrade.gameObject.transform.parent = player.transform;
             OnShopMessage?.Invoke(UpgradeMessages[current]);
 
-            Cursor.lockState = CursorLockMode.Locked;
             gameObject.SetActive(false);
         }
         else
