@@ -12,14 +12,14 @@ public class TextPopup : MonoBehaviour
 
     private void OnEnable()
     {
-        ShopManager.FadeInMessage += FadingMessage;
+        ShopManager.OnShopMessage += FadingMessage;
         ShootArm.InstantMessage += InstantMessage;
         _textObject.color = Color.clear;
     }
 
     private void OnDisable()
     {
-        ShopManager.FadeInMessage -= FadingMessage;
+        ShopManager.OnShopMessage -= FadingMessage;
         ShootArm.InstantMessage -= InstantMessage;
     }
     public void FadingMessage(string message)

@@ -126,7 +126,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            FadeInMessage?.Invoke("Not enough Sanity");
+            OnShopMessage?.Invoke("Not enough Sanity");
         }
     }
 }
