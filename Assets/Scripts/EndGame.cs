@@ -7,7 +7,7 @@ public class EndGame : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("StartScene");
+            SceneManager.LoadScene("MainScene");
         }
     }
 }
