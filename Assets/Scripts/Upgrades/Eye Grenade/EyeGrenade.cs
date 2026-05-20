@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class EyeGrenade : MonoBehaviour
 {
@@ -40,9 +38,9 @@ public class EyeGrenade : MonoBehaviour
         if (!_canUseEye)
         {
             timer += Time.deltaTime;
-            if(timer > _eyeRegenerationTime)
+            if (timer > _eyeRegenerationTime)
             {
-                OnHealEye?.Invoke();    
+                OnHealEye?.Invoke();
                 _canUseEye = true;
                 timer = 0f;
             }

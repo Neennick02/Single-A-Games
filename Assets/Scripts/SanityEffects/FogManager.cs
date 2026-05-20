@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class FogManager : MonoBehaviour
@@ -16,7 +14,7 @@ public class FogManager : MonoBehaviour
         //never less than default amount
         if (amount < _defaultFogAmount ||
             amount > _maxFogAmount) return;
-        
+
         RenderSettings.fogDensity = amount;
     }
 }

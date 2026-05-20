@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealth : BaseHealth
@@ -19,7 +18,7 @@ public class EnemyHealth : BaseHealth
         currentHealth = maxHealth;
 
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
-        if(_meshRenderer == null)
+        if (_meshRenderer == null)
         {
             _meshRenderer = GetComponent<MeshRenderer>();
         }
