@@ -53,7 +53,9 @@ public class SanityManager : MonoBehaviour
     #endregion
     private void Update()
     {
+
         SanityAmount = Mathf.Clamp(SanityAmount, 0, MaxSanity);
+        Debug.Log(SanityAmount);
 
         //drain over time
         if (_draining)
