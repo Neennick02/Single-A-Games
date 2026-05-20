@@ -1,6 +1,4 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Grenade : MonoBehaviour
@@ -23,7 +21,7 @@ public class Grenade : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
-        if( _timer > _detonationTime)
+        if (_timer > _detonationTime)
         {
             Explode();
         }
@@ -43,7 +41,7 @@ public class Grenade : MonoBehaviour
             parentScript.grenade = null;
 
         }
-        
+
         //loop over enemy list
         for (int i = 0; i < EnemyList.Count; i++)
         {
@@ -71,7 +69,7 @@ public class Grenade : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth current = other.GetComponent<EnemyHealth>();
-            if(current == null)
+            if (current == null)
             {
                 current = other.GetComponentInChildren<EnemyHealth>();
             }
@@ -104,8 +102,8 @@ public class Grenade : MonoBehaviour
                 current = collision.gameObject.GetComponentInParent<EnemyHealth>();
             }
 
-            if(current != null) 
-            current.TakeDamage(1f);
+            if (current != null)
+                current.TakeDamage(1f);
         }
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Splines.Interpolators;
 using UnityEngine.UI;
 
 public class BlindEye : MonoBehaviour
@@ -43,13 +42,13 @@ public class BlindEye : MonoBehaviour
     IEnumerator FadeIn()
     {
         float timer = 0;
-        while(timer < FadeOutTime)
+        while (timer < FadeOutTime)
         {
             timer += Time.deltaTime;
 
             _imagePanel.color = Color.Lerp(_startC, _endC, timer / 1);
 
-            yield return null;  
+            yield return null;
         }
     }
 
