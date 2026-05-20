@@ -15,6 +15,8 @@ public class PlayerAttack : MonoBehaviour
 
     private float _damageMultiplier = 1;
 
+    [SerializeField] private PlayerAnimator _animator;
+
     private void Start()
     {
         _camera = GetComponentInChildren<Camera>().gameObject;
@@ -50,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!_isAttacking)
         {
+            _animator.AttackAnimation();
             StartCoroutine(Attack());
             _isAttacking = true;
 
@@ -68,6 +71,7 @@ public class PlayerAttack : MonoBehaviour
 
         byte range = 5;
 
+        yield return new WaitForSeconds(0.5f);
 
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range))
         {

@@ -5177,6 +5177,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4581219266424475663, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5868110375087306636, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: _damageEffect
       value: 
@@ -5194,6 +5198,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
@@ -5202,7 +5210,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
