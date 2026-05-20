@@ -16,6 +16,7 @@ public class ShopManager : MonoBehaviour
     private SanityManager sanityManager;
 
     public static event Action<string> OnShopMessage;
+    public static event Action<bool> OnShopOpenClose;
 
     private void Awake()
     {
@@ -30,6 +31,9 @@ public class ShopManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
 
+        //stop sanity bar from draining
+        OnShopOpenClose?.Invoke(false);
+
         for (int i = 0; i < Buttons.Count; i++)
         {
 
@@ -43,15 +47,15 @@ public class ShopManager : MonoBehaviour
 
                 var upgrade = AvailableUpgrades[index];
 
-                text.text = AvailableUpgrades[index].Title;
+                text.text = upgrade.Title;
 
                 //add to assigned buttons
-                _assignedUpgrades.Add(AvailableUpgrades[index]);
+                _assignedUpgrades.Add(upgrade);
 
 
                 //add correct buy function to buttons
                 Button button = Buttons[i].GetComponent<Button>();
-                button.onClick.AddListener(() => BuyUpgrade(AvailableUpgrades[index]));
+                button.onClick.AddListener(() => BuyUpgrade(upgrade));
 
 
                 //remove upgrade from available list (prevent assigning the same button)
@@ -71,6 +75,8 @@ public class ShopManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
+        //continue draining bar
+        OnShopOpenClose?.Invoke(true);
     }
 
     public void BuyUpgrade(UpgradeObject upgrade)
@@ -86,10 +92,14 @@ public class ShopManager : MonoBehaviour
             OnShopMessage?.Invoke(upgrade.Description);
 
 
-            //find other upgrade
-            _assignedUpgrades.Remove(upgrade);
-            //add so other upgrade is back in pool
-            AvailableUpgrades.Add(_assignedUpgrades[0]);
+            if(_assignedUpgrades.Count > 1)
+            {
+                //find other upgrade
+                _assignedUpgrades.Remove(upgrade);
+                //add so other upgrade is back in pool
+                AvailableUpgrades.Add(_assignedUpgrades[0]);
+            }
+
 
             //clear list
             _assignedUpgrades.Clear();
