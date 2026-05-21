@@ -4,6 +4,8 @@ public class PlayerMotor : MonoBehaviour
 {
     public PlayerMovement Movement { get; private set; }
     public PlayerSlide Slide { get; private set; }
+    public PlayerDash Dash { get; private set; }
+
     public PlayerJump Jump { get; private set; }
     public PlayerStateMachine State { get; private set; }
 
@@ -13,6 +15,7 @@ public class PlayerMotor : MonoBehaviour
     {
         Movement = GetComponent<PlayerMovement>();
         Slide = GetComponent<PlayerSlide>();
+        Dash = GetComponent<PlayerDash>();
         Jump = GetComponent<PlayerJump>();
         State = GetComponent<PlayerStateMachine>();
         _input = GetComponent<InputManager>();
@@ -22,6 +25,7 @@ public class PlayerMotor : MonoBehaviour
     {
         State.Tick();
         Slide.Tick();
+        Dash.Tick();
         Jump.Tick();
         Movement.Tick();
     }

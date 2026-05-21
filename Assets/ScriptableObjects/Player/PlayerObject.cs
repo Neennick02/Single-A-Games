@@ -14,6 +14,11 @@ public class PlayerObject : ScriptableObject
     public float DownhillMultiplier = 2f;
     public float MaxSlideSpeed = 20f;
 
+    [Header("Dash")]
+    public float DashInitialBoost = 10f;
+    public float DashAcceleration = 25f;
+    public float MaxDashSpeed = 20f;
+
     [Header("Height")]
     public float SlideHeight = 0.5f;
     public float DefaultHeight = 1;

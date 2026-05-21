@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private PlayerLook look;
 
     public Vector3 Velocity;
+    private Vector3 inputVelocity;    
+    private Vector3 externalVelocity;  
+
+
     private bool isSprinting;
     private float _multiplier = 1f;
     private void Start()
@@ -22,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Tick()
     {
-        if (state.IsSliding || state.IsDead) return;
+        if (state.CurrentState == PlayerStateMachine.PlayerStates.Dead) return;
 
         Vector2 moveInput = input.onFoot.Movement.ReadValue<Vector2>();
 
@@ -40,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ProcessMove(Vector2 inputDir)
     {
-        if (state.IsSliding || state.IsDead) return;
+        if (state.IsDead) return;
 
         Transform cam = Camera.main.transform;
 
@@ -57,16 +61,23 @@ public class PlayerMovement : MonoBehaviour
 
         float speed = isSprinting ? data.SprintSpeed * _multiplier : data.Speed * _multiplier;
 
-        Vector3 horizontal = move * speed;
+        inputVelocity = move * speed;
 
         if (controller.isGrounded && Velocity.y < 0)
             Velocity.y = -2f;
 
         Velocity.y += data.Gravity * Time.deltaTime;
 
-        controller.Move((horizontal + new Vector3(0, Velocity.y, 0)) * Time.deltaTime);
-    }
+        Vector3 final = inputVelocity + externalVelocity + new Vector3(0, Velocity.y, 0);
 
+        controller.Move(final * Time.deltaTime);
+
+        externalVelocity = Vector3.Lerp(externalVelocity, Vector3.zero, Time.deltaTime * 5f);
+    }
+    public void AddExternalVelocity(Vector3 vel)
+    {
+        externalVelocity = vel;
+    }
     public void IncreaseMultiplier(float multiplier)
     {
         _multiplier = multiplier;

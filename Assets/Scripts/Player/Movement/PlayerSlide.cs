@@ -9,6 +9,7 @@ public class PlayerSlide : MonoBehaviour
     private CinemachinePositionComposer composer;
     [SerializeField] private PlayerObject data;
     [SerializeField] private Transform _headTarget;
+
     private CharacterController controller;
     private InputManager input;
     private PlayerMovement movement;
@@ -37,12 +38,20 @@ public class PlayerSlide : MonoBehaviour
 
     private void CheckSlideStart()
     {
-        if (!controller.isGrounded) return;
 
         Vector3 horizontalVel = controller.velocity;
         horizontalVel.y = 0;
 
-        if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.1f)
+        if (!controller.isGrounded)
+        {
+            //dash 
+            if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.1f)
+            {
+                state.SetState(PlayerStateMachine.PlayerStates.Dashing);
+            }
+
+        }
+        else if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.1f)
             StartSlide();
     }
 
@@ -75,7 +84,7 @@ public class PlayerSlide : MonoBehaviour
 
         slideVelocity = Vector3.ClampMagnitude(slideVelocity, data.MaxSlideSpeed);
 
-        controller.Move(slideVelocity * Time.deltaTime);
+        movement.AddExternalVelocity(slideVelocity);
 
         if (slideTimer >= data.SlideDuration) { 
             state.SetState(PlayerStateMachine.PlayerStates.Locomotion);

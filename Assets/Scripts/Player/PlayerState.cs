@@ -7,6 +7,7 @@ public class PlayerStateMachine : MonoBehaviour
         Locomotion,
         Jumping,
         Sliding,
+        Dashing,
         Dead
     }
 
@@ -15,6 +16,8 @@ public class PlayerStateMachine : MonoBehaviour
     private bool wasGrounded;
 
     public bool IsSliding => CurrentState == PlayerStates.Sliding;
+    public bool IsDashing => CurrentState == PlayerStates.Dashing;
+
     public bool IsJumping => CurrentState == PlayerStates.Jumping;
     public bool IsDead => CurrentState == PlayerStates.Dead;
 
@@ -33,7 +36,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         bool grounded = Jump.GroundCheck();
 
-        if (CurrentState == PlayerStates.Jumping &&
+        if ((IsJumping || IsDashing )&&
             wasGrounded == false && grounded == true)
         {
             SetState(PlayerStates.Locomotion);

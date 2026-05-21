@@ -19,7 +19,7 @@ public class PlayerJump : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         state = GetComponent<PlayerStateMachine>();
     }
-
+    
     public void Tick()
     {
 
