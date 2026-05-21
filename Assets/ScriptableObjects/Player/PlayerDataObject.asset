@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovementObject
   Speed: 7
   SprintSpeed: 14.63
-  SlideSpeed: 15
   SlideDuration: 0.5
-  SlideInterval: 0
-  SlideHeight: 1.5
+  SlideInitialBoost: 10
+  SlideAcceleration: 25
+  DownhillMultiplier: 2
+  MaxSlideSpeed: 100
+  SlideHeight: 0
   DefaultHeight: 2
   Gravity: -14.36
   JumpHeight: 1

@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class MovementUpgrade : MonoBehaviour
 {
-    public float DamageIncrease = 1.5f;
+    public float SpeedIncrease = 1.5f;
     public float DrainRateIncrease = 1.5f;
-    private PlayerMotor motor;
+    private PlayerMovement movement;
     private SanityManager manager;
     private void Start()
     {
-        motor = GetComponentInParent<PlayerMotor>();
+        movement = GetComponentInParent<PlayerMovement>();
         manager = FindFirstObjectByType<SanityManager>();
 
-        motor.IncreaseMultiplier(DamageIncrease);
+        movement.IncreaseMultiplier(SpeedIncrease);
         manager.IncreaseDrainAmount(DrainRateIncrease);
     }
 
     private void OnDestroy()
     {
-        motor.IncreaseMultiplier(1);
+        movement.IncreaseMultiplier(1);
         manager.IncreaseDrainAmount(1);
     }
 }

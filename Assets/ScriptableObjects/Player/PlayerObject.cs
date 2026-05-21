@@ -8,9 +8,11 @@ public class PlayerObject : ScriptableObject
     public float SprintSpeed = 5;
 
     [Header("Slide")]
-    public float SlideSpeed = 10;
-    public float SlideDuration;
-    public float SlideInterval;
+    public float SlideDuration = 1f;
+    public float SlideInitialBoost = 10f;
+    public float SlideAcceleration = 25f;
+    public float DownhillMultiplier = 2f;
+    public float MaxSlideSpeed = 20f;
 
     [Header("Height")]
     public float SlideHeight = 0.5f;
