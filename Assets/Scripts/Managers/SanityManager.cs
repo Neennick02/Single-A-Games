@@ -77,11 +77,8 @@ public class SanityManager : MonoBehaviour
         }
 
         //update fog amount
-        float fogAmount = (MaxSanity - SanityAmount) / 800;
-        if(SanityAmount < _sanityMultiplierThreshold)
-        {
-            _fogManager.UpdateFogAmount(fogAmount);
-        }
+            _fogManager.UpdateFogAmount(SanityAmount);
+        
 
         //update damage amount
         if(SanityAmount <= _increaseDamageThreshold)
