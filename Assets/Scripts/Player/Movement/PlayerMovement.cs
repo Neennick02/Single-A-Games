@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private InputManager input;
     private PlayerStateMachine state;
+    private PlayerLook look;
 
     public Vector3 Velocity;
     private bool isSprinting;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         input = GetComponent<InputManager>();
         state = GetComponent<PlayerStateMachine>();
+        look = GetComponent<PlayerLook>();
     }
 
     public void Tick()
@@ -28,6 +30,12 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = true;
         else if (input.onFoot.Sprint.WasReleasedThisFrame() || moveInput.magnitude < 0.1f)
             isSprinting = false;
+
+
+
+        Vector3 horizontalVel = controller.velocity;
+        horizontalVel.y = 0f;
+        look.UpdateFOV(horizontalVel.magnitude);
     }
 
     public void ProcessMove(Vector2 inputDir)

@@ -7160,6 +7160,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.024761626
       objectReference: {fileID: 0}
+    - target: {fileID: 3127123715557443963, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: maxFov
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 4581219266424475663, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: field of view
       value: 60
