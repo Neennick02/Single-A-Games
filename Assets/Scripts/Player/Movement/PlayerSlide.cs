@@ -45,13 +45,13 @@ public class PlayerSlide : MonoBehaviour
         if (!controller.isGrounded)
         {
             //dash 
-            if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.1f)
+            if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.1f && CorrectDirection())
             {
                 state.SetState(PlayerStateMachine.PlayerStates.Dashing);
             }
 
         }
-        else if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.1f)
+        else if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.2f && CorrectDirection())
             StartSlide();
     }
 
@@ -70,7 +70,7 @@ public class PlayerSlide : MonoBehaviour
         slideVelocity = dir * data.SlideInitialBoost;
         slideTimer = 0f;
 
-        StartCoroutine(ChangeHeight(0));
+        StartCoroutine(ChangeHeight(data.SlideHeight));
     }
 
     private void SlideUpdate()
@@ -88,7 +88,7 @@ public class PlayerSlide : MonoBehaviour
 
         if (slideTimer >= data.SlideDuration) { 
             state.SetState(PlayerStateMachine.PlayerStates.Locomotion);
-            StartCoroutine(ChangeHeight(1));
+            StartCoroutine(ChangeHeight(data.DefaultHeight));
         }
     }
 
@@ -98,6 +98,22 @@ public class PlayerSlide : MonoBehaviour
             return Vector3.ProjectOnPlane(slideVelocity.normalized, hit.normal).normalized;
 
         return slideVelocity.normalized;
+    }
+
+    private bool CorrectDirection()
+    {
+        Vector3 horizontalVel = controller.velocity;
+        horizontalVel.y = 0;
+
+        Vector3 camForward = Camera.main.transform.forward;
+        camForward.y = 0;
+
+        horizontalVel.Normalize();
+        camForward.Normalize();
+
+        float alignment = Vector3.Dot(horizontalVel, camForward);
+
+        return alignment > 0.5f;
     }
 
     public IEnumerator ChangeHeight(float offset)

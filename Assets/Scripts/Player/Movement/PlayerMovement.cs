@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerObject data;
-
+    private float _currentSpeed;
     private CharacterController controller;
     private InputManager input;
     private PlayerStateMachine state;
@@ -59,9 +59,21 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = forward * inputDir.y + right * inputDir.x;
 
-        float speed = isSprinting ? data.SprintSpeed * _multiplier : data.Speed * _multiplier;
+        float targetSpeed = isSprinting ? data.SprintSpeed * _multiplier : data.Speed * _multiplier;
 
-        inputVelocity = move * speed;
+        //acceleration
+        float accel = isSprinting ? data.SprintAcceleration : data.WalkAcceleration;
+
+        //deceleration
+        float decel = data.Deceleration;
+
+        if (inputDir.magnitude > 0.1f)
+            _currentSpeed = Mathf.Lerp(_currentSpeed, targetSpeed, accel * Time.deltaTime);
+        else
+            _currentSpeed = Mathf.Lerp(_currentSpeed, 0f, decel * Time.deltaTime);
+
+
+        inputVelocity = move * _currentSpeed;
 
         if (controller.isGrounded && Velocity.y < 0)
             Velocity.y = -2f;

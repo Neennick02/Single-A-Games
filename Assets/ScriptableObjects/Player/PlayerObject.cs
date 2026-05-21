@@ -3,10 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MovementObject", menuName = "Scriptable Objects/MovementObject")]
 public class PlayerObject : ScriptableObject
 {
-    [Header("Speed")]
+    [Header("Locomotion")]
     public float Speed = 3;
     public float SprintSpeed = 5;
-
+    public float WalkAcceleration = 10f;
+    public float SprintAcceleration = 14f;
+    public float Deceleration = 12f;
     [Header("Slide")]
     public float SlideDuration = 1f;
     public float SlideInitialBoost = 10f;
