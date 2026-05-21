@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_SlightlyFleshy_Wall
+  m_Name: M_DecentlyFleshy_Floor
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -28,11 +28,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 4f8e71d2322d120468df9ab4a0872f40, type: 3}
+        m_Texture: {fileID: 2800000, guid: 022bdff07e5ee074e9859490780a907e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: b1103c4a8b785d24d9f9630d9cf75097, type: 3}
+        m_Texture: {fileID: 2800000, guid: 66305edaef221f64ab9ba0f86587cb26, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -52,11 +52,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4f8e71d2322d120468df9ab4a0872f40, type: 3}
+        m_Texture: {fileID: 2800000, guid: 022bdff07e5ee074e9859490780a907e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 4f0300b1e648e9940a4f236689b02833, type: 3}
+        m_Texture: {fileID: 2800000, guid: 91b833b05a57cbd45be5205ff58f3e13, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
