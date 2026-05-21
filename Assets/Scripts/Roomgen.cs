@@ -1,15 +1,20 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Roomgen : MonoBehaviour
 {
 
-    [SerializeField] private List<RoomObject> _rooms;
-    [SerializeField] private List<RoomObject> _combatRooms;
+    [SerializeField] private List<RoomObject> _rooms = new List<RoomObject>();
+    [SerializeField] private List<RoomObject> _combatRooms = new List<RoomObject>();
     [SerializeField] private RoomObject _startRoom;
     [SerializeField] private RoomObject _endRoom;
 
     [SerializeField] private byte _levelSize;
+
+    public bool _Obstructed;
+
+    public bool _Continue;
 
     void Awake()
     {
@@ -19,6 +24,13 @@ public class Roomgen : MonoBehaviour
     }
 
     private void Start()
+    {
+
+        StartCoroutine(GenerateMap());
+
+    }
+
+    private IEnumerator GenerateMap()
     {
         byte _UntilCombat = 0;
 
@@ -32,6 +44,8 @@ public class Roomgen : MonoBehaviour
 
         GameObject _Room = null;
 
+        List<GameObject> _RoomObjects = new List<GameObject>();
+
 
         for (int i = 0; i < _levelSize; i++)
         {
@@ -39,6 +53,8 @@ public class Roomgen : MonoBehaviour
             if (i == 0)
             {
                 _Room = Instantiate(_startRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z));
+
+                _Continue = true;
             }
 
             else if (i == _levelSize - 1)
@@ -70,8 +86,38 @@ public class Roomgen : MonoBehaviour
 
             _PrevRoom = _Room;
 
-        }
+            _RoomObjects.Add(_Room);
 
+            while (!_Continue)
+            {
+
+                if (_Obstructed)
+                {
+
+                    _Obstructed = false;
+
+                    Debug.LogError("Obstructed!");
+
+                    foreach (GameObject room in _RoomObjects)
+                    {
+                        Destroy(room);
+                    }
+
+                    _RoomObjects.Clear();
+
+
+                    StartCoroutine(GenerateMap());
+
+                    break;
+                }
+
+                yield return null;
+
+            }
+
+            _Continue = false;
+
+        }
     }
 
 }

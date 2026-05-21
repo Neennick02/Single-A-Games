@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7383398085289219846}
   - component: {fileID: 3857775457984031232}
   - component: {fileID: 3078651672840334740}
+  - component: {fileID: 3529143586175211069}
+  - component: {fileID: 7048298704801723408}
   m_Layer: 0
   m_Name: Anchor
   m_TagString: Untagged
@@ -92,6 +94,45 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3529143586175211069
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229840268194311514}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &7048298704801723408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229840268194311514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645af3c1c94e7f0429fc40540f0e1729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!1 &4743858176698425243
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +177,7 @@ GameObject:
   - component: {fileID: 6636708466489822959}
   - component: {fileID: 8810480324364169844}
   - component: {fileID: 6649213250948513320}
-  - component: {fileID: 8650573075056236357}
+  - component: {fileID: 2472664034399087553}
   m_Layer: 0
   m_Name: End
   m_TagString: Untagged
@@ -237,7 +278,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8650573075056236357
+--- !u!114 &2472664034399087553
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,7 +287,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7329131163973243481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09aa299d99c55146b9e5e4d2c3b2bf6, type: 3}
+  m_Script: {fileID: 11500000, guid: ff4f3f94504b90e49a6316b8b02696d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Attach
 --- !u!1 &7722906697501502070
