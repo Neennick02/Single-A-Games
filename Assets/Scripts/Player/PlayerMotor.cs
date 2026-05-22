@@ -14,7 +14,6 @@ public class PlayerMotor : MonoBehaviour
 
     private InputManager _input;
 
-    public List<MonoBehaviour> PlayerAbilities;
     private void OnEnable()
     {
         PlayerHealth.OnDeath += Die;
@@ -53,11 +52,8 @@ public class PlayerMotor : MonoBehaviour
 
         StartCoroutine(Slide.ChangeHeight(0));
 
-        for(int i = 0; i < PlayerAbilities.Count; i++ )
-        {
-            Destroy(PlayerAbilities[i]);
-        }
-        PlayerAbilities.Clear();
+        //disable player attack
+        Destroy(GetComponent<PlayerAttack>());
     }
 
 }
