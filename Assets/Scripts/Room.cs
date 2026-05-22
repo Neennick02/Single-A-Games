@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -5,19 +6,22 @@ public class Room : MonoBehaviour
 
     private Roomgen _roomGenScript;
 
+    [SerializeField] private GameObject _neighbour;
+
 
     private void Awake()
     {
         _roomGenScript = FindFirstObjectByType<Roomgen>();
+    }
 
+    public void SetNeighbour(GameObject neighbour)
+    {
+        _neighbour = neighbour;
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-
-        Debug.Log("Collided with " + collision.gameObject.name);
-
         if (collision.gameObject.GetComponent<Room>() != null)
         {
 
@@ -27,17 +31,26 @@ public class Room : MonoBehaviour
 
             Room _Script = _Collided.GetComponent<Room>();
 
-            Destroy(_Script);
+            StartCoroutine(DeleteLater(_Script));
 
             return;
         }
 
-        else if (collision.gameObject.GetComponentInChildren<Attach>() != null)
+        else if (collision.gameObject.GetComponentInChildren<Attach>() != null && collision.gameObject != _neighbour)
         {
             Debug.LogWarning("Obstructed!" + gameObject);
 
             _roomGenScript._Obstructed = true;
         }
+    }
+
+    private IEnumerator DeleteLater(Room room)
+    {
+
+        yield return new WaitForSeconds(0.01f);
+
+        Destroy(room);
+
     }
 
 }

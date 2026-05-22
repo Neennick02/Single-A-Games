@@ -44,7 +44,7 @@ public class Roomgen : MonoBehaviour
 
         GameObject _Room = null;
 
-        List<GameObject> _RoomObjects = new List<GameObject>();
+        List<GameObject> _AllRooms = new List<GameObject>();
 
 
         for (int i = 0; i < _levelSize; i++)
@@ -64,6 +64,8 @@ public class Roomgen : MonoBehaviour
 
                 _Attachment = _PrevRoom.GetComponentInChildren<Attach>().gameObject;
 
+                _Room.GetComponentInChildren<Room>().SetNeighbour(_PrevRoom.GetComponentInChildren<Rigidbody>().gameObject);
+
                 _Room.transform.position = _Attachment.transform.position;
 
 
@@ -78,6 +80,8 @@ public class Roomgen : MonoBehaviour
 
                 _Attachment = _PrevRoom.GetComponentInChildren<Attach>().gameObject;
 
+                _Room.GetComponentInChildren<Room>().SetNeighbour(_PrevRoom.GetComponentInChildren<Rigidbody>().gameObject);
+
                 _Rotation += _rooms[_Random]._RotationModifier;
 
                 _Room.transform.position = _Attachment.transform.position;
@@ -86,36 +90,31 @@ public class Roomgen : MonoBehaviour
 
             _PrevRoom = _Room;
 
-            _RoomObjects.Add(_Room);
+            _AllRooms.Add(_Room);
 
-            while (!_Continue)
+
+            if (_Obstructed)
             {
 
-                if (_Obstructed)
+                _Obstructed = false;
+
+                foreach (GameObject room in _AllRooms)
                 {
-
-                    _Obstructed = false;
-
-                    Debug.LogError("Obstructed!");
-
-                    foreach (GameObject room in _RoomObjects)
-                    {
-                        Destroy(room);
-                    }
-
-                    _RoomObjects.Clear();
-
-
-                    StartCoroutine(GenerateMap());
-
-                    break;
+                    Destroy(room);
                 }
 
-                yield return null;
+                _AllRooms.Clear();
 
+
+                StartCoroutine(GenerateMap());
+
+                break;
             }
 
-            _Continue = false;
+            yield return new WaitForSeconds(0.02f);
+
+
+
 
         }
     }
