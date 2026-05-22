@@ -44,22 +44,24 @@ public class SanityManager : MonoBehaviour
     private void OnEnable()
     {
         EnemyHealth.OnRestoreSanity += AddSanity;
+        ShopManager.OnShopOpenClose += PauseContinueBar;
     }
 
     private void OnDisable()
     {
         EnemyHealth.OnRestoreSanity -= AddSanity;
+        ShopManager.OnShopOpenClose -= PauseContinueBar;
     }
     #endregion
     private void Update()
     {
-        SanityAmount = Mathf.Clamp(SanityAmount, 0, MaxSanity);
-
         //drain over time
         if (_draining)
         {
             SanityAmount -= (_drainRate * _drainRateMultiplier) * Time.deltaTime;
         }
+
+        SanityAmount = Mathf.Clamp(SanityAmount, 0, MaxSanity);
 
         OnDrainAmountChanged?.Invoke(SanityAmount);
 
@@ -75,11 +77,8 @@ public class SanityManager : MonoBehaviour
         }
 
         //update fog amount
-        float fogAmount = (MaxSanity - SanityAmount) / 800;
-        if(SanityAmount < _sanityMultiplierThreshold)
-        {
-            _fogManager.UpdateFogAmount(fogAmount);
-        }
+            _fogManager.UpdateFogAmount(SanityAmount);
+        
 
         //update damage amount
         if(SanityAmount <= _increaseDamageThreshold)
@@ -139,5 +138,10 @@ public class SanityManager : MonoBehaviour
     public void IncreaseDrainAmount(float amount)
     {
         _drainRateMultiplier = amount;
+    }
+
+    public void PauseContinueBar(bool active)
+    {
+        _draining = active;
     }
 }

@@ -429,10 +429,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Roomgen
   _rooms:
   - {fileID: 11400000, guid: e15ce839a2ade66469428488a73f765c, type: 2}
+  - {fileID: 11400000, guid: adb0f2912c8a3434197866b1565a9eb2, type: 2}
+  - {fileID: 11400000, guid: c8f81bbc69990d04383446dbdce9ac8a, type: 2}
+  - {fileID: 11400000, guid: 7046e5bcf83de3a4eb15211eee03c7c2, type: 2}
+  - {fileID: 11400000, guid: 487304302ee9254439126ccbab2160d7, type: 2}
   _combatRooms: []
   _startRoom: {fileID: 11400000, guid: 7046e5bcf83de3a4eb15211eee03c7c2, type: 2}
   _endRoom: {fileID: 11400000, guid: 7046e5bcf83de3a4eb15211eee03c7c2, type: 2}
-  _levelSize: 5
+  _levelSize: 40
+  _Obstructed: 0
+  _Continue: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

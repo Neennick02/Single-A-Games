@@ -5033,7 +5033,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: eae425625df24294d86b4cfa0b835a0b, type: 2}
     - target: {fileID: 919132149155446097, guid: 9be305d56fb1c16458982f9c523c2190, type: 3}
       propertyPath: m_Name
-      value: Torch_Low
+      value: P_Torch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

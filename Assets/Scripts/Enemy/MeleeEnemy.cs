@@ -1,12 +1,10 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class MeleeEnemy : Enemy
 {
     private bool _attacking;
-    [SerializeField] private float _attackTime; 
+    [SerializeField] private float _attackTime;
 
     [SerializeField] private Collider _hitBox;
     private bool _dead;
@@ -39,13 +37,13 @@ public class MeleeEnemy : Enemy
 
 
         //check if health is low
-        if(_healthScript.currentHealth < enemyObject.MaxHealth /3)
+        if (_healthScript.currentHealth < enemyObject.MaxHealth / 3)
         {
             RunAway();
         }
 
         //check if dead
-        if(_healthScript.currentHealth <= 0)
+        if (_healthScript.currentHealth <= 0)
         {
             Die();
         }
@@ -60,7 +58,7 @@ public class MeleeEnemy : Enemy
         while (timer < _attackTime)
         {
             timer += Time.deltaTime;
-            
+
 
             yield return null;
         }
@@ -74,7 +72,7 @@ public class MeleeEnemy : Enemy
     {
         _dead = true;
         Destroy(_agent);
-        
+
         //fall over [not working properly]
         Rigidbody rb = GetComponentInChildren<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;

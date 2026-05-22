@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,7 +22,7 @@ public class InputManager : MonoBehaviour
 
         motor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
-        onFoot.Jump.performed += ctx => motor.Jump();
+      //  onFoot.Jump.performed += ctx => motor.Jump();
 
         playerInput.OnFoot.ThrowGrenade.performed += ThrowGrenade;
 
