@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07901939, y: -0.29799676, z: 0.024761626, w: 0.9509683}
-  m_LocalPosition: {x: 0.005628586, y: 1.0016505, z: -0.008098602}
+  m_LocalPosition: {x: 0.005628577, y: 2.0016503, z: -0.008099076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -221,8 +221,8 @@ GameObject:
   - component: {fileID: 4965646867981360218}
   - component: {fileID: 1909929021468522827}
   - component: {fileID: 4801946253997007318}
-  - component: {fileID: 7536798202861596530}
   - component: {fileID: 1967749028912230974}
+  - component: {fileID: 7536798202861596530}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -340,6 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5b391dfb44a7c4e9f8efb4f30409f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
+  PlayerAbilities:
+  - {fileID: 2580446650109701349}
 --- !u!114 &4965646867981360218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,19 +383,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSlide
   data: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
   _headTarget: {fileID: 7952220888164284764}
---- !u!114 &7536798202861596530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233300373404658936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fec787b046b2834f906314c503ba38f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStateMachine
-  StateName: 
 --- !u!114 &1967749028912230974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +396,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDash
   Data: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
+--- !u!114 &7536798202861596530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233300373404658936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fec787b046b2834f906314c503ba38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStateMachine
+  StateName: 
 --- !u!1 &471022230270949219
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +534,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: -34.797955
+    Value: -34.79796
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
