@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ba03fce7fb2e24892c361818672ce9, type: 3}
-  m_Name: Test
+  m_Name: Room Medium
   m_EditorClassIdentifier: Assembly-CSharp::RoomObject
-  _RoomObject: {fileID: 591768505922550307, guid: 7ecadc20b044df74ebbbf6556fe3b13c, type: 3}
+  _RoomObject: {fileID: 2421784220559450941, guid: a3503a8857a690942a0cd7f52e6d2289, type: 3}
   _RotationModifier: 0
