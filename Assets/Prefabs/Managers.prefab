@@ -68,7 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c114c17b579135649ac217a66f33eba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FogManager
-  _defaultFogAmount: 0.04
+  _threshold: 60
+  _defaultFogAmount: 0.01
   _maxFogAmount: 0.2
 --- !u!1001 &3033693201267038492
 PrefabInstance:
