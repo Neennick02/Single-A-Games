@@ -17,6 +17,8 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private PlayerAnimator _animator;
 
+    private bool _isDead;
+
     private void Start()
     {
         _camera = GetComponentInChildren<Camera>().gameObject;
@@ -39,17 +41,21 @@ public class PlayerAttack : MonoBehaviour
         _inputActions.OnFoot.Attack.performed += Attack;
 
         SanityManager.OnDamageOutputChange += IncreaseDamageOutput;
+        PlayerHealth.OnDeath += Die;
     }
 
     private void OnDisable()
     {
         _inputActions.OnFoot.Attack.performed -= Attack;
         SanityManager.OnDamageOutputChange -= IncreaseDamageOutput;
+        PlayerHealth.OnDeath -= Die;
         _inputActions.Disable();
     }
 
     private void Attack(InputAction.CallbackContext context)
     {
+        if (_isDead) return;
+
         if (!_isAttacking)
         {
             _animator.AttackAnimation();
@@ -99,5 +105,10 @@ public class PlayerAttack : MonoBehaviour
     public void IncreaseDamageOutput(float multiplier)
     {
         _damageMultiplier += multiplier;
+    }
+
+    private void Die()
+    {
+        _isDead = true; 
     }
 }
