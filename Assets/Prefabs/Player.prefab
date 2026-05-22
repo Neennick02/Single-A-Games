@@ -288,6 +288,7 @@ MonoBehaviour:
   currentHealth: 0
   PlayerObject: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
   _damageEffect: {fileID: 0}
+  _effectDissolveSpeed: 0.1
 --- !u!114 &2580446650109701349
 MonoBehaviour:
   m_ObjectHideFlags: 0
