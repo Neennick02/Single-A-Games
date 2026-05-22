@@ -1,4 +1,5 @@
 using UnityEngine;
+using static PlayerStateMachine;
 
 public class PlayerMotor : MonoBehaviour
 {
@@ -10,7 +11,15 @@ public class PlayerMotor : MonoBehaviour
     public PlayerStateMachine State { get; private set; }
 
     private InputManager _input;
+    private void OnEnable()
+    {
+        PlayerHealth.OnDeath += Die;
+    }
 
+    private void OnDisable()
+    {
+        PlayerHealth.OnDeath -= Die;
+    }
     private void Start()
     {
         Movement = GetComponent<PlayerMovement>();
@@ -34,4 +43,10 @@ public class PlayerMotor : MonoBehaviour
     {
         Movement.ProcessMove(input);
     }
+    private void Die()
+    {
+        State.SetState(PlayerStates.Dead);
+        StartCoroutine(Slide.ChangeHeight(0));
+    }
+
 }
