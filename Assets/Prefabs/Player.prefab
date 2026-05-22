@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07901939, y: -0.29799676, z: 0.024761626, w: 0.9509683}
-  m_LocalPosition: {x: 0.005628577, y: 2.0016503, z: -0.008099076}
+  m_LocalPosition: {x: 0.005628574, y: 1.0016505, z: -0.008099072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -77,8 +77,8 @@ Camera:
   m_GameObject: {fileID: 155545485558934735}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.49411765, g: 0.17254902, b: 0.17254902, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -340,8 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5b391dfb44a7c4e9f8efb4f30409f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  PlayerAbilities:
-  - {fileID: 2580446650109701349}
 --- !u!114 &4965646867981360218
 MonoBehaviour:
   m_ObjectHideFlags: 0
