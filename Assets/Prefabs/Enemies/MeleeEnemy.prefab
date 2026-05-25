@@ -572,7 +572,6 @@ MonoBehaviour:
   _dissolveAmount: 1
   _dissolveProgress: 0
   _renderers:
-  - {fileID: 0}
   - {fileID: 7453998311431290355}
 --- !u!1 &9029045984588547145
 GameObject:

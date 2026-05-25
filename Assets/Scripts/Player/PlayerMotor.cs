@@ -5,6 +5,7 @@ using static PlayerStateMachine;
 
 public class PlayerMotor : MonoBehaviour
 {
+    public PlayerObject Data;
     public PlayerMovement Movement { get; private set; }
     public PlayerSlide Slide { get; private set; }
     public PlayerDash Dash { get; private set; }
@@ -17,6 +18,9 @@ public class PlayerMotor : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnDeath += Die;
+
+        Slide = GetComponent<PlayerSlide>();
+        StartCoroutine(Slide.ChangeHeight(Data.DefaultHeight));
     }
 
     private void OnDisable()
@@ -26,7 +30,6 @@ public class PlayerMotor : MonoBehaviour
     private void Start()
     {
         Movement = GetComponent<PlayerMovement>();
-        Slide = GetComponent<PlayerSlide>();
         Dash = GetComponent<PlayerDash>();
         Jump = GetComponent<PlayerJump>();
         State = GetComponent<PlayerStateMachine>();

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8446157478270849218}
   - component: {fileID: 7260485126577099492}
   - component: {fileID: 102598578971771378}
-  - component: {fileID: 6467525946883885307}
+  - component: {fileID: 332293379565100337}
   m_Layer: 0
   m_Name: 'HealCube '
   m_TagString: Untagged
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6467525946883885307
+--- !u!114 &332293379565100337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,21 +122,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2312771625967488002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4debdc15c8c0f54c90ad4dba1bb8034, type: 3}
+  m_Script: {fileID: 11500000, guid: 852c4d6906a587c4ca75d6ed8e787c12, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestUnityEvent
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: Heal
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_EditorClassIdentifier: Assembly-CSharp::EndGame

@@ -25,7 +25,7 @@ public class ShopManager : MonoBehaviour
 
         //fill available upgrades list
         _availableUpgrades = new List<UpgradeObject> (TotalUpgrades);
-
+        Time.timeScale = 0;
     }
     private void OnEnable()
     {
@@ -86,6 +86,7 @@ public class ShopManager : MonoBehaviour
         //clear list
         _assignedUpgrades.Clear();
 
+        Time.timeScale = 1;
         gameObject.SetActive(false);
     }
 
@@ -121,7 +122,7 @@ public class ShopManager : MonoBehaviour
 
             //clear list
             _assignedUpgrades.Clear();
-
+            Time.timeScale = 1;
             gameObject.SetActive(false);
         }
         else
