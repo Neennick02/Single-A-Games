@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FogManager
   _threshold: 60
-  _defaultFogAmount: 0.01
+  _defaultFogAmount: 0.05
   _maxFogAmount: 0.2
 --- !u!1001 &3033693201267038492
 PrefabInstance:
