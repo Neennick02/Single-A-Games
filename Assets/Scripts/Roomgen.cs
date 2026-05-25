@@ -44,23 +44,24 @@ public class Roomgen : MonoBehaviour
 
         GameObject _Room = null;
 
-        List<GameObject> _AllRooms = new List<GameObject>();
-
 
         for (int i = 0; i < _levelSize; i++)
         {
 
             if (i == 0)
             {
-                _Room = Instantiate(_startRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z));
+                _Room = Instantiate(_startRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
 
                 _Continue = true;
+
+                GameObject Player = FindAnyObjectByType<PlayerMotor>().gameObject;
+                Player.transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
             }
 
             else if (i == _levelSize - 1)
             {
 
-                _Room = Instantiate(_endRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z));
+                _Room = Instantiate(_endRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
 
                 _Attachment = _PrevRoom.GetComponentInChildren<Attach>().gameObject;
 
@@ -76,7 +77,7 @@ public class Roomgen : MonoBehaviour
 
                 _Random = Random.Range(0, _rooms.Count);
 
-                _Room = Instantiate(_rooms[_Random]._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z));
+                _Room = Instantiate(_rooms[_Random]._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
 
                 _Attachment = _PrevRoom.GetComponentInChildren<Attach>().gameObject;
 
@@ -90,21 +91,13 @@ public class Roomgen : MonoBehaviour
 
             _PrevRoom = _Room;
 
-            _AllRooms.Add(_Room);
-
 
             if (_Obstructed)
             {
 
                 _Obstructed = false;
 
-                foreach (GameObject room in _AllRooms)
-                {
-                    Destroy(room);
-                }
-
-                _AllRooms.Clear();
-
+                foreach (Transform child in transform) Destroy(child.gameObject);
 
                 StartCoroutine(GenerateMap());
 
