@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class StartScene : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void OpenScene(string name)
     {
         SceneManager.LoadScene(name);
@@ -12,10 +16,5 @@ public class StartScene : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit");
-    }
-
-    private void Update()
-    {
-        Cursor.lockState = CursorLockMode.None;
     }
 }
