@@ -38,6 +38,7 @@ public class PlayerSlide : MonoBehaviour
 
     private void CheckSlideStart()
     {
+        if(state.IsDead) return;
 
         Vector3 horizontalVel = controller.velocity;
         horizontalVel.y = 0;
