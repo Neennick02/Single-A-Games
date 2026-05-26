@@ -67,7 +67,7 @@ public class ShopManager : MonoBehaviour
 
                 for (int j = 0; j < Buttons.Count; j++)
                 {
-                    Button button = Buttons[i].GetComponent<Button>();
+                    Button button = Buttons[j].GetComponent<Button>();
                     button.onClick.RemoveAllListeners();
                 }
             }
@@ -85,7 +85,11 @@ public class ShopManager : MonoBehaviour
 
         //clear list
         _assignedUpgrades.Clear();
-
+        for (int j = 0; j < Buttons.Count; j++)
+        {
+            Button button = Buttons[j].GetComponent<Button>();
+            button.onClick.RemoveAllListeners();
+        }
         Time.timeScale = 1;
         gameObject.SetActive(false);
     }

@@ -225,31 +225,31 @@ PrefabInstance:
       objectReference: {fileID: 345393172}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.0056285826
       objectReference: {fileID: 0}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.0016505
       objectReference: {fileID: 0}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.008099084
       objectReference: {fileID: 0}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9509683
       objectReference: {fileID: 0}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.0790194
       objectReference: {fileID: 0}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.29799685
       objectReference: {fileID: 0}
     - target: {fileID: 7194957410612799642, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.024761632
       objectReference: {fileID: 0}
     - target: {fileID: 7873748516897075520, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: m_RenderPostProcessing
@@ -958,6 +958,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: _levelSize
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _rooms.Array.size
       value: 4
