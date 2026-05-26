@@ -13,4 +13,9 @@ public class StartScene : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit");
     }
+
+    private void Update()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
 }
