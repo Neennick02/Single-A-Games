@@ -15,4 +15,4 @@ MonoBehaviour:
   Price: 0
   Prefab: {fileID: 5423747365192363973, guid: bf848968518fb684f92fed0ec14e47c7, type: 3}
   Title: Legs
-  Description: Run like the wind
+  Description: Increases movement speed & sanity drain speed
