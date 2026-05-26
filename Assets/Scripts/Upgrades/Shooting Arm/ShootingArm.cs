@@ -56,11 +56,25 @@ public class ShootingArm : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
 
+            EnemyHealth _EnemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+
+            if (_EnemyHealth == null)
+            {
+
+                _EnemyHealth = collision.gameObject.GetComponentInParent<EnemyHealth>();
+
+            }
+
+
             //If the speed is fast enough make it do damage.
             if (speed > 5)
             {
-                collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(4);
+                _EnemyHealth.TakeDamage(4);
             }
+
+
+            _EnemyHealth = null;
+
         }
     }
 
