@@ -16,8 +16,6 @@ public class Roomgen : MonoBehaviour
 
     public bool _Continue;
 
-    private float _Timer;
-
     void Awake()
     {
 
@@ -29,30 +27,6 @@ public class Roomgen : MonoBehaviour
     {
 
         StartCoroutine(GenerateMap());
-
-    }
-
-    private void Update()
-    {
-        if (_Obstructed)
-        {
-            _Timer += Time.deltaTime;
-        }
-
-        else
-        {
-            _Timer = 0;
-        }
-
-
-        if (_Timer >= 0.3f)
-        {
-            foreach (Transform child in transform) Destroy(child.gameObject);
-
-            Debug.Log("Reset came from the update");
-
-            StartCoroutine(GenerateMap());
-        }
 
     }
 
@@ -69,8 +43,6 @@ public class Roomgen : MonoBehaviour
         GameObject _PrevRoom = null;
 
         GameObject _Room = null;
-
-        _Obstructed = false;
 
 
         for (int i = 0; i < _levelSize; i++)
@@ -119,19 +91,23 @@ public class Roomgen : MonoBehaviour
 
             _PrevRoom = _Room;
 
-            yield return new WaitForSeconds(0.02f);
 
             if (_Obstructed)
             {
 
-                foreach (Transform child in transform) Destroy(child.gameObject);
+                _Obstructed = false;
 
-                Debug.Log("Reset");
+                foreach (Transform child in transform) Destroy(child.gameObject);
 
                 StartCoroutine(GenerateMap());
 
                 break;
             }
+
+            yield return new WaitForSeconds(0.02f);
+
+
+
 
         }
     }
