@@ -39,7 +39,7 @@ public class PlayerJump : MonoBehaviour
     private void TryJump()
     {
         // Allow jump if grounded OR within coyote time
-        if (coyoteTimer <= 0f) return;
+        if (coyoteTimer <= 0f || state.CurrentState == PlayerStateMachine.PlayerStates.Dead) return;
 
         Vector3 vel = movement.Velocity;
         vel.y = Mathf.Sqrt(data.JumpHeight * -2f * data.Gravity);
