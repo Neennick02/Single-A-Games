@@ -48,6 +48,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 487304302ee9254439126ccbab2160d7, type: 2}
   - {fileID: 11400000, guid: bbd86196814b14d48921fee7b1904d66, type: 2}
   - {fileID: 11400000, guid: c8b0682054fc4134d845dd1d664e1690, type: 2}
+  - {fileID: 11400000, guid: f8fe8e47f07fb67458b40060293b62b6, type: 2}
   _combatRooms: []
   _startRoom: {fileID: 11400000, guid: a5cd77ab015ff934b80de473df663bf2, type: 2}
   _endRoom: {fileID: 11400000, guid: d87427f4c06340a40bd3c4d43082b67b, type: 2}
