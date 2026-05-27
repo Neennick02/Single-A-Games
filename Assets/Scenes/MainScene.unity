@@ -487,6 +487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   PlayerPrefab: {fileID: 233300373404658936, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+  gameStarted: 0
+  _currentPlayer: {fileID: 0}
 --- !u!4 &618525719
 Transform:
   m_ObjectHideFlags: 0
