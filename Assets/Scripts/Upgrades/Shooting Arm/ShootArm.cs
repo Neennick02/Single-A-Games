@@ -67,6 +67,14 @@ public class ShootArm : MonoBehaviour
             TryAndCollectArm();
         }
 
+        if (_isAttacking)
+        {
+
+            _attachedArm.transform.position = AddNoiseOnAngle(-1000, 1000);
+
+            Debug.Log("Attacking");
+        }
+
     }
     private void TryAndCollectArm()
     {
@@ -138,9 +146,9 @@ public class ShootArm : MonoBehaviour
     private IEnumerator Attack()
     {
 
-        //Wait 2 seconds to see if there holding click.
+        //Wait 1.5 seconds to see if there holding click.
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         if (_isAttacking)
         {
@@ -175,6 +183,21 @@ public class ShootArm : MonoBehaviour
 
         _arm = true;
 
+    }
+
+
+    private Vector3 AddNoiseOnAngle(float min, float max)
+    {
+
+        // Find random angle between min & max inclusive
+        float xNoise = UnityEngine.Random.Range(min, max);
+        float yNoise = UnityEngine.Random.Range(min, max);
+        float zNoise = UnityEngine.Random.Range(min, max);
+
+        // Convert Angle to Vector3
+        Vector3 noise = new Vector3(Mathf.Sin(2 * Mathf.PI * xNoise / 360), Mathf.Sin(2 * Mathf.PI * yNoise / 360), Mathf.Sin(2 * Mathf.PI * zNoise / 360));
+
+        return noise;
     }
 
     private void OnCollisionEnter(Collision collision)
