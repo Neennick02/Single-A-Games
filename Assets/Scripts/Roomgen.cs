@@ -18,6 +18,8 @@ public class Roomgen : MonoBehaviour
 
     private float _Timer;
 
+    public GameObject _sceneLoader;
+
     void Awake()
     {
 
@@ -134,6 +136,7 @@ public class Roomgen : MonoBehaviour
             }
 
         }
+        _sceneLoader.SetActive(true);
     }
 
 }

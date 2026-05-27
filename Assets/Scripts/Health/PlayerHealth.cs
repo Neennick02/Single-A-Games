@@ -14,11 +14,13 @@ public class PlayerHealth : BaseHealth
     private void OnEnable()
     {
         SanityManager.OnTakeSanityDamage += TakeDamage;
+        GameManager.OnGameStart += StartGame;
     }
 
     private void OnDisable()
     {
         SanityManager.OnTakeSanityDamage -= TakeDamage;
+        GameManager.OnGameStart -= StartGame;
     }
     #endregion
     private void Start()
@@ -32,6 +34,8 @@ public class PlayerHealth : BaseHealth
         _damageEffect.weight += amount * 0.02f;
 
         currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
         OnHealthChange?.Invoke(currentHealth);
 
         if (currentHealth <= 0)
@@ -60,8 +64,12 @@ public class PlayerHealth : BaseHealth
 
     protected override void Die()
     {
-        Debug.Log("Player is dead");
         Cursor.lockState = CursorLockMode.None;
         OnDeath?.Invoke();
+    }
+
+    private void StartGame()
+    {
+        currentHealth = maxHealth;
     }
 }
