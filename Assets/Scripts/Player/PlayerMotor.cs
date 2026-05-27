@@ -5,6 +5,8 @@ using static PlayerStateMachine;
 
 public class PlayerMotor : MonoBehaviour
 {
+    public static PlayerMotor Instance { get; private set; }
+
     public PlayerObject Data;
     public PlayerMovement Movement { get; private set; }
     public PlayerSlide Slide { get; private set; }
@@ -15,6 +17,18 @@ public class PlayerMotor : MonoBehaviour
 
     private InputManager _input;
 
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
     private void OnEnable()
     {
         PlayerHealth.OnDeath += Die;
