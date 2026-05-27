@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (blockInputs) return;
+        if (blockInputs || motor == null) return;
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
     }
 
