@@ -15,4 +15,4 @@ MonoBehaviour:
   MaxHealth: 5
   Damage: 5
   StoppingDistance: 3
-  SanityRestoreAmount: 12
+  SanityRestoreAmount: 8

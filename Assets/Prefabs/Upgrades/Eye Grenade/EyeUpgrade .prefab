@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EyeGrenade
   GrenadePrefab: {fileID: 6810073601577535012, guid: b891ab804cec64442a01250f5adf07bb, type: 3}
+  _isHolding: 0
   _throwPoint: {fileID: 0}
   _eyeRegenerationTime: 3
-  _throwForce: 5
+  grenade: {fileID: 0}
+  _throwForce: 8
