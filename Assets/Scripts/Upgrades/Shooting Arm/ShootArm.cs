@@ -10,6 +10,10 @@ public class ShootArm : MonoBehaviour
 
     [SerializeField] private bool _isAttacking;
 
+    [SerializeField] private bool _isShaking;
+
+    private float _isShakingImpact = 0f;
+
     private PlayerAttack _playerAttackScript;
 
     [SerializeField] private GameObject _attachedArm;
@@ -67,12 +71,20 @@ public class ShootArm : MonoBehaviour
             TryAndCollectArm();
         }
 
-        if (_isAttacking)
+        if (_isAttacking && _isShaking)
+        {
+            float _Impact = _isShakingImpact += Time.deltaTime * 3;
+
+            _attachedArm.transform.localPosition = AddNoiseOnAngle(-_Impact, _Impact);
+        }
+
+
+        else
         {
 
-            _attachedArm.transform.position = AddNoiseOnAngle(-1000, 1000);
+            _isShakingImpact = 0f;
 
-            Debug.Log("Attacking");
+            _attachedArm.transform.localPosition = Vector3.zero;
         }
 
     }
@@ -131,6 +143,8 @@ public class ShootArm : MonoBehaviour
             else
             {
                 StopAllCoroutines();
+
+
             }
 
         }
@@ -148,7 +162,13 @@ public class ShootArm : MonoBehaviour
 
         //Wait 1.5 seconds to see if there holding click.
 
-        yield return new WaitForSeconds(1.5f);
+        _isShaking = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        _isShaking = true;
+
+        yield return new WaitForSeconds(1f);
 
         if (_isAttacking)
         {
