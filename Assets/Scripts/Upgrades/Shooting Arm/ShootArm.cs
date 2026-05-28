@@ -143,8 +143,6 @@ public class ShootArm : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-
-
             }
 
         }
@@ -202,6 +200,8 @@ public class ShootArm : MonoBehaviour
         _playerAttackScript.enabled = true;
 
         _arm = true;
+
+        _isAttacking = false;
 
     }
 
