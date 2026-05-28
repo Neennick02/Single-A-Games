@@ -383,63 +383,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1001 &1304293977
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.24238
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.3948996
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.422437
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
-      propertyPath: m_Name
-      value: hand fase 4 test
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 417ea5abe91d7ff4fbfcb7b821d540c6, type: 3}
 --- !u!1 &2010861076 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1238675202667781166, guid: 6b88dc2d68b8419489282499fa28cdf9, type: 3}
@@ -585,6 +528,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24b0ba37175b4644ca085c97bae1665d, type: 3}
+--- !u!1001 &3915918358800607202
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.6318988
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514324850525925749, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3003757524634086351, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
+      propertyPath: m_Name
+      value: hand fase 4 met animatie
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b5c7a20c13c7f714d81c2df40aa0863a, type: 3}
 --- !u!1001 &4566052058483393879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,8 +708,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 638172640}
   - {fileID: 930068466}
-  - {fileID: 1304293977}
   - {fileID: 4566052058483393879}
   - {fileID: 5061714563046776050}
   - {fileID: 1793814943898603746}
   - {fileID: 2116225708}
+  - {fileID: 3915918358800607202}
