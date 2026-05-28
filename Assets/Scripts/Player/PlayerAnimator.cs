@@ -25,7 +25,7 @@ public class PlayerAnimator : MonoBehaviour
         {
             _handAnimator.SetFloat("Attack", _handAnimator.GetFloat("Attack") - 6f * Time.deltaTime);
 
-            if (_handAnimator.GetFloat("time") < 0)
+            if (_handAnimator.GetFloat("Attack") < 0)
             {
                 _handAnimator.SetFloat("Attack", 0f);
             }
