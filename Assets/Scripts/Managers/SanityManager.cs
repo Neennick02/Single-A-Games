@@ -115,7 +115,7 @@ public class SanityManager : MonoBehaviour
         StartCoroutine(AddRoutine(amount));
     }
 
-    IEnumerator AddRoutine(float amount)
+    public IEnumerator AddRoutine(float amount)
     {
         _draining = false;
         float targetAmount = SanityAmount + amount;
