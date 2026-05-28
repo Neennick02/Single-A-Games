@@ -14,16 +14,13 @@ public class InputManager : MonoBehaviour
 
     public static event Action OnThrowGrenade;
     public static event Action OnPause;
-
+    public static event Action OnPuke;
     void Awake()
     {
         playerInput = new PlayerInput();
 
         onFoot = playerInput.OnFoot;
         uiActions = playerInput.UI;
-
-        motor = GetComponent<PlayerMotor>();
-        look = GetComponent<PlayerLook>();
 
         playerInput.OnFoot.ThrowGrenade.performed += ThrowGrenade;
         playerInput.OnFoot.Pause.performed += Pause;
@@ -32,6 +29,12 @@ public class InputManager : MonoBehaviour
     {
         onFoot.Enable();
         uiActions.Enable();
+    }
+
+    private void Start()
+    {
+        motor = GetComponent<PlayerMotor>();
+        look = GetComponent<PlayerLook>();
     }
 
     private void OnDisable()
@@ -43,7 +46,7 @@ public class InputManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (blockInputs || motor == null) return;
-        motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+        motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());    
     }
 
     private void LateUpdate()
@@ -61,6 +64,10 @@ public class InputManager : MonoBehaviour
     public void ThrowGrenade(InputAction.CallbackContext context)
     {
         OnThrowGrenade?.Invoke();
+    }
+    public void Puke(InputAction.CallbackContext context)
+    {
+        OnPuke?.Invoke();
     }
     public void Pause(InputAction.CallbackContext context)
     {
