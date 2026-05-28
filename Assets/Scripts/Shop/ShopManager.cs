@@ -43,7 +43,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < ItemSlots.Count; i++)
         {
 
-            TextMeshProUGUI text = ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshProUGUI title = ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>();
 
             //assign text
             if (_availableUpgrades.Count > 0)
@@ -53,7 +53,7 @@ public class ShopManager : MonoBehaviour
 
                 var upgrade = _availableUpgrades[index];
 
-                text.text = upgrade.Title;
+                title.text = upgrade.Title;
 
                 //add to assigned buttons
                 _assignedUpgrades.Add(upgrade);
@@ -75,19 +75,17 @@ public class ShopManager : MonoBehaviour
             }
             else //if no upgrades left
             {
-                text.text = "Sold Out";
+                title.text = "Sold Out";
 
-                for (int j = 0; j < ItemSlots.Count; j++)
-                {
-                    Button button = ItemSlots[j].GetComponentInChildren<Button>();
+                    Button button = ItemSlots[i].GetComponentInChildren<Button>();
                     button.onClick.RemoveAllListeners();
 
                     //empty data
-                    ShopItem item = ItemSlots[j].GetComponent<ShopItem>();
+                    ShopItem item = ItemSlots[i].GetComponent<ShopItem>();
                     item.AssignPrice(null);
                     item.AssignSprite(null);
                     item.AssignTitle(null);
-                }
+                
             }
         }
     }
