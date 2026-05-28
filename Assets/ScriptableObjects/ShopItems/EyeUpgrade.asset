@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a98904474e4fe4e9f8441f265dfa7e, type: 3}
   m_Name: EyeUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeObject
+  Image: {fileID: 21300000, guid: f69e0c233d3aaf846959da3a8019c4fc, type: 3}
   Price: 3
   Prefab: {fileID: 3577074951957311698, guid: 7a8e0ab290a19624981b52b2e680a86c, type: 3}
   Title: Eye Bombs

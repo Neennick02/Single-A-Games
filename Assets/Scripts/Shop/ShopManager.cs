@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     public List<UpgradeObject> TotalUpgrades;
-    private List<UpgradeObject> _availableUpgrades = new List<UpgradeObject>();
-    private List<UpgradeObject> _assignedUpgrades = new List<UpgradeObject>();
+    public List<UpgradeObject> _availableUpgrades = new List<UpgradeObject>();
+    public List<UpgradeObject> _assignedUpgrades = new List<UpgradeObject>();
 
-    public List<GameObject> Buttons;
+    public List<GameObject> ItemSlots;
 
     private PlayerHealth player;
     private SanityManager sanityManager;
@@ -25,25 +25,31 @@ public class ShopManager : MonoBehaviour
 
         //fill available upgrades list
         _availableUpgrades = new List<UpgradeObject> (TotalUpgrades);
-        Time.timeScale = 0;
     }
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
 
-        //stop sanity bar from draining
-        OnShopOpenClose?.Invoke(false);
+        for (int j = 0; j < ItemSlots.Count; j++)
+        {
+            Button button = ItemSlots[j].GetComponentInChildren<Button>();
+            button.onClick.RemoveAllListeners();
+        }
 
-        for (int i = 0; i < Buttons.Count; i++)
+            //stop sanity bar from draining
+            OnShopOpenClose?.Invoke(false);
+
+        for (int i = 0; i < ItemSlots.Count; i++)
         {
 
-            TextMeshProUGUI text = Buttons[i].GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshProUGUI text = ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>();
 
             //assign text
             if (_availableUpgrades.Count > 0)
             {
                 //find upgrade to display
-                int index = UnityEngine.Random.Range(0, _availableUpgrades.Count - 1);
+                int index = UnityEngine.Random.Range(0, _availableUpgrades.Count);
 
                 var upgrade = _availableUpgrades[index];
 
@@ -54,8 +60,14 @@ public class ShopManager : MonoBehaviour
 
 
                 //add correct buy function to buttons
-                Button button = Buttons[i].GetComponent<Button>();
+                Button button = ItemSlots[i].GetComponentInChildren<Button>();
                 button.onClick.AddListener(() => BuyUpgrade(upgrade));
+
+                ShopItem item = ItemSlots[i].GetComponent<ShopItem>(); 
+                //assign values
+                item.AssignPrice(upgrade.Price.ToString());
+                item.AssignSprite(upgrade.Image);
+                item.AssignTitle(upgrade.Title.ToString());
 
 
                 //remove upgrade from available list (prevent assigning the same button)
@@ -65,10 +77,16 @@ public class ShopManager : MonoBehaviour
             {
                 text.text = "Sold Out";
 
-                for (int j = 0; j < Buttons.Count; j++)
+                for (int j = 0; j < ItemSlots.Count; j++)
                 {
-                    Button button = Buttons[j].GetComponent<Button>();
+                    Button button = ItemSlots[j].GetComponentInChildren<Button>();
                     button.onClick.RemoveAllListeners();
+
+                    //empty data
+                    ShopItem item = ItemSlots[j].GetComponent<ShopItem>();
+                    item.AssignPrice(null);
+                    item.AssignSprite(null);
+                    item.AssignTitle(null);
                 }
             }
         }
@@ -83,14 +101,16 @@ public class ShopManager : MonoBehaviour
             _availableUpgrades.Add(_assignedUpgrades[i]);
         }
 
-        //clear list
+        //clear assigned list
         _assignedUpgrades.Clear();
-        for (int j = 0; j < Buttons.Count; j++)
+
+        for (int j = 0; j < ItemSlots.Count; j++)
         {
-            Button button = Buttons[j].GetComponent<Button>();
+            Button button = ItemSlots[j].GetComponentInChildren<Button>();
             button.onClick.RemoveAllListeners();
         }
         Time.timeScale = 1;
+
         gameObject.SetActive(false);
     }
 
