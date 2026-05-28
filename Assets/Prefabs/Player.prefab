@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07901939, y: -0.29799676, z: 0.024761626, w: 0.9509683}
-  m_LocalPosition: {x: 0.0056295395, y: 1.0016507, z: -0.00810051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.23879, y: -1.1000001, z: -26.90606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -439,8 +439,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471022230270949219}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07901939, y: -0.29799676, z: 0.024761626, w: 0.9509683}
-  m_LocalPosition: {x: 0.005628579, y: 1.0016505, z: -0.00809908}
+  m_LocalRotation: {x: 0.14488615, y: -0.8527268, z: 0.38771263, w: 0.31865948}
+  m_LocalPosition: {x: 0.0043115616, y: 1.0075351, z: 0.004962921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -535,7 +535,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: -34.79796
+    Value: -139.0191
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -545,7 +545,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 9.500003
+    Value: 48.90011
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
@@ -946,7 +946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
       propertyPath: _drainRate
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
