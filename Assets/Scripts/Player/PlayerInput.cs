@@ -120,6 +120,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Puke"",
+                    ""type"": ""Button"",
+                    ""id"": ""856b0021-a6cf-4497-a20c-04f00d5792cd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f1b9c767-38d1-4fc7-b03a-2a7240dc744d"",
@@ -185,6 +194,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c45816c6-d719-49d7-a811-b3721b12d543"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Puke"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -830,6 +850,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
         m_OnFoot_Attack = m_OnFoot.FindAction("Attack", throwIfNotFound: true);
+        m_OnFoot_Puke = m_OnFoot.FindAction("Puke", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Dash = m_OnFoot.FindAction("Dash", throwIfNotFound: true);
         m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
@@ -931,6 +952,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Movement;
     private readonly InputAction m_OnFoot_Attack;
+    private readonly InputAction m_OnFoot_Puke;
     private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Dash;
     private readonly InputAction m_OnFoot_Sprint;
@@ -959,6 +981,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "OnFoot/Attack".
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_OnFoot_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/Puke".
+        /// </summary>
+        public InputAction @Puke => m_Wrapper.m_OnFoot_Puke;
         /// <summary>
         /// Provides access to the underlying input action "OnFoot/Jump".
         /// </summary>
@@ -1014,6 +1040,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Puke.started += instance.OnPuke;
+            @Puke.performed += instance.OnPuke;
+            @Puke.canceled += instance.OnPuke;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -1049,6 +1078,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Puke.started -= instance.OnPuke;
+            @Puke.performed -= instance.OnPuke;
+            @Puke.canceled -= instance.OnPuke;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -1333,6 +1365,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Puke" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPuke(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

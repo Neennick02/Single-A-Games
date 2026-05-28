@@ -34,6 +34,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Puke",
+                    "type": "Button",
+                    "id": "856b0021-a6cf-4497-a20c-04f00d5792cd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "f1b9c767-38d1-4fc7-b03a-2a7240dc744d",
@@ -99,6 +108,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c45816c6-d719-49d7-a811-b3721b12d543",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Puke",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
