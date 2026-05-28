@@ -32,7 +32,10 @@ public class PlayerMotor : MonoBehaviour
     {
         PlayerHealth.OnDeath += Die;
         GameManager.OnGameStart += StartGame;
+    }
 
+    private void Start()
+    {
         Movement = GetComponent<PlayerMovement>();
         Dash = GetComponent<PlayerDash>();
         Jump = GetComponent<PlayerJump>();

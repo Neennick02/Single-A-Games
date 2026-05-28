@@ -10,6 +10,15 @@ public class ShopItem : MonoBehaviour
 
     public void AssignSprite(Sprite sprite)
     {
+        if (sprite == null)
+        {
+            Image.color = Color.clear;
+        }
+        else
+        {
+            Image.color = Color.white;
+        }
+
         Image.sprite = sprite;
     }
 
