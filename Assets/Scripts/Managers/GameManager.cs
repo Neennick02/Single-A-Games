@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
 
     private void LoadMainScene()
     {
-        Debug.Log("new");
-
 
         Vector3 startPos = new Vector3(0, -2.1f, 0);
 
