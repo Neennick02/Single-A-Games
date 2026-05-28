@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a98904474e4fe4e9f8441f265dfa7e, type: 3}
   m_Name: Buddy
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeObject
+  Image: {fileID: 0}
   Price: 0
-  Prefab: {fileID: 5423747365192363973, guid: bf848968518fb684f92fed0ec14e47c7, type: 3}
+  Prefab: {fileID: 5055614148746786958, guid: a1f27a6264f63da4aa6286c7b006c319, type: 3}
   Title: Buddy
   Description: He is evil indeed

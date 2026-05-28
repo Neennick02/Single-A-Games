@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     public List<UpgradeObject> TotalUpgrades;
-    public List<UpgradeObject> _availableUpgrades = new List<UpgradeObject>();
-    public List<UpgradeObject> _assignedUpgrades = new List<UpgradeObject>();
+    private List<UpgradeObject> _availableUpgrades = new List<UpgradeObject>();
+    private List<UpgradeObject> _assignedUpgrades = new List<UpgradeObject>();
 
     public List<GameObject> ItemSlots;
 
