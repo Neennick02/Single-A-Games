@@ -77,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
 
         byte range = 5;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range))
         {
@@ -109,6 +109,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void Die()
     {
-        _isDead = true; 
+        _isDead = true;
     }
 }
