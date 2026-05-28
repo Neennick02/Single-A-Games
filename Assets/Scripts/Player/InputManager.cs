@@ -24,6 +24,9 @@ public class InputManager : MonoBehaviour
 
         playerInput.OnFoot.ThrowGrenade.performed += ThrowGrenade;
         playerInput.OnFoot.Pause.performed += Pause;
+
+        motor = GetComponent<PlayerMotor>();
+        look = GetComponent<PlayerLook>();
     }
     void OnEnable()
     {
@@ -33,8 +36,7 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        motor = GetComponent<PlayerMotor>();
-        look = GetComponent<PlayerLook>();
+
     }
 
     private void OnDisable()

@@ -27,21 +27,18 @@ public class PlayerMotor : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private void OnEnable()
-    {
-        PlayerHealth.OnDeath += Die;
-        GameManager.OnGameStart += StartGame;
-    }
 
-    private void Start()
-    {
         Movement = GetComponent<PlayerMovement>();
         Dash = GetComponent<PlayerDash>();
         Jump = GetComponent<PlayerJump>();
         State = GetComponent<PlayerStateMachine>();
         _input = GetComponent<InputManager>();
         Slide = GetComponent<PlayerSlide>();
+    }
+    private void OnEnable()
+    {
+        PlayerHealth.OnDeath += Die;
+        GameManager.OnGameStart += StartGame;
     }
 
     private void OnDisable()

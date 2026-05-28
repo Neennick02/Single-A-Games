@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
 
     private void LoadMainScene()
     {
-
         Vector3 startPos = new Vector3(0, -2.1f, 0);
 
         if (SceneManager.GetActiveScene().name == "MainScene" && !gameStarted)
