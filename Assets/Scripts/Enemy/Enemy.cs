@@ -23,6 +23,12 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody _rb;
 
     protected GameObject _target;
+    private GameObject _player;
+    private GameObject _buddy;
+
+    private float _buddyCheckInterval = 3f;
+    private float timer = 10;
+
 
     protected EnemyHealth _healthScript;
 
@@ -33,7 +39,8 @@ public abstract class Enemy : MonoBehaviour
 
         _rb = GetComponent<Rigidbody>();
 
-        _target = FindFirstObjectByType<PlayerMotor>().gameObject;
+        _player = PlayerMotor.Instance.gameObject;
+        _target = _player;
 
         _healthScript = GetComponent<EnemyHealth>();
 
@@ -46,6 +53,19 @@ public abstract class Enemy : MonoBehaviour
     {
 
         MyUpdate();
+
+
+        timer += Time.deltaTime;
+
+        if(timer >= _buddyCheckInterval && _buddy == null)
+        {
+            BuddyBehaviour script = FindFirstObjectByType<BuddyBehaviour>();
+            if(script != null)
+            {
+                _buddy = script.gameObject;
+            }
+            timer = 0f;
+        }
 
     }
 
@@ -66,5 +86,16 @@ public abstract class Enemy : MonoBehaviour
             transform.position.x >= _target.transform.position.x - enemyObject.StoppingDistance &&
             transform.position.z <= _target.transform.position.z + enemyObject.StoppingDistance &&
             transform.position.z >= _target.transform.position.z - enemyObject.StoppingDistance);
+    }
+
+    protected virtual void AssignTarget()
+    {
+        if (_buddy == null) _target = _player;
+
+        float playerDistance = Vector3.Distance(transform.position, _player.transform.position);
+        float buddyDistance = Vector3.Distance(transform.position, _buddy.transform.position);
+
+        if (playerDistance < buddyDistance) _target = _player;
+        else if (buddyDistance < buddyDistance) _target = _buddy;        
     }
 }
