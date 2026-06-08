@@ -17,9 +17,9 @@ MonoBehaviour:
   WalkAcceleration: 10
   SprintAcceleration: 14
   Deceleration: 12
-  SlideDuration: 0.5
-  SlideInitialBoost: 5
-  SlideAcceleration: 25
+  SlideDuration: 0.3
+  SlideInitialBoost: 4
+  SlideAcceleration: 15
   DownhillMultiplier: 2
   MaxSlideSpeed: 100
   DashInitialBoost: 6

@@ -18,6 +18,8 @@ public class Roomgen : MonoBehaviour
 
     private float _Timer;
 
+    public GameObject _sceneLoader;
+
     void Awake()
     {
 
@@ -82,8 +84,13 @@ public class Roomgen : MonoBehaviour
 
                 _Continue = true;
 
-                GameObject Player = FindAnyObjectByType<PlayerMotor>().gameObject;
-                Player.transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+                GameObject player = GameManager.Instance._currentPlayer;
+                while(player == null)
+                {
+                    player = GameManager.Instance._currentPlayer;
+                    yield return null;
+                }
+                player.transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
             }
 
             else if (i == _levelSize - 1)
@@ -134,6 +141,7 @@ public class Roomgen : MonoBehaviour
             }
 
         }
+       // _sceneLoader.SetActive(true);
     }
 
 }

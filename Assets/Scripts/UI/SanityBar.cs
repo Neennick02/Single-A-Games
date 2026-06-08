@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,7 @@ public class SanityBar : MonoBehaviour
 {
     private Image _barImage;
     private float _maxSanity;
+    public TextMeshProUGUI Number;
     private void OnEnable()
     {
         SanityManager.OnDrainAmountChanged += UpdateBar;
@@ -24,5 +26,6 @@ public class SanityBar : MonoBehaviour
     private void UpdateBar(float amount)
     {
         _barImage.fillAmount = amount / _maxSanity;
+        Number.text = Mathf.Floor(amount).ToString();
     }
 }

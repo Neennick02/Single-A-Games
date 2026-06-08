@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,7 @@ public class PauseScreen : MonoBehaviour
 {
     public GameObject Panel;
     private bool _isPaused;
+    public static event Action OnReset;
 
     private void OnEnable()
     {
@@ -44,6 +46,7 @@ public class PauseScreen : MonoBehaviour
     }
     public void ReturnToTitle()
     {
+        OnReset?.Invoke();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene("StartScene");

@@ -9,8 +9,10 @@ public class CoinEnemy : Enemy
 
     protected override void MyUpdate()
     {
+        if (_target == null) return;
+
         if (!_attacking)
-        {
+        {            
             if (CheckIfInRange())
             {
 
@@ -68,6 +70,10 @@ public class CoinEnemy : Enemy
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(enemyObject.Damage);
+        }
+        else if (collision.gameObject.CompareTag("Buddy"))
+        {
+            collision.gameObject.GetComponent<BuddyHealth>().TakeDamage(enemyObject.Damage);
         }
     }
 

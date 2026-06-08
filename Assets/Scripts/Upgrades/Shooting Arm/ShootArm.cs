@@ -10,6 +10,10 @@ public class ShootArm : MonoBehaviour
 
     [SerializeField] private bool _isAttacking;
 
+    [SerializeField] private bool _isShaking;
+
+    private float _isShakingImpact = 0f;
+
     private PlayerAttack _playerAttackScript;
 
     [SerializeField] private GameObject _attachedArm;
@@ -65,6 +69,22 @@ public class ShootArm : MonoBehaviour
         if (!_arm)
         {
             TryAndCollectArm();
+        }
+
+        if (_isAttacking && _isShaking)
+        {
+            float _Impact = _isShakingImpact += Time.deltaTime * 3;
+
+            _attachedArm.transform.localPosition = AddNoiseOnAngle(-_Impact, _Impact);
+        }
+
+
+        else
+        {
+
+            _isShakingImpact = 0f;
+
+            _attachedArm.transform.localPosition = Vector3.zero;
         }
 
     }
@@ -138,9 +158,15 @@ public class ShootArm : MonoBehaviour
     private IEnumerator Attack()
     {
 
-        //Wait 2 seconds to see if there holding click.
+        //Wait 1.5 seconds to see if there holding click.
 
-        yield return new WaitForSeconds(2f);
+        _isShaking = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        _isShaking = true;
+
+        yield return new WaitForSeconds(1f);
 
         if (_isAttacking)
         {
@@ -175,6 +201,23 @@ public class ShootArm : MonoBehaviour
 
         _arm = true;
 
+        _isAttacking = false;
+
+    }
+
+
+    private Vector3 AddNoiseOnAngle(float min, float max)
+    {
+
+        // Find random angle between min & max inclusive
+        float xNoise = UnityEngine.Random.Range(min, max);
+        float yNoise = UnityEngine.Random.Range(min, max);
+        float zNoise = UnityEngine.Random.Range(min, max);
+
+        // Convert Angle to Vector3
+        Vector3 noise = new Vector3(Mathf.Sin(2 * Mathf.PI * xNoise / 360), Mathf.Sin(2 * Mathf.PI * yNoise / 360), Mathf.Sin(2 * Mathf.PI * zNoise / 360));
+
+        return noise;
     }
 
     private void OnCollisionEnter(Collision collision)

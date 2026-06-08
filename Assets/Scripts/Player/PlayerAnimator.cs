@@ -14,11 +14,24 @@ public class PlayerAnimator : MonoBehaviour
 
     IEnumerator AttackRoutine()
     {
-        _handAnimator.SetTrigger("Attack");
-
         _armAnimator.SetBool("Attack", true);
+        _handAnimator.SetFloat("Attack", 1f);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
+
         _armAnimator.SetBool("Attack", false);
+
+        while (_handAnimator.GetFloat("Attack") > 0)
+        {
+            _handAnimator.SetFloat("Attack", _handAnimator.GetFloat("Attack") - 6f * Time.deltaTime);
+
+            if (_handAnimator.GetFloat("Attack") < 0)
+            {
+                _handAnimator.SetFloat("Attack", 0f);
+            }
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
     }
 }

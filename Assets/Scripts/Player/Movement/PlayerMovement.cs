@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isSprinting;
     private float _multiplier = 1f;
-    private void Start()
+    private void Awake()
     {
         controller = GetComponent<CharacterController>();
         input = GetComponent<InputManager>();

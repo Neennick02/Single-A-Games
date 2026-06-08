@@ -5,6 +5,7 @@ using static PlayerStateMachine;
 
 public class PlayerMotor : MonoBehaviour
 {
+    public static PlayerMotor Instance { get; private set; }
     public PlayerObject Data;
     public PlayerMovement Movement { get; private set; }
     public PlayerSlide Slide { get; private set; }
@@ -15,27 +16,36 @@ public class PlayerMotor : MonoBehaviour
 
     private InputManager _input;
 
-    private void OnEnable()
+    private void Awake()
     {
-        PlayerHealth.OnDeath += Die;
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-        Slide = GetComponent<PlayerSlide>();
-        StartCoroutine(Slide.ChangeHeight(Data.DefaultHeight));
-    }
-
-    private void OnDisable()
-    {
-        PlayerHealth.OnDeath -= Die;
-    }
-    private void Start()
-    {
         Movement = GetComponent<PlayerMovement>();
         Dash = GetComponent<PlayerDash>();
         Jump = GetComponent<PlayerJump>();
         State = GetComponent<PlayerStateMachine>();
         _input = GetComponent<InputManager>();
+        Slide = GetComponent<PlayerSlide>();
+    }
+    private void OnEnable()
+    {
+        PlayerHealth.OnDeath += Die;
+        GameManager.OnGameStart += StartGame;
     }
 
+    private void OnDisable()
+    {
+        PlayerHealth.OnDeath -= Die;
+        GameManager.OnGameStart -= StartGame;
+    }
     private void Update()
     {
         State.Tick();
@@ -58,5 +68,10 @@ public class PlayerMotor : MonoBehaviour
         //disable player attack
         Destroy(GetComponent<PlayerAttack>());
     }
-
+    
+    private void StartGame()
+    {
+        State.SetState(PlayerStates.Locomotion);
+        StartCoroutine(Slide.ChangeHeight(Data.DefaultHeight));
+    }
 }
