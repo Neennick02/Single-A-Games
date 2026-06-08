@@ -19,6 +19,8 @@ public class BuddyHealth : BaseHealth
 
     public override void TakeDamage(float amount)
     {
+        if (_behaviour.State == BuddyBehaviour.BuddyStates.Recharging) return;
+
         currentHealth -= amount;
         if(currentHealth <= 0 )
         {
@@ -29,7 +31,7 @@ public class BuddyHealth : BaseHealth
     public override void Heal(float amount)
     {
         currentHealth += amount;
-        if( currentHealth == maxHealth )
+        if( currentHealth >= maxHealth )
         {
             currentHealth = maxHealth;
             _behaviour.SetState(BuddyBehaviour.BuddyStates.Following);

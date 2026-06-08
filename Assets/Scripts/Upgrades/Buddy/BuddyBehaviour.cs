@@ -11,8 +11,7 @@ public class BuddyBehaviour : MonoBehaviour
     NavMeshAgent agent;
     public float DamageAmount = 1;
 
-    private bool _targeting;
-    public float PlayerStoppingDistance = 1f;
+    public float PlayerStoppingDistance = 3f;
     public float EnemyStoppingDistance = 0f;
     private Transform player;
     private GameObject closestEnemy;
@@ -41,6 +40,8 @@ public class BuddyBehaviour : MonoBehaviour
         health = GetComponent<BuddyHealth>();
         player = PlayerMotor.Instance.transform;
         closestEnemy = null;
+        agent.stoppingDistance = PlayerStoppingDistance;
+
     }
 
     private void Update()
@@ -55,14 +56,17 @@ public class BuddyBehaviour : MonoBehaviour
                     recharging = false;
                 }
 
+                agent.stoppingDistance = PlayerStoppingDistance;
                 agent.SetDestination(player.position);
                 break;
                 
             case BuddyStates.ChasingEnemy:
+
                 if (closestEnemy == null)
                 {
                     EnemiesSpotted.RemoveAll(GameObject => GameObject == null);
                     closestEnemy = FindClosestTarget();
+                    agent.stoppingDistance = EnemyStoppingDistance;
                 }
                 else
                 {
@@ -120,7 +124,8 @@ public class BuddyBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if(State != BuddyStates.ChasingEnemy)
+            if(State != BuddyStates.ChasingEnemy &&
+                State != BuddyStates.Recharging)
             {
                 State = BuddyStates.ChasingEnemy;
             }
@@ -134,7 +139,8 @@ public class BuddyBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && EnemiesSpotted.Contains(other.gameObject))
         {
             EnemiesSpotted.Remove(other.gameObject);
-            if (EnemiesSpotted.Count < 1)
+
+            if (EnemiesSpotted.Count < 1 && State != BuddyStates.Recharging)
             {
                 State = BuddyStates.Following;
             }
@@ -143,6 +149,9 @@ public class BuddyBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //dont deal damage when recharging
+        if (State == BuddyStates.Recharging) return;
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyHealth health = collision.gameObject.GetComponent<EnemyHealth>();
