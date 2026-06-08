@@ -12,6 +12,7 @@ public class Grenade : MonoBehaviour
     private Collider _rangeCollider;
 
     public List<EnemyHealth> EnemyList = new List<EnemyHealth>();
+    [SerializeField] private ParticleSystem _particleSystem;
 
     private void Start()
     {
@@ -56,7 +57,7 @@ public class Grenade : MonoBehaviour
         }
 
         //play effect
-
+        Instantiate(_particleSystem, transform.position, Quaternion.identity);
 
         //play sound
 

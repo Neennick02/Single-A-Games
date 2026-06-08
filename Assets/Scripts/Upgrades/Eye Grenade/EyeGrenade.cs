@@ -18,7 +18,6 @@ public class EyeGrenade : MonoBehaviour
 
     public GameObject grenade;
     [SerializeField] private float _throwForce = 1;
-
     private void OnEnable()
     {
         InputManager.OnThrowGrenade += UseEye;

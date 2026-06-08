@@ -1095,10 +1095,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 909264269599365788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -679.91315, y: 82.47229}
-  m_SizeDelta: {x: 1304.8262, y: 1834.1917}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 790, y: 0}
+  m_SizeDelta: {x: -580, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &849848416114299412
 CanvasRenderer:
@@ -3447,8 +3447,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
   TotalUpgrades:
   - {fileID: 11400000, guid: 241c6fff2ff74694c808641edc088cb8, type: 2}
-  _availableUpgrades: []
-  _assignedUpgrades: []
   ItemSlots:
   - {fileID: 467999662093624367}
   - {fileID: 5685849757173639759}

@@ -81,4 +81,4 @@ MonoBehaviour:
   _throwPoint: {fileID: 0}
   _eyeRegenerationTime: 3
   grenade: {fileID: 0}
-  _throwForce: 8
+  _throwForce: 11
