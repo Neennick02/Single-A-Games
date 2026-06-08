@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,9 +16,17 @@ public class Puke : MonoBehaviour
 
     private bool _isPuking;
 
+    private bool _pukeBegun;
+
     private bool _isDead;
 
+    private float _pukeDuration = 0.1f;
+
     private CinemachineImpulseSource _impulseSource;
+
+    [SerializeField] private GameObject _camera;
+
+    [SerializeField] private GameObject _pukeProjectile;
 
     [SerializeField] private CameraShakeManager _cameraShakeManager;
 
@@ -28,6 +37,9 @@ public class Puke : MonoBehaviour
         _barImage = GetComponent<Image>();
 
         _impulseSource = GetComponent<CinemachineImpulseSource>();
+
+        _camera = Camera.main.gameObject;
+
     }
 
     private void OnEnable()
@@ -58,11 +70,12 @@ public class Puke : MonoBehaviour
     void Update()
     {
 
+        _pukeDuration = (1 - _intensity) * 0.1f;
+
         if (!_isPuking)
         {
 
             _pukeEffect.weight = Mathf.Lerp(_pukeEffect.weight, 0, Time.deltaTime * 5f);
-
 
             if (_intensity < 1f)
             {
@@ -73,6 +86,9 @@ public class Puke : MonoBehaviour
             {
                 _intensity = 1f;
             }
+
+            _pukeBegun = false;
+
         }
 
         else if (_isPuking && _intensity > 0)
@@ -82,9 +98,12 @@ public class Puke : MonoBehaviour
 
             _barImage.fillAmount = _intensity -= Time.deltaTime * 0.3f;
 
-
-            _cameraShakeManager.CameraShake(_impulseSource, _intensity);
-
+            if (!_pukeBegun)
+            {
+                _pukeBegun = true;
+                StartCoroutine(PukeShake());
+                StartCoroutine(PukeShoot());
+            }
         }
 
 
@@ -101,5 +120,37 @@ public class Puke : MonoBehaviour
     private void Die()
     {
         _isDead = true;
+    }
+
+    private IEnumerator PukeShake()
+    {
+
+        while (_isPuking && _intensity > 0)
+        {
+
+            float X = Random.Range(-0.1f, 0.1f);
+            float Y = Random.Range(-0.1f, 0.1f);
+
+            _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
+
+            _cameraShakeManager.CameraShake(_impulseSource, _intensity);
+
+            yield return new WaitForSeconds(0.1f);
+
+        }
+
+    }
+
+    private IEnumerator PukeShoot()
+    {
+        while (_isPuking && _intensity > 0)
+        {
+            float RandomXOffset = Random.Range(-0.5f, 0.5f);
+            float RandomYOffset = Random.Range(-0.5f, 0.5f);
+
+            Instantiate(_pukeProjectile, _camera.transform.position + new Vector3(RandomXOffset, RandomYOffset, 0f), _camera.transform.rotation = Quaternion.Euler(_camera.transform.rotation.eulerAngles + new Vector3(RandomXOffset * 30, RandomYOffset * 30, 0f)));
+
+            yield return new WaitForSeconds(_pukeDuration);
+        }
     }
 }
