@@ -76,7 +76,7 @@ public class PukeProjectile : MonoBehaviour
 
             }
 
-            _EnemyHealth.TakeDamage(0.3f);
+            _EnemyHealth.TakeDamage(0.05f);
 
             Destroy(gameObject);
 
