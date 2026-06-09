@@ -22,20 +22,20 @@ public class PukeVolumeEffect : MonoBehaviour
     void Update()
     {
 
-        float min = 0.3f;
+        float min = 0.1f;
 
-        float max = 0.6f;
+        float max = 0.9f;
 
         _effect.xMultiplier.value += _xMult * Time.deltaTime;
 
-        if (_effect.xMultiplier.value >= 0.6f)
+        if (_effect.xMultiplier.value >= max)
         {
 
             _xMult = Mathf.Lerp(_xMult, -1f, Time.deltaTime * 5f);
 
         }
 
-        else if (_effect.xMultiplier.value <= 0.3f)
+        else if (_effect.xMultiplier.value <= min)
         {
 
             _xMult = Mathf.Lerp(_xMult, 1f, Time.deltaTime * 5f);
@@ -45,14 +45,14 @@ public class PukeVolumeEffect : MonoBehaviour
 
         _effect.yMultiplier.value += _yMult * Time.deltaTime;
 
-        if (_effect.yMultiplier.value >= 0.6f)
+        if (_effect.yMultiplier.value >= max)
         {
 
             _yMult = Mathf.Lerp(_yMult, -1f, Time.deltaTime * 5f);
 
         }
 
-        else if (_effect.yMultiplier.value <= 0.3f)
+        else if (_effect.yMultiplier.value <= min)
         {
 
             _yMult = Mathf.Lerp(_yMult, 1f, Time.deltaTime * 5f);

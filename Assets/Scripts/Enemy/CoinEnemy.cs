@@ -7,23 +7,26 @@ public class CoinEnemy : Enemy
 
     private bool _attacking;
 
+    private bool _cd;
+
     protected override void MyUpdate()
     {
         if (_target == null) return;
 
         if (!_attacking)
-        {            
-            if (CheckIfInRange())
+        {
+            if (CheckIfInRange() && !_cd)
             {
 
                 _agent.ResetPath();
                 StartCoroutine(Attack());
                 _attacking = true;
+                _cd = true;
 
             }
 
             else
-            {   
+            {
                 _agent.SetDestination(_target.transform.position);
             }
         }
@@ -49,6 +52,11 @@ public class CoinEnemy : Enemy
 
         _rb.AddRelativeForce(new Vector3(0, 3, 2) * 25, ForceMode.Impulse);
 
+        yield return new WaitForSeconds(0.5f);
+
+        _rb.AddRelativeForce(new Vector3(0, -5, 2) * 25, ForceMode.Impulse);
+
+
         yield return new WaitForSeconds(3f);
 
         //Re-enable and reset velocity again.
@@ -60,9 +68,14 @@ public class CoinEnemy : Enemy
 
         transform.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
 
+        CurrentState = EnemyState.Moving;
+
         _attacking = false;
 
-        CurrentState = EnemyState.Moving;
+        yield return new WaitForSeconds(3f);
+
+        _cd = false;
+
     }
 
     private void OnCollisionEnter(Collision collision)

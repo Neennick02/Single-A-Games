@@ -72,19 +72,19 @@ public class Puke : MonoBehaviour
 
         _pukeDuration = (1 - _intensity) * 0.1f;
 
+        _pukeEffect.weight = _intensity;
+
         if (!_isPuking)
         {
 
-            _pukeEffect.weight = Mathf.Lerp(_pukeEffect.weight, 0, Time.deltaTime * 5f);
-
             if (_intensity < 1f)
             {
-                _barImage.fillAmount = _intensity += Time.deltaTime * 0.1f;
+                _barImage.fillAmount = _intensity += Time.deltaTime * 0.03f;
             }
 
             else
             {
-                _intensity = 1f;
+                StartCoroutine(ForcedPuke());
             }
 
             _pukeBegun = false;
@@ -94,8 +94,6 @@ public class Puke : MonoBehaviour
         else if (_isPuking && _intensity > 0)
         {
 
-            _pukeEffect.weight = _intensity;
-
             _barImage.fillAmount = _intensity -= Time.deltaTime * 0.3f;
 
             if (!_pukeBegun)
@@ -104,6 +102,11 @@ public class Puke : MonoBehaviour
                 StartCoroutine(PukeShake());
                 StartCoroutine(PukeShoot());
             }
+        }
+
+        else if (_isPuking && _intensity <= 0)
+        {
+            _isPuking = false;
         }
 
 
@@ -152,5 +155,18 @@ public class Puke : MonoBehaviour
 
             yield return new WaitForSeconds(_pukeDuration);
         }
+    }
+
+    private IEnumerator ForcedPuke()
+    {
+        while (_intensity > 0)
+        {
+
+            _isPuking = true;
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        _isPuking = false;
     }
 }

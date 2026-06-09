@@ -6,7 +6,7 @@ public class EnemyHealth : BaseHealth
 {
     public EnemyObject EnemyObject;
 
-    private MeshRenderer _meshRenderer;
+    private SkinnedMeshRenderer _meshRenderer;
     private Material _startMat;
     [SerializeField] private Material _damageMat;
     [SerializeField] private EnemyHealthBar _healthBar;
@@ -17,10 +17,10 @@ public class EnemyHealth : BaseHealth
         maxHealth = EnemyObject.MaxHealth;
         currentHealth = maxHealth;
 
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+        _meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         if (_meshRenderer == null)
         {
-            _meshRenderer = GetComponent<MeshRenderer>();
+            _meshRenderer = GetComponent<SkinnedMeshRenderer>();
         }
 
         _startMat = _meshRenderer.material;
@@ -28,6 +28,7 @@ public class EnemyHealth : BaseHealth
 
     public override void TakeDamage(float amount)
     {
+
         currentHealth -= amount;
 
         if (currentHealth <= 0)
