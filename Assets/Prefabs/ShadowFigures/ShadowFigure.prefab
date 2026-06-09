@@ -175,4 +175,5 @@ MonoBehaviour:
   Textures:
   - {fileID: 2800000, guid: fd3b238f19407f947ae045fa75820325, type: 3}
   - {fileID: 2800000, guid: 29984d67f4b05894e8ec95a570bff19f, type: 3}
-  duration: 1.5
+  - {fileID: 2800000, guid: 7e1cd400f56f29b43ae9f1e8a9dede03, type: 3}
+  duration: 2

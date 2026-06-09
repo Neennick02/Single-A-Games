@@ -34,16 +34,19 @@ public class SpikeDamage : MonoBehaviour
         {
             GameObject obj = ObjectsInRange[i];
 
-            PlayerHealth Phealth = obj.GetComponent<PlayerHealth>();
-            EnemyHealth  Ehealth = obj.GetComponent<EnemyHealth>();
+            if (obj != null)
+            {
+                PlayerHealth Phealth = obj.GetComponent<PlayerHealth>();
+                EnemyHealth Ehealth = obj.GetComponent<EnemyHealth>();
 
-            if(Phealth != null)
-            {
-                Phealth.TakeDamage(DamageAmount);
-            }
-            else if(Ehealth != null)
-            {
-                Ehealth.TakeDamage(DamageAmount);
+                if (Phealth != null)
+                {
+                    Phealth.TakeDamage(DamageAmount);
+                }
+                else if (Ehealth != null)
+                {
+                    Ehealth.TakeDamage(DamageAmount);
+                }
             }
         }
     }
