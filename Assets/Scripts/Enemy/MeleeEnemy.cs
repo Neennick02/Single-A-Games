@@ -8,9 +8,13 @@ public class MeleeEnemy : Enemy
 
     [SerializeField] private Collider _hitBox;
     private bool _dead;
+
+    private Animator _animator;
     protected override void MyStart()
     {
+        _rb = GetComponentInChildren<Rigidbody>();
 
+        _animator = GetComponentInChildren<Animator>();
     }
 
     protected override void MyUpdate()
@@ -18,6 +22,8 @@ public class MeleeEnemy : Enemy
         if (_dead) return;
 
         RotateToTarget();
+
+        _animator.SetInteger("State", (int)CurrentState);
 
         if (!_attacking && CurrentState == EnemyState.Moving)
         {
@@ -53,6 +59,8 @@ public class MeleeEnemy : Enemy
     {
         CurrentState = EnemyState.Attacking;
 
+        _agent.enabled = false;
+
         _hitBox.enabled = true;
         float timer = 0;
         while (timer < _attackTime)
@@ -65,6 +73,7 @@ public class MeleeEnemy : Enemy
 
         _hitBox.enabled = false;
         _attacking = false;
+        _agent.enabled = true;
         CurrentState = EnemyState.Moving;
     }
 

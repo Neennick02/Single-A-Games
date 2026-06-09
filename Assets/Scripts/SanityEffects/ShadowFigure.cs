@@ -11,6 +11,7 @@ public class ShadowFigure : MonoBehaviour
 
     private Material _mat;
     private Transform _playerTransform;
+    private bool fadeOut;
     private void Start()
     {
         _mat = GetComponent<Renderer>().sharedMaterial;
@@ -24,12 +25,12 @@ public class ShadowFigure : MonoBehaviour
 
     private void Update()
     {
-
         float dist = Vector3.Distance(transform.position, _playerTransform.position);
         
-        if(dist < FadeOutDistance)
+        if(dist < FadeOutDistance && !fadeOut)
         {
             StartCoroutine(FadeOutRoutine());
+            fadeOut = true;
         }
     }
 

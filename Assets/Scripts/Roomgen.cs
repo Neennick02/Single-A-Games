@@ -81,7 +81,6 @@ public class Roomgen : MonoBehaviour
             if (i == 0)
             {
                 _Room = Instantiate(_startRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
-
                 _Continue = true;
 
                 GameObject player = GameManager.Instance._currentPlayer;
@@ -140,9 +139,8 @@ public class Roomgen : MonoBehaviour
                 break;
             }
 
-        }
-       // _sceneLoader.SetActive(true);
-    }
 
+        }
+    }
 }
 

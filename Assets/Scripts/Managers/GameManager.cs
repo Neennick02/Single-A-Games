@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainScene" && !gameStarted)
         {
             _currentPlayer = Instantiate(PlayerPrefab, startPos, Quaternion.identity);
+
             gameStarted = true;
             OnGameStart?.Invoke();
         }

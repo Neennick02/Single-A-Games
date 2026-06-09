@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isSprinting;
     private float _multiplier = 1f;
+
+    private bool _switchingScene;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -24,9 +27,26 @@ public class PlayerMovement : MonoBehaviour
         look = GetComponent<PlayerLook>();
     }
 
+
+    /// <summary>
+    /// block player input when switching scenes
+    /// </summary>
+    private void OnEnable()
+    {
+        SceneLoader.OnMainSceneLoad += StartScene;
+        EndGame.OnSwitchScene += SwitchScene;
+    }
+
+    private void OnDisable()
+    {
+        SceneLoader.OnMainSceneLoad -= StartScene;
+        EndGame.OnSwitchScene -= SwitchScene;
+    }
+    //
+
     public void Tick()
     {
-        if (state.CurrentState == PlayerStateMachine.PlayerStates.Dead) return;
+        if (state.CurrentState == PlayerStateMachine.PlayerStates.Dead || _switchingScene) return;
 
         Vector2 moveInput = input.onFoot.Movement.ReadValue<Vector2>();
 
@@ -44,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ProcessMove(Vector2 inputDir)
     {
-        if (state.IsDead) return;
+        if (state.IsDead || _switchingScene) return;
 
         Transform cam = Camera.main.transform;
 
@@ -93,5 +113,17 @@ public class PlayerMovement : MonoBehaviour
     public void IncreaseMultiplier(float multiplier)
     {
         _multiplier = multiplier;
+    }
+
+    private void SwitchScene()
+    {
+        _switchingScene = true;
+        controller.enabled = false;
+    }
+    private void StartScene()
+    {
+        _switchingScene = false;
+        controller.enabled = true;
+
     }
 }
