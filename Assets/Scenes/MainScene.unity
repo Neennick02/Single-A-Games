@@ -679,7 +679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _levelSize
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _rooms.Array.size

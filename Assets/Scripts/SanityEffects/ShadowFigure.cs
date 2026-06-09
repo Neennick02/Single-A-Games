@@ -24,7 +24,6 @@ public class ShadowFigure : MonoBehaviour
 
     private void Update()
     {
-
         float dist = Vector3.Distance(transform.position, _playerTransform.position);
         
         if(dist < FadeOutDistance)
