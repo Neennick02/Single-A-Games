@@ -104,6 +104,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7869069054021405514}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 915b738f7c3c282409b8bdd78021fcd9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 915b738f7c3c282409b8bdd78021fcd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0059986115
       objectReference: {fileID: 0}
@@ -179,7 +183,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
