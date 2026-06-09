@@ -46,6 +46,7 @@ public class PlayerMotor : MonoBehaviour
         PlayerHealth.OnDeath -= Die;
         GameManager.OnGameStart -= StartGame;
     }
+
     private void Update()
     {
         State.Tick();

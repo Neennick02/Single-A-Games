@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     PlayerMotor motor;
     PlayerLook look;
 
-    bool blockInputs = false;
+    private bool blockInputs = false;
 
     public static event Action OnThrowGrenade;
     public static event Action OnPause;

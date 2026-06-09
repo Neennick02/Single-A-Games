@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class PlayerLook : MonoBehaviour
     float yRotation = 0f;
     float xSensitivity = 30f;
     float ySensitivity = 30f;
+
 
     private void Start()
     {
