@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseTexture:
-        m_Texture: {fileID: 2800000, guid: fd3b238f19407f947ae045fa75820325, type: 3}
+        m_Texture: {fileID: 2800000, guid: 29984d67f4b05894e8ec95a570bff19f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -123,7 +123,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FadeAmount: 0
+    - _FadeAmount: -1
     - _FadeOutDistance: 10
     - _GlossMapScale: 0
     - _Glossiness: 0
