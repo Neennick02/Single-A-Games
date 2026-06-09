@@ -297,7 +297,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2312771625967488002, guid: 2bc243489980c4f40969836ef872e341, type: 3}
       propertyPath: m_Name
-      value: 'HealCube '
+      value: 'EndCube '
       objectReference: {fileID: 0}
     - target: {fileID: 7697749587177962505, guid: 2bc243489980c4f40969836ef872e341, type: 3}
       propertyPath: m_LocalScale.x
