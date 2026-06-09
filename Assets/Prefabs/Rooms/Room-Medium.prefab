@@ -280,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 5450066059638729608}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9000001, y: 0.5, z: 11.800001}
+  m_LocalPosition: {x: -0.9000001, y: 0, z: 11.800001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -301,6 +301,8 @@ MonoBehaviour:
   _enemies:
   - {fileID: 7938202942073689913, guid: c0a8e2ed3d1c2a34abc430f365b5c342, type: 3}
   - {fileID: 8769454351178494101, guid: 42f89b97b1f4fc6488bf1bc48d1ab1f3, type: 3}
+  - {fileID: 6702637200171705465, guid: faf359fec23b020469891858fbc54302, type: 3}
+  - {fileID: 2748904760511033854, guid: 589287eddb95ac446bc256416f83fe34, type: 3}
   _amount: 4
 --- !u!1 &8061864322450421139
 GameObject:
