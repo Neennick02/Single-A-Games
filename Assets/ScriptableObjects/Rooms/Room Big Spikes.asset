@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ba03fce7fb2e24892c361818672ce9, type: 3}
-  m_Name: Corner Left
+  m_Name: Room Big Spikes
   m_EditorClassIdentifier: Assembly-CSharp::RoomObject
-  _RoomObject: {fileID: 2621774382341177861, guid: 7c8f3f7c664277c45b51c70331f5f16a, type: 3}
-  _RotationModifier: -90
+  _RoomObject: {fileID: 4336418366841673635, guid: 356465566a527804f80e38c43cf610c1, type: 3}
+  _RotationModifier: 0

@@ -8,6 +8,7 @@ public class Roomgen : MonoBehaviour
 
     [SerializeField] private List<RoomObject> _rooms = new List<RoomObject>();
     [SerializeField] private List<RoomObject> _combatRooms = new List<RoomObject>();
+
     [SerializeField] private RoomObject _startRoom;
     [SerializeField] private RoomObject _endRoom;
 
@@ -77,7 +78,7 @@ public class Roomgen : MonoBehaviour
 
         for (int i = 0; i < _levelSize; i++)
         {
-
+            //start room
             if (i == 0)
             {
                 _Room = Instantiate(_startRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
@@ -93,6 +94,7 @@ public class Roomgen : MonoBehaviour
                 player.transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
             }
 
+            //end room
             else if (i == _levelSize - 1)
             {
 
@@ -108,6 +110,7 @@ public class Roomgen : MonoBehaviour
 
             }
 
+            //other rooms
             else
             {
 
