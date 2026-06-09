@@ -27,15 +27,15 @@ RectTransform:
   m_GameObject: {fileID: 278368467084075853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7523559297981216148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 2.39}
-  m_SizeDelta: {x: 3, y: 0.3}
+  m_SizeDelta: {x: 2408, y: 2408}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4172587845936161778
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: cbcdce0f8fe84a2449a8afeddf67e8f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -106,8 +106,8 @@ RectTransform:
   m_LocalScale: {x: 0.41468802, y: 0.33333334, z: 0.9186538}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4574086866976226894}
   - {fileID: 1517116100580803754}
+  - {fileID: 4574086866976226894}
   m_Father: {fileID: 8169810018922257601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -282,15 +282,15 @@ RectTransform:
   m_GameObject: {fileID: 4217971655595763407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7523559297981216148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 2.39}
-  m_SizeDelta: {x: 3, y: 0.3}
+  m_SizeDelta: {x: 2408, y: 2408}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4731519553598470355
 CanvasRenderer:
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b968c8e7db04dc147afc9072049964c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c87b566a0638dad429c3fc9e811e8248, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -610,6 +610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   currentHealth: 0
   EnemyObject: {fileID: 11400000, guid: a5dd25e28f4d84140bb0a2283af87f97, type: 2}
+  MeshRenderers: []
   _damageMat: {fileID: 2100000, guid: 223032c97a0361d468acc4cab2b0a77d, type: 2}
   _healthBar: {fileID: 6553485459679930349}
 --- !u!65 &3700985122723941474
