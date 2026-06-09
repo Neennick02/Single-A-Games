@@ -305,6 +305,7 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 233300373404658936, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
   gameStarted: 0
   _currentPlayer: {fileID: 0}
+  _roomGen: {fileID: 692179272}
 --- !u!4 &618525719
 Transform:
   m_ObjectHideFlags: 0
@@ -317,7 +318,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 692179273}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &626811039
@@ -665,13 +667,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &692179272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+  m_PrefabInstance: {fileID: 767437840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811750468d6fdea43a64d5cb4417f486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Roomgen
+--- !u!4 &692179273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+  m_PrefabInstance: {fileID: 767437840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &767437840
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 618525719}
     m_Modifications:
     - target: {fileID: 4555713739197464209, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_IsActive
@@ -719,15 +737,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -869,6 +887,5 @@ SceneRoots:
   - {fileID: 1357970699}
   - {fileID: 149173258}
   - {fileID: 107233936}
-  - {fileID: 767437840}
   - {fileID: 618525719}
   - {fileID: 1265803414}

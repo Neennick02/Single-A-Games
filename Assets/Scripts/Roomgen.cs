@@ -142,5 +142,10 @@ public class Roomgen : MonoBehaviour
 
         }
     }
+
+    public void SetLevelSize(byte size)
+    {
+        _levelSize = size;
+    }
 }
 
