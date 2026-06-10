@@ -18,6 +18,7 @@ public class PlayerSlide : MonoBehaviour
     private Vector3 slideVelocity;
     private float slideTimer;
     public ParticleSystem SpeedTrails;
+    public AudioClip DashClip;
 
     private void Start()
     {
@@ -58,6 +59,7 @@ public class PlayerSlide : MonoBehaviour
         {
             StartSlide();
             SpeedTrails.Play();
+            AudioManager.Instance.PlayClip(DashClip, .5f, Random.Range(0.8f, 1.2f));
         }
     }
 

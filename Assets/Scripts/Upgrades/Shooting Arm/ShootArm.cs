@@ -27,6 +27,9 @@ public class ShootArm : MonoBehaviour
 
     public static event Action<string, bool> InstantMessage;
 
+    public AudioClip ChargeAudio;
+
+    public AudioClip ShootAudio;
     private void OnEnable()
     {
 
@@ -166,6 +169,9 @@ public class ShootArm : MonoBehaviour
 
         _isShaking = true;
 
+        //play sound
+        AudioManager.Instance.PlayClip(ChargeAudio);
+
         yield return new WaitForSeconds(1f);
 
         if (_isAttacking)
@@ -187,6 +193,8 @@ public class ShootArm : MonoBehaviour
         _arm = false;
 
         Instantiate(_shootingArm, _camera.transform.position, _camera.transform.rotation);
+
+        AudioManager.Instance.PlayClip(ShootAudio);
     }
 
     private void PickUpArm(GameObject arm)

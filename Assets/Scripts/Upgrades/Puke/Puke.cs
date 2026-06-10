@@ -31,6 +31,7 @@ public class Puke : MonoBehaviour
     [SerializeField] private CameraShakeManager _cameraShakeManager;
 
     [SerializeField] private Volume _pukeEffect;
+    public AudioClip PukeAudio;
 
     private void Start()
     {
@@ -146,6 +147,8 @@ public class Puke : MonoBehaviour
 
     private IEnumerator PukeShoot()
     {
+        AudioManager.Instance.PlayClip(PukeAudio);
+
         while (_isPuking && _intensity > 0)
         {
             float RandomXOffset = Random.Range(-0.5f, 0.5f);

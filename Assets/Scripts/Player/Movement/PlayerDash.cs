@@ -14,7 +14,6 @@ public class PlayerDash : MonoBehaviour
 
     private bool _started;
 
-
     private void Start()
     {
         controller = GetComponent<CharacterController>();
