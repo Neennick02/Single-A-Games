@@ -130,8 +130,6 @@ public class Roomgen : MonoBehaviour
 
             if (_Obstructed)
             {
-                Time.timeScale = 0f;
-                yield break;
 
                 Rooms.Clear();
                 foreach (Transform child in transform) Destroy(child.gameObject);
