@@ -14,16 +14,13 @@ public class Roomgen : MonoBehaviour
 
     private Coroutine _mapRoutine;
     public List<GameObject> Rooms = new List<GameObject>(); 
-
-    [SerializeField] private byte _levelSize;
+    public static byte LevelSize;
 
     public bool _Obstructed;
     private bool _isGenerating;
     public bool _Continue;
 
     private float _Timer;
-
-    public GameObject _sceneLoader;
 
     void Awake()
     {
@@ -32,15 +29,14 @@ public class Roomgen : MonoBehaviour
 
     }
 
-    private void Start()
+    public void Start()
     {
-
         _mapRoutine = StartCoroutine(GenerateMap());
-
     }
 
     private void Update()
     {
+        Debug.Log(LevelSize);
         if (_isGenerating) return; 
 
         if (_Obstructed)
@@ -76,7 +72,7 @@ public class Roomgen : MonoBehaviour
         _isGenerating = true;
         _Obstructed = false;
 
-        for (int i = 0; i < _levelSize; i++)
+        for (int i = 0; i < LevelSize; i++)
         {
             //start room
             if (i == 0)
@@ -95,7 +91,7 @@ public class Roomgen : MonoBehaviour
             }
 
             //end room
-            else if (i == _levelSize - 1)
+            else if (i == LevelSize - 1)
             {
 
                 _Room = Instantiate(_endRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
@@ -143,11 +139,6 @@ public class Roomgen : MonoBehaviour
                 yield break;
             }
         }
-    }
-
-    public void SetLevelSize(byte size)
-    {
-        _levelSize = size;
     }
 }
 

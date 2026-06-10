@@ -1,13 +1,14 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public static event Action OnMainSceneLoad;
-    private void Start()
+    internal static Action<Scene, LoadSceneMode> sceneLoaded;
+
+    private void Awake()
     {
-        OnMainSceneLoad?.Invoke();
-        Destroy(gameObject);
+
     }
 }
