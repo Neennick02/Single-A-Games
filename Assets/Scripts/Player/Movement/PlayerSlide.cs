@@ -17,6 +17,7 @@ public class PlayerSlide : MonoBehaviour
 
     private Vector3 slideVelocity;
     private float slideTimer;
+    public ParticleSystem SpeedTrails;
 
     private void Start()
     {
@@ -49,11 +50,15 @@ public class PlayerSlide : MonoBehaviour
             if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.1f && CorrectDirection())
             {
                 state.SetState(PlayerStateMachine.PlayerStates.Dashing);
+                SpeedTrails.Play();
             }
 
         }
         else if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.2f && CorrectDirection())
+        {
             StartSlide();
+            SpeedTrails.Play();
+        }
     }
 
     private void StartSlide()

@@ -132,7 +132,7 @@ MonoBehaviour:
   _detonationTime: 3
   _damage: 3
   EnemyList: []
-  _particleSystem: {fileID: 4982632286933658328, guid: 09430582e79430d42a91f6dac634e9a8, type: 3}
+  _particleSystem: {fileID: 4486915153217955182, guid: 4838ab2f30cc156479b6fbd4154309b1, type: 3}
 --- !u!54 &3382874834206165201
 Rigidbody:
   m_ObjectHideFlags: 0
