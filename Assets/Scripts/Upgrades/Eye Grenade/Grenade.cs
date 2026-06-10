@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class Grenade : MonoBehaviour
 
     public List<EnemyHealth> EnemyList = new List<EnemyHealth>();
     [SerializeField] private ParticleSystem _particleSystem;
-
+    public AudioClip AudioClip;
     private void Start()
     {
         _rangeCollider = GetComponent<Collider>();
@@ -60,7 +61,7 @@ public class Grenade : MonoBehaviour
         Instantiate(_particleSystem, transform.position, Quaternion.identity);
 
         //play sound
-
+        AudioManager.Instance.PlayClip(AudioClip, 1, Random.Range(0.8f, 1.2f));
 
         Destroy(gameObject);
     }

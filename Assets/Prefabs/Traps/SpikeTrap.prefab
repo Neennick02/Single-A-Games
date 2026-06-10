@@ -51,6 +51,7 @@ MonoBehaviour:
   Duration: 0.2
   ResetDur: 1.5
   SpikeTransform: {fileID: 7530853255620353420}
+  SpikeSound: {fileID: 8300000, guid: dc2dec05d4953104580f33387ed8cadf, type: 3}
 --- !u!65 &9086163240403089830
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -162,6 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpikeDamage
   DamageAmount: 5
+  ResetDur: 1
+  ObjectsInRange: []
 --- !u!4 &7530853255620353420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9012737110359517075, guid: 02d9d32037f2ee54fbcd5fcf620a413a, type: 3}

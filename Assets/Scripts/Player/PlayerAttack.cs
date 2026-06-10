@@ -19,6 +19,9 @@ public class PlayerAttack : MonoBehaviour
 
     private bool _isDead;
 
+    public AudioClip SwingAudio;
+    public AudioClip HitAudio;
+
     private void Start()
     {
         _camera = GetComponentInChildren<Camera>().gameObject;
@@ -62,6 +65,9 @@ public class PlayerAttack : MonoBehaviour
             StartCoroutine(Attack());
             _isAttacking = true;
 
+
+            //player swing sound
+            AudioManager.Instance.PlayClip(SwingAudio, 1, Random.Range(0.8f, 1.2f));
         }
 
     }
@@ -93,6 +99,8 @@ public class PlayerAttack : MonoBehaviour
                 }
 
                 health.TakeDamage(_healthScript.PlayerObject.Damage * _damageMultiplier);
+
+                AudioManager.Instance.PlayClip(HitAudio, 1, Random.Range(0.8f, 1.2f));
             }
 
         }

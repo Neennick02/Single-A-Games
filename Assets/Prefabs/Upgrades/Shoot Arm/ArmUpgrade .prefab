@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootArm
   _isAttacking: 0
+  _isShaking: 0
   _attachedArm: {fileID: 0}
   _shootingArm: {fileID: 4798704437540823026, guid: a2bd3f52e10507a4099156f7b1f07b91, type: 3}
   _camera: {fileID: 0}
   _arm: 1
+  ChargeAudio: {fileID: 8300000, guid: c5e91e978ce546f48a9fa65e76ecaa36, type: 3}
+  ShootAudio: {fileID: 8300000, guid: a75df22441397f2439e71b888394a1d1, type: 3}

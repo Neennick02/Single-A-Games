@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     private float _multiplier = 1f;
 
     private bool _switchingScene;
+
+    public List<AudioClip> FootstepAudio;
+    private float _stepTimer;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -66,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 horizontalVel = controller.velocity;
         horizontalVel.y = 0f;
         look.UpdateFOV(horizontalVel.magnitude);
+
+        PlayFootSteps(3f);
     }
 
     public void ProcessMove(Vector2 inputDir)
@@ -131,5 +138,24 @@ public class PlayerMovement : MonoBehaviour
         _switchingScene = false;
         controller.enabled = true;
 
+    }
+
+    private void PlayFootSteps(float interval)
+    {
+        Vector3 vel = controller.velocity;
+        vel.y = 0;
+
+        interval /= vel.magnitude ;
+
+        _stepTimer += Time.deltaTime;
+
+        if (controller.isGrounded && 
+            _stepTimer> interval &&
+            vel.magnitude > 0.1f &&
+            state.CurrentState != PlayerStateMachine.PlayerStates.Sliding)
+        {
+            AudioManager.Instance.PlayClips(FootstepAudio, .7f, Random.Range(0.8f, 1.2f));
+            _stepTimer = 0;
+        }
     }
 }
