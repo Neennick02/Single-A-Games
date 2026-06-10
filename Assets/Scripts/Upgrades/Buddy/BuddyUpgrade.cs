@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BuddyUpgrade : MonoBehaviour
 {
@@ -6,12 +7,12 @@ public class BuddyUpgrade : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneLoader.OnMainSceneLoad += SpawnBuddy;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
-        SceneLoader.OnMainSceneLoad -= SpawnBuddy;
+        SceneLoader.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Start()
@@ -24,5 +25,11 @@ public class BuddyUpgrade : MonoBehaviour
         Vector3 pos = Camera.main.transform.position + new Vector3(0, 0, 2);
 
         GameObject buddy = Instantiate(BuddyPrefab, pos, Quaternion.identity);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainScene")
+            SpawnBuddy();
     }
 }

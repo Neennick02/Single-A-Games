@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -33,14 +34,19 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        SceneLoader.OnMainSceneLoad += StartScene;
+        SceneManager.sceneLoaded += OnSceneLoaded;
         EndGame.OnSwitchScene += SwitchScene;
     }
 
     private void OnDisable()
     {
-        SceneLoader.OnMainSceneLoad -= StartScene;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         EndGame.OnSwitchScene -= SwitchScene;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainScene")
+            StartScene();
     }
     //
 

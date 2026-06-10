@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShadowFigure : MonoBehaviour
@@ -12,12 +11,19 @@ public class ShadowFigure : MonoBehaviour
     private Material _mat;
     private Transform _playerTransform;
     private bool fadeOut;
+
+    private void OnDestroy()
+    {
+
+        _mat.SetFloat("_FadeAmount", 0);
+
+    }
     private void Start()
     {
         _mat = GetComponent<Renderer>().sharedMaterial;
         _mat.SetFloat("_FadeAmount", 0);
 
-        Texture randomT = Textures[Random.Range(0 , Textures.Count-1)];
+        Texture randomT = Textures[Random.Range(0, Textures.Count - 1)];
         _mat.SetTexture("_BaseTexture", randomT);
 
         _playerTransform = PlayerMotor.Instance.transform;
@@ -26,8 +32,8 @@ public class ShadowFigure : MonoBehaviour
     private void Update()
     {
         float dist = Vector3.Distance(transform.position, _playerTransform.position);
-        
-        if(dist < FadeOutDistance && !fadeOut)
+
+        if (dist < FadeOutDistance && !fadeOut)
         {
             StartCoroutine(FadeOutRoutine());
             fadeOut = true;
