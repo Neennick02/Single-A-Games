@@ -16,6 +16,8 @@ public class Spikes : MonoBehaviour
 
     [SerializeField] private Transform SpikeTransform;
     private Collider SpikeCollider;
+
+    public AudioClip SpikeSound;
     private void Start()
     {
         SpikeCollider = SpikeTransform.GetComponent<Collider>();
@@ -54,11 +56,18 @@ public class Spikes : MonoBehaviour
 
     IEnumerator ExtendSpikes(float start, float end)
     {
+        if(start > end)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
         float timer = 0f;
         float y = StartLength;
 
-        
-        while(timer < Duration)
+        AudioManager.Instance.PlayClip(SpikeSound);
+
+
+        while (timer < Duration)
         {
             timer += Time.deltaTime;
 
