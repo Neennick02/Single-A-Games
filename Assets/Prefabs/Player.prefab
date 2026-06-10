@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.021845466, y: 0.97721833, z: -0.12607056, w: 0.16933207}
-  m_LocalPosition: {x: -0.0032544148, y: 1.002538, z: 0.009108679}
+  m_LocalRotation: {x: 0.03621659, y: -0.26251826, z: 0.009860556, w: 0.96419674}
+  m_LocalPosition: {x: 0.00505352, y: 1.0007502, z: -0.008594513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -447,8 +447,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471022230270949219}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.021845466, y: 0.97721833, z: -0.12607056, w: 0.16933207}
-  m_LocalPosition: {x: -0.003254415, y: 1.002538, z: 0.00910868}
+  m_LocalRotation: {x: 0.03621659, y: -0.26251826, z: 0.009860556, w: 0.96419674}
+  m_LocalPosition: {x: 0.005054474, y: 1.0007501, z: -0.008594513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -543,7 +543,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: 160.33884
+    Value: -30.461063
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -553,7 +553,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 14.702205
+    Value: 4.302198
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
@@ -908,6 +908,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2176439293569415137}
     m_Modifications:
+    - target: {fileID: 2704956387080397424, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: _speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704956387080397424, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: HeartAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f0bdbe098241d1459549de9e39e12e5, type: 3}
     - target: {fileID: 3583635172241120633, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
       propertyPath: m_Name
       value: Managers
@@ -956,6 +964,22 @@ PrefabInstance:
       propertyPath: _drainRate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: _voicesMaxInterval
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: _voicesMinInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: VoiceClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: 'VoiceClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 86db42c40f642324f90dd26dc578e4c0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
