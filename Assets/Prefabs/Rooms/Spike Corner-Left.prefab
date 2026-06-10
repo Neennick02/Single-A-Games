@@ -541,6 +541,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_CornerTowardsLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 5076162780613387218, guid: d31e3b401d821a34e8dc569bc47a52d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.9895325
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076162780613387218, guid: d31e3b401d821a34e8dc569bc47a52d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.000005722046
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076162780613387218, guid: d31e3b401d821a34e8dc569bc47a52d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.999993
+      objectReference: {fileID: 0}
     - target: {fileID: 5102736941613712044, guid: d31e3b401d821a34e8dc569bc47a52d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

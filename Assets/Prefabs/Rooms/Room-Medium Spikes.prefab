@@ -613,6 +613,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1610915398006878813, guid: 5fc217f27f6c73240a9da844b6844752, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 38.68831
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595518464435262059, guid: 5fc217f27f6c73240a9da844b6844752, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 38.68831
+      objectReference: {fileID: 0}
     - target: {fileID: 7678644922697315472, guid: 5fc217f27f6c73240a9da844b6844752, type: 3}
       propertyPath: m_Name
       value: StaticSpikeTrap (1)
@@ -678,6 +686,14 @@ PrefabInstance:
     - target: {fileID: 425889246473869528, guid: 5fc217f27f6c73240a9da844b6844752, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610915398006878813, guid: 5fc217f27f6c73240a9da844b6844752, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 38.69831
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595518464435262059, guid: 5fc217f27f6c73240a9da844b6844752, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 38.69831
       objectReference: {fileID: 0}
     - target: {fileID: 7678644922697315472, guid: 5fc217f27f6c73240a9da844b6844752, type: 3}
       propertyPath: m_Name
