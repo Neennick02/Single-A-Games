@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 51227d541461db8428e8e8ad4e089fe8, type: 2}
     - target: {fileID: 919132149155446097, guid: 45cf54bacb557c943a595ca1f8584d9c, type: 3}
       propertyPath: m_Name
-      value: SlightlyFleshyWall_Low
+      value: P_Bricks_Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -88,5 +88,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0000001509958, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 0.06269319, y: 2, z: 2}
+  m_Center: {x: -0.031346522, y: 1, z: 0}
