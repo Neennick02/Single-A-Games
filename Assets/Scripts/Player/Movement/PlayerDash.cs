@@ -12,7 +12,8 @@ public class PlayerDash : MonoBehaviour
     private Vector3 dashVelocity;
     private float dashTimer;
 
-    private bool _started; 
+    private bool _started;
+
 
     private void Start()
     {
