@@ -13,6 +13,9 @@ public class LensDistortionManager : MonoBehaviour
     [SerializeField] private float _distortionRange = 0.5f;
     [SerializeField] private float _speed = 0.5f;
     private float timer = 0f;
+
+    public AudioClip HeartAudio;
+    private bool _isPlaying = false;
     private void Start()
     {
         _volume = GetComponent<Volume>();
@@ -31,6 +34,16 @@ public class LensDistortionManager : MonoBehaviour
             timer += Time.deltaTime;
             _currentValue = Mathf.PingPong(timer * _speed, _distortionRange);
             lensDistortion.intensity.value = _currentValue;
+
+            if(_distortionRange - _currentValue <= 0.1f && !_isPlaying)
+            {
+                AudioManager.Instance.PlayClip(HeartAudio, 2f);
+                _isPlaying = true;
+            }
+            else
+            {
+                _isPlaying = false;
+            }
         }
     }
 }

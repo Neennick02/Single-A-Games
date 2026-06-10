@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SanityManager : MonoBehaviour
@@ -34,6 +36,14 @@ public class SanityManager : MonoBehaviour
     //lens distortion
     [SerializeField] private float _lensDistortThreshold = 20f;
 
+    public List<AudioClip> VoiceClips;
+    [SerializeField] private float _voicesThreshold = 45f;
+
+    [SerializeField] private float _voicesMinInterval;
+    [SerializeField] private float _voicesMaxInterval;
+    private float _currentInterval;
+    private bool _waitingOnVoice;
+    private float _voiceTimer;
     private void Awake()
     {
         SanityAmount = MaxSanity;
@@ -90,8 +100,36 @@ public class SanityManager : MonoBehaviour
             OnDamageOutputChange?.Invoke(1);
         }
 
+        HandleVoices();
+        HandleLensDistortion();
+    }
+
+    private void HandleVoices()
+    {
+        if(SanityAmount < _voicesThreshold)
+        {
+            //calculate new interval
+            if (!_waitingOnVoice)
+            {
+                _currentInterval = UnityEngine.Random.Range(_voicesMinInterval, _voicesMaxInterval);
+                _waitingOnVoice = true;
+            }
+
+            _voiceTimer += Time.deltaTime;
+
+            if(_voiceTimer > _currentInterval)
+            {
+                AudioManager.Instance.PlayClips(VoiceClips, UnityEngine.Random.Range(0.1f, 1f));
+                _voiceTimer = 0f;
+                _waitingOnVoice = false;
+            }
+        }
+    }
+
+    private void HandleLensDistortion()
+    {
         //update lens distortion
-        if(SanityAmount < _lensDistortThreshold)
+        if (SanityAmount < _lensDistortThreshold)
         {
             LensDistortionManager.Distort = true;
         }
@@ -100,6 +138,7 @@ public class SanityManager : MonoBehaviour
             LensDistortionManager.Distort = false;
         }
     }
+
 
     public void StopStartDrain(bool active)
     {

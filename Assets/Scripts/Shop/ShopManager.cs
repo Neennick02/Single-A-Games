@@ -18,6 +18,9 @@ public class ShopManager : MonoBehaviour
     public static event Action<string> OnShopMessage;
     public static event Action<bool> OnShopOpenClose;
 
+
+    public AudioClip BuyAudio;
+    public AudioClip ButtonAudio;
     private void Awake()
     {
         player = FindFirstObjectByType<PlayerHealth>();
@@ -110,6 +113,7 @@ public class ShopManager : MonoBehaviour
         Time.timeScale = 1;
 
         gameObject.SetActive(false);
+        AudioManager.Instance.PlayClip(ButtonAudio);
     }
 
     private void OnDisable()
@@ -146,10 +150,13 @@ public class ShopManager : MonoBehaviour
             _assignedUpgrades.Clear();
             Time.timeScale = 1;
             gameObject.SetActive(false);
+            AudioManager.Instance.PlayClip(ButtonAudio);
+            AudioManager.Instance.PlayClip(BuyAudio);
         }
         else
         {
             OnShopMessage?.Invoke("Not enough Sanity");
+            AudioManager.Instance.PlayClip(ButtonAudio);
         }
     }
 }
