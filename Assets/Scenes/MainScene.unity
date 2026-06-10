@@ -305,6 +305,8 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 233300373404658936, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
   gameStarted: 0
   _currentPlayer: {fileID: 0}
+  _startLevelSize: 2
+  LevelSize: 0
 --- !u!4 &618525719
 Transform:
   m_ObjectHideFlags: 0
@@ -679,15 +681,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _levelSize
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _sceneLoader
       value: 
-      objectReference: {fileID: 1265803412}
+      objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _rooms.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: '_rooms.Array.data[3]'
@@ -696,7 +698,15 @@ PrefabInstance:
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: '_rooms.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: f8fe8e47f07fb67458b40060293b62b6, type: 2}
+      objectReference: {fileID: 11400000, guid: cca09724c2fd88b46888b37165254d94, type: 2}
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: '_rooms.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f7974dd08cac62a49af8b718872da5c1, type: 2}
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: '_rooms.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 44080990cbdd9e7488ea2497a4aba002, type: 2}
     - target: {fileID: 5413135809406820335, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_Name
       value: RoomGeneration
@@ -719,15 +729,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7601017890867581911, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -746,50 +756,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
---- !u!1 &1265803412
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1265803414}
-  - component: {fileID: 1265803413}
-  m_Layer: 0
-  m_Name: SceneLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1265803413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265803412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44e35ecd0ac22f45a7ea1d938cd9c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
---- !u!4 &1265803414
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265803412}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.43296, y: -9.11542, z: 24.54018}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1357970699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -869,6 +835,5 @@ SceneRoots:
   - {fileID: 1357970699}
   - {fileID: 149173258}
   - {fileID: 107233936}
-  - {fileID: 767437840}
   - {fileID: 618525719}
-  - {fileID: 1265803414}
+  - {fileID: 767437840}

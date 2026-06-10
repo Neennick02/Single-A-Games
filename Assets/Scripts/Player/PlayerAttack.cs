@@ -93,7 +93,6 @@ public class PlayerAttack : MonoBehaviour
                 }
 
                 health.TakeDamage(_healthScript.PlayerObject.Damage * _damageMultiplier);
-                Debug.Log("hit " + hit.transform.name);
             }
 
         }

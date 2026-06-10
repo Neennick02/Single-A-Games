@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Roomgen : MonoBehaviour
@@ -7,18 +8,19 @@ public class Roomgen : MonoBehaviour
 
     [SerializeField] private List<RoomObject> _rooms = new List<RoomObject>();
     [SerializeField] private List<RoomObject> _combatRooms = new List<RoomObject>();
+
     [SerializeField] private RoomObject _startRoom;
     [SerializeField] private RoomObject _endRoom;
 
-    [SerializeField] private byte _levelSize;
+    private Coroutine _mapRoutine;
+    public List<GameObject> Rooms = new List<GameObject>(); 
+    public static byte LevelSize;
 
     public bool _Obstructed;
-
+    private bool _isGenerating;
     public bool _Continue;
 
     private float _Timer;
-
-    public GameObject _sceneLoader;
 
     void Awake()
     {
@@ -27,25 +29,20 @@ public class Roomgen : MonoBehaviour
 
     }
 
-    private void Start()
+    public void Start()
     {
-
-        StartCoroutine(GenerateMap());
-
+        _mapRoutine = StartCoroutine(GenerateMap());
     }
 
     private void Update()
     {
+        Debug.Log(LevelSize);
+        if (_isGenerating) return; 
+
         if (_Obstructed)
-        {
             _Timer += Time.deltaTime;
-        }
-
         else
-        {
             _Timer = 0;
-        }
-
 
         if (_Timer >= 0.3f)
         {
@@ -53,9 +50,9 @@ public class Roomgen : MonoBehaviour
 
             Debug.Log("Reset came from the update");
 
-            StartCoroutine(GenerateMap());
+            StopCoroutine(_mapRoutine);
+            _mapRoutine = StartCoroutine(GenerateMap());
         }
-
     }
 
     private IEnumerator GenerateMap()
@@ -72,15 +69,16 @@ public class Roomgen : MonoBehaviour
 
         GameObject _Room = null;
 
+        _isGenerating = true;
         _Obstructed = false;
 
-
-        for (int i = 0; i < _levelSize; i++)
+        for (int i = 0; i < LevelSize; i++)
         {
-
+            //start room
             if (i == 0)
             {
                 _Room = Instantiate(_startRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
+                Rooms.Add(_Room);
                 _Continue = true;
 
                 GameObject player = GameManager.Instance._currentPlayer;
@@ -92,10 +90,12 @@ public class Roomgen : MonoBehaviour
                 player.transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
             }
 
-            else if (i == _levelSize - 1)
+            //end room
+            else if (i == LevelSize - 1)
             {
 
                 _Room = Instantiate(_endRoom._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
+                Rooms.Add(_Room);
 
                 _Attachment = _PrevRoom.GetComponentInChildren<Attach>().gameObject;
 
@@ -106,12 +106,14 @@ public class Roomgen : MonoBehaviour
 
             }
 
+            //other rooms
             else
             {
 
                 _Random = Random.Range(0, _rooms.Count);
 
                 _Room = Instantiate(_rooms[_Random]._RoomObject, transform.position, Quaternion.Euler(transform.eulerAngles.x, _Rotation, transform.eulerAngles.z), gameObject.transform);
+                Rooms.Add(_Room);
 
                 _Attachment = _PrevRoom.GetComponentInChildren<Attach>().gameObject;
 
@@ -129,17 +131,13 @@ public class Roomgen : MonoBehaviour
 
             if (_Obstructed)
             {
-
+                Rooms.Clear();
                 foreach (Transform child in transform) Destroy(child.gameObject);
+                StopCoroutine(_mapRoutine);
+                _mapRoutine = StartCoroutine(GenerateMap());
 
-                Debug.Log("Reset");
-
-                StartCoroutine(GenerateMap());
-
-                break;
+                yield break;
             }
-
-
         }
     }
 }

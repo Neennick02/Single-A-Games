@@ -1,6 +1,4 @@
 using System;
-using System.Security.Cryptography;
-using Unity.Multiplayer.PlayMode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,22 +11,41 @@ public class GameManager : MonoBehaviour
     public bool gameStarted;
     public GameObject _currentPlayer;
 
+
+    //calculate level size
+    public byte _startLevelSize = 5;
+    public byte LevelSize;
+
+    private bool _subscribed;
+    private bool _firstFloor = true;
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            LevelSize = _startLevelSize;
         }
         else
         {
             Destroy(gameObject);
+            return;
+        }
+
+        if (!_subscribed)
+        {
+            GameOverScreen.OnReset += ResetPlayer;
+            PauseScreen.OnReset += ResetPlayer;
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            _subscribed = true;
         }
     }
 
     private void ResetPlayer()
     {
         gameStarted = false;
+        LevelSize = _startLevelSize;
+        Roomgen.LevelSize = LevelSize;
         Destroy(_currentPlayer);
     }
 
@@ -38,6 +55,7 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "MainScene" && !gameStarted)
         {
+            //create player
             _currentPlayer = Instantiate(PlayerPrefab, startPos, Quaternion.identity);
 
             gameStarted = true;
@@ -45,19 +63,29 @@ public class GameManager : MonoBehaviour
         }
         else if (gameStarted)
         {
+            //reset player pos
             _currentPlayer.transform.position = startPos;
         }
     }
-    private void OnEnable()
-    {
-        GameOverScreen.OnReset += ResetPlayer;
-        PauseScreen.OnReset += ResetPlayer;
-        SceneLoader.OnMainSceneLoad += LoadMainScene;
-    }
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameOverScreen.OnReset -= ResetPlayer;
         PauseScreen.OnReset -= ResetPlayer;
-        SceneLoader.OnMainSceneLoad -= LoadMainScene;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainScene")
+        {
+            LoadMainScene();
+
+            if (!_firstFloor)
+                LevelSize += 2;
+
+            Roomgen.LevelSize = LevelSize;
+            _firstFloor = false;
+        }
     }
 }

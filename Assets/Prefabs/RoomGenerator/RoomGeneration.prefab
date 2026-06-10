@@ -45,13 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Roomgen
   _rooms:
-  - {fileID: 11400000, guid: 487304302ee9254439126ccbab2160d7, type: 2}
-  - {fileID: 11400000, guid: bbd86196814b14d48921fee7b1904d66, type: 2}
-  - {fileID: 11400000, guid: c8b0682054fc4134d845dd1d664e1690, type: 2}
   - {fileID: 11400000, guid: f8fe8e47f07fb67458b40060293b62b6, type: 2}
+  - {fileID: 11400000, guid: 487304302ee9254439126ccbab2160d7, type: 2}
+  - {fileID: 11400000, guid: c8b0682054fc4134d845dd1d664e1690, type: 2}
+  - {fileID: 11400000, guid: bbd86196814b14d48921fee7b1904d66, type: 2}
+  - {fileID: 11400000, guid: 44080990cbdd9e7488ea2497a4aba002, type: 2}
+  - {fileID: 11400000, guid: f7974dd08cac62a49af8b718872da5c1, type: 2}
+  - {fileID: 11400000, guid: cca09724c2fd88b46888b37165254d94, type: 2}
   _combatRooms: []
   _startRoom: {fileID: 11400000, guid: a5cd77ab015ff934b80de473df663bf2, type: 2}
   _endRoom: {fileID: 11400000, guid: d87427f4c06340a40bd3c4d43082b67b, type: 2}
+  Rooms: []
   _levelSize: 7
   _Obstructed: 0
   _Continue: 0

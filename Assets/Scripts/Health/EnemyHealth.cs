@@ -1,12 +1,14 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : BaseHealth
 {
     public EnemyObject EnemyObject;
 
-    private SkinnedMeshRenderer _meshRenderer;
+    public List<Renderer> MeshRenderers;
     private Material _startMat;
     [SerializeField] private Material _damageMat;
     [SerializeField] private EnemyHealthBar _healthBar;
@@ -17,13 +19,11 @@ public class EnemyHealth : BaseHealth
         maxHealth = EnemyObject.MaxHealth;
         currentHealth = maxHealth;
 
-        _meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        if (_meshRenderer == null)
-        {
-            _meshRenderer = GetComponent<SkinnedMeshRenderer>();
-        }
 
-        _startMat = _meshRenderer.material;
+        for (int i = 0; i < MeshRenderers.Count; i++)
+        {
+            _startMat = MeshRenderers[i].material;
+        }
     }
 
     public override void TakeDamage(float amount)
@@ -58,9 +58,9 @@ public class EnemyHealth : BaseHealth
 
     private IEnumerator FlashRed()
     {
-        _meshRenderer.material = _damageMat;
+        MeshRenderers[0].material = _damageMat;
         yield return new WaitForSeconds(0.1f);
-        _meshRenderer.material = _startMat;
+        MeshRenderers[0].material = _startMat;
     }
     IEnumerator FadeOutAndDie()
     {
