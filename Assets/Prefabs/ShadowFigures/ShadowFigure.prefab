@@ -177,3 +177,4 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 29984d67f4b05894e8ec95a570bff19f, type: 3}
   - {fileID: 2800000, guid: 7e1cd400f56f29b43ae9f1e8a9dede03, type: 3}
   duration: 2
+  Particles: {fileID: 8533028105429717539, guid: 85280c95eb54b314daea4e67959ac79b, type: 3}

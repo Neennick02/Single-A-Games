@@ -12,6 +12,8 @@ public class ShadowFigure : MonoBehaviour
     private Transform _playerTransform;
     private bool fadeOut;
 
+    public GameObject Particles;
+
     private void OnDestroy()
     {
 
@@ -44,6 +46,8 @@ public class ShadowFigure : MonoBehaviour
     {
         float time = 0f;
         float amount = 0;
+
+        Instantiate(Particles, transform.position, Quaternion.identity);
 
         while (time < duration)
         {
