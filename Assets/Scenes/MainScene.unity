@@ -680,6 +680,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: _endRoom
+      value: 
+      objectReference: {fileID: 11400000, guid: d87427f4c06340a40bd3c4d43082b67b, type: 2}
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _levelSize
       value: 14
       objectReference: {fileID: 0}
