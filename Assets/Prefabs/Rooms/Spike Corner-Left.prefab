@@ -94,8 +94,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5350916110674225562}
   - {fileID: 4714131919819325420}
+  - {fileID: 5350916110674225562}
   - {fileID: 5953612558292774066}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Room
   _neighbour: {fileID: 0}
+  fuck: {fileID: 0}
 --- !u!33 &3431478614570410114
 MeshFilter:
   m_ObjectHideFlags: 0

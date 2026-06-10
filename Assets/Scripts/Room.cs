@@ -8,6 +8,8 @@ public class Room : MonoBehaviour
 
     [SerializeField] private GameObject _neighbour;
 
+    [SerializeField] private GameObject fuck;
+
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class Room : MonoBehaviour
     }
 
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Room>() != null)
         {
@@ -28,6 +30,8 @@ public class Room : MonoBehaviour
             _roomGenScript._Continue = true;
 
             GameObject _Collided = collision.gameObject;
+
+            Debug.Log(_Collided);
 
             Room _Script = _Collided.GetComponent<Room>();
 
@@ -38,11 +42,15 @@ public class Room : MonoBehaviour
 
         else if (collision.gameObject.GetComponentInChildren<Attach>() != null && collision.gameObject != _neighbour)
         {
-            Debug.LogWarning("Obstructed!" + gameObject);
+
+            fuck = collision.gameObject;
+
+            Debug.Log("Obstructed ");
 
             _roomGenScript._Obstructed = true;
         }
     }
+
 
     private IEnumerator DeleteLater(Room room)
     {

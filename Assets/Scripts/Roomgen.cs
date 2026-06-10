@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Roomgen : MonoBehaviour
@@ -13,7 +12,7 @@ public class Roomgen : MonoBehaviour
     [SerializeField] private RoomObject _endRoom;
 
     private Coroutine _mapRoutine;
-    public List<GameObject> Rooms = new List<GameObject>(); 
+    public List<GameObject> Rooms = new List<GameObject>();
     public static byte LevelSize;
 
     public bool _Obstructed;
@@ -37,7 +36,7 @@ public class Roomgen : MonoBehaviour
     private void Update()
     {
         Debug.Log(LevelSize);
-        if (_isGenerating) return; 
+        if (_isGenerating) return;
 
         if (_Obstructed)
             _Timer += Time.deltaTime;
@@ -82,7 +81,7 @@ public class Roomgen : MonoBehaviour
                 _Continue = true;
 
                 GameObject player = GameManager.Instance._currentPlayer;
-                while(player == null)
+                while (player == null)
                 {
                     player = GameManager.Instance._currentPlayer;
                     yield return null;
@@ -131,6 +130,9 @@ public class Roomgen : MonoBehaviour
 
             if (_Obstructed)
             {
+                Time.timeScale = 0f;
+                yield break;
+
                 Rooms.Clear();
                 foreach (Transform child in transform) Destroy(child.gameObject);
                 StopCoroutine(_mapRoutine);
