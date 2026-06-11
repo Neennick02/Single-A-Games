@@ -510,6 +510,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4261813748444054720, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4306382239566131098, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: 'TotalUpgrades.Array.data[0]'
       value: 

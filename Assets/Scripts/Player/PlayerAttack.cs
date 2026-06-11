@@ -92,7 +92,6 @@ public class PlayerAttack : MonoBehaviour
             {
                 //find health script
                 EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
-
                 if (health == null)
                 {
                     health = hit.collider.GetComponentInParent<EnemyHealth>();
