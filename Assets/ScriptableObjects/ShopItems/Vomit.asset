@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeObject
   Image: {fileID: 0}
   Price: 0
-  Prefab: {fileID: 5423747365192363973, guid: bf848968518fb684f92fed0ec14e47c7, type: 3}
-  Title: Vomit {not working}
+  Prefab: {fileID: 4024680709757749725, guid: 1d1ef47e258642e47805077171dac852, type: 3}
+  Title: Vomit
   Description: Puke like a bitch

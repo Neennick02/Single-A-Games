@@ -41,6 +41,10 @@ public class Puke : MonoBehaviour
 
         _camera = Camera.main.gameObject;
 
+        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
+
+        _pukeEffect = _cameraShakeManager.gameObject.GetComponentInChildren<Volume>();
+
     }
 
     private void OnEnable()
