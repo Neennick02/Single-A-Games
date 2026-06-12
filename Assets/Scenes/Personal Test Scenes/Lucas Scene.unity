@@ -636,17 +636,6 @@ Transform:
   - {fileID: 969509922}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &63088535 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6940158477962823183, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
-  m_PrefabInstance: {fileID: 7650995343047973404}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
 --- !u!114 &155676653 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1529716679922619503, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
@@ -4991,6 +4980,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 30919170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &490311933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2766164352052972310, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+  m_PrefabInstance: {fileID: 7650995343047973404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &543834405
 Mesh:
   m_ObjectHideFlags: 0
@@ -6707,6 +6701,11 @@ Transform:
   - {fileID: 2126372648}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1143613852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5707622468481653922, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+  m_PrefabInstance: {fileID: 7650995343047973404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1161602698
 GameObject:
   m_ObjectHideFlags: 0
@@ -10785,6 +10784,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e9c31e4ac59464da1e077ed1eda23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShakeManager
+--- !u!1 &1398406607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8165889444708405945, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+  m_PrefabInstance: {fileID: 7650995343047973404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452750303
 GameObject:
   m_ObjectHideFlags: 0
@@ -12318,6 +12322,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814949796}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1832890040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2396894260385759270, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+  m_PrefabInstance: {fileID: 7650995343047973404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1908475261
 GameObject:
   m_ObjectHideFlags: 0
@@ -13292,9 +13301,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5330366692279365177, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330366692279365177, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: _pukeEffect
       value: 
-      objectReference: {fileID: 63088535}
+      objectReference: {fileID: 0}
     - target: {fileID: 5330366692279365177, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: _cameraShakeManager
       value: 
@@ -13571,6 +13584,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4314241314537750133, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: _handAnimator.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314241314537750133, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: '_handAnimator.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1832890040}
+    - target: {fileID: 4314241314537750133, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: '_handAnimator.Array.data[1]'
+      value: 
+      objectReference: {fileID: 490311933}
+    - target: {fileID: 4314241314537750133, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: '_handAnimator.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1398406607}
+    - target: {fileID: 4314241314537750133, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
+      propertyPath: '_handAnimator.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1143613852}
     - target: {fileID: 5868110375087306636, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
       propertyPath: _damageEffect
       value: 
