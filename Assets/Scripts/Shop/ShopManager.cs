@@ -136,8 +136,8 @@ public class ShopManager : MonoBehaviour
             //remove resouces
             sanityManager.AddSanity(-upgrade.Price);
 
-            playerAnimator.state++;
-            Debug.Log("Player state: " + playerAnimator.state);
+            playerAnimator._state++;
+            Debug.Log("Player state: " + playerAnimator._state);
 
             GameObject upgradeObject = Instantiate(upgrade.Prefab);
             upgradeObject.gameObject.transform.parent = player.transform;

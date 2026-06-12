@@ -7,12 +7,14 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private List<GameObject> _handAnimator = new List<GameObject>();
     [SerializeField] private Animator _armAnimator;
 
-    public int state;
+    public int _state;
     private int _lastState;
+
+    private bool _change;
 
     private void Start()
     {
-        _lastState = state;
+        _lastState = _state;
     }
 
     public void AttackAnimation()
@@ -23,23 +25,44 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        if (_lastState == state)
+        if (_lastState == _state)
         {
+
+            _change = false;
+
             return;
         }
 
-        else
+        else if (!_change)
         {
-            _handAnimator[_lastState].SetActive(false);
-            _handAnimator[state].SetActive(true);
-            _lastState = state;
+            _change = true;
+            StartCoroutine(ChangeArm());
         }
     }
+    private IEnumerator ChangeArm()
+    {
+        Debug.Log("ChangeArm");
 
-    IEnumerator AttackRoutine()
+        Dissolver _dissolveLast = _handAnimator[_lastState].GetComponent<Dissolver>();
+        _dissolveLast.StartDissolve();
+
+        Dissolver _dissolve = _handAnimator[_state].GetComponent<Dissolver>();
+        _dissolve.StartDissolve();
+
+        yield return new WaitForSeconds(5f);
+
+        _dissolve._dissolveProgress = 0;
+
+        _dissolve._dissolveAmount = 1;
+
+        _lastState = _state;
+
+    }
+
+    private IEnumerator AttackRoutine()
     {
 
-        Animator animtor = _handAnimator[state].GetComponent<Animator>();
+        Animator animtor = _handAnimator[_state].GetComponent<Animator>();
 
         _armAnimator.SetBool("Attack", true);
         animtor.SetFloat("Attack", 1f);

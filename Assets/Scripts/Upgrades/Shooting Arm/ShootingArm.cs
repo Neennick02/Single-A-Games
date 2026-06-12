@@ -96,9 +96,9 @@ public class ShootingArm : MonoBehaviour
     private void GetRightFase()
     {
 
-        Debug.Log(playerAnimator.state);
+        Debug.Log(playerAnimator._state);
 
-        switch (playerAnimator.state)
+        switch (playerAnimator._state)
         {
             case 0:
                 _fases[0].SetActive(true);
