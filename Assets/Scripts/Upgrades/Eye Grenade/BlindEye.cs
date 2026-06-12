@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class BlindEye : MonoBehaviour
 {
     public float FadeOutTime = 1f;
+    public float AlphaRange = 3f;
     private bool _blind = false;
     private Renderer _renderer;
     private Material _mat;
@@ -45,7 +46,7 @@ public class BlindEye : MonoBehaviour
         if (_blind)
         {
             timer += Time.deltaTime;
-            _renderer.material.SetFloat("_AlphaAmount", 1 + Mathf.PingPong(timer, 3));
+            _renderer.material.SetFloat("_AlphaAmount", 1 + Mathf.PingPong(timer, AlphaRange));
         }
         else
         {
