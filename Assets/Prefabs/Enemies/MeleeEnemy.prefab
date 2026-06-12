@@ -183,7 +183,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2763751218551187493}
   - component: {fileID: 1030490436429628028}
-  - component: {fileID: 7453998311431290355}
   - component: {fileID: 4890514961586189271}
   - component: {fileID: 2762395173587486810}
   m_Layer: 0
@@ -216,55 +215,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7146675412794877439}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7453998311431290355
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7146675412794877439}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 4537aaec0ec908f42ab4ca1db537deff, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4890514961586189271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -439,6 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemy
   enemyObject: {fileID: 11400000, guid: 0bb70e6ad6ecca54ba8b992caf37841c, type: 2}
   CurrentState: 0
+  currentTarget: {x: 0, y: 0, z: 0}
   _attackTime: 1
   _hitBox: {fileID: 4890514961586189271}
 --- !u!195 &3243777513197926933
@@ -477,7 +428,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   currentHealth: 0
   EnemyObject: {fileID: 11400000, guid: 0bb70e6ad6ecca54ba8b992caf37841c, type: 2}
-  MeshRenderers: []
+  MeshRenderers:
+  - {fileID: 1931124856107408779}
   _damageMat: {fileID: 2100000, guid: 223032c97a0361d468acc4cab2b0a77d, type: 2}
   _healthBar: {fileID: 6695098016333416564}
 --- !u!114 &8775004657193847667
@@ -496,7 +448,7 @@ MonoBehaviour:
   _dissolveAmount: 1
   _dissolveProgress: 0
   _renderers:
-  - {fileID: 7453998311431290355}
+  - {fileID: 1931124856107408779}
 --- !u!1 &9022386703912675908
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,5 +677,10 @@ Animator:
 --- !u!4 &702808903974410689 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
+  m_PrefabInstance: {fileID: 1029733888359743018}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1931124856107408779 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7744253644888300639, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
   m_PrefabInstance: {fileID: 1029733888359743018}
   m_PrefabAsset: {fileID: 0}

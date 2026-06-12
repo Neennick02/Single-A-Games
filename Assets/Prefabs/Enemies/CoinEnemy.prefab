@@ -596,6 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CoinEnemy
   enemyObject: {fileID: 11400000, guid: a5dd25e28f4d84140bb0a2283af87f97, type: 2}
   CurrentState: 0
+  currentTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &4722377552823595641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +611,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   currentHealth: 0
   EnemyObject: {fileID: 11400000, guid: a5dd25e28f4d84140bb0a2283af87f97, type: 2}
-  MeshRenderers: []
+  MeshRenderers:
+  - {fileID: 6797631982631304471}
   _damageMat: {fileID: 2100000, guid: 223032c97a0361d468acc4cab2b0a77d, type: 2}
   _healthBar: {fileID: 6553485459679930349}
 --- !u!65 &3700985122723941474

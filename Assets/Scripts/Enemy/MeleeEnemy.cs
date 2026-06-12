@@ -21,6 +21,16 @@ public class MeleeEnemy : Enemy
     {
         if (_dead) return;
 
+        if (CurrentState == EnemyState.Moving)
+        {
+            HandleWandering();
+        }
+
+        if (Vector3.Distance(currentTarget, transform.position) < 0.1f)
+        {
+            FindTargetLocation();
+        }
+
         RotateToTarget();
 
         _animator.SetInteger("State", (int)CurrentState);
@@ -37,7 +47,19 @@ public class MeleeEnemy : Enemy
 
             else
             {
-                _agent.SetDestination(_target.transform.position);
+                if (CanSeePlayer())
+                {
+                    _agent.SetDestination(_target.transform.position);
+                    _isWandering = false;
+                }
+                else
+                {
+                    if (Vector3.Distance(currentTarget, transform.position) < 0.1f)
+                    {
+                        FindTargetLocation();
+                    }
+
+                }
             }
         }
 
@@ -94,7 +116,17 @@ public class MeleeEnemy : Enemy
 
     private void RotateToTarget()
     {
-        Vector3 direction = (_target.transform.position - transform.position).normalized;
+        Vector3 direction;
+        if (_isWandering)
+        {
+            direction = (currentTarget - transform.position).normalized;
+        }
+        else
+        {
+            direction = (_target.transform.position - transform.position).normalized;
+        }
+
+
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
     }

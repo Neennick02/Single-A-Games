@@ -18,6 +18,7 @@ public class RatBehaviour : MonoBehaviour
         _navMeshPath = new NavMeshPath();
 
         startY = transform.position.y;
+
         FindTargetLocation();
     }
 
@@ -36,22 +37,22 @@ public class RatBehaviour : MonoBehaviour
             currentTarget = transform.position + Random.insideUnitSphere * radius;
             currentTarget.y = startY;
 
-        if (_agent.CalculatePath(currentTarget, _navMeshPath) && _navMeshPath.status == NavMeshPathStatus.PathComplete)
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(currentTarget, out hit, radius, NavMesh.AllAreas))
         {
-            _agent.SetPath(_navMeshPath);
-        }
-        else
-        {
-            FindTargetLocation();
+            currentTarget = hit.position;
+            _agent.SetDestination(currentTarget);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_isDead) return;
         if (other.gameObject.CompareTag("Player"))
         {
+            _isDead = true;
             _animator.SetTrigger("Dead");
-            _agent.SetPath(null);
+            _agent.ResetPath();
             StartCoroutine(WaitForDeath());
         }
     }
