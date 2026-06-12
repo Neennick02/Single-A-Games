@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 141740072414519549}
   serializedVersion: 2
   m_LocalRotation: {x: -0.19713265, y: -0, z: -0, w: 0.9803769}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0.709}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0.709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09340589, y: 0.9040822, z: -0.32816473, w: 0.2573299}
-  m_LocalPosition: {x: -0.004039909, y: 2.0064147, z: 0.0065218033}
+  m_LocalPosition: {x: -0.004040718, y: 2.0064142, z: 0.0065231323}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   currentHealth: 0
   PlayerObject: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
-  _damageEffect: {fileID: 0}
+  _damageEffect: {fileID: 3684926239414253786}
 --- !u!114 &2580446650109701349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +450,7 @@ Transform:
   m_GameObject: {fileID: 471022230270949219}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09340589, y: 0.9040822, z: -0.32816473, w: 0.2573299}
-  m_LocalPosition: {x: -0.004039909, y: 2.0064147, z: 0.0065218033}
+  m_LocalPosition: {x: -0.0040397644, y: 2.0064142, z: 0.006521225}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -825,6 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlindEye
   FadeOutTime: 1
+  AlphaRange: 3
 --- !u!23 &1759835190170937681
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1119,6 +1120,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+--- !u!114 &3684926239414253786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1529716679922619503, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+  m_PrefabInstance: {fileID: 2745464948423027893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
 --- !u!4 &7291706691039740530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4839259950809689799, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
