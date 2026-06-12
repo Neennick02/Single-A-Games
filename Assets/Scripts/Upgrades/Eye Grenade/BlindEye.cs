@@ -1,23 +1,24 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class BlindEye : MonoBehaviour
 {
-    private Image _imagePanel;
-
     public float FadeOutTime = 1f;
+    public float AlphaRange = 3f;
     private bool _blind = false;
-
-    [SerializeField] private Color _startC;
-    [SerializeField] private Color _endC;
-
+    private Renderer _renderer;
+    private Material _mat;
+    private float timer;
 
     private void OnEnable()
     {
         EyeGrenade.OnBlindEye += BlindEyes;
         EyeGrenade.OnHealEye += HealEyes;
-        _imagePanel = GetComponent<Image>();
+        _renderer = GetComponent<Renderer>();
+        _mat = _renderer.material;
     }
 
     private void OnDisable()
@@ -36,7 +37,22 @@ public class BlindEye : MonoBehaviour
 
     private void HealEyes()
     {
+        _blind = false;
         StartCoroutine(FadeOut());
+    }
+
+    private void Update()
+    {
+        if (_blind)
+        {
+            timer += Time.deltaTime;
+            _renderer.material.SetFloat("_AlphaAmount", 1 + Mathf.PingPong(timer, AlphaRange));
+        }
+        else
+        {
+            timer = 0f;
+            _renderer.material.SetFloat("_AlphaAmount", 1);
+        }
     }
 
     IEnumerator FadeIn()
@@ -46,7 +62,7 @@ public class BlindEye : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            _imagePanel.color = Color.Lerp(_startC, _endC, timer / 1);
+            _mat.SetFloat("_DissolveStrength", Mathf.Lerp(2, 0, timer / 1));
 
             yield return null;
         }
@@ -58,8 +74,7 @@ public class BlindEye : MonoBehaviour
         while (timer < FadeOutTime)
         {
             timer += Time.deltaTime;
-
-            _imagePanel.color = Color.Lerp(_endC, _startC, timer / 1);
+            _mat.SetFloat("_DissolveStrength", Mathf.Lerp(0, 2, timer / 1));
 
             yield return null;
         }

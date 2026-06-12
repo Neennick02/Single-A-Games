@@ -35,7 +35,6 @@ public class Roomgen : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(LevelSize);
         if (_isGenerating) return;
 
         if (_Obstructed)
