@@ -10,6 +10,7 @@ public class BlindEye : MonoBehaviour
     private bool _blind = false;
     private Renderer _renderer;
     private Material _mat;
+    private float timer;
 
     private void OnEnable()
     {
@@ -35,6 +36,7 @@ public class BlindEye : MonoBehaviour
 
     private void HealEyes()
     {
+        _blind = false;
         StartCoroutine(FadeOut());
     }
 
@@ -42,7 +44,13 @@ public class BlindEye : MonoBehaviour
     {
         if (_blind)
         {
-            _renderer.material.SetFloat("_AlphaAmount", Mathf.PingPong(Time.time, 1));
+            timer += Time.deltaTime;
+            _renderer.material.SetFloat("_AlphaAmount", 1 + Mathf.PingPong(timer, 3));
+        }
+        else
+        {
+            timer = 0f;
+            _renderer.material.SetFloat("_AlphaAmount", 1);
         }
     }
 

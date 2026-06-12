@@ -87,7 +87,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _AlphaAmount: 2.15
+    - _AlphaAmount: 1
     - _AlphaClip: 0
     - _AlphaClipThreshold: -1.7
     - _AlphaNoiseScale: 0.1
@@ -103,7 +103,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveStrength: 0
+    - _DissolveStrength: 2
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
