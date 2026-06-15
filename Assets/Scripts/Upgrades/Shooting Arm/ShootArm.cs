@@ -184,6 +184,9 @@ public class ShootArm : MonoBehaviour
     private void Shoot()
     {
         //Set arm to false, disable the attack script and attached arm, then instantiate the shooting arm prefab
+
+        Instantiate(_shootingArm, _camera.transform.position, _camera.transform.rotation);
+
         _isAttacking = false;
 
         _attachedArm.SetActive(false);
@@ -191,8 +194,6 @@ public class ShootArm : MonoBehaviour
         _playerAttackScript.enabled = false;
 
         _arm = false;
-
-        Instantiate(_shootingArm, _camera.transform.position, _camera.transform.rotation);
 
         AudioManager.Instance.PlayClip(ShootAudio);
     }
