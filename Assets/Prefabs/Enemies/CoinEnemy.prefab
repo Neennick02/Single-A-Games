@@ -664,6 +664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: munt poging 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6367211364156576697, guid: 9d77685ad61279b4098ffb7f51a15d6f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 9001132607991108141, guid: 9d77685ad61279b4098ffb7f51a15d6f, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1

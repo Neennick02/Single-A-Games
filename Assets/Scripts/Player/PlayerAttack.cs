@@ -13,6 +13,8 @@ public class PlayerAttack : MonoBehaviour
 
     private bool _isAttacking;
 
+    public byte range = 5;
+
     private float _damageMultiplier = 1;
 
     [SerializeField] private PlayerAnimator _animator;
@@ -72,16 +74,9 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        Debug.DrawRay(new Vector3(_camera.transform.position.x, _camera.transform.position.y, _camera.transform.position.z), _camera.transform.forward, Color.blue);
-    }
-
     private IEnumerator Attack()
     {
         RaycastHit hit;
-
-        byte range = 5;
 
         yield return new WaitForSeconds(0.2f);
 
@@ -110,7 +105,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void IncreaseDamageOutput(float multiplier)
     {
-        _damageMultiplier += multiplier;
+        _damageMultiplier = multiplier;
     }
 
     private void Die()

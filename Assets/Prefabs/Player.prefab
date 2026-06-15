@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c919dd213f5a8d84386386ee862cf1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  range: 3
   _animator: {fileID: 4314241314537750133}
   SwingAudio: {fileID: 8300000, guid: ef131282c66b7e24bbb4250d0f84e7a4, type: 3}
   HitAudio: {fileID: 8300000, guid: 130d4be7798ec2e47a0acbcfb176c885, type: 3}

@@ -425,11 +425,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f3dd24b593c1e4691f710055a84b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  currentHealth: 0
+  currentHealth: 3
   EnemyObject: {fileID: 11400000, guid: 0bb70e6ad6ecca54ba8b992caf37841c, type: 2}
   MeshRenderers:
   - {fileID: 1931124856107408779}
-  _damageMat: {fileID: 2100000, guid: 223032c97a0361d468acc4cab2b0a77d, type: 2}
+  _damageMat: {fileID: 2100000, guid: 8f0cd3a15c00de74fb18e327fce6e3e8, type: 2}
   _healthBar: {fileID: 6695098016333416564}
 --- !u!114 &8775004657193847667
 MonoBehaviour:
@@ -618,6 +618,10 @@ PrefabInstance:
     - target: {fileID: -5551259677585353499, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5551259677585353499, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
+      propertyPath: m_TagString
+      value: Buddy
       objectReference: {fileID: 0}
     - target: {fileID: 817649373098662138, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
       propertyPath: m_LocalPosition.x
