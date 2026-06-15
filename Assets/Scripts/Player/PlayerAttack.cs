@@ -105,7 +105,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void IncreaseDamageOutput(float multiplier)
     {
-        _damageMultiplier += multiplier;
+        _damageMultiplier = multiplier;
     }
 
     private void Die()
