@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     private bool _subscribed;
     private bool _firstFloor = true;
+
+    private bool _vomit;
+    public static event Action OnEnableVomitUI;
     private void Awake()
     {
         if(Instance == null)
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
             GameOverScreen.OnReset += ResetPlayer;
             PauseScreen.OnReset += ResetPlayer;
             SceneManager.sceneLoaded += OnSceneLoaded;
+            PukeUpgrade.OnGrabVomit += EnableVomit;
             _subscribed = true;
         }
     }
@@ -65,6 +69,7 @@ public class GameManager : MonoBehaviour
         {
             //reset player pos
             _currentPlayer.transform.position = startPos;
+
         }
     }
     private void OnDestroy()
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour
         GameOverScreen.OnReset -= ResetPlayer;
         PauseScreen.OnReset -= ResetPlayer;
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        PukeUpgrade.OnGrabVomit -= EnableVomit;
     }
 
 
@@ -86,6 +92,17 @@ public class GameManager : MonoBehaviour
 
             Roomgen.LevelSize = LevelSize;
             _firstFloor = false;
+
+            if (_vomit)
+            {
+                OnEnableVomitUI?.Invoke();
+            }
         }
+    }
+
+    private void EnableVomit()
+    {
+        _vomit = true;
+        OnEnableVomitUI?.Invoke();
     }
 }
