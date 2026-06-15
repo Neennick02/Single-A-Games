@@ -41,7 +41,8 @@ public class PlayerAnimator : MonoBehaviour
     }
     private IEnumerator ChangeArm()
     {
-        Debug.Log("ChangeArm");
+
+        yield return new WaitForSeconds(0.5f);
 
         Dissolver _dissolveLast = _handAnimator[_lastState].GetComponent<Dissolver>();
         _dissolveLast.StartDissolve();
@@ -49,7 +50,7 @@ public class PlayerAnimator : MonoBehaviour
         Dissolver _dissolve = _handAnimator[_state].GetComponent<Dissolver>();
         _dissolve.StartDissolve();
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1.1f);
 
         _dissolve._dissolveProgress = 0;
 
