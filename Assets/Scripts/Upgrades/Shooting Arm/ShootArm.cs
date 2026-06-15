@@ -42,7 +42,6 @@ public class ShootArm : MonoBehaviour
 
         _inputActions.OnFoot.Attack.performed += Attack;
         _inputActions.OnFoot.Attack.canceled += Attack;
-
     }
 
     private void OnDisable()
@@ -55,19 +54,6 @@ public class ShootArm : MonoBehaviour
 
     }
 
-    private void OnSceneChange()
-    {
-
-        Debug.Log("log test");
-
-        _attachedArm.SetActive(true);
-
-        _playerAttackScript.enabled = true;
-
-        _arm = true;
-
-        _isAttacking = false;
-    }
 
 
     private void Start()
@@ -108,6 +94,19 @@ public class ShootArm : MonoBehaviour
         }
 
     }
+    public void GetArm()
+    {
+
+        _attachedArm.SetActive(true);
+
+        _playerAttackScript.enabled = true;
+
+        _arm = true;
+
+        _isAttacking = false;
+
+    }
+
     private void TryAndCollectArm()
     {
 
@@ -220,14 +219,6 @@ public class ShootArm : MonoBehaviour
 
         //Reset the arm, enable the attached arm and attack script, then destroy the arm on the ground
         Destroy(arm);
-
-        _attachedArm.SetActive(true);
-
-        _playerAttackScript.enabled = true;
-
-        _arm = true;
-
-        _isAttacking = false;
 
     }
 
