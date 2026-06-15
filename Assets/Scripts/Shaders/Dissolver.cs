@@ -5,9 +5,9 @@ using UnityEngine;
 public class Dissolver : MonoBehaviour
 {
     [SerializeField] private float _dissolveDuration = 1f;
-    [SerializeField] private float _dissolveAmount = 1f;
+    public float _dissolveAmount = 1f;
     private float _dissolveStrength;
-    [SerializeField] private float _dissolveProgress;
+    public float _dissolveProgress;
     [SerializeField] private List<Renderer> _renderers;
     public void StartDissolve()
     {
