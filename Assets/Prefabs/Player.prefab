@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09340589, y: 0.9040822, z: -0.32816473, w: 0.2573299}
-  m_LocalPosition: {x: -0.004040718, y: 2.0064142, z: 0.0065231323}
+  m_LocalRotation: {x: 0.09184698, y: 0.9038223, z: -0.32682884, w: 0.26048484}
+  m_LocalPosition: {x: -8.242829, y: -0.0975055, z: -26.899538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c919dd213f5a8d84386386ee862cf1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  range: 2
   _animator: {fileID: 4314241314537750133}
   SwingAudio: {fileID: 8300000, guid: ef131282c66b7e24bbb4250d0f84e7a4, type: 3}
   HitAudio: {fileID: 8300000, guid: 130d4be7798ec2e47a0acbcfb176c885, type: 3}
