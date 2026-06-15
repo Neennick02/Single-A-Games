@@ -615,6 +615,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: _rooms.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: '_rooms.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 802938e566582c9429d3d9644f81bf06, type: 2}
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: '_rooms.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 61cafb1272e6eee45afdffe5f04a2f4a, type: 2}
     - target: {fileID: 5413135809406820335, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_Name
       value: RoomGeneration
