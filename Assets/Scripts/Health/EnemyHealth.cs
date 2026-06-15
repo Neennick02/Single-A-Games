@@ -28,7 +28,7 @@ public class EnemyHealth : BaseHealth
 
     public override void TakeDamage(float amount)
     {
-
+        Debug.Log(amount);
         currentHealth -= amount;
 
         if (currentHealth <= 0)
