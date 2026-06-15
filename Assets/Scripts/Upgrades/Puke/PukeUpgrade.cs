@@ -1,13 +1,12 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PukeUpgrade : MonoBehaviour
 {
+    public static event Action OnGrabVomit;
     void Start()
     {
-
-        Puke puke = FindFirstObjectByType<Puke>();
-        puke.enabled = true;
-
+        OnGrabVomit?.Invoke();
     }
-
 }

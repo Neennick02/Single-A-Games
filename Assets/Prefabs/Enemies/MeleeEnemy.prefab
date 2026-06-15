@@ -389,7 +389,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeEnemy
   enemyObject: {fileID: 11400000, guid: 0bb70e6ad6ecca54ba8b992caf37841c, type: 2}
   CurrentState: 0
-  currentTarget: {x: 0, y: 0, z: 0}
   _attackTime: 1
   _hitBox: {fileID: 4890514961586189271}
 --- !u!195 &3243777513197926933
@@ -402,8 +401,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
-  m_Acceleration: 30
+  m_Speed: 3
+  m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 360
   m_StoppingDistance: 0
@@ -615,7 +614,7 @@ PrefabInstance:
     - target: {fileID: -7744253644888300639, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 405d5fc9cfa797e45816751571eaf4c6, type: 2}
+      objectReference: {fileID: 2100000, guid: c7b94697c236bb24d8d2e37428dff988, type: 2}
     - target: {fileID: -5551259677585353499, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
       propertyPath: m_IsActive
       value: 1

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingArm : MonoBehaviour
@@ -10,6 +11,17 @@ public class ShootingArm : MonoBehaviour
     private Rigidbody _rb;
 
     private float speed;
+
+    [SerializeField] private PlayerAnimator playerAnimator;
+
+    [SerializeField] private List<GameObject> _fases = new List<GameObject>();
+
+
+    private void Awake()
+    {
+        playerAnimator = FindAnyObjectByType<PlayerAnimator>();
+    }
+
     void Start()
     {
 
@@ -21,6 +33,9 @@ public class ShootingArm : MonoBehaviour
 
         int _Force = 1000;
 
+        Debug.Log(playerAnimator);
+
+        GetRightFase();
 
         //Apply a starting force to "shoot" the arm forward
         _rb.AddRelativeForce(Vector3.forward * _Force);
@@ -75,6 +90,28 @@ public class ShootingArm : MonoBehaviour
 
             _EnemyHealth = null;
 
+        }
+    }
+
+    private void GetRightFase()
+    {
+
+        Debug.Log(playerAnimator._state);
+
+        switch (playerAnimator._state)
+        {
+            case 0:
+                _fases[0].SetActive(true);
+                break;
+            case 1:
+                _fases[1].SetActive(true);
+                break;
+            case 2:
+                _fases[2].SetActive(true);
+                break;
+            case 3:
+                _fases[3].SetActive(true);
+                break;
         }
     }
 

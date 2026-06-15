@@ -12,7 +12,6 @@ public class BlindEye : MonoBehaviour
     private Renderer _renderer;
     private Material _mat;
     private float timer;
-
     private void OnEnable()
     {
         EyeGrenade.OnBlindEye += BlindEyes;

@@ -133,13 +133,16 @@ public abstract class Enemy : MonoBehaviour
         {
             //wall check
 
-            if (true)
+            Vector3 direction = transform.position - _target.transform.position;
+            RaycastHit hit;
+
+            if(Physics.Raycast(transform.position, direction, out hit, _spottingRadius, LayerMask.GetMask("Wall")))
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
         else

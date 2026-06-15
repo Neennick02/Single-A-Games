@@ -21,13 +21,17 @@ public class ShopManager : MonoBehaviour
 
     public AudioClip BuyAudio;
     public AudioClip ButtonAudio;
+
+    private PlayerAnimator playerAnimator;
+
     private void Awake()
     {
         player = FindFirstObjectByType<PlayerHealth>();
         sanityManager = FindFirstObjectByType<SanityManager>();
+        playerAnimator = FindFirstObjectByType<PlayerAnimator>();
 
         //fill available upgrades list
-        _availableUpgrades = new List<UpgradeObject> (TotalUpgrades);
+        _availableUpgrades = new List<UpgradeObject>(TotalUpgrades);
     }
     private void OnEnable()
     {
@@ -40,8 +44,8 @@ public class ShopManager : MonoBehaviour
             button.onClick.RemoveAllListeners();
         }
 
-            //stop sanity bar from draining
-            OnShopOpenClose?.Invoke(false);
+        //stop sanity bar from draining
+        OnShopOpenClose?.Invoke(false);
 
         for (int i = 0; i < ItemSlots.Count; i++)
         {
@@ -66,7 +70,7 @@ public class ShopManager : MonoBehaviour
                 Button button = ItemSlots[i].GetComponentInChildren<Button>();
                 button.onClick.AddListener(() => BuyUpgrade(upgrade));
 
-                ShopItem item = ItemSlots[i].GetComponent<ShopItem>(); 
+                ShopItem item = ItemSlots[i].GetComponent<ShopItem>();
                 //assign values
                 item.AssignPrice(upgrade.Price.ToString());
                 item.AssignSprite(upgrade.Image);
@@ -80,15 +84,15 @@ public class ShopManager : MonoBehaviour
             {
                 title.text = "Sold Out";
 
-                    Button button = ItemSlots[i].GetComponentInChildren<Button>();
-                    button.onClick.RemoveAllListeners();
+                Button button = ItemSlots[i].GetComponentInChildren<Button>();
+                button.onClick.RemoveAllListeners();
 
-                    //empty data
-                    ShopItem item = ItemSlots[i].GetComponent<ShopItem>();
-                    item.AssignPrice(null);
-                    item.AssignSprite(null);
-                    item.AssignTitle(null);
-                
+                //empty data
+                ShopItem item = ItemSlots[i].GetComponent<ShopItem>();
+                item.AssignPrice(null);
+                item.AssignSprite(null);
+                item.AssignTitle(null);
+
             }
         }
     }
@@ -127,17 +131,20 @@ public class ShopManager : MonoBehaviour
     public void BuyUpgrade(UpgradeObject upgrade)
     {
         //check if enough sanity
-        if(sanityManager.SanityAmount >= upgrade.Price)
+        if (sanityManager.SanityAmount >= upgrade.Price)
         {
             //remove resouces
             sanityManager.AddSanity(-upgrade.Price);
+
+            playerAnimator._state++;
+            Debug.Log("Player state: " + playerAnimator._state);
 
             GameObject upgradeObject = Instantiate(upgrade.Prefab);
             upgradeObject.gameObject.transform.parent = player.transform;
             OnShopMessage?.Invoke(upgrade.Description);
 
 
-            if(_assignedUpgrades.Count > 1)
+            if (_assignedUpgrades.Count > 1)
             {
                 //find other upgrade
                 _assignedUpgrades.Remove(upgrade);
@@ -152,6 +159,8 @@ public class ShopManager : MonoBehaviour
             gameObject.SetActive(false);
             AudioManager.Instance.PlayClip(ButtonAudio);
             AudioManager.Instance.PlayClip(BuyAudio);
+
+
         }
         else
         {

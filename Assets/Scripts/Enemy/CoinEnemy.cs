@@ -8,7 +8,7 @@ public class CoinEnemy : Enemy
     private bool _attacking;
 
     private bool _cd;
-
+    [SerializeField] private Animator _animator;
     protected override void MyUpdate()
     {
         if (CurrentState == EnemyState.Moving)
@@ -28,6 +28,7 @@ public class CoinEnemy : Enemy
 
                 _agent.ResetPath();
                 StartCoroutine(Attack());
+                _animator.SetTrigger("Attack");
                 _attacking = true;
                 _cd = true;
 
@@ -50,6 +51,9 @@ public class CoinEnemy : Enemy
                 }
             }
         }
+        Vector3 vel = _agent.velocity;
+        vel.y = 0;
+        _animator.SetFloat("Speed", vel.magnitude);
     }
 
     private IEnumerator Attack()
