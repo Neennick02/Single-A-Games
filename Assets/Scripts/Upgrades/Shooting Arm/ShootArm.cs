@@ -47,11 +47,28 @@ public class ShootArm : MonoBehaviour
 
     private void OnDisable()
     {
+
         _inputActions.OnFoot.Attack.performed -= Attack;
         _inputActions.OnFoot.Attack.canceled -= Attack;
 
         _inputActions.Disable();
+
     }
+
+    private void OnSceneChange()
+    {
+
+        Debug.Log("log test");
+
+        _attachedArm.SetActive(true);
+
+        _playerAttackScript.enabled = true;
+
+        _arm = true;
+
+        _isAttacking = false;
+    }
+
 
     private void Start()
     {
