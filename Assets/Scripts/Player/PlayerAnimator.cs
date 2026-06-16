@@ -25,7 +25,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        if (_lastState == _state)
+        if (_lastState == _state && _lastState != 3)
         {
 
             _change = false;

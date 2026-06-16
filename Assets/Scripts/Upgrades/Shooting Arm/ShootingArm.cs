@@ -16,10 +16,18 @@ public class ShootingArm : MonoBehaviour
 
     [SerializeField] private List<GameObject> _fases = new List<GameObject>();
 
+    public ShootArm _ShootArm;
 
     private void Awake()
     {
         playerAnimator = FindAnyObjectByType<PlayerAnimator>();
+
+        _ShootArm = FindFirstObjectByType<ShootArm>();
+    }
+
+    private void OnDestroy()
+    {
+        _ShootArm.GetArm();
     }
 
     void Start()
@@ -46,6 +54,8 @@ public class ShootingArm : MonoBehaviour
 
         //Keep setting the current magnitude of the arm's velocity to a variable to check for damage on collision
         speed = _rb.linearVelocity.magnitude;
+
+        Debug.Log(_ShootArm);
 
     }
 

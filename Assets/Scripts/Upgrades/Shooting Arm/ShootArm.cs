@@ -19,6 +19,8 @@ public class ShootArm : MonoBehaviour
     [SerializeField] private GameObject _attachedArm;
     [SerializeField] private GameObject _shootingArm;
 
+    private GameObject _shotArm;
+
     [SerializeField] private GameObject _camera;
 
     [SerializeField] private bool _arm = true;
@@ -42,16 +44,19 @@ public class ShootArm : MonoBehaviour
 
         _inputActions.OnFoot.Attack.performed += Attack;
         _inputActions.OnFoot.Attack.canceled += Attack;
-
     }
 
     private void OnDisable()
     {
+
         _inputActions.OnFoot.Attack.performed -= Attack;
         _inputActions.OnFoot.Attack.canceled -= Attack;
 
         _inputActions.Disable();
+
     }
+
+
 
     private void Start()
     {
@@ -90,7 +95,27 @@ public class ShootArm : MonoBehaviour
             _attachedArm.transform.localPosition = Vector3.zero;
         }
 
+        if (!_arm && _shotArm == null)
+        {
+            GetArm();
+        }
+
     }
+    public void GetArm()
+    {
+
+        _attachedArm.SetActive(true);
+
+        _playerAttackScript.enabled = true;
+
+        _arm = true;
+
+        _isAttacking = false;
+
+        _shotArm = null;
+
+    }
+
     private void TryAndCollectArm()
     {
 
@@ -185,7 +210,7 @@ public class ShootArm : MonoBehaviour
     {
         //Set arm to false, disable the attack script and attached arm, then instantiate the shooting arm prefab
 
-        Instantiate(_shootingArm, _camera.transform.position, _camera.transform.rotation);
+        _shotArm = Instantiate(_shootingArm, _camera.transform.position, _camera.transform.rotation);
 
         _isAttacking = false;
 
@@ -203,14 +228,6 @@ public class ShootArm : MonoBehaviour
 
         //Reset the arm, enable the attached arm and attack script, then destroy the arm on the ground
         Destroy(arm);
-
-        _attachedArm.SetActive(true);
-
-        _playerAttackScript.enabled = true;
-
-        _arm = true;
-
-        _isAttacking = false;
 
     }
 
