@@ -7,7 +7,7 @@ public class PauseScreen : MonoBehaviour
     public GameObject Panel;
     private bool _isPaused;
     public static event Action OnReset;
-    private bool shopOpen = false;
+    private bool shopOpen = true;
 
     private void OnEnable()
     {
