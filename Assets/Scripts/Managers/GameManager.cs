@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
         LevelSize = _startLevelSize;
         Roomgen.LevelSize = LevelSize;
+        _vomit = false;
+        BlindEye.Active = false;
         Destroy(_currentPlayer);
     }
 
