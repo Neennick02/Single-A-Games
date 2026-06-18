@@ -306,7 +306,7 @@ MonoBehaviour:
   range: 3
   _animator: {fileID: 4314241314537750133}
   SwingAudio: {fileID: 8300000, guid: ef131282c66b7e24bbb4250d0f84e7a4, type: 3}
-  HitAudio: {fileID: 8300000, guid: 130d4be7798ec2e47a0acbcfb176c885, type: 3}
+  HitAudio: {fileID: 8300000, guid: c2593ccc9aa33994ab833a69238f8c81, type: 3}
 --- !u!114 &9041727086968368730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
   _headTarget: {fileID: 7952220888164284764}
   SpeedTrails: {fileID: 1177011545452872708}
-  DashClip: {fileID: 8300000, guid: 13bc0eb99cae3ae4e9dc01a1703a128e, type: 3}
+  DashClip: {fileID: 8300000, guid: 5a57ccd714590dd49892b8f095482769, type: 3}
 --- !u!114 &1967749028912230974
 MonoBehaviour:
   m_ObjectHideFlags: 0
