@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +12,8 @@ public class EnemyHealth : BaseHealth
     [SerializeField] private Material _damageMat;
     [SerializeField] private EnemyHealthBar _healthBar;
     public static event Action<float> OnRestoreSanity;
+
+    public GameObject BlobPrerfab;
 
     private void Start()
     {
@@ -68,6 +69,11 @@ public class EnemyHealth : BaseHealth
 
         yield return new WaitForSeconds(0.5f);
         OnRestoreSanity?.Invoke(EnemyObject.SanityRestoreAmount);
+        for (int i = 0; i < UnityEngine.Random.Range(1, 3); i++)
+        {
+            Vector3 randomOffset = UnityEngine.Random.insideUnitSphere * 0.1f;
+            Instantiate(BlobPrerfab, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 }

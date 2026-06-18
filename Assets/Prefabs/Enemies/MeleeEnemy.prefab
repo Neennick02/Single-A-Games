@@ -417,6 +417,7 @@ MonoBehaviour:
   - {fileID: 1931124856107408779}
   _damageMat: {fileID: 2100000, guid: 8f0cd3a15c00de74fb18e327fce6e3e8, type: 2}
   _healthBar: {fileID: 2126098917215125432}
+  BlobPrerfab: {fileID: 4829963867601924179, guid: d295220c7240dca41812e87c94f106f7, type: 3}
 --- !u!114 &8775004657193847667
 MonoBehaviour:
   m_ObjectHideFlags: 0
