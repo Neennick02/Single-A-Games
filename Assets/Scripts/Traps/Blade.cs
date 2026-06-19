@@ -11,13 +11,13 @@ public class Blade : MonoBehaviour
         animator.SetFloat("Speed", Speed);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            PlayerHealth health = collision.gameObject.GetComponentInParent<PlayerHealth>();
-            
-            if(health != null)
+            PlayerHealth health = other.gameObject.GetComponentInParent<PlayerHealth>();
+            Debug.Log(health);
+            if (health != null)
             {
                 health.TakeDamage(Damage);
             }

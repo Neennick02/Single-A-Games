@@ -8,11 +8,14 @@ public class SpikeDamage : MonoBehaviour
     public float ResetDur = 1f;
     private float timer;
 
+    private Collider collider;
+
     [SerializeField] private List<GameObject> ObjectsInRange;
 
     private void Start()
     {
         timer = ResetDur;
+        collider = GetComponent<Collider>();
     }
     private void Update()
     {
@@ -25,6 +28,11 @@ public class SpikeDamage : MonoBehaviour
                 DealDamage();
                 timer = 0;
             }
+        }
+
+        if (!collider.enabled)
+        {
+            ObjectsInRange.Clear();
         }
     }
 
