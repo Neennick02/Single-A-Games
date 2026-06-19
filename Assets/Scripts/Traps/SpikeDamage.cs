@@ -8,11 +8,14 @@ public class SpikeDamage : MonoBehaviour
     public float ResetDur = 1f;
     private float timer;
 
-    public List<GameObject> ObjectsInRange = new List<GameObject>();
+    private Collider collider;
+
+    [SerializeField] private List<GameObject> ObjectsInRange;
 
     private void Start()
     {
         timer = ResetDur;
+        collider = GetComponent<Collider>();
     }
     private void Update()
     {
@@ -26,6 +29,11 @@ public class SpikeDamage : MonoBehaviour
                 timer = 0;
             }
         }
+
+        if (!collider.enabled)
+        {
+            ObjectsInRange.Clear();
+        }
     }
 
     private void DealDamage()
@@ -37,23 +45,17 @@ public class SpikeDamage : MonoBehaviour
             if (obj != null)
             {
                 PlayerHealth Phealth = obj.GetComponent<PlayerHealth>();
-                EnemyHealth Ehealth = obj.GetComponent<EnemyHealth>();
 
                 if (Phealth != null)
                 {
                     Phealth.TakeDamage(DamageAmount);
-                }
-                else if (Ehealth != null)
-                {
-                    Ehealth.TakeDamage(DamageAmount);
                 }
             }
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") ||
-            other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Player"))
         {
             ObjectsInRange.Add(other.gameObject);
             DealDamage();

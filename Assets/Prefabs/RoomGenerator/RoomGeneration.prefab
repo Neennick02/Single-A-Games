@@ -52,11 +52,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44080990cbdd9e7488ea2497a4aba002, type: 2}
   - {fileID: 11400000, guid: f7974dd08cac62a49af8b718872da5c1, type: 2}
   - {fileID: 11400000, guid: cca09724c2fd88b46888b37165254d94, type: 2}
+  - {fileID: 11400000, guid: 802938e566582c9429d3d9644f81bf06, type: 2}
+  - {fileID: 11400000, guid: 61cafb1272e6eee45afdffe5f04a2f4a, type: 2}
+  - {fileID: 11400000, guid: aabf4f6674da6a849bab0cc0d589c20f, type: 2}
   _combatRooms: []
   _startRoom: {fileID: 11400000, guid: a5cd77ab015ff934b80de473df663bf2, type: 2}
   _endRoom: {fileID: 11400000, guid: d87427f4c06340a40bd3c4d43082b67b, type: 2}
   Rooms: []
-  _levelSize: 7
   _Obstructed: 0
   _Continue: 0
-  _sceneLoader: {fileID: 0}
