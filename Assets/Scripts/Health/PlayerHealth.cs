@@ -10,6 +10,9 @@ public class PlayerHealth : BaseHealth
     public static event Action OnDeath;
     [SerializeField] private Volume _damageEffect;
     private float _effectDissolveSpeed = 1;
+
+    public static event Action<float> OnSetRunTime;
+    public static event Action<int> OnSetFloorCount;
     #region OnEnable
     private void OnEnable()
     {
@@ -65,6 +68,8 @@ public class PlayerHealth : BaseHealth
     {
         Cursor.lockState = CursorLockMode.None;
         OnDeath?.Invoke();
+        OnSetRunTime?.Invoke(GameManager.Instance.RunTime);
+        OnSetFloorCount?.Invoke(GameManager.Instance.FloorCount);
     }
 
     private void StartGame()
