@@ -671,6 +671,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6503223738995569290, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6891119845536324794, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -714,7 +718,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _rooms.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: '_rooms.Array.data[7]'
@@ -728,6 +732,10 @@ PrefabInstance:
       propertyPath: '_rooms.Array.data[9]'
       value: 
       objectReference: {fileID: 11400000, guid: aabf4f6674da6a849bab0cc0d589c20f, type: 2}
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: '_rooms.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 61fb18adbac8f0742bac0816979cc792, type: 2}
     - target: {fileID: 5413135809406820335, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_Name
       value: RoomGeneration

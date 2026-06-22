@@ -415,8 +415,9 @@ MonoBehaviour:
   EnemyObject: {fileID: 11400000, guid: 0bb70e6ad6ecca54ba8b992caf37841c, type: 2}
   MeshRenderers:
   - {fileID: 1931124856107408779}
-  _damageMat: {fileID: 2100000, guid: 8f0cd3a15c00de74fb18e327fce6e3e8, type: 2}
+  _damageMat: {fileID: 2100000, guid: 53dbb50f76b8b3748ba8404c5c997bd0, type: 2}
   _healthBar: {fileID: 2126098917215125432}
+  _deathParticle: {fileID: 436327167026063250, guid: e8284b91d81e0cd4ab198d91b109b630, type: 3}
   BlobPrerfab: {fileID: 4829963867601924179, guid: d295220c7240dca41812e87c94f106f7, type: 3}
 --- !u!114 &8775004657193847667
 MonoBehaviour:
@@ -599,9 +600,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7744253644888300639, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7744253644888300639, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c7b94697c236bb24d8d2e37428dff988, type: 2}
+    - target: {fileID: -7744253644888300639, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bc6fe7ff7158ef4b9e8596560d18348, type: 2}
+    - target: {fileID: -7744253644888300639, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bc6fe7ff7158ef4b9e8596560d18348, type: 2}
     - target: {fileID: -5551259677585353499, guid: f1ea4da0074891c4cbe741e5fc0441e9, type: 3}
       propertyPath: m_IsActive
       value: 1
