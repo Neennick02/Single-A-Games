@@ -8,6 +8,10 @@ public class MeleeArm : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerHealth health = other.GetComponent<PlayerHealth>();
+            if(health == null)
+            {
+                health = other.GetComponentInParent<PlayerHealth>();
+            }
             health.TakeDamage(enemyObject.Damage);
         }
     }
