@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,10 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private PlayerAnimator _animator;
 
+    [SerializeField] private CameraShakeManager _cameraShakeManager;
+
+    private CinemachineImpulseSource _impulseSource;
+
     private bool _isDead;
 
     public AudioClip SwingAudio;
@@ -30,7 +35,11 @@ public class PlayerAttack : MonoBehaviour
 
         _healthScript = GetComponent<PlayerHealth>();
 
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
+
         Cursor.lockState = CursorLockMode.Locked;
+
+        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
 
     }
     private void OnEnable()
@@ -94,6 +103,12 @@ public class PlayerAttack : MonoBehaviour
 
                 health.TakeDamage(_healthScript.PlayerObject.Damage * _damageMultiplier);
 
+                float X = Random.Range(-0.1f, 0.1f);
+                float Y = Random.Range(-0.1f, 0.1f);
+
+                _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
+
+                _cameraShakeManager.CameraShake(_impulseSource, 1);
                 AudioManager.Instance.PlayClip(HitAudio, 1, Random.Range(0.8f, 1.2f));
             }
 

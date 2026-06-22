@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,10 @@ public class ShootArm : MonoBehaviour
 
     [SerializeField] private GameObject _attachedArm;
     [SerializeField] private GameObject _shootingArm;
+
+    [SerializeField] private CameraShakeManager _cameraShakeManager;
+
+    private CinemachineImpulseSource _impulseSource;
 
     private GameObject _shotArm;
 
@@ -69,6 +74,10 @@ public class ShootArm : MonoBehaviour
         _cc.detectCollisions = true;
 
         _camera = Camera.main.gameObject;
+
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
+
+        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
     }
 
     private void Update()
@@ -84,6 +93,9 @@ public class ShootArm : MonoBehaviour
             float _Impact = _isShakingImpact += Time.deltaTime * 3;
 
             _attachedArm.transform.localPosition = AddNoiseOnAngle(-_Impact, _Impact);
+
+            StartCoroutine(Rumble());
+
         }
 
 
@@ -100,6 +112,23 @@ public class ShootArm : MonoBehaviour
             GetArm();
         }
 
+    }
+
+    private IEnumerator Rumble()
+    {
+        while(_isAttacking && _isShaking && _arm)
+        {
+
+            float X = UnityEngine.Random.Range(-0.1f, 0.1f);
+            float Y = UnityEngine.Random.Range(-0.1f, 0.1f);
+
+            _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
+
+            _cameraShakeManager.CameraShake(_impulseSource, 0.1f);
+
+            yield return new WaitForSeconds(0.1f);
+
+        }
     }
     public void GetArm()
     {
