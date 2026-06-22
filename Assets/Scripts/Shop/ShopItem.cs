@@ -24,7 +24,7 @@ public class ShopItem : MonoBehaviour
 
     public void AssignPrice(string price)
     {
-        PriceText.text =  price + " $";
+        PriceText.text =  price + " sanity";
     }
     public void AssignTitle(string name)
     {

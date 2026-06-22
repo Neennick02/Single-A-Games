@@ -6,6 +6,9 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI Time;
     public TextMeshProUGUI Floors;
     public TextMeshProUGUI EnemyCounter;
+
+    public TextMeshProUGUI Highscore;
+
     public TextMeshProUGUI HighscoreKills;
     public TextMeshProUGUI HighscoreFloors;
 
@@ -70,14 +73,22 @@ public class ScoreManager : MonoBehaviour
         int kills = PlayerPrefs.GetInt("Kills", 0);
         int floors = PlayerPrefs.GetInt("Floors", 0);
 
+        if(kills == 0 && floors == 0)
+        {
+            Highscore.text = " ";
+            HighscoreKills.text = " ";
+            HighscoreFloors.text = " ";
+            return;
+        }
+
         if(kills > 0)
         {
             if(kills == 1)
             {
-                HighscoreKills.text = "Highscore :  " + kills + " kill.";
+                HighscoreKills.text = kills + " kill.";
             }
 
-            HighscoreKills.text = "Highscore :  " + kills + " kills.";
+            HighscoreKills.text = kills + " kills.";
         }
         else
         {
@@ -88,9 +99,9 @@ public class ScoreManager : MonoBehaviour
         {
             if (floors == 1)
             {
-                HighscoreKills.text = "Highscore :  " + floors + " floor.";
+                HighscoreKills.text = floors + " floor.";
             }
-            HighscoreFloors.text = "Highscore :  " + floors + " floors.";
+            HighscoreFloors.text = floors + " floors.";
 
         }
         else
