@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a98904474e4fe4e9f8441f265dfa7e, type: 3}
   m_Name: Buddy
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeObject
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: e93d7ed2043d10042925088b2c2cb394, type: 3}
   Price: 10
   Prefab: {fileID: 5055614148746786958, guid: a1f27a6264f63da4aa6286c7b006c319, type: 3}
   Title: Buddy

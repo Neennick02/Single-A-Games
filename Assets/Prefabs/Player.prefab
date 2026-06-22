@@ -362,9 +362,9 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
   Velocity: {x: 0, y: 0, z: 0}
   FootstepAudio:
-  - {fileID: 8300000, guid: 02edf911e4a7ef644a702d33287a9280, type: 3}
-  - {fileID: 8300000, guid: da062cfc4a426fd4789d60ec26121c6b, type: 3}
-  - {fileID: 8300000, guid: 93fe4613b0162454c98862c861720fa2, type: 3}
+  - {fileID: 8300000, guid: 7883a21e22e25574ea3eb24ce9b720cc, type: 3}
+  - {fileID: 8300000, guid: 8afe4b6be38a1ed4fb90b4bcd9bef3d9, type: 3}
+  - {fileID: 8300000, guid: 6d0d4ab13b257504aafc5465fd77433a, type: 3}
 --- !u!114 &1909929021468522827
 MonoBehaviour:
   m_ObjectHideFlags: 0

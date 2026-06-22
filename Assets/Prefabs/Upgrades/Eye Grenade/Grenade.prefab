@@ -133,7 +133,7 @@ MonoBehaviour:
   _damage: 3
   EnemyList: []
   _particleSystem: {fileID: 4486915153217955182, guid: 4838ab2f30cc156479b6fbd4154309b1, type: 3}
-  AudioClip: {fileID: 8300000, guid: 9716c412154116b4ea3781e2429a2e1a, type: 3}
+  AudioClip: {fileID: 8300000, guid: 99e3989900770214a9f11535d49950dd, type: 3}
 --- !u!54 &3382874834206165201
 Rigidbody:
   m_ObjectHideFlags: 0
