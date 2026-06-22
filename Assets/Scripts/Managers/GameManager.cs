@@ -131,4 +131,9 @@ public class GameManager : MonoBehaviour
         _vomit = true;
         OnEnableVomitUI?.Invoke();
     }
+
+    public void AddKill()
+    {
+        KillCount ++;
+    } 
 }
