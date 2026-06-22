@@ -5,6 +5,8 @@ public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI Time;
     public TextMeshProUGUI Floors;
+    public TextMeshProUGUI EnemyCounter;
+
     private void OnEnable()
     {
         PlayerHealth.OnSetRunTime += SetTime;
@@ -34,5 +36,10 @@ public class ScoreManager : MonoBehaviour
         }
         Floors.text = "You survived " + floorCount + floors;
 
+    }
+
+    private void SetEnemyCount(int enemyCount)
+    {
+        EnemyCounter.text = "You killed " + enemyCount + " enemies.";
     }
 }

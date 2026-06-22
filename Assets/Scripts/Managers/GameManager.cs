@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     //scores
     public float RunTime { get; private set; }
     public int FloorCount {get; private set; }
+
+    public int KillCount { get; private set; }
     //private int _roomCount;
 
 
@@ -63,11 +65,16 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
         LevelSize = _startLevelSize;
         Roomgen.LevelSize = LevelSize;
+
+        //deactivate effects
         _vomit = false;
         BlindEye.Active = false;
 
+        //reset scores
         RunTime = 0f;
         FloorCount = 0;
+        KillCount = 0;
+
         Destroy(_currentPlayer);
     }
 
