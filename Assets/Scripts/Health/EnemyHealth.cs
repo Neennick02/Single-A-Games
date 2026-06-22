@@ -63,6 +63,8 @@ public class EnemyHealth : BaseHealth
 
         Instantiate(_deathParticle, transform.position, Quaternion.identity);
 
+        GameManager.Instance.AddKill();
+
     }
 
     private IEnumerator FlashRed()
