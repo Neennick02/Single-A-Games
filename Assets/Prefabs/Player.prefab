@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4028454, y: -0.23173004, z: 0.099096626, w: 0.8798844}
-  m_LocalPosition: {x: -8.645667, y: -13.773894, z: -27.016935}
+  m_LocalRotation: {x: 0.27678308, y: 0.6821013, z: -0.31518927, w: 0.59898645}
+  m_LocalPosition: {x: -0.00642669, y: 2.0076156, z: 0.0008374319}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -103,7 +103,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000008
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -906,7 +906,7 @@ GameObject:
   - component: {fileID: 7800616311863278414}
   m_Layer: 2
   m_Name: Bean
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1002,7 +1002,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
