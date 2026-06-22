@@ -13,6 +13,8 @@ public class EnemyHealth : BaseHealth
     [SerializeField] private EnemyHealthBar _healthBar;
     public static event Action<float> OnRestoreSanity;
 
+    [SerializeField] private GameObject _deathParticle;
+
     public GameObject BlobPrerfab;
 
     private void Start()
@@ -54,6 +56,8 @@ public class EnemyHealth : BaseHealth
     protected override void Die()
     {
         StartCoroutine(FadeOutAndDie());
+
+        Instantiate(_deathParticle, transform.position, Quaternion.identity);
     }
 
     private IEnumerator FlashRed()
