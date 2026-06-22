@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeObject
   Image: {fileID: 21300000, guid: f2d42f13b88900c4ea3478f53f2bccc7, type: 3}
-  Price: 3
+  Price: 6
   Prefab: {fileID: 6691947804989590208, guid: 0513e3666acc56e4098fa33f8659f52f, type: 3}
   Title: Arm Shot
   Description: Hold L-Mouse button to shoot your arm!
