@@ -54,6 +54,7 @@ public class EnemyHealth : BaseHealth
     protected override void Die()
     {
         StartCoroutine(FadeOutAndDie());
+        GameManager.Instance.AddKill();
     }
 
     private IEnumerator FlashRed()
