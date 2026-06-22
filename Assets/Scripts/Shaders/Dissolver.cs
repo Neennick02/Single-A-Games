@@ -14,6 +14,15 @@ public class Dissolver : MonoBehaviour
         StartCoroutine(DissolveRoutine("_DissolveStrength"));
     }
 
+    public void DissolveBasedOnDamage(float dissolveAmount)
+    {
+
+        _dissolveAmount = dissolveAmount;
+
+        StartCoroutine(DissolveRoutine("_DissolveStrength"));
+
+    }
+
     public void StartHorizontalDissolve()
     {
         StartCoroutine(DissolveRoutine("_CutoffHeight"));

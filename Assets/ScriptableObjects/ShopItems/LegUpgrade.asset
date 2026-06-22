@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LegUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeObject
   Image: {fileID: 21300000, guid: ee75f22574c93674a8ccadad1ec8eddf, type: 3}
-  Price: 2
+  Price: 4
   Prefab: {fileID: 5423747365192363973, guid: bf848968518fb684f92fed0ec14e47c7, type: 3}
   Title: Legs
   Description: Increases movement speed & sanity drain speed
