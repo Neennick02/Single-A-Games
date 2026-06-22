@@ -19,6 +19,8 @@ public class ShootArm : MonoBehaviour
     [SerializeField] private GameObject _attachedArm;
     [SerializeField] private GameObject _shootingArm;
 
+    private GameObject _shotArm;
+
     [SerializeField] private GameObject _camera;
 
     [SerializeField] private bool _arm = true;
@@ -93,6 +95,11 @@ public class ShootArm : MonoBehaviour
             _attachedArm.transform.localPosition = Vector3.zero;
         }
 
+        if (!_arm && _shotArm == null)
+        {
+            GetArm();
+        }
+
     }
     public void GetArm()
     {
@@ -104,6 +111,8 @@ public class ShootArm : MonoBehaviour
         _arm = true;
 
         _isAttacking = false;
+
+        _shotArm = null;
 
     }
 
@@ -201,7 +210,7 @@ public class ShootArm : MonoBehaviour
     {
         //Set arm to false, disable the attack script and attached arm, then instantiate the shooting arm prefab
 
-        Instantiate(_shootingArm, _camera.transform.position, _camera.transform.rotation);
+        _shotArm = Instantiate(_shootingArm, _camera.transform.position, _camera.transform.rotation);
 
         _isAttacking = false;
 

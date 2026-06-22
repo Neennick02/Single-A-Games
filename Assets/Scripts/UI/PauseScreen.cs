@@ -7,19 +7,24 @@ public class PauseScreen : MonoBehaviour
     public GameObject Panel;
     private bool _isPaused;
     public static event Action OnReset;
+    private bool shopOpen = true;
 
     private void OnEnable()
     {
         InputManager.OnPause += TogglePause;
+        ShopManager.OnShopOpenClose += SetOpenShop;
     }
 
     private void OnDisable()
     {
         InputManager.OnPause -= TogglePause;
+        ShopManager.OnShopOpenClose -= SetOpenShop;
     }
 
     private void TogglePause()
     {
+        if (!shopOpen) return;
+
         if( _isPaused)
         {
             Continue();
@@ -50,5 +55,10 @@ public class PauseScreen : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene("StartScene");
+    }
+
+    private void SetOpenShop(bool active)
+    {
+        shopOpen = active;
     }
 }

@@ -1,8 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class BlindEye : MonoBehaviour
 {
@@ -12,6 +9,9 @@ public class BlindEye : MonoBehaviour
     private Renderer _renderer;
     private Material _mat;
     private float timer;
+
+    public static bool Active;
+
     private void OnEnable()
     {
         EyeGrenade.OnBlindEye += BlindEyes;
@@ -28,6 +28,8 @@ public class BlindEye : MonoBehaviour
 
     private void BlindEyes()
     {
+        if (!Active) return;
+
         if (!_blind) _blind = true;
 
 
@@ -36,6 +38,8 @@ public class BlindEye : MonoBehaviour
 
     private void HealEyes()
     {
+        if (!Active) return;
+
         _blind = false;
         StartCoroutine(FadeOut());
     }

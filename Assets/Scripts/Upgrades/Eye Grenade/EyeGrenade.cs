@@ -23,6 +23,7 @@ public class EyeGrenade : MonoBehaviour
         InputManager.OnThrowGrenade += UseEye;
 
         //hook firepoint to main cam
+        BlindEye.Active = true;
 
         _throwPoint = GameObject.FindGameObjectWithTag("FirePoint").transform;
 

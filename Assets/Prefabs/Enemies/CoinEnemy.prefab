@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -525,6 +525,7 @@ MonoBehaviour:
   - {fileID: 1982532292065577019}
   _damageMat: {fileID: 2100000, guid: 223032c97a0361d468acc4cab2b0a77d, type: 2}
   _healthBar: {fileID: 6553485459679930349}
+  BlobPrerfab: {fileID: 4829963867601924179, guid: d295220c7240dca41812e87c94f106f7, type: 3}
 --- !u!65 &3700985122723941474
 BoxCollider:
   m_ObjectHideFlags: 0

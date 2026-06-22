@@ -21,6 +21,13 @@ public class GameManager : MonoBehaviour
 
     private bool _vomit;
     public static event Action OnEnableVomitUI;
+
+    //scores
+    public float RunTime { get; private set; }
+    public int FloorCount {get; private set; }
+    //private int _roomCount;
+
+
     private void Awake()
     {
         if(Instance == null)
@@ -43,6 +50,12 @@ public class GameManager : MonoBehaviour
             PukeUpgrade.OnGrabVomit += EnableVomit;
             _subscribed = true;
         }
+
+    }
+
+    private void Update()
+    {
+        RunTime += Time.deltaTime;
     }
 
     private void ResetPlayer()
@@ -50,6 +63,11 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
         LevelSize = _startLevelSize;
         Roomgen.LevelSize = LevelSize;
+        _vomit = false;
+        BlindEye.Active = false;
+
+        RunTime = 0f;
+        FloorCount = 0;
         Destroy(_currentPlayer);
     }
 
@@ -69,6 +87,7 @@ public class GameManager : MonoBehaviour
         {
             //reset player pos
             _currentPlayer.transform.position = startPos;
+            FloorCount++;
 
         }
     }
