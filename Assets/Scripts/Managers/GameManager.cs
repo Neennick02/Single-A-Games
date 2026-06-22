@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,10 @@ public class GameManager : MonoBehaviour
     public byte _startLevelSize = 5;
     public byte LevelSize;
 
+
+    [SerializeField] private List<GameObject> Enemies;
+    [SerializeField] private List<GameObject> Traps;
+    public int TrapFloorSpawn = 3;
     private bool _subscribed;
     private bool _firstFloor = true;
 
@@ -53,6 +58,11 @@ public class GameManager : MonoBehaviour
             _subscribed = true;
         }
 
+        SpawnEnemy.Enemies.Clear();
+        for(int i = 0; i < Enemies.Count; i++)
+        {
+            SpawnEnemy.Enemies.Add(Enemies[i]);
+        }
     }
 
     private void Update()
@@ -75,6 +85,10 @@ public class GameManager : MonoBehaviour
         FloorCount = 0;
         KillCount = 0;
 
+        for (int i = 0; i < Traps.Count; i++)
+        {
+            SpawnEnemy.Enemies.Remove(Traps[i]);
+        }
         Destroy(_currentPlayer);
     }
 
@@ -95,7 +109,15 @@ public class GameManager : MonoBehaviour
             //reset player pos
             _currentPlayer.transform.position = startPos;
             FloorCount++;
+        }
 
+        //add traps to 
+        if(FloorCount >= TrapFloorSpawn)
+        {
+            for (int i = 0; i < Traps.Count; i++)
+            {
+                SpawnEnemy.Enemies.Add(Traps[i]);
+            }
         }
     }
     private void OnDestroy()
