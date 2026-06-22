@@ -103,7 +103,13 @@ public class CoinEnemy : Enemy
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(enemyObject.Damage);
+            PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();
+
+            if(health == null)
+            {
+                health = collision.gameObject.GetComponentInParent<PlayerHealth>();
+            }
+            health.TakeDamage(enemyObject.Damage);
         }
         else if (collision.gameObject.CompareTag("Buddy"))
         {
