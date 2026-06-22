@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealth : BaseHealth
@@ -13,7 +14,7 @@ public class EnemyHealth : BaseHealth
     [SerializeField] private EnemyHealthBar _healthBar;
     public static event Action<float> OnRestoreSanity;
 
-    [SerializeField] private GameObject _deathParticle;
+    public GameObject _deathParticle;
 
     public GameObject BlobPrerfab;
 
@@ -33,13 +34,15 @@ public class EnemyHealth : BaseHealth
     {
         currentHealth -= amount;
 
+        StartCoroutine(FlashRed());
+
         if (currentHealth <= 0)
         {
             Die();
         }
         else
         {
-            StartCoroutine(FlashRed());
+            StartCoroutine(RevealFlesh(amount));
         }
 
         _healthBar.UpdateHealth(currentHealth);
@@ -55,16 +58,29 @@ public class EnemyHealth : BaseHealth
 
     protected override void Die()
     {
+
         StartCoroutine(FadeOutAndDie());
 
         Instantiate(_deathParticle, transform.position, Quaternion.identity);
+
     }
 
     private IEnumerator FlashRed()
     {
+        Debug.Log(_damageMat);
         MeshRenderers[0].material = _damageMat;
         yield return new WaitForSeconds(0.1f);
         MeshRenderers[0].material = _startMat;
+    }
+
+    private IEnumerator RevealFlesh(float strength)
+    {
+
+        float normalizedStrength = strength / EnemyObject.MaxHealth;
+
+        Dissolver dissolve = GetComponent<Dissolver>();
+        dissolve.DissolveBasedOnDamage(normalizedStrength);
+        yield return new WaitForSeconds(0.1f);
     }
     IEnumerator FadeOutAndDie()
     {

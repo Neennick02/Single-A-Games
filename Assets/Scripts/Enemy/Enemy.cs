@@ -109,7 +109,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected void FindTargetLocation()
     {
-        currentTarget = transform.position + Random.insideUnitSphere * _radius;
+        currentTarget = transform.position + UnityEngine.Random.insideUnitSphere * _radius;
         currentTarget.y = startY;
 
         NavMeshHit hit;
