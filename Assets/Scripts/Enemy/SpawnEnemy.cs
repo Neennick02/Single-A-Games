@@ -4,8 +4,7 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
 
-    [SerializeField] private List<GameObject> _enemies;
-
+    public static List<GameObject> Enemies = new List<GameObject>();
     [SerializeField] private int _amount;
 
     private List<Transform> SpawnPositions = new List<Transform>();
@@ -30,11 +29,11 @@ public class SpawnEnemy : MonoBehaviour
             if (_Random > 0 && AvailablePositions.Count > 0)
             {
 
-                int _RandomEnemy = Random.Range(0, _enemies.Count);
+                int _RandomEnemy = Random.Range(0, Enemies.Count);
 
                 int currentPos = Random.Range(0, AvailablePositions.Count);
 
-                Instantiate(_enemies[_RandomEnemy],
+                Instantiate(Enemies[_RandomEnemy],
                     SpawnPositions[currentPos].position,
                     Quaternion.identity,
                     gameObject.transform);
@@ -42,6 +41,5 @@ public class SpawnEnemy : MonoBehaviour
                 AvailablePositions.RemoveAt(currentPos);
             }
         }
-
     }
 }

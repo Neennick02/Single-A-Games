@@ -16,6 +16,9 @@ public class PlayerHealth : BaseHealth
     #region OnEnable
     private void OnEnable()
     {
+        maxHealth = PlayerObject.MaxHealth;
+        currentHealth = maxHealth;
+
         SanityManager.OnTakeSanityDamage += TakeDamage;
         GameManager.OnGameStart += StartGame;
     }
@@ -26,11 +29,6 @@ public class PlayerHealth : BaseHealth
         GameManager.OnGameStart -= StartGame;
     }
     #endregion
-    private void Start()
-    {
-        maxHealth = PlayerObject.MaxHealth;
-        currentHealth = maxHealth;
-    }
     public override void TakeDamage(float amount)
     {
         //add vignette effect
@@ -75,5 +73,10 @@ public class PlayerHealth : BaseHealth
     private void StartGame()
     {
         currentHealth = maxHealth;
+    }
+
+    public float GetHealth()
+    {
+        return currentHealth;
     }
 }
