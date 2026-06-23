@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,6 +14,11 @@ public class EnemyHealth : BaseHealth
     [SerializeField] private Material _damageMat;
     [SerializeField] private EnemyHealthBar _healthBar;
     public static event Action<float> OnRestoreSanity;
+
+
+    [SerializeField] private CameraShakeManager _cameraShakeManager;
+
+    private CinemachineImpulseSource _impulseSource;
 
     public GameObject _deathParticle;
 
@@ -28,6 +34,10 @@ public class EnemyHealth : BaseHealth
         {
             _startMat = MeshRenderers[i].material;
         }
+
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
+
+        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
     }
 
     public override void TakeDamage(float amount)
@@ -64,6 +74,14 @@ public class EnemyHealth : BaseHealth
         Instantiate(_deathParticle, transform.position, Quaternion.identity);
 
         GameManager.Instance.AddKill();
+
+
+        float X = UnityEngine.Random.Range(-0.1f, 0.1f);
+        float Y = UnityEngine.Random.Range(-0.1f, 0.1f);
+
+        _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
+
+        _cameraShakeManager.CameraShake(_impulseSource, 2);
 
     }
 

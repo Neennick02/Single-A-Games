@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27678308, y: 0.6821013, z: -0.31518927, w: 0.59898645}
-  m_LocalPosition: {x: -0.00642669, y: 2.0076156, z: 0.0008374319}
+  m_LocalRotation: {x: 0.0054532173, y: 0.9941256, z: -0.081543356, w: 0.07095991}
+  m_LocalPosition: {x: -0.0013580322, y: 2.0016236, z: 0.009775162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 4801946253997007318}
   - component: {fileID: 1967749028912230974}
   - component: {fileID: 7536798202861596530}
+  - component: {fileID: 6863320320852759516}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -305,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   range: 3
   _animator: {fileID: 4314241314537750133}
+  _cameraShakeManager: {fileID: 0}
   SwingAudio: {fileID: 8300000, guid: ef131282c66b7e24bbb4250d0f84e7a4, type: 3}
   HitAudio: {fileID: 8300000, guid: c2593ccc9aa33994ab833a69238f8c81, type: 3}
 --- !u!114 &9041727086968368730
@@ -362,9 +364,9 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
   Velocity: {x: 0, y: 0, z: 0}
   FootstepAudio:
-  - {fileID: 8300000, guid: 02edf911e4a7ef644a702d33287a9280, type: 3}
-  - {fileID: 8300000, guid: da062cfc4a426fd4789d60ec26121c6b, type: 3}
-  - {fileID: 8300000, guid: 93fe4613b0162454c98862c861720fa2, type: 3}
+  - {fileID: 8300000, guid: 7883a21e22e25574ea3eb24ce9b720cc, type: 3}
+  - {fileID: 8300000, guid: 8afe4b6be38a1ed4fb90b4bcd9bef3d9, type: 3}
+  - {fileID: 8300000, guid: 6d0d4ab13b257504aafc5465fd77433a, type: 3}
 --- !u!114 &1909929021468522827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,6 +422,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateMachine
   StateName: 
+--- !u!114 &6863320320852759516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233300373404658936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 1
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: -0.2, y: -0.2, z: 0}
 --- !u!1 &471022230270949219
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,8 +505,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471022230270949219}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27678308, y: 0.6821013, z: -0.31518927, w: 0.59898645}
-  m_LocalPosition: {x: -0.006426811, y: 2.0076156, z: 0.00083732605}
+  m_LocalRotation: {x: 0.005615757, y: 0.99430585, z: -0.08124778, w: 0.06872532}
+  m_LocalPosition: {x: -0.0013580322, y: 2.0016236, z: 0.009775162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -546,7 +601,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: 97.4241
+    Value: 172.09213
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -556,7 +611,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 49.60197
+    Value: 9.342871
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
