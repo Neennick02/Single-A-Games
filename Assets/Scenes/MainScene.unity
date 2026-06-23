@@ -363,7 +363,7 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 233300373404658936, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
   gameStarted: 0
   _currentPlayer: {fileID: 0}
-  _startLevelSize: 40
+  _startLevelSize: 3
   LevelSize: 0
   Enemies:
   - {fileID: 8769454351178494101, guid: 42f89b97b1f4fc6488bf1bc48d1ab1f3, type: 3}
