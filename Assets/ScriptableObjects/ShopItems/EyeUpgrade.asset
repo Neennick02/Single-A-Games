@@ -16,4 +16,4 @@ MonoBehaviour:
   Price: 5
   Prefab: {fileID: 3577074951957311698, guid: 7a8e0ab290a19624981b52b2e680a86c, type: 3}
   Title: Eye Bombs
-  Description: Click middle mouse to grab eye, click again to throw!
+  Description: Press Q to grab eye, press again to throw!
