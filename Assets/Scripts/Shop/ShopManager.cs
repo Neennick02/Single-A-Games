@@ -30,12 +30,12 @@ public class ShopManager : MonoBehaviour
         sanityManager = FindFirstObjectByType<SanityManager>();
         playerAnimator = FindFirstObjectByType<PlayerAnimator>();
 
+        //fill available upgrades list
+        _availableUpgrades = new List<UpgradeObject>(TotalUpgrades);
     }
     private void OnEnable()
     {
-        _availableUpgrades = new List<UpgradeObject>(TotalUpgrades);
         _assignedUpgrades.Clear();
-        
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
 

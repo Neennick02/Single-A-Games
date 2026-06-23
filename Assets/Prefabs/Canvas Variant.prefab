@@ -5197,11 +5197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
   TotalUpgrades:
-  - {fileID: 11400000, guid: 241c6fff2ff74694c808641edc088cb8, type: 2}
-  - {fileID: 11400000, guid: a25976c723891d54f8a1708bb9878200, type: 2}
-  - {fileID: 11400000, guid: 2f40c8bba24627c49967df29d287db04, type: 2}
-  - {fileID: 11400000, guid: 1983c794e768f2745b65544ffe24da0a, type: 2}
   - {fileID: 11400000, guid: ee4e44219e52b144b84fd2254a967bd1, type: 2}
+  - {fileID: 11400000, guid: a25976c723891d54f8a1708bb9878200, type: 2}
+  - {fileID: 11400000, guid: 1983c794e768f2745b65544ffe24da0a, type: 2}
+  - {fileID: 11400000, guid: 2f40c8bba24627c49967df29d287db04, type: 2}
+  - {fileID: 11400000, guid: 241c6fff2ff74694c808641edc088cb8, type: 2}
   ItemSlots:
   - {fileID: 467999662093624367}
   - {fileID: 5685849757173639759}

@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3150175ad04ee8542bf184413bf61c5c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.15
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3150175ad04ee8542bf184413bf61c5c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3150175ad04ee8542bf184413bf61c5c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3150175ad04ee8542bf184413bf61c5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -62,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 386a4ab2a4ba89c43a4dd0c95e1a3c24, type: 2}
     - target: {fileID: 919132149155446097, guid: 3150175ad04ee8542bf184413bf61c5c, type: 3}
       propertyPath: m_Name
-      value: Door
+      value: P_Door
       objectReference: {fileID: 0}
     - target: {fileID: 2942529372655497076, guid: 3150175ad04ee8542bf184413bf61c5c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
