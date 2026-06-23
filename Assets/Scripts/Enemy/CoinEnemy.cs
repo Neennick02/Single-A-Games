@@ -30,6 +30,8 @@ public class CoinEnemy : Enemy
             if (CheckIfInRange() && !_cd)
             {
                 StartCoroutine(Attack());
+                _attacking = true;
+                _cd = true;
                 return;
             }
 
