@@ -363,7 +363,7 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 233300373404658936, guid: 4d8b148d228d0834887bd1d8b421c8b0, type: 3}
   gameStarted: 0
   _currentPlayer: {fileID: 0}
-  _startLevelSize: 4
+  _startLevelSize: 40
   LevelSize: 0
   Enemies:
   - {fileID: 8769454351178494101, guid: 42f89b97b1f4fc6488bf1bc48d1ab1f3, type: 3}
@@ -718,7 +718,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _rooms.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: '_rooms.Array.data[7]'
@@ -736,6 +736,10 @@ PrefabInstance:
       propertyPath: '_rooms.Array.data[10]'
       value: 
       objectReference: {fileID: 11400000, guid: 61fb18adbac8f0742bac0816979cc792, type: 2}
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: '_rooms.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dfdfdb7fee64ea45a80584896f28d88, type: 2}
     - target: {fileID: 5413135809406820335, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_Name
       value: RoomGeneration
