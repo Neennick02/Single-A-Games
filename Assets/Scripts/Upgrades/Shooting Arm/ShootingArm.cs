@@ -41,8 +41,6 @@ public class ShootingArm : MonoBehaviour
 
         int _Force = 1000;
 
-        Debug.Log(playerAnimator);
-
         GetRightFase();
 
         //Apply a starting force to "shoot" the arm forward
@@ -54,8 +52,6 @@ public class ShootingArm : MonoBehaviour
 
         //Keep setting the current magnitude of the arm's velocity to a variable to check for damage on collision
         speed = _rb.linearVelocity.magnitude;
-
-        Debug.Log(_ShootArm);
 
     }
 
@@ -105,8 +101,6 @@ public class ShootingArm : MonoBehaviour
 
     private void GetRightFase()
     {
-
-        Debug.Log(playerAnimator._state);
 
         switch (playerAnimator._state)
         {

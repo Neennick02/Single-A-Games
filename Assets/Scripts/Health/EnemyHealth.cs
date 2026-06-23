@@ -75,19 +75,12 @@ public class EnemyHealth : BaseHealth
 
         GameManager.Instance.AddKill();
 
-
-        float X = UnityEngine.Random.Range(-0.1f, 0.1f);
-        float Y = UnityEngine.Random.Range(-0.1f, 0.1f);
-
-        _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
-
-        _cameraShakeManager.CameraShake(_impulseSource, 2);
+        _cameraShakeManager.CameraShake(gameObject, 1);
 
     }
 
     private IEnumerator FlashRed()
     {
-        Debug.Log(_damageMat);
         MeshRenderers[0].material = _damageMat;
         yield return new WaitForSeconds(0.1f);
         MeshRenderers[0].material = _startMat;

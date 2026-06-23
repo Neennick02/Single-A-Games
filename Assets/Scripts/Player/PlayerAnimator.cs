@@ -66,24 +66,22 @@ public class PlayerAnimator : MonoBehaviour
 
         Animator animtor = _handAnimator[_state].GetComponent<Animator>();
 
+        float rando = Random.Range(1, 4);
+
+        Debug.Log(rando);
+
+        _armAnimator.SetFloat("Blend", rando);
         _armAnimator.SetBool("Attack", true);
-        animtor.SetFloat("Attack", 1f);
+        animtor.SetBool("Attack", true);
+
+
 
         yield return new WaitForSeconds(0.2f);
 
         _armAnimator.SetBool("Attack", false);
+        animtor.SetBool("Attack", false);
 
-        while (animtor.GetFloat("Attack") > 0)
-        {
-            animtor.SetFloat("Attack", animtor.GetFloat("Attack") - 6f * Time.deltaTime);
 
-            if (animtor.GetFloat("Attack") < 0)
-            {
-                animtor.SetFloat("Attack", 0f);
-            }
-
-            yield return new WaitForSeconds(0.01f);
-        }
 
     }
 }

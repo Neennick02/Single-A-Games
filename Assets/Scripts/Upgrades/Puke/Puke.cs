@@ -136,12 +136,7 @@ public class Puke : MonoBehaviour
         while (_isPuking && _intensity > 0)
         {
 
-            float X = Random.Range(-0.1f, 0.1f);
-            float Y = Random.Range(-0.1f, 0.1f);
-
-            _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
-
-            _cameraShakeManager.CameraShake(_impulseSource, _intensity);
+            _cameraShakeManager.CameraShake(gameObject, _intensity);
 
             yield return new WaitForSeconds(0.1f);
 

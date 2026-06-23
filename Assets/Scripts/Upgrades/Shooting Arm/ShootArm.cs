@@ -124,7 +124,7 @@ public class ShootArm : MonoBehaviour
 
             _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
 
-            _cameraShakeManager.CameraShake(_impulseSource, 0.1f);
+            _cameraShakeManager.CameraShake(gameObject, 0.05f);
 
             yield return new WaitForSeconds(0.1f);
 
@@ -248,6 +248,8 @@ public class ShootArm : MonoBehaviour
         _playerAttackScript.enabled = false;
 
         _arm = false;
+
+        _cameraShakeManager.CameraShake(gameObject, 1f);
 
         AudioManager.Instance.PlayClip(ShootAudio);
     }
