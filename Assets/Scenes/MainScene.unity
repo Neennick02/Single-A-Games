@@ -370,7 +370,7 @@ MonoBehaviour:
   - {fileID: 7938202942073689913, guid: c0a8e2ed3d1c2a34abc430f365b5c342, type: 3}
   Traps:
   - {fileID: 6702637200171705465, guid: faf359fec23b020469891858fbc54302, type: 3}
-  TrapFloorSpawn: 2
+  TrapFloorSpawn: 20
 --- !u!4 &618525719
 Transform:
   m_ObjectHideFlags: 0

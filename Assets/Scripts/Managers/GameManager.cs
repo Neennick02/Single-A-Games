@@ -139,7 +139,10 @@ public class GameManager : MonoBehaviour
                 LevelSize += 2;
 
             Roomgen.LevelSize = LevelSize;
+
             _firstFloor = false;
+
+            FindFirstObjectByType<Roomgen>().Generate();
 
             if (_vomit)
             {

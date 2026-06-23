@@ -28,8 +28,15 @@ public class Roomgen : MonoBehaviour
 
     }
 
-    public void Start()
+    public void Generate()
     {
+        if (_mapRoutine != null)
+            StopCoroutine(_mapRoutine);
+
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
+
+        Rooms.Clear();
         _mapRoutine = StartCoroutine(GenerateMap());
     }
 
