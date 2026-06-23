@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SanityBlob
   _startSpeed: 1
-  _speedIncrease: 0.2
+  _speedIncrease: 0.1
 --- !u!1 &7359912127821696690
 GameObject:
   m_ObjectHideFlags: 0
