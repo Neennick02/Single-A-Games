@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class BuddyBehaviour : MonoBehaviour
 {
+    private NavMeshAgent _agent;
     public float MoveSpeed = 5f;
     public float DamageAmount = 1;
 
@@ -22,6 +23,7 @@ public class BuddyBehaviour : MonoBehaviour
     private BuddyHealth health;
 
     private bool changeHeight;
+    public Animator animator;
     public enum BuddyStates
     {
         Following,
@@ -33,6 +35,8 @@ public class BuddyBehaviour : MonoBehaviour
     public List<GameObject> EnemiesSpotted = new List<GameObject>();
     private void Start()
     {
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.baseOffset = DefaultHeight;
         health = GetComponent<BuddyHealth>();
         player = PlayerMotor.Instance.transform;
         closestEnemy = null;
@@ -40,6 +44,9 @@ public class BuddyBehaviour : MonoBehaviour
 
     private void Update()
     {
+        animator.SetFloat("Speed", _agent.velocity.magnitude);
+
+
         switch (State)
         {
             case BuddyStates.Following:
@@ -66,9 +73,7 @@ public class BuddyBehaviour : MonoBehaviour
 
         if (!changeHeight && (State == BuddyStates.Following || State == BuddyStates.ChasingEnemy))
         {
-            Vector3 pos = transform.position;
-            pos.y = DefaultHeight + Mathf.PingPong(Time.time * 0.5f, 0.2f);
-            transform.position = pos;
+            _agent.baseOffset = DefaultHeight + Mathf.PingPong(Time.time * 0.5f, 0.2f);
         }
     }
     private void FollowPlayer()
@@ -119,13 +124,13 @@ public class BuddyBehaviour : MonoBehaviour
             regenTimer = 0f;
         }
     }
+
     private void MoveTowards(Vector3 target)
     {
-        Vector3 direction = (target - transform.position).normalized;
-        direction.y = 0;
+        _agent.speed = MoveSpeed;
+        _agent.stoppingDistance = (State == BuddyStates.Following)    ? PlayerStoppingDistance : EnemyStoppingDistance;
 
-        transform.position += direction * MoveSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.LookRotation(direction);
+        _agent.SetDestination(target);
     }
     private GameObject FindClosestTarget()
     {
@@ -187,11 +192,17 @@ public class BuddyBehaviour : MonoBehaviour
                 health = collision.gameObject.GetComponentInParent<EnemyHealth>();
             }
             health.TakeDamage(DamageAmount);
+            animator.SetTrigger("Attack");
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();
+            if (health == null)
+            {
+                health = collision.gameObject.GetComponentInParent<PlayerHealth>();
+            }
             health.TakeDamage(DamageAmount);
+            animator.SetTrigger("Attack");
         }
     }
 
@@ -202,22 +213,20 @@ public class BuddyBehaviour : MonoBehaviour
 
     public IEnumerator RestRoutine(float targetHeight)
     {
+        animator.SetTrigger("Die");
         changeHeight = true;
         float timer = 0;
         float duration = 1f;
 
-        float startHeight = transform.position.y;
+        float startHeight = _agent.baseOffset;
 
         while (timer < duration)
         {
             timer += Time.deltaTime;
-
-            Vector3 pos = transform.position;
-            pos.y = Mathf.Lerp(startHeight, targetHeight, timer / duration);
-            transform.position = pos;
-
+            _agent.baseOffset = Mathf.Lerp(startHeight, targetHeight, timer / duration);
             yield return null;
         }
+
         changeHeight = false;
     }
 }

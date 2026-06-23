@@ -80,15 +80,24 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        _animator.AttackAnimation();
+
+        yield return new WaitForSeconds(0.1f);
+
+        StartCoroutine(DetectAttack());
+
+        yield return new WaitForSeconds(0.5f);
+
+        _isAttacking = false;
+    }
+
+    private IEnumerator DetectAttack()
+    {
         RaycastHit hit;
 
         bool attacked = false;
 
-        _animator.AttackAnimation();
-
-        yield return new WaitForSeconds(0.2f);
-
-        for (int i = 0; i < 5; i++)
+        while (_isAttacking && !attacked)
         {
 
             if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range) && !attacked)
@@ -113,16 +122,15 @@ public class PlayerAttack : MonoBehaviour
 
                 }
             }
-            
-            yield return new WaitForSeconds(0.02f);
+
+            Debug.Log("test");
+
+            yield return null;
 
         }
 
-
-        yield return new WaitForSeconds(0.4f);
-
-        _isAttacking = false;
     }
+
 
     public void IncreaseDamageOutput(float multiplier)
     {

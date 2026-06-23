@@ -368,6 +368,9 @@ MonoBehaviour:
   Enemies:
   - {fileID: 8769454351178494101, guid: 42f89b97b1f4fc6488bf1bc48d1ab1f3, type: 3}
   - {fileID: 7938202942073689913, guid: c0a8e2ed3d1c2a34abc430f365b5c342, type: 3}
+  - {fileID: 170575143177334273, guid: 1d414e62a6a31f24994c22c0a9e9358f, type: 3}
+  - {fileID: 170575143177334273, guid: 1d414e62a6a31f24994c22c0a9e9358f, type: 3}
+  - {fileID: 0}
   Traps:
   - {fileID: 6702637200171705465, guid: faf359fec23b020469891858fbc54302, type: 3}
   TrapFloorSpawn: 20
@@ -634,7 +637,7 @@ PrefabInstance:
     - target: {fileID: 4306382239566131098, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: 'TotalUpgrades.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: ee4e44219e52b144b84fd2254a967bd1, type: 2}
+      objectReference: {fileID: 11400000, guid: 241c6fff2ff74694c808641edc088cb8, type: 2}
     - target: {fileID: 5026615257672269540, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: m_IsActive
       value: 0
