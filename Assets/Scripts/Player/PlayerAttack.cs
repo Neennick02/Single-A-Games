@@ -22,8 +22,6 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private CameraShakeManager _cameraShakeManager;
 
-    private CinemachineImpulseSource _impulseSource;
-
     private bool _isDead;
 
     public AudioClip SwingAudio;
@@ -34,8 +32,6 @@ public class PlayerAttack : MonoBehaviour
         _camera = GetComponentInChildren<Camera>().gameObject;
 
         _healthScript = GetComponent<PlayerHealth>();
-
-        _impulseSource = GetComponent<CinemachineImpulseSource>();
 
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -72,7 +68,6 @@ public class PlayerAttack : MonoBehaviour
 
         if (!_isAttacking)
         {
-            _animator.AttackAnimation();
             StartCoroutine(Attack());
             _isAttacking = true;
 
@@ -87,34 +82,45 @@ public class PlayerAttack : MonoBehaviour
     {
         RaycastHit hit;
 
+        bool attacked = false;
+
+        _animator.AttackAnimation();
+
         yield return new WaitForSeconds(0.2f);
 
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range))
+        for (int i = 0; i < 5; i++)
         {
 
-            if (hit.collider.CompareTag("Enemy"))
+            if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, range) && !attacked)
             {
-                //find health script
-                EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
-                if (health == null)
+
+                if (hit.collider.CompareTag("Enemy"))
                 {
-                    health = hit.collider.GetComponentInParent<EnemyHealth>();
+                    //find health script
+                    EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
+                    if (health == null)
+                    {
+                        health = hit.collider.GetComponentInParent<EnemyHealth>();
+                    }
+
+                    health.TakeDamage(_healthScript.PlayerObject.Damage * _damageMultiplier);
+
+                    _cameraShakeManager.CameraShake(gameObject, 0.5f);
+
+                    AudioManager.Instance.PlayClip(HitAudio, 1, Random.Range(0.8f, 1.2f));
+
+                    attacked = true;
+
                 }
-
-                health.TakeDamage(_healthScript.PlayerObject.Damage * _damageMultiplier);
-
-                float X = Random.Range(-0.1f, 0.1f);
-                float Y = Random.Range(-0.1f, 0.1f);
-
-                _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
-
-                _cameraShakeManager.CameraShake(_impulseSource, 1);
-                AudioManager.Instance.PlayClip(HitAudio, 1, Random.Range(0.8f, 1.2f));
             }
+            
+            yield return new WaitForSeconds(0.02f);
 
         }
 
-        yield return new WaitForSeconds(0.2f);
+
+        yield return new WaitForSeconds(0.4f);
+
         _isAttacking = false;
     }
 
