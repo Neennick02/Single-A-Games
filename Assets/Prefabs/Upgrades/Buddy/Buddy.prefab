@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3417189087789849339}
-  - component: {fileID: 6915837435469975244}
   - component: {fileID: 7276334468857831186}
   - component: {fileID: 4170352817221512187}
   - component: {fileID: 3638530734174344893}
@@ -38,28 +37,6 @@ Transform:
   - {fileID: 7655907038310678216}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &6915837435469975244
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253440425323430614}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 3
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2.23
-  m_BaseOffset: 1.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &7276334468857831186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995a826f389a33140bf9c2f74e7f98bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuddyBehaviour
+  MoveSpeed: 5
   DamageAmount: 1
   PlayerStoppingDistance: 3
   EnemyStoppingDistance: 0
@@ -397,16 +375,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 3417189087789849339}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.40075377
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.40075377
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.40075377
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.04
+      value: -0.0057293
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: -0.21359
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.39
+      value: 2.119
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
       propertyPath: m_LocalRotation.w
@@ -435,6 +425,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 90dba28a652e65c44b0516b6bb421421, type: 3}
       propertyPath: m_Name

@@ -20,6 +20,8 @@ public class MeleeEnemy : Enemy
     protected override void MyUpdate()
     {
         if (_dead) return;
+        
+        AssignTarget();
 
         if (CurrentState == EnemyState.Moving)
         {
