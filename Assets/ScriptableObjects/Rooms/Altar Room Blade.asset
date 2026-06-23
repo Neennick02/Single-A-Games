@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ba03fce7fb2e24892c361818672ce9, type: 3}
-  m_Name: Altar Room
+  m_Name: Altar Room Blade
   m_EditorClassIdentifier: Assembly-CSharp::RoomObject
-  _RoomObject: {fileID: 2340241633245422500, guid: 7622ec467ba6dbe4381b87409e6ea62f, type: 3}
+  _RoomObject: {fileID: 7867952504982733297, guid: 7c5380d30f639dc49ad2ecbba59e61de, type: 3}
   _RotationModifier: 0

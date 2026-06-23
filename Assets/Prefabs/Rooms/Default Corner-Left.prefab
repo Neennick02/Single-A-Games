@@ -209,11 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6319be023370044e9a48db9a543bb33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnEnemy
-  _enemies:
-  - {fileID: 7938202942073689913, guid: c0a8e2ed3d1c2a34abc430f365b5c342, type: 3}
-  - {fileID: 8769454351178494101, guid: 42f89b97b1f4fc6488bf1bc48d1ab1f3, type: 3}
-  - {fileID: 6702637200171705465, guid: faf359fec23b020469891858fbc54302, type: 3}
-  - {fileID: 2748904760511033854, guid: 589287eddb95ac446bc256416f83fe34, type: 3}
   _amount: 4
 --- !u!1 &4795638271338560718
 GameObject:
@@ -429,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 7117348071418411618}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.700003, y: 0, z: -14.000011}
+  m_LocalPosition: {x: 13.999998, y: 0, z: -13.999994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -530,7 +525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 878858801044424635, guid: 0049928a53c00af468fc8ccae7c02d10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.2999983
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 878858801044424635, guid: 0049928a53c00af468fc8ccae7c02d10, type: 3}
       propertyPath: m_LocalPosition.y
@@ -538,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 878858801044424635, guid: 0049928a53c00af468fc8ccae7c02d10, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.000005722046
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 878858801044424635, guid: 0049928a53c00af468fc8ccae7c02d10, type: 3}
       propertyPath: m_LocalRotation.w
