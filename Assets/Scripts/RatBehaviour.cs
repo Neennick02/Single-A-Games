@@ -34,15 +34,22 @@ public class RatBehaviour : MonoBehaviour
 
     private void FindTargetLocation()
     {
-            currentTarget = transform.position + Random.insideUnitSphere * radius;
-            currentTarget.y = startY;
+        Vector3 randomPos = transform.position + UnityEngine.Random.insideUnitSphere * radius;
+        randomPos.y = startY;
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(currentTarget, out hit, radius, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomPos, out hit, radius, NavMesh.AllAreas))
         {
-            currentTarget = hit.position;
-            _agent.SetDestination(currentTarget);
+            NavMeshPath path = new NavMeshPath();
+            if (_agent.CalculatePath(hit.position, path) && path.status == NavMeshPathStatus.PathComplete)
+            {
+                currentTarget = hit.position;
+                _agent.SetDestination(currentTarget);
+                return;
+            }
         }
+
+        currentTarget = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
