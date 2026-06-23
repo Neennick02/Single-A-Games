@@ -35,6 +35,7 @@ public class ShopManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        _assignedUpgrades.Clear();
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
 

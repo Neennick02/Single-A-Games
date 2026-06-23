@@ -42,6 +42,8 @@ public abstract class Enemy : MonoBehaviour
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _agent.avoidancePriority = UnityEngine.Random.Range(20, 80);
+
         _path = new NavMeshPath();
         startY = transform.position.y;
 
@@ -59,28 +61,26 @@ public abstract class Enemy : MonoBehaviour
 
     private void Update()
     {
-
-        MyUpdate();
-
-
         timer += Time.deltaTime;
 
-        if(timer >= _buddyCheckInterval && _buddy == null)
+        if (timer >= _buddyCheckInterval)
         {
             BuddyBehaviour script = FindFirstObjectByType<BuddyBehaviour>();
-            if(script != null)
-            {
+            if (script != null)
                 _buddy = script.gameObject;
-            }
+
             timer = 0f;
         }
-
+        MyUpdate();
     }
 
     protected virtual void MyStart() { }
 
 
-    protected virtual void MyUpdate() { }
+    protected virtual void MyUpdate() 
+    {
+        AssignTarget();
+    }
 
     public virtual void Die()
     {
@@ -98,27 +98,39 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void AssignTarget()
     {
-        if (_buddy == null) _target = _player;
+        GameObject best = _player;
 
-        float playerDistance = Vector3.Distance(transform.position, _player.transform.position);
-        float buddyDistance = Vector3.Distance(transform.position, _buddy.transform.position);
+        if (_buddy != null)
+        {
+            float playerDist = Vector3.Distance(transform.position, _player.transform.position);
+            float buddyDist = Vector3.Distance(transform.position, _buddy.transform.position);
 
-        if (playerDistance < buddyDistance) _target = _player;
-        else if (buddyDistance < playerDistance) _target = _buddy;        
+            if (buddyDist < playerDist || !CanSeeTarget(_target))
+                best = _buddy;
+        }
+
+        _target = best;
     }
 
     protected void FindTargetLocation()
     {
-        currentTarget = transform.position + UnityEngine.Random.insideUnitSphere * _radius;
-        currentTarget.y = startY;
+        Vector3 randomPos = transform.position + UnityEngine.Random.insideUnitSphere * _radius;
+        randomPos.y = startY;
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(currentTarget, out hit, _radius, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomPos, out hit, _radius, NavMesh.AllAreas))
         {
-            currentTarget = hit.position;
-            _agent.SetDestination(currentTarget);
-            _isWandering = true;
+            NavMeshPath path = new NavMeshPath();
+            if (_agent.CalculatePath(hit.position, path) && path.status == NavMeshPathStatus.PathComplete)
+            {
+                currentTarget = hit.position;
+                _agent.SetDestination(currentTarget);
+                _isWandering = true;
+                return;
+            }
         }
+
+        currentTarget = transform.position;
     }
     protected void HandleWandering()
     {
@@ -128,27 +140,18 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    protected bool CanSeePlayer()
+    protected bool CanSeeTarget(GameObject target)
     {
-        if (Vector3.Distance(_target.transform.position, transform.position) <= _spottingRadius)
-        {
-            //wall check
+        if (target == null) return false;
 
-            Vector3 direction = transform.position - _target.transform.position;
-            RaycastHit hit;
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+        if (dist > _spottingRadius) return false;
 
-            if(Physics.Raycast(transform.position, direction, out hit, _spottingRadius, LayerMask.GetMask("Wall")))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        else
-        {
-            return false;
-        }
+        Vector3 dir = target.transform.position - transform.position;
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit hit, _spottingRadius))
+            return hit.collider.gameObject == target;
+
+        return false;
     }
 }

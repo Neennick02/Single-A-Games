@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MeleeEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyObject
   MaxHealth: 2
-  Damage: 5
+  Damage: 3
   StoppingDistance: 1
-  SanityRestoreAmount: 6
+  SanityRestoreAmount: 12

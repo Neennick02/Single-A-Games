@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CoinEnemy : Enemy
 {
@@ -11,6 +13,8 @@ public class CoinEnemy : Enemy
     [SerializeField] private Animator _animator;
     protected override void MyUpdate()
     {
+        AssignTarget();
+
         if (CurrentState == EnemyState.Moving)
         {
             HandleWandering();
@@ -25,29 +29,30 @@ public class CoinEnemy : Enemy
         {
             if (CheckIfInRange() && !_cd)
             {
-
-                _agent.ResetPath();
                 StartCoroutine(Attack());
-                _animator.SetTrigger("Attack");
-                _attacking = true;
-                _cd = true;
-
+                return;
             }
 
-            else
+            // Chase logic
+            if (CanSeeTarget(_target))
             {
-                if(CanSeePlayer())
+                Vector3 offset = Random.insideUnitSphere * 1.2f;
+                offset.y = 0;
+
+                Vector3 dest = _target.transform.position + offset;
+
+                // Validate chase path
+                NavMeshPath chasePath = new NavMeshPath();
+                if (_agent.CalculatePath(dest, chasePath) &&
+                    chasePath.status == NavMeshPathStatus.PathComplete)
                 {
-                    _agent.SetDestination(_target.transform.position);
+                    _agent.SetDestination(dest);
                     _isWandering = false;
                 }
                 else
                 {
-                    if (Vector3.Distance(currentTarget, transform.position) < 0.1f)
-                    {
-                        FindTargetLocation();
-                    }
-
+                    // fallback to wandering
+                    FindTargetLocation();
                 }
             }
         }

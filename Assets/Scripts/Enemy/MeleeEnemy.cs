@@ -20,6 +20,8 @@ public class MeleeEnemy : Enemy
     protected override void MyUpdate()
     {
         if (_dead) return;
+        
+        AssignTarget();
 
         if (CurrentState == EnemyState.Moving)
         {
@@ -47,7 +49,7 @@ public class MeleeEnemy : Enemy
 
             else
             {
-                if (CanSeePlayer())
+                if (CanSeeTarget(_target))
                 {
                     _agent.SetDestination(_target.transform.position);
                     _isWandering = false;

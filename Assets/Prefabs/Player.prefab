@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0054532173, y: 0.9941256, z: -0.081543356, w: 0.07095991}
+  m_LocalRotation: {x: 0.005615757, y: 0.99430585, z: -0.08124778, w: 0.06872532}
   m_LocalPosition: {x: -0.0013580322, y: 2.0016236, z: 0.009775162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
   ImpulseDefinition:
     ImpulseChannel: 1
-    ImpulseShape: 1
+    ImpulseShape: 2
     CustomImpulseShape:
       serializedVersion: 2
       m_Curve: []
@@ -870,8 +870,8 @@ Transform:
   m_GameObject: {fileID: 4347278190265153743}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.95, y: -1, z: 0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.93, y: -0.8, z: 0.4}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7194957410612799642}

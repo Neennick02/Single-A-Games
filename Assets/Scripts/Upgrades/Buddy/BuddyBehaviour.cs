@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class BuddyBehaviour : MonoBehaviour
 {
-    NavMeshAgent agent;
+    public float MoveSpeed = 5f;
     public float DamageAmount = 1;
 
     public float PlayerStoppingDistance = 3f;
@@ -30,15 +30,12 @@ public class BuddyBehaviour : MonoBehaviour
     }
 
     public BuddyStates State = BuddyStates.Following;
-    public List<GameObject> EnemiesSpotted;
+    public List<GameObject> EnemiesSpotted = new List<GameObject>();
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         health = GetComponent<BuddyHealth>();
         player = PlayerMotor.Instance.transform;
         closestEnemy = null;
-        agent.stoppingDistance = PlayerStoppingDistance;
-
     }
 
     private void Update()
@@ -53,51 +50,83 @@ public class BuddyBehaviour : MonoBehaviour
                     recharging = false;
                 }
 
-                agent.stoppingDistance = PlayerStoppingDistance;
-                agent.SetDestination(player.position);
+                FollowPlayer();
                 break;
                 
             case BuddyStates.ChasingEnemy:
-
-                if (closestEnemy == null)
-                {
-                    EnemiesSpotted.RemoveAll(GameObject => GameObject == null);
-                    closestEnemy = FindClosestTarget();
-                    agent.stoppingDistance = EnemyStoppingDistance;
-                }
-                else
-                {
-                    agent.SetDestination(closestEnemy.transform.position);
-                }
+                ChaseEnemy();
                 break;
 
             case BuddyStates.Recharging:
-
-                if (!recharging)
-                {
-                    StartCoroutine(RestRoutine(RestHeight));
-                    recharging = true;
-                }
-                regenTimer += Time.deltaTime;
-
-                if(regenTimer > regenInterval)
-                {
-                    health.Heal(1f);
-                    regenTimer = 0f;
-                }
+                Recharge();
 
                 break;
         }
 
 
-        if (!changeHeight &&
-            (State == BuddyStates.Following ||
-            State == BuddyStates.ChasingEnemy))
+        if (!changeHeight && (State == BuddyStates.Following || State == BuddyStates.ChasingEnemy))
         {
-            agent.baseOffset = DefaultHeight + Mathf.PingPong(Time.time, 0.2f);
+            Vector3 pos = transform.position;
+            pos.y = DefaultHeight + Mathf.PingPong(Time.time * 0.5f, 0.2f);
+            transform.position = pos;
+        }
+    }
+    private void FollowPlayer()
+    {
+        float dist = Vector3.Distance(transform.position, player.position);
+
+        if (dist > PlayerStoppingDistance)
+        {
+            MoveTowards(player.position);
         }
     }
 
+    private void ChaseEnemy()
+    {
+        if (closestEnemy == null)
+        {
+            EnemiesSpotted.RemoveAll(e => e == null);
+            closestEnemy = FindClosestTarget();
+        }
+
+        if (closestEnemy == null)
+        {
+            State = BuddyStates.Following;
+            return;
+        }
+
+        float dist = Vector3.Distance(transform.position, closestEnemy.transform.position);
+
+        if (dist > EnemyStoppingDistance)
+        {
+            MoveTowards(closestEnemy.transform.position);
+        }
+    }
+
+    private void Recharge()
+    {
+        if (!recharging)
+        {
+            StartCoroutine(RestRoutine(RestHeight));
+            recharging = true;
+        }
+
+        regenTimer += Time.deltaTime;
+
+        if (regenTimer > regenInterval)
+        {
+            health.Heal(1f);
+            regenTimer = 0f;
+        }
+    }
+    private void MoveTowards(Vector3 target)
+    {
+        Vector3 direction = (target - transform.position).normalized;
+        direction.y = 0;
+
+        transform.position += direction * MoveSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.LookRotation(direction);
+    }
     private GameObject FindClosestTarget()
     {
         float distance = Mathf.Infinity;
@@ -152,6 +181,11 @@ public class BuddyBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyHealth health = collision.gameObject.GetComponent<EnemyHealth>();
+
+            if(health == null)
+            {
+                health = collision.gameObject.GetComponentInParent<EnemyHealth>();
+            }
             health.TakeDamage(DamageAmount);
         }
         else if (collision.gameObject.CompareTag("Player"))
@@ -166,21 +200,24 @@ public class BuddyBehaviour : MonoBehaviour
         State = state;
     }
 
-    public IEnumerator RestRoutine(float targetOffset)
+    public IEnumerator RestRoutine(float targetHeight)
     {
         changeHeight = true;
         float timer = 0;
         float duration = 1f;
 
+        float startHeight = transform.position.y;
+
         while (timer < duration)
         {
             timer += Time.deltaTime;
 
-            agent.baseOffset = Mathf.Lerp(agent.baseOffset, targetOffset, timer / duration);
+            Vector3 pos = transform.position;
+            pos.y = Mathf.Lerp(startHeight, targetHeight, timer / duration);
+            transform.position = pos;
 
             yield return null;
         }
-        agent.baseOffset = targetOffset;
         changeHeight = false;
     }
 }
