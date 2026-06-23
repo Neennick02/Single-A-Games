@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Roomgen : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class Roomgen : MonoBehaviour
 
     [SerializeField] private RoomObject _startRoom;
     [SerializeField] private RoomObject _endRoom;
+    public NavMeshSurface surface;
 
     private Coroutine _mapRoutine;
     public List<GameObject> Rooms = new List<GameObject>();
@@ -145,6 +148,11 @@ public class Roomgen : MonoBehaviour
                 yield break;
             }
         }
+        _isGenerating = false;
+        yield return null;
+        yield return null;
+        surface.collectObjects = CollectObjects.Children;
+        surface.BuildNavMesh();
     }
 }
 
