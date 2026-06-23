@@ -718,7 +718,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: _rooms.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: '_rooms.Array.data[7]'
@@ -744,6 +744,10 @@ PrefabInstance:
       propertyPath: '_rooms.Array.data[12]'
       value: 
       objectReference: {fileID: 11400000, guid: 93d052aec1d4fe048b8d11075bc6b6c6, type: 2}
+    - target: {fileID: 4985875055805432092, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+      propertyPath: '_rooms.Array.data[13]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ad6798c71622247438a2e1ac4ed721c6, type: 2}
     - target: {fileID: 5413135809406820335, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
       propertyPath: m_Name
       value: RoomGeneration
