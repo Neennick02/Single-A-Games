@@ -11,6 +11,8 @@ public class CoinEnemy : Enemy
     [SerializeField] private Animator _animator;
     protected override void MyUpdate()
     {
+        AssignTarget();
+
         if (CurrentState == EnemyState.Moving)
         {
             HandleWandering();

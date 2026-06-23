@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f69e0c233d3aaf846959da3a8019c4fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c058aff15d3513439252b2ea3db03b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5199,9 +5199,9 @@ MonoBehaviour:
   TotalUpgrades:
   - {fileID: 11400000, guid: ee4e44219e52b144b84fd2254a967bd1, type: 2}
   - {fileID: 11400000, guid: a25976c723891d54f8a1708bb9878200, type: 2}
-  - {fileID: 11400000, guid: ee4e44219e52b144b84fd2254a967bd1, type: 2}
   - {fileID: 11400000, guid: 1983c794e768f2745b65544ffe24da0a, type: 2}
   - {fileID: 11400000, guid: 2f40c8bba24627c49967df29d287db04, type: 2}
+  - {fileID: 11400000, guid: 241c6fff2ff74694c808641edc088cb8, type: 2}
   ItemSlots:
   - {fileID: 467999662093624367}
   - {fileID: 5685849757173639759}
@@ -6455,7 +6455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f69e0c233d3aaf846959da3a8019c4fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c058aff15d3513439252b2ea3db03b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7277,7 +7277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4034106579329138945
 RectTransform:
   m_ObjectHideFlags: 0

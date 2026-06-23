@@ -25,7 +25,7 @@ public class TextPopup : MonoBehaviour
     public void FadingMessage(string message)
     {
         _textObject.text = message;
-        StopAllCoroutines();
+       // StopAllCoroutines();
         StartCoroutine(FadeInAndOut());
     }
 

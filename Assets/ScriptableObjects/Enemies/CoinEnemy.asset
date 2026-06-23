@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CoinEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyObject
   MaxHealth: 3
-  Damage: 5
+  Damage: 2
   StoppingDistance: 3
-  SanityRestoreAmount: 8
+  SanityRestoreAmount: 15

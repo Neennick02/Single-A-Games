@@ -61,26 +61,15 @@ public abstract class Enemy : MonoBehaviour
     {
 
         MyUpdate();
-
-
-        timer += Time.deltaTime;
-
-        if(timer >= _buddyCheckInterval && _buddy == null)
-        {
-            BuddyBehaviour script = FindFirstObjectByType<BuddyBehaviour>();
-            if(script != null)
-            {
-                _buddy = script.gameObject;
-            }
-            timer = 0f;
-        }
-
     }
 
     protected virtual void MyStart() { }
 
 
-    protected virtual void MyUpdate() { }
+    protected virtual void MyUpdate() 
+    {
+        AssignTarget();
+    }
 
     public virtual void Die()
     {
@@ -98,13 +87,18 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void AssignTarget()
     {
-        if (_buddy == null) _target = _player;
+        GameObject best = _player;
 
-        float playerDistance = Vector3.Distance(transform.position, _player.transform.position);
-        float buddyDistance = Vector3.Distance(transform.position, _buddy.transform.position);
+        if (_buddy != null)
+        {
+            float playerDist = Vector3.Distance(transform.position, _player.transform.position);
+            float buddyDist = Vector3.Distance(transform.position, _buddy.transform.position);
 
-        if (playerDistance < buddyDistance) _target = _player;
-        else if (buddyDistance < playerDistance) _target = _buddy;        
+            if (buddyDist < playerDist || !CanSeePlayer())
+                best = _buddy;
+        }
+
+        _target = best;
     }
 
     protected void FindTargetLocation()
