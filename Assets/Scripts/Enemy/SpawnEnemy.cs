@@ -33,12 +33,15 @@ public class SpawnEnemy : MonoBehaviour
 
                 int currentPos = Random.Range(0, AvailablePositions.Count);
 
-                Instantiate(Enemies[_RandomEnemy],
-                    SpawnPositions[currentPos].position,
-                    Quaternion.identity,
-                    gameObject.transform);
+                if (Enemies[_RandomEnemy] != null)
+                {
+                    Instantiate(Enemies[_RandomEnemy],
+                        SpawnPositions[currentPos].position,
+                        Quaternion.identity,
+                        gameObject.transform);
 
-                AvailablePositions.RemoveAt(currentPos);
+                    AvailablePositions.RemoveAt(currentPos);
+                }
             }
         }
     }
