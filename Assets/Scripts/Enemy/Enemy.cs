@@ -42,6 +42,8 @@ public abstract class Enemy : MonoBehaviour
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _agent.avoidancePriority = UnityEngine.Random.Range(20, 80);
+
         _path = new NavMeshPath();
         startY = transform.position.y;
 
@@ -59,7 +61,16 @@ public abstract class Enemy : MonoBehaviour
 
     private void Update()
     {
+        timer += Time.deltaTime;
 
+        if (timer >= _buddyCheckInterval)
+        {
+            BuddyBehaviour script = FindFirstObjectByType<BuddyBehaviour>();
+            if (script != null)
+                _buddy = script.gameObject;
+
+            timer = 0f;
+        }
         MyUpdate();
     }
 
@@ -94,7 +105,7 @@ public abstract class Enemy : MonoBehaviour
             float playerDist = Vector3.Distance(transform.position, _player.transform.position);
             float buddyDist = Vector3.Distance(transform.position, _buddy.transform.position);
 
-            if (buddyDist < playerDist || !CanSeePlayer())
+            if (buddyDist < playerDist || !CanSeeTarget(_target))
                 best = _buddy;
         }
 
@@ -103,16 +114,23 @@ public abstract class Enemy : MonoBehaviour
 
     protected void FindTargetLocation()
     {
-        currentTarget = transform.position + UnityEngine.Random.insideUnitSphere * _radius;
-        currentTarget.y = startY;
+        Vector3 randomPos = transform.position + UnityEngine.Random.insideUnitSphere * _radius;
+        randomPos.y = startY;
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(currentTarget, out hit, _radius, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomPos, out hit, _radius, NavMesh.AllAreas))
         {
-            currentTarget = hit.position;
-            _agent.SetDestination(currentTarget);
-            _isWandering = true;
+            NavMeshPath path = new NavMeshPath();
+            if (_agent.CalculatePath(hit.position, path) && path.status == NavMeshPathStatus.PathComplete)
+            {
+                currentTarget = hit.position;
+                _agent.SetDestination(currentTarget);
+                _isWandering = true;
+                return;
+            }
         }
+
+        currentTarget = transform.position;
     }
     protected void HandleWandering()
     {
@@ -122,27 +140,18 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    protected bool CanSeePlayer()
+    protected bool CanSeeTarget(GameObject target)
     {
-        if (Vector3.Distance(_target.transform.position, transform.position) <= _spottingRadius)
-        {
-            //wall check
+        if (target == null) return false;
 
-            Vector3 direction = transform.position - _target.transform.position;
-            RaycastHit hit;
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+        if (dist > _spottingRadius) return false;
 
-            if(Physics.Raycast(transform.position, direction, out hit, _spottingRadius, LayerMask.GetMask("Wall")))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        else
-        {
-            return false;
-        }
+        Vector3 dir = target.transform.position - transform.position;
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit hit, _spottingRadius))
+            return hit.collider.gameObject == target;
+
+        return false;
     }
 }

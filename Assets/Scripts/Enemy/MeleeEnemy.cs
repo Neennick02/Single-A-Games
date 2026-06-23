@@ -49,7 +49,7 @@ public class MeleeEnemy : Enemy
 
             else
             {
-                if (CanSeePlayer())
+                if (CanSeeTarget(_target))
                 {
                     _agent.SetDestination(_target.transform.position);
                     _isWandering = false;
