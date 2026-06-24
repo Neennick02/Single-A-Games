@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpikeDamage
   DamageAmount: 5
   ResetDur: 1
+  DamageClip: {fileID: 8300000, guid: dc2dec05d4953104580f33387ed8cadf, type: 3}
   ObjectsInRange: []
 --- !u!4 &7530853255620353420 stripped
 Transform:

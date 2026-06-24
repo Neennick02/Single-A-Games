@@ -51,7 +51,7 @@ public class EnemyHealth : BaseHealth
         {
             StartCoroutine(RevealFlesh(amount));
         }
-        AudioManager.Instance.PlayClip(LaughClip, UnityEngine.Random.Range(0.8f, 1.1f));
+        AudioManager.Instance.PlayClip(LaughClip, 1, UnityEngine.Random.Range(0.8f, 1.1f));
 
         _healthBar.UpdateHealth(currentHealth);
     }

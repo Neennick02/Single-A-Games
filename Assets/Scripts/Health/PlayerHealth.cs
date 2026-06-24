@@ -13,6 +13,7 @@ public class PlayerHealth : BaseHealth
 
     public static event Action<float> OnSetRunTime;
     public static event Action<int> OnSetFloorCount;
+    public AudioClip DamageClip;
     #region OnEnable
     private void OnEnable()
     {
@@ -40,6 +41,7 @@ public class PlayerHealth : BaseHealth
         OnHealthChange?.Invoke(currentHealth);
 
         CameraShakeManager.Instance.CameraShake(gameObject, 0.7f);
+        AudioManager.Instance.PlayClip(DamageClip, 1, UnityEngine.Random.Range(0.8f, 1.1f));
 
         if (currentHealth <= 0)
         {

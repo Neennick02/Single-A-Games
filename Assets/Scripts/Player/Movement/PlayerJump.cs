@@ -12,6 +12,8 @@ public class PlayerJump : MonoBehaviour
     private bool wasGrounded;
     private float coyoteTime = 0.15f;
     private float coyoteTimer;
+
+    public AudioClip LandClip;
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -32,8 +34,15 @@ public class PlayerJump : MonoBehaviour
         // Jump input
         if (input.onFoot.Jump.triggered)
             TryJump();
+        
+        if (!wasGrounded && controller.isGrounded)
+        {
+            AudioManager.Instance.PlayClip(LandClip, .5f, Random.Range(0.8f, 1.2f));
+        }
 
         wasGrounded = controller.isGrounded;
+
+
     }
 
     private void TryJump()

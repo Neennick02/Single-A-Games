@@ -19,6 +19,7 @@ public class PlayerSlide : MonoBehaviour
     private float slideTimer;
     public ParticleSystem SpeedTrails;
     public AudioClip DashClip;
+    public AudioClip SlideClip;
 
     private void Start()
     {
@@ -51,6 +52,7 @@ public class PlayerSlide : MonoBehaviour
             if (input.onFoot.Dash.triggered && horizontalVel.magnitude > 0.1f && CorrectDirection())
             {
                 state.SetState(PlayerStateMachine.PlayerStates.Dashing);
+                AudioManager.Instance.PlayClip(DashClip, .5f, Random.Range(0.8f, 1.2f));
                 SpeedTrails.Play();
             }
 
@@ -59,7 +61,7 @@ public class PlayerSlide : MonoBehaviour
         {
             StartSlide();
             SpeedTrails.Play();
-            AudioManager.Instance.PlayClip(DashClip, .5f, Random.Range(0.8f, 1.2f));
+            AudioManager.Instance.PlayClip(SlideClip, .5f, Random.Range(0.8f, 1.2f));
         }
     }
 

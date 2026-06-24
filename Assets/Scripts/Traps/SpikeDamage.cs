@@ -7,15 +7,15 @@ public class SpikeDamage : MonoBehaviour
     public float DamageAmount = 1f;
     public float ResetDur = 1f;
     private float timer;
+    public AudioClip DamageClip;
 
-    private Collider collider;
+    private Collider hitxBox;
 
     [SerializeField] private List<GameObject> ObjectsInRange;
-
     private void Start()
     {
         timer = ResetDur;
-        collider = GetComponent<Collider>();
+        hitxBox = GetComponent<Collider>();
     }
     private void Update()
     {
@@ -30,7 +30,7 @@ public class SpikeDamage : MonoBehaviour
             }
         }
 
-        if (!collider.enabled)
+        if (!hitxBox.enabled)
         {
             ObjectsInRange.Clear();
         }
@@ -49,6 +49,9 @@ public class SpikeDamage : MonoBehaviour
                 if (Phealth != null)
                 {
                     Phealth.TakeDamage(DamageAmount);
+                    
+                    AudioManager.Instance.PlayClip(DamageClip, .5f, Random.Range(0.8f, 1.2f));
+                    
                 }
             }
         }

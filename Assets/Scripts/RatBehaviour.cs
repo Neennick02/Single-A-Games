@@ -12,6 +12,9 @@ public class RatBehaviour : MonoBehaviour
     [SerializeField] private Vector3 currentTarget;
     [SerializeField] private float radius = 10f;
     private float startY;
+
+    public AudioClip Cry;
+    public AudioClip Death;
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -66,7 +69,12 @@ public class RatBehaviour : MonoBehaviour
 
     IEnumerator WaitForDeath()
     {
+        AudioManager.Instance.PlayClip(Death, 1, UnityEngine.Random.Range(9.8f, 1.1f));
+        yield return new WaitForSeconds(0.1f);
+        AudioManager.Instance.PlayClip(Cry, 5, UnityEngine.Random.Range(9.8f, 1.1f));
+
         yield return new WaitForSeconds(2f);
+
         Destroy(gameObject);
     }
 
