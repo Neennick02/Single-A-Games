@@ -1759,6 +1759,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 46832526211945542}
     m_Modifications:
+    - target: {fileID: 2493145991559782135, guid: 05a5aaac78c2b7d4995ee8f65c445756, type: 3}
+      propertyPath: m_Center.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3830347500107269660, guid: 05a5aaac78c2b7d4995ee8f65c445756, type: 3}
       propertyPath: m_Name
       value: P_Door
@@ -1814,22 +1818,6 @@ PrefabInstance:
     - target: {fileID: 4495701205137448102, guid: 05a5aaac78c2b7d4995ee8f65c445756, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757496821496142208, guid: 05a5aaac78c2b7d4995ee8f65c445756, type: 3}
-      propertyPath: m_Size.x
-      value: 1.8692517
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757496821496142208, guid: 05a5aaac78c2b7d4995ee8f65c445756, type: 3}
-      propertyPath: m_Size.y
-      value: 2.426052
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757496821496142208, guid: 05a5aaac78c2b7d4995ee8f65c445756, type: 3}
-      propertyPath: m_Center.x
-      value: -0.003726205
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757496821496142208, guid: 05a5aaac78c2b7d4995ee8f65c445756, type: 3}
-      propertyPath: m_Center.y
-      value: 1.2056125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
