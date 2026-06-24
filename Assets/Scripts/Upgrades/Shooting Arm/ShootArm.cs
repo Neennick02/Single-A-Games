@@ -20,8 +20,6 @@ public class ShootArm : MonoBehaviour
     [SerializeField] private GameObject _attachedArm;
     [SerializeField] private GameObject _shootingArm;
 
-    [SerializeField] private CameraShakeManager _cameraShakeManager;
-
     private CinemachineImpulseSource _impulseSource;
 
     private GameObject _shotArm;
@@ -76,8 +74,6 @@ public class ShootArm : MonoBehaviour
         _camera = Camera.main.gameObject;
 
         _impulseSource = GetComponent<CinemachineImpulseSource>();
-
-        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
     }
 
     private void Update()
@@ -124,7 +120,7 @@ public class ShootArm : MonoBehaviour
 
             _impulseSource.DefaultVelocity = new Vector3(X, Y, 0f);
 
-            _cameraShakeManager.CameraShake(gameObject, 0.05f);
+            CameraShakeManager.Instance.CameraShake(gameObject, 0.05f);
 
             yield return new WaitForSeconds(0.1f);
 
@@ -249,7 +245,7 @@ public class ShootArm : MonoBehaviour
 
         _arm = false;
 
-        _cameraShakeManager.CameraShake(gameObject, 1f);
+        CameraShakeManager.Instance.CameraShake(gameObject, 1f);
 
         AudioManager.Instance.PlayClip(ShootAudio);
     }
