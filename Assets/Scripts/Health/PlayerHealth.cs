@@ -11,15 +11,8 @@ public class PlayerHealth : BaseHealth
     [SerializeField] private Volume _damageEffect;
     private float _effectDissolveSpeed = 1;
 
-    [SerializeField] private CameraShakeManager _cameraShakeManager;
-
     public static event Action<float> OnSetRunTime;
     public static event Action<int> OnSetFloorCount;
-
-    private void Start()
-    {
-        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
-    }
     #region OnEnable
     private void OnEnable()
     {
@@ -46,7 +39,7 @@ public class PlayerHealth : BaseHealth
 
         OnHealthChange?.Invoke(currentHealth);
 
-        _cameraShakeManager.CameraShake(gameObject, 0.7f);
+        CameraShakeManager.Instance.CameraShake(gameObject, 0.7f);
 
         if (currentHealth <= 0)
         {

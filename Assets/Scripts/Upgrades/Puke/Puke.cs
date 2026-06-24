@@ -28,8 +28,6 @@ public class Puke : MonoBehaviour
 
     [SerializeField] private GameObject _pukeProjectile;
 
-    [SerializeField] private CameraShakeManager _cameraShakeManager;
-
     [SerializeField] private Volume _pukeEffect;
     public AudioClip PukeAudio;
 
@@ -41,9 +39,7 @@ public class Puke : MonoBehaviour
 
         _camera = Camera.main.gameObject;
 
-        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
-
-        _pukeEffect = _cameraShakeManager.gameObject.GetComponentInChildren<Volume>();
+        _pukeEffect = CameraShakeManager.Instance.gameObject.GetComponentInChildren<Volume>();
 
     }
 
@@ -136,7 +132,7 @@ public class Puke : MonoBehaviour
         while (_isPuking && _intensity > 0)
         {
 
-            _cameraShakeManager.CameraShake(gameObject, _intensity);
+            CameraShakeManager.Instance.CameraShake(gameObject, _intensity);
 
             yield return new WaitForSeconds(0.1f);
 

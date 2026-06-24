@@ -20,8 +20,6 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private PlayerAnimator _animator;
 
-    [SerializeField] private CameraShakeManager _cameraShakeManager;
-
     private bool _isDead;
 
     public AudioClip SwingAudio;
@@ -34,8 +32,6 @@ public class PlayerAttack : MonoBehaviour
         _healthScript = GetComponent<PlayerHealth>();
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
 
     }
     private void OnEnable()
@@ -114,7 +110,7 @@ public class PlayerAttack : MonoBehaviour
 
                     health.TakeDamage(_healthScript.PlayerObject.Damage * _damageMultiplier);
 
-                    _cameraShakeManager.CameraShake(gameObject, 0.5f);
+                    CameraShakeManager.Instance.CameraShake(gameObject, 0.5f);
 
                     AudioManager.Instance.PlayClip(HitAudio, 1, Random.Range(0.8f, 1.2f));
 
