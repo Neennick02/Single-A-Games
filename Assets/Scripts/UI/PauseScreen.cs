@@ -8,7 +8,7 @@ public class PauseScreen : MonoBehaviour
     private bool _isPaused;
     public static event Action OnReset;
     private bool shopOpen = true;
-
+    private bool settingsOpen = false;
     private void OnEnable()
     {
         InputManager.OnPause += TogglePause;
@@ -23,7 +23,7 @@ public class PauseScreen : MonoBehaviour
 
     private void TogglePause()
     {
-        if (!shopOpen) return;
+        if (!shopOpen || settingsOpen) return;
 
         if( _isPaused)
         {
@@ -60,5 +60,9 @@ public class PauseScreen : MonoBehaviour
     private void SetOpenShop(bool active)
     {
         shopOpen = active;
+    }
+    public void SetSettingsShop(bool active)
+    {
+        settingsOpen = active;
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    [SerializeField] private float lookSensitivity = 30;
-    [SerializeField] float minFov = 60f;
-    [SerializeField] float maxFov = 180f;
+    private float lookSensitivity = 30;
+    float minFov ;
+    float maxFov ;
     
     CinemachineCamera _cam;
     
@@ -15,10 +15,30 @@ public class PlayerLook : MonoBehaviour
     float xSensitivity = 30f;
     float ySensitivity = 30f;
 
-
+    private void Awake()
+    {
+        SettingsMenu.OnFOVChanged += ChangeFov;
+        SettingsMenu.OnMouseChanged += ChangeMouse;
+    }
+    private void OnDisable()
+    {
+        SettingsMenu.OnFOVChanged -= ChangeFov;
+        SettingsMenu.OnMouseChanged -= ChangeMouse;
+    }
     private void Start()
     {
         _cam = GetComponentInChildren<CinemachineCamera>();
+    }
+
+    private void ChangeFov(float v)
+    {
+        minFov = v;
+        maxFov = v * 1.45f;
+        _cam.Lens.FieldOfView = v; 
+    }
+    private void ChangeMouse(float v)
+    {
+        lookSensitivity = v * 3;
     }
     public void ProcessLook(Vector2 input)
     {
