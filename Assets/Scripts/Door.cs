@@ -7,6 +7,8 @@ public class Door : MonoBehaviour
 
     [SerializeField] private BoxCollider door;
 
+    private bool triggered = false;
+
     private void Start()
     {
         doorCheck = GetComponent<BoxCollider>();
@@ -22,7 +24,17 @@ public class Door : MonoBehaviour
 
             door.enabled = true;
 
+            triggered = true;
+
         }
 
+    }
+
+    private void Update()
+    {
+        if (triggered && gameObject.transform.localPosition != Vector3.zero)
+        {
+            gameObject.transform.localPosition = Vector3.Lerp(gameObject.transform.localPosition, Vector3.zero, Time.deltaTime * 2);
+        }
     }
 }

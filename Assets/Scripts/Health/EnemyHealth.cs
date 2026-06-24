@@ -15,9 +15,6 @@ public class EnemyHealth : BaseHealth
     [SerializeField] private EnemyHealthBar _healthBar;
     public static event Action<float> OnRestoreSanity;
 
-
-    [SerializeField] private CameraShakeManager _cameraShakeManager;
-
     private CinemachineImpulseSource _impulseSource;
 
     public GameObject _deathParticle;
@@ -36,8 +33,6 @@ public class EnemyHealth : BaseHealth
         }
 
         _impulseSource = GetComponent<CinemachineImpulseSource>();
-
-        _cameraShakeManager = FindFirstObjectByType<CameraShakeManager>();
     }
 
     public override void TakeDamage(float amount)
@@ -75,7 +70,7 @@ public class EnemyHealth : BaseHealth
 
         GameManager.Instance.AddKill();
 
-        _cameraShakeManager.CameraShake(gameObject, 1);
+        CameraShakeManager.Instance.CameraShake(gameObject, 1);
 
     }
 
