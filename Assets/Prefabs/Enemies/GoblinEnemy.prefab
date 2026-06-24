@@ -418,9 +418,10 @@ MonoBehaviour:
   - {fileID: 1931124856107408779}
   _damageMat: {fileID: 2100000, guid: 53dbb50f76b8b3748ba8404c5c997bd0, type: 2}
   _healthBar: {fileID: 2126098917215125432}
-  _cameraShakeManager: {fileID: 0}
   _deathParticle: {fileID: 436327167026063250, guid: e8284b91d81e0cd4ab198d91b109b630, type: 3}
   BlobPrerfab: {fileID: 4829963867601924179, guid: d295220c7240dca41812e87c94f106f7, type: 3}
+  LaughClip: {fileID: 8300000, guid: d6a45d127b881a944b47128a501467d8, type: 3}
+  DieClip: {fileID: 8300000, guid: 13749a01445720244940b6267e16ee89, type: 3}
 --- !u!114 &8775004657193847667
 MonoBehaviour:
   m_ObjectHideFlags: 0

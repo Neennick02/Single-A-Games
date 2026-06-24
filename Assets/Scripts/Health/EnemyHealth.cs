@@ -21,6 +21,8 @@ public class EnemyHealth : BaseHealth
 
     public GameObject BlobPrerfab;
 
+    public AudioClip LaughClip;
+    public AudioClip DieClip;
     private void Start()
     {
         maxHealth = EnemyObject.MaxHealth;
@@ -49,6 +51,7 @@ public class EnemyHealth : BaseHealth
         {
             StartCoroutine(RevealFlesh(amount));
         }
+        AudioManager.Instance.PlayClip(LaughClip, UnityEngine.Random.Range(0.8f, 1.1f));
 
         _healthBar.UpdateHealth(currentHealth);
     }
@@ -71,7 +74,7 @@ public class EnemyHealth : BaseHealth
         GameManager.Instance.AddKill();
 
         CameraShakeManager.Instance.CameraShake(gameObject, 1);
-
+        AudioManager.Instance.PlayClip(DieClip, UnityEngine.Random.Range(0.8f, 1.1f));
     }
 
     private IEnumerator FlashRed()
