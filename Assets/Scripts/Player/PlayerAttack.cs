@@ -118,9 +118,6 @@ public class PlayerAttack : MonoBehaviour
 
                 }
             }
-
-            Debug.Log("test");
-
             yield return null;
 
         }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a98904474e4fe4e9f8441f265dfa7e, type: 3}
   m_Name: Vomit
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeObject
-  Image: {fileID: 21300000, guid: 26d08c5dde7bcfb43be29b788f77845a, type: 3}
+  Image: {fileID: 21300000, guid: deb41d232b2fb844b836367b75256fb8, type: 3}
   Price: 8
   Prefab: {fileID: 4024680709757749725, guid: 1d1ef47e258642e47805077171dac852, type: 3}
   Title: Vomit

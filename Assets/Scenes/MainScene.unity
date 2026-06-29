@@ -373,7 +373,8 @@ MonoBehaviour:
   - {fileID: 0}
   Traps:
   - {fileID: 6702637200171705465, guid: faf359fec23b020469891858fbc54302, type: 3}
-  TrapFloorSpawn: 20
+  TrapFloorSpawn: 2
+  ObjectiveText: Kill enemies to gain sanity. Use sanity to buy upgrades.
 --- !u!4 &618525719
 Transform:
   m_ObjectHideFlags: 0
