@@ -12,7 +12,6 @@ public class Explainers : MonoBehaviour
     {
         int randomIndex = Random.Range(0, Images.Count);
         Images[randomIndex].enabled = true;
-        Debug.Log("on");
     }
 
     private void OnDisable()
@@ -24,9 +23,6 @@ public class Explainers : MonoBehaviour
                 image.enabled = false;
             }
         }
-        Debug.Log("off");
-
-
     }
 
 }

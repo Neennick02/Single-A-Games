@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public int TrapFloorSpawn = 3;
     private bool _subscribed;
     private bool _firstFloor = true;
+    private bool _buddyUnlocked = false;
 
     private bool _vomit;
     public static event Action OnEnableVomitUI;
@@ -90,6 +91,9 @@ public class GameManager : MonoBehaviour
         {
             SpawnEnemy.Enemies.Remove(Traps[i]);
         }
+
+        SetBuddy(false);
+
         Destroy(_currentPlayer);
     }
 
@@ -163,4 +167,14 @@ public class GameManager : MonoBehaviour
     {
         KillCount ++;
     } 
+
+    public void SetBuddy(bool active)
+    {
+        _buddyUnlocked = active;
+    }
+
+    public bool CheckBuddy()
+    {
+        return _buddyUnlocked;
+    }
 }

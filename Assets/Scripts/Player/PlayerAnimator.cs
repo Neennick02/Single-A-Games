@@ -68,8 +68,6 @@ public class PlayerAnimator : MonoBehaviour
 
         float rando = Random.Range(1, 4);
 
-        Debug.Log(rando);
-
         _armAnimator.SetFloat("Blend", rando);
         _armAnimator.SetBool("Attack", true);
         animtor.SetBool("Attack", true);

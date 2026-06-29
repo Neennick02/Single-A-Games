@@ -9,6 +9,7 @@ public class BuddyUpgrade : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        GameManager.Instance.SetBuddy(true);
     }
 
     private void OnDisable()
@@ -42,7 +43,7 @@ public class BuddyUpgrade : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "MainScene")
+        if (scene.name == "MainScene" && GameManager.Instance.CheckBuddy())
             SpawnBuddy(new Vector3(0, -15, 0));
     }
 }

@@ -15,12 +15,18 @@ public class Blade : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerHealth health = other.gameObject.GetComponentInParent<PlayerHealth>();
-            Debug.Log(health);
-            if (health != null)
+
+                PlayerHealth Phealth = other.transform.GetComponentInParent<PlayerHealth>();
+
+                if (Phealth != null)
+                {
+                    Phealth.TakeDamage(Damage);
+                }
+            else
             {
-                health.TakeDamage(Damage);
+                Debug.Log("Player health is 0");
             }
+            
         }
     }
 }
