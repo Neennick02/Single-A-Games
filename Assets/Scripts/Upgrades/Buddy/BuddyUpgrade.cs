@@ -18,12 +18,11 @@ public class BuddyUpgrade : MonoBehaviour
 
     private void Start()
     {
-        SpawnBuddy();
+        SpawnBuddy(Camera.main.transform.position + new Vector3(0, 0, 2));
     }
 
-    private void SpawnBuddy()
+    private void SpawnBuddy(Vector3 pos)
     {
-        Vector3 pos = Camera.main.transform.position + new Vector3(0, 0, 2);
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(pos, out hit, 1f, NavMesh.AllAreas))
@@ -36,11 +35,6 @@ public class BuddyUpgrade : MonoBehaviour
             {
                 pos = hit.position;
             }
-            else
-            {
-                pos = Camera.main.transform.position;
-                Debug.Log("To far");
-            }
         }
 
         GameObject buddy = Instantiate(BuddyPrefab, pos, Quaternion.identity);
@@ -49,6 +43,6 @@ public class BuddyUpgrade : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MainScene")
-            SpawnBuddy();
+            SpawnBuddy(new Vector3(0, -15, 0));
     }
 }
