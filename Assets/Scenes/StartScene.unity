@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.381132, g: 0.016539648, b: 0.016539648, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.118
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.30980393, g: 0.3372549, b: 0.53333336, a: 1}
@@ -19098,6 +19098,7 @@ MonoBehaviour:
   Traps:
   - {fileID: 6702637200171705465, guid: faf359fec23b020469891858fbc54302, type: 3}
   TrapFloorSpawn: 20
+  ObjectiveText: hello
 --- !u!4 &1339017038
 Transform:
   m_ObjectHideFlags: 0
