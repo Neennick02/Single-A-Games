@@ -66,5 +66,7 @@ public class ObjectivePopup : MonoBehaviour
 
             yield return null;
         }
+
+        _textObject.enabled = false;
     }
 }
