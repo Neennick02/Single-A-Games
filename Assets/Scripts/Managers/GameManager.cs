@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
 
     private bool _vomit;
     public static event Action OnEnableVomitUI;
-
+    public static event Action<string> OnShowObjectiveText;
+    public string ObjectiveText = "hello";
     //scores
     public float RunTime { get; private set; }
     public int FloorCount {get; private set; }
@@ -100,9 +101,10 @@ public class GameManager : MonoBehaviour
         {
             //create player
             _currentPlayer = Instantiate(PlayerPrefab, startPos, Quaternion.identity);
-
             gameStarted = true;
+
             OnGameStart?.Invoke();
+            OnShowObjectiveText?.Invoke(ObjectiveText);
         }
         else if (gameStarted)
         {
