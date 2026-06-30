@@ -9,6 +9,8 @@ public class Door : MonoBehaviour
 
     private bool triggered = false;
 
+    public AudioClip AudioClip;
+
     private void Start()
     {
         doorCheck = GetComponent<BoxCollider>();
@@ -26,6 +28,8 @@ public class Door : MonoBehaviour
 
             triggered = true;
 
+            AudioManager.Instance.PlayClip(AudioClip, 1, Random.Range(0.8f, 1.2f));
+
         }
 
     }
@@ -34,7 +38,7 @@ public class Door : MonoBehaviour
     {
         if (triggered && gameObject.transform.localPosition != Vector3.zero)
         {
-            gameObject.transform.localPosition = Vector3.Lerp(gameObject.transform.localPosition, Vector3.zero, Time.deltaTime * 2);
+            gameObject.transform.localPosition = Vector3.Lerp(gameObject.transform.localPosition, Vector3.zero, Time.deltaTime * 3);
         }
     }
 }

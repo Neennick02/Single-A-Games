@@ -146,3 +146,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
   door: {fileID: 4757496821496142208}
+  AudioClip: {fileID: 8300000, guid: 2b2c5e73d2879b041800204fad9dfe2e, type: 3}
