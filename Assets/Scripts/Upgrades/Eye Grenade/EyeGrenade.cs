@@ -18,6 +18,7 @@ public class EyeGrenade : MonoBehaviour
 
     public GameObject grenade;
     [SerializeField] private float _throwForce = 1;
+
     private void OnEnable()
     {
         InputManager.OnThrowGrenade += UseEye;
@@ -26,7 +27,7 @@ public class EyeGrenade : MonoBehaviour
         BlindEye.Active = true;
 
         _throwPoint = GameObject.FindGameObjectWithTag("FirePoint").transform;
-
+        GameManager.Instance.EnableEye();
     }
 
     private void OnDisable()
