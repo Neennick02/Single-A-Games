@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class UpgradeControls : MonoBehaviour
 {
-    public GameObject PukeIcon;
-    public GameObject EyeIcon;
+    [SerializeField] public List<GameObject> Icons;
+
+
     public float YOffSet = 150;
 
 
-    private void OnEnable()
+
+    private void Start()
     {
         DisplayUpgrades();
         PukeUpgrade.OnGrabVomit += DisplayUpgrades;
@@ -23,25 +25,25 @@ public class UpgradeControls : MonoBehaviour
         GameManager.OnEnableEyeUI -= DisplayUpgrades;
     }
 
-    private void DisplayUpgrades()
+    public void DisplayUpgrades()
     {
-        int index = 0;
-
-        PukeIcon.SetActive(false);
-        EyeIcon.SetActive(false);
-
-        if (GameManager.Instance.HasVomit)
+        for (int i = 0; i < Icons.Count; i++)
         {
-            PukeIcon.SetActive(true);
-            PukeIcon.transform.localPosition = new Vector3(200, -index * YOffSet, 0);
-            index++;
+            Icons[i].SetActive(false);
         }
 
-        if (GameManager.Instance.HasEye)
+        List<UpgradeObject> pickedUp = GameManager.Instance.PickedUpUpgrades;
+
+        for (int i = 0; i < pickedUp.Count; i++)
         {
-            EyeIcon.SetActive(true);
-            EyeIcon.transform.localPosition = new Vector3(200, -index * YOffSet, 0);
-            index++;
+            UpgradeObject currentUpgrade = pickedUp[i];
+            int iconIndex = (int)currentUpgrade.Type; 
+
+            if (iconIndex < Icons.Count && Icons[iconIndex] != null)
+            {
+                Icons[iconIndex].SetActive(true);
+                Icons[iconIndex].transform.localPosition = new Vector3(200, -i * YOffSet, 0);
+            }
         }
     }
 }

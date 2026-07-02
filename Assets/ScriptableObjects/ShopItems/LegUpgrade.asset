@@ -16,4 +16,5 @@ MonoBehaviour:
   Price: 4
   Prefab: {fileID: 5423747365192363973, guid: bf848968518fb684f92fed0ec14e47c7, type: 3}
   Title: Legs
+  Type: 4
   Description: Increases movement speed & sanity drain speed

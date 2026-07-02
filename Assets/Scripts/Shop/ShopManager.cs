@@ -23,6 +23,7 @@ public class ShopManager : MonoBehaviour
     public AudioClip ButtonAudio;
 
     private PlayerAnimator playerAnimator;
+    public UpgradeControls Controls;
 
     private void Awake()
     {
@@ -50,24 +51,6 @@ public class ShopManager : MonoBehaviour
         //stop sanity bar from draining
         OnShopOpenClose?.Invoke(false);
 
-        if (_availableUpgrades.Count == 0)
-        {
-            foreach (var slot in ItemSlots)
-            {
-                TextMeshProUGUI title = slot.GetComponentInChildren<TextMeshProUGUI>();
-                title.text = "Sold Out";
-
-                Button button = slot.GetComponentInChildren<Button>();
-                button.onClick.RemoveAllListeners();
-
-                ShopItem item = slot.GetComponent<ShopItem>();
-                item.AssignPrice(null);
-                item.AssignSprite(null);
-                item.AssignTitle(null);
-            }
-
-            return;
-        }
         for (int i = 0; i < ItemSlots.Count; i++)
         {
             TextMeshProUGUI title = ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>();
@@ -146,6 +129,7 @@ public class ShopManager : MonoBehaviour
 
             AudioManager.Instance.PlayClip(ButtonAudio);
             AudioManager.Instance.PlayClip(BuyAudio);
+            Controls.DisplayUpgrades();
         }
         else
         {

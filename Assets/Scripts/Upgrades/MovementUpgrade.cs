@@ -13,6 +13,7 @@ public class MovementUpgrade : MonoBehaviour
 
         movement.IncreaseMultiplier(SpeedIncrease);
         manager.IncreaseDrainAmount(DrainRateIncrease);
+        GameManager.Instance.HasLeg = true;
     }
 
     private void OnDestroy()

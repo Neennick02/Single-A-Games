@@ -16,4 +16,5 @@ MonoBehaviour:
   Price: 6
   Prefab: {fileID: 6691947804989590208, guid: 0513e3666acc56e4098fa33f8659f52f, type: 3}
   Title: Arm Shot
+  Type: 2
   Description: Hold L-Mouse button to shoot your arm!

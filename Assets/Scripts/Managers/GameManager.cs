@@ -27,10 +27,14 @@ public class GameManager : MonoBehaviour
 
     public bool HasVomit = false;
     public bool HasEye = false;
+    public bool HasArm = false;
+    public bool HasBud = false;
+    public bool HasLeg = false;
 
     public static event Action OnEnableVomitUI;
     public static event Action OnEnableEyeUI;
-
+    public List<UpgradeObject> PickedUpUpgrades = new List<UpgradeObject>();
+    public enum UpgradeType { Vomit, Eye, Arm, Bud, Leg }
 
     public static event Action<string> OnShowObjectiveText;
     public string ObjectiveText = "hello";
@@ -85,10 +89,7 @@ public class GameManager : MonoBehaviour
         Roomgen.LevelSize = LevelSize;
 
         //deactivate effects
-        HasVomit = false;
-        HasEye = false;
-        BlindEye.Active = false;
-
+        ResetUpgrades();
         //reset scores
         RunTime = 0f;
         FloorCount = 0;
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour
         }
 
         SetBuddy(false);
-
+        OwnedUpgrades.Clear();
         Destroy(_currentPlayer);
     }
 
@@ -200,7 +201,20 @@ public class GameManager : MonoBehaviour
 
     public void AddUpgrade(UpgradeObject upgrade)
     {
-        if (!OwnedUpgrades.Contains(upgrade))
+        if (!OwnedUpgrades.Contains(upgrade)) { 
             OwnedUpgrades.Add(upgrade);
+        PickedUpUpgrades.Add(upgrade);
+        }
+    }
+
+    private void ResetUpgrades()
+    {
+        HasEye = false;
+        HasLeg = false;
+        HasBud = false;
+        HasVomit = false;
+        HasEye = false;
+        BlindEye.Active = false;
+        PickedUpUpgrades.Clear();
     }
 }
