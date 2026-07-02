@@ -190,4 +190,17 @@ public class GameManager : MonoBehaviour
     {
         return _buddyUnlocked;
     }
+
+    public List<UpgradeObject> OwnedUpgrades = new List<UpgradeObject>();
+
+    public bool HasUpgrade(UpgradeObject upgrade)
+    {
+        return OwnedUpgrades.Contains(upgrade);
+    }
+
+    public void AddUpgrade(UpgradeObject upgrade)
+    {
+        if (!OwnedUpgrades.Contains(upgrade))
+            OwnedUpgrades.Add(upgrade);
+    }
 }
