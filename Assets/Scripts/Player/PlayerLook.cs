@@ -17,6 +17,7 @@ public class PlayerLook : MonoBehaviour
 
     private void Awake()
     {
+        _cam = GetComponentInChildren<CinemachineCamera>();
         SettingsMenu.OnFOVChanged += ChangeFov;
         SettingsMenu.OnMouseChanged += ChangeMouse;
     }
@@ -24,10 +25,6 @@ public class PlayerLook : MonoBehaviour
     {
         SettingsMenu.OnFOVChanged -= ChangeFov;
         SettingsMenu.OnMouseChanged -= ChangeMouse;
-    }
-    private void Start()
-    {
-        _cam = GetComponentInChildren<CinemachineCamera>();
     }
 
     private void ChangeFov(float v)

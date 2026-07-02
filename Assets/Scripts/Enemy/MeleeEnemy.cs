@@ -20,59 +20,47 @@ public class MeleeEnemy : Enemy
     protected override void MyUpdate()
     {
         if (_dead) return;
-        
+
         AssignTarget();
-
-        if (CurrentState == EnemyState.Moving)
-        {
-            HandleWandering();
-        }
-
-        if (Vector3.Distance(currentTarget, transform.position) < 0.1f)
-        {
-            FindTargetLocation();
-        }
-
         RotateToTarget();
-
         _animator.SetInteger("State", (int)CurrentState);
 
-        if (!_attacking && CurrentState == EnemyState.Moving)
+        if (_attacking || CurrentState == EnemyState.Attacking) return;
+
+        //check for attack range
+        if (CheckIfInRange())
         {
-            if (CheckIfInRange())
-            {
-                _agent.ResetPath();
-                StartCoroutine(Attack());
-                _attacking = true;
-
-            }
-
-            else
-            {
-                if (CanSeeTarget(_target))
-                {
-                    _agent.SetDestination(_target.transform.position);
-                    _isWandering = false;
-                }
-                else
-                {
-                    if (Vector3.Distance(currentTarget, transform.position) < 0.1f)
-                    {
-                        FindTargetLocation();
-                    }
-
-                }
-            }
+            _agent.ResetPath();
+            StartCoroutine(Attack());
+            _attacking = true;
+            return;
         }
 
+        //if player is spotted
+        if (CanSeeTarget(_target))
+        {
+            _isWandering = false;
+            _agent.speed = _agent.speed * 1.15f;
+            _agent.SetDestination(_target.transform.position);
+        }
+        else
+        {
+            if (!_isWandering)
+            {
+                _agent.speed = _agent.speed / 1.15f;
 
-        //check if health is low
+                FindTargetLocation();
+            }
+
+            HandleWandering(); 
+        }
+
         if (_healthScript.currentHealth < enemyObject.MaxHealth / 3)
         {
             RunAway();
         }
 
-        //check if dead
+        //check health
         if (_healthScript.currentHealth <= 0)
         {
             Die();
@@ -86,19 +74,14 @@ public class MeleeEnemy : Enemy
         _agent.enabled = false;
 
         _hitBox.enabled = true;
-        float timer = 0;
-        while (timer < _attackTime)
-        {
-            timer += Time.deltaTime;
 
-
-            yield return null;
-        }
+        yield return new WaitForSeconds(_attackTime);
 
         _hitBox.enabled = false;
         _attacking = false;
         _agent.enabled = true;
         CurrentState = EnemyState.Moving;
+        _isWandering = false;
     }
 
     public override void Die()

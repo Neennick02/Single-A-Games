@@ -10,6 +10,7 @@ public class TextPopup : MonoBehaviour
     public Color StartC;
     public Color EndC;
 
+    private Coroutine _fadeRoutine;
     private void OnEnable()
     {
         ShopManager.OnShopMessage += FadingMessage;
@@ -25,12 +26,23 @@ public class TextPopup : MonoBehaviour
     public void FadingMessage(string message)
     {
         _textObject.text = message;
-       // StopAllCoroutines();
-        StartCoroutine(FadeInAndOut());
+
+        if (_fadeRoutine != null)
+        {
+            StopCoroutine(_fadeRoutine);
+        }
+
+        _fadeRoutine = StartCoroutine(FadeInAndOut());
     }
 
     public void InstantMessage(string message, bool clear)
     {
+        if (_fadeRoutine != null)
+        {
+            StopCoroutine(_fadeRoutine);
+            _fadeRoutine = null;
+        }
+
         _textObject.color = Color.black;
         _textObject.text = message;
 
