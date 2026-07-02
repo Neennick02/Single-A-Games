@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &36457143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7786544072769986670, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+  m_PrefabInstance: {fileID: 653646050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &107233934
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +336,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &508741815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6946861324437889859, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+  m_PrefabInstance: {fileID: 653646050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &618525717
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +386,12 @@ MonoBehaviour:
   TrapFloorSpawn: 2
   HasVomit: 0
   HasEye: 0
+  HasArm: 0
+  HasBud: 0
+  HasLeg: 0
+  PickedUpUpgrades: []
   ObjectiveText: Kill enemies to gain sanity. Use sanity to buy upgrades.
+  OwnedUpgrades: []
 --- !u!4 &618525719
 Transform:
   m_ObjectHideFlags: 0
@@ -675,7 +690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4306382239566131098, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: TotalUpgrades.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4306382239566131098, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: 'TotalUpgrades.Array.data[0]'
@@ -692,11 +707,35 @@ PrefabInstance:
     - target: {fileID: 4306382239566131098, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: 'TotalUpgrades.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: 1983c794e768f2745b65544ffe24da0a, type: 2}
+      objectReference: {fileID: 11400000, guid: 241c6fff2ff74694c808641edc088cb8, type: 2}
     - target: {fileID: 4306382239566131098, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: 'TotalUpgrades.Array.data[4]'
       value: 
       objectReference: {fileID: 11400000, guid: 1983c794e768f2745b65544ffe24da0a, type: 2}
+    - target: {fileID: 4594343924575289892, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: Icons.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594343924575289892, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: 'Icons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 36457143}
+    - target: {fileID: 4594343924575289892, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: 'Icons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 508741815}
+    - target: {fileID: 4594343924575289892, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: 'Icons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1598686051}
+    - target: {fileID: 4594343924575289892, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: 'Icons.Array.data[3]'
+      value: 
+      objectReference: {fileID: 911160848}
+    - target: {fileID: 4594343924575289892, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: 'Icons.Array.data[4]'
+      value: 
+      objectReference: {fileID: 978172362}
     - target: {fileID: 5026615257672269540, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -765,6 +804,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7390538809843594814, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+      propertyPath: PukeAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a5108c9aa1c1c148a4af7a46b1adf3d, type: 3}
     - target: {fileID: 8204319559773293654, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 103.58
@@ -786,6 +829,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+--- !u!1 &911160848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2813458604074441856, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+  m_PrefabInstance: {fileID: 653646050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &978172362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6550493651356492644, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+  m_PrefabInstance: {fileID: 653646050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1239241534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5413135809406820335, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
@@ -919,6 +972,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1239241537}
   m_SourcePrefab: {fileID: 100100000, guid: a94b8154445f38c43bebfff5c2a2e226, type: 3}
+--- !u!1 &1598686051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5348661062281012284, guid: e63b9590e71f9e744a87a15ef5a029e1, type: 3}
+  m_PrefabInstance: {fileID: 653646050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1702265208
 GameObject:
   m_ObjectHideFlags: 0

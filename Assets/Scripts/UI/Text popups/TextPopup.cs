@@ -43,7 +43,7 @@ public class TextPopup : MonoBehaviour
             _fadeRoutine = null;
         }
 
-        _textObject.color = Color.black;
+        _textObject.color = StartC;
         _textObject.text = message;
 
         if (clear)
