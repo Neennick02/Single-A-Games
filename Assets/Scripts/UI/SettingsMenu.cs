@@ -24,7 +24,7 @@ public class SettingsMenu : MonoBehaviour
     private void Start()
     {
         // Load saved values
-        float m = PlayerPrefs.GetFloat("Mvalue", 30);
+        float m = PlayerPrefs.GetFloat("Mvalue", 5);
         float f = PlayerPrefs.GetFloat("Fvalue", 60);
         float a = PlayerPrefs.GetFloat("Avalue", 50);
 

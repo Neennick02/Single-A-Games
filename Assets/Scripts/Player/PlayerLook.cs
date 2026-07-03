@@ -1,10 +1,11 @@
 using NUnit.Framework.Internal;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerLook : MonoBehaviour
 {
-    private float lookSensitivity = 30;
+    private float lookSensitivity;
     float minFov ;
     float maxFov ;
     
@@ -12,14 +13,14 @@ public class PlayerLook : MonoBehaviour
     
     float xRotation = 0f;
     float yRotation = 0f;
-    float xSensitivity = 30f;
-    float ySensitivity = 30f;
 
+    public float SensitivityMultiplier;
     private void Awake()
     {
         _cam = GetComponentInChildren<CinemachineCamera>();
         SettingsMenu.OnFOVChanged += ChangeFov;
         SettingsMenu.OnMouseChanged += ChangeMouse;
+        lookSensitivity = PlayerPrefs.GetFloat("Mvalue", 0.5f) ;
     }
     private void OnDisable()
     {
@@ -35,15 +36,20 @@ public class PlayerLook : MonoBehaviour
     }
     private void ChangeMouse(float v)
     {
-        lookSensitivity = v * 3;
+        lookSensitivity = v * 0.1f ;
+        
     }
     public void ProcessLook(Vector2 input)
     {
-        xSensitivity = lookSensitivity;
-        ySensitivity = lookSensitivity;
+        float mouseX = input.x * lookSensitivity;
+        float mouseY = input.y * lookSensitivity ;
 
-        float mouseX = input.x * xSensitivity * Time.deltaTime;
-        float mouseY = input.y * ySensitivity * Time.deltaTime;
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            mouseX *= 0.3f;
+            mouseY *= 0.3f;
+        }
+
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
