@@ -142,7 +142,7 @@ public class Puke : MonoBehaviour
 
     private IEnumerator PukeShoot()
     {
-        AudioManager.Instance.PlayClip(PukeAudio);
+        AudioManager.Instance.PlayClip(PukeAudio, 1, Random.Range(0.8f, 1.2f));
 
         while (_isPuking && _intensity > 0)
         {
@@ -161,6 +161,7 @@ public class Puke : MonoBehaviour
         {
 
             _isPuking = true;
+            AudioManager.Instance.PlayClip(PukeAudio, 1, Random.Range(0.8f, 1.2f));
 
             yield return new WaitForSeconds(0.01f);
         }

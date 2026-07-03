@@ -47,6 +47,8 @@ public class ShootArm : MonoBehaviour
 
         _inputActions.OnFoot.Attack.performed += Attack;
         _inputActions.OnFoot.Attack.canceled += Attack;
+
+        GameManager.Instance.HasArm = true;
     }
 
     private void OnDisable()

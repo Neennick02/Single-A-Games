@@ -10,6 +10,7 @@ public class BuddyUpgrade : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         GameManager.Instance.SetBuddy(true);
+        GameManager.Instance.HasBud = true;
     }
 
     private void OnDisable()

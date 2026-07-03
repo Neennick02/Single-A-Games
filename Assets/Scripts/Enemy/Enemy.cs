@@ -33,7 +33,7 @@ public abstract class Enemy : MonoBehaviour
     private float _buddyCheckInterval = 3f;
     private float timer = 10;
     protected Vector3 currentTarget;
-    protected float _spottingRadius = 10f;
+    protected float _spottingRadius = 20f;
     protected float startY;
 
     protected EnemyHealth _healthScript;
@@ -144,13 +144,23 @@ public abstract class Enemy : MonoBehaviour
     {
         if (target == null) return false;
 
-        float dist = Vector3.Distance(transform.position, target.transform.position);
+        Vector3 eyeOffset = Vector3.up * 1f;
+        Vector3 startPos = transform.position + eyeOffset;
+        Vector3 endPos = target.transform.position + eyeOffset;
+
+        float dist = Vector3.Distance(startPos, endPos);
         if (dist > _spottingRadius) return false;
 
-        Vector3 dir = target.transform.position - transform.position;
+        Vector3 dir = endPos - startPos;
 
-        if (Physics.Raycast(transform.position, dir, out RaycastHit hit, _spottingRadius))
-            return hit.collider.gameObject == target;
+        if (Physics.Raycast(startPos, dir, out RaycastHit hit, _spottingRadius, LayerMask.NameToLayer("Enemy")))
+        {
+            if (hit.collider.gameObject == target || hit.collider.transform.IsChildOf(target.transform))
+            {
+                return true;
+            }
+        }
+        Debug.Log(hit.collider.transform.name);
 
         return false;
     }

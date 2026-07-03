@@ -23,6 +23,7 @@ public class ShopManager : MonoBehaviour
     public AudioClip ButtonAudio;
 
     private PlayerAnimator playerAnimator;
+    public UpgradeControls Controls;
 
     private void Awake()
     {
@@ -35,7 +36,9 @@ public class ShopManager : MonoBehaviour
     {
         _availableUpgrades = new List<UpgradeObject>(TotalUpgrades);
         _assignedUpgrades.Clear();
-        
+
+        _availableUpgrades.RemoveAll(u => GameManager.Instance.HasUpgrade(u));
+
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
 
@@ -50,51 +53,33 @@ public class ShopManager : MonoBehaviour
 
         for (int i = 0; i < ItemSlots.Count; i++)
         {
-
             TextMeshProUGUI title = ItemSlots[i].GetComponentInChildren<TextMeshProUGUI>();
+            Button button = ItemSlots[i].GetComponentInChildren<Button>();
+            ShopItem item = ItemSlots[i].GetComponent<ShopItem>();
 
-            //assign text
-            if (_availableUpgrades.Count > 0)
-            {
-                //find upgrade to display
-                int index = UnityEngine.Random.Range(0, _availableUpgrades.Count);
-
-                var upgrade = _availableUpgrades[index];
-
-                title.text = upgrade.Title;
-
-                //add to assigned buttons
-                _assignedUpgrades.Add(upgrade);
-
-
-                //add correct buy function to buttons
-                Button button = ItemSlots[i].GetComponentInChildren<Button>();
-                button.onClick.AddListener(() => BuyUpgrade(upgrade));
-
-                ShopItem item = ItemSlots[i].GetComponent<ShopItem>();
-                //assign values
-                item.AssignPrice(upgrade.Price.ToString());
-                item.AssignSprite(upgrade.Image);
-                item.AssignTitle(upgrade.Title.ToString());
-
-
-                //remove upgrade from available list (prevent assigning the same button)
-                _availableUpgrades.RemoveAt(index);
-            }
-            else //if no upgrades left
+            if (_availableUpgrades.Count == 0)
             {
                 title.text = "Sold Out";
-
-                Button button = ItemSlots[i].GetComponentInChildren<Button>();
                 button.onClick.RemoveAllListeners();
-
-                //empty data
-                ShopItem item = ItemSlots[i].GetComponent<ShopItem>();
                 item.AssignPrice(null);
                 item.AssignSprite(null);
-                item.AssignTitle(null);
-
+                item.AssignTitle("Sold Out");  
+                continue;
             }
+
+            int index = UnityEngine.Random.Range(0, _availableUpgrades.Count);
+            var upgrade = _availableUpgrades[index];
+
+            title.text = upgrade.Title;
+            _assignedUpgrades.Add(upgrade);
+
+            button.onClick.AddListener(() => BuyUpgrade(upgrade));
+
+            item.AssignPrice(upgrade.Price.ToString());
+            item.AssignSprite(upgrade.Image);
+            item.AssignTitle(upgrade.Title);
+
+            _availableUpgrades.RemoveAt(index);
         }
     }
 
@@ -102,12 +87,6 @@ public class ShopManager : MonoBehaviour
     //refill available if no upgrade bought
     public void SkipShop()
     {
-        for (int i = 0; i < _assignedUpgrades.Count; i++)
-        {
-            _availableUpgrades.Add(_assignedUpgrades[i]);
-        }
-
-        //clear assigned list
         _assignedUpgrades.Clear();
 
         for (int j = 0; j < ItemSlots.Count; j++)
@@ -115,8 +94,8 @@ public class ShopManager : MonoBehaviour
             Button button = ItemSlots[j].GetComponentInChildren<Button>();
             button.onClick.RemoveAllListeners();
         }
-        Time.timeScale = 1;
 
+        Time.timeScale = 1;
         gameObject.SetActive(false);
         AudioManager.Instance.PlayClip(ButtonAudio);
     }
@@ -131,40 +110,26 @@ public class ShopManager : MonoBehaviour
 
     public void BuyUpgrade(UpgradeObject upgrade)
     {
-        //check if enough sanity
         if (sanityManager.SanityAmount >= upgrade.Price)
         {
-            //remove resouces
             sanityManager.AddSanity(-upgrade.Price);
 
             if (playerAnimator._state != 3)
-            {
                 playerAnimator._state++;
-            }
-            Debug.Log("Player state: " + playerAnimator._state);
 
             GameObject upgradeObject = Instantiate(upgrade.Prefab);
-            upgradeObject.gameObject.transform.parent = player.transform;
+            upgradeObject.transform.parent = player.transform;
+            GameManager.Instance.AddUpgrade(upgrade);
             OnShopMessage?.Invoke(upgrade.Description);
 
-
-            if (_assignedUpgrades.Count > 1)
-            {
-                //find other upgrade
-                _assignedUpgrades.Remove(upgrade);
-                //add so other upgrade is back in pool
-                _availableUpgrades.Add(_assignedUpgrades[0]);
-            }
-
-
-            //clear list
             _assignedUpgrades.Clear();
+
             Time.timeScale = 1;
             gameObject.SetActive(false);
+
             AudioManager.Instance.PlayClip(ButtonAudio);
             AudioManager.Instance.PlayClip(BuyAudio);
-
-
+            Controls.DisplayUpgrades();
         }
         else
         {
