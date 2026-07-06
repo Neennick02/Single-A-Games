@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UpgradeAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 4
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 95fc9aa1085a0334893488bf9389ec7e, type: 3}
+    - {fileID: 2800000, guid: eacd9074b431a6d4b9feffecce8e71b1, type: 3}
+    - {fileID: 2800000, guid: 68492ebc4c3750048ac0a27713ee7615, type: 3}
+    - {fileID: 2800000, guid: 2c058aff15d3513439252b2ea3db03b3, type: 3}
+    - {fileID: 2800000, guid: 496c26a525936d1409a629f07588905c, type: 3}
+    - {fileID: 2800000, guid: fefe3895abfdde54abd8f189a3dabe50, type: 3}
+    - {fileID: 2800000, guid: 3752b139e3ccc1346be643035777a7e9, type: 3}
+    - {fileID: 2800000, guid: deb41d232b2fb844b836367b75256fb8, type: 3}
+    - {fileID: 2800000, guid: df017152bd49e3c4a820ca0412985336, type: 3}
+    - {fileID: 2800000, guid: f69e0c233d3aaf846959da3a8019c4fc, type: 3}
+    - {fileID: 2800000, guid: f4d5fcbf5edf76f4693908b27eff2338, type: 3}
+    - {fileID: 2800000, guid: ee75f22574c93674a8ccadad1ec8eddf, type: 3}
+    - {fileID: 2800000, guid: cbcdce0f8fe84a2449a8afeddf67e8f7, type: 3}
+    - {fileID: 2800000, guid: c87b566a0638dad429c3fc9e811e8248, type: 3}
+    - {fileID: 2800000, guid: 633d07e848774cd42900516ee30b4f13, type: 3}
+    - {fileID: 2800000, guid: 92dd46e60bbbcec419a13a7301061234, type: 3}
+    - {fileID: 2800000, guid: d75ed1976f857a741bebdc9aed6b6749, type: 3}
+    - {fileID: 2800000, guid: d0b11b91f67922642a4b0a147e23d5fd, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - d0b11b91f67922642a4b0a147e23d5fd: 21300000
+    - 95fc9aa1085a0334893488bf9389ec7e: 21300000
+    - df017152bd49e3c4a820ca0412985336: 21300000
+    - f69e0c233d3aaf846959da3a8019c4fc: 21300000
+    - deb41d232b2fb844b836367b75256fb8: 21300000
+    - eacd9074b431a6d4b9feffecce8e71b1: 21300000
+    - ee75f22574c93674a8ccadad1ec8eddf: 21300000
+    - fefe3895abfdde54abd8f189a3dabe50: 21300000
+    - 496c26a525936d1409a629f07588905c: 21300000
+    - 92dd46e60bbbcec419a13a7301061234: 21300000
+    - d75ed1976f857a741bebdc9aed6b6749: 21300000
+    - 3752b139e3ccc1346be643035777a7e9: 21300000
+    - c87b566a0638dad429c3fc9e811e8248: 21300000
+    - 68492ebc4c3750048ac0a27713ee7615: 21300000
+    - cbcdce0f8fe84a2449a8afeddf67e8f7: 21300000
+    - f4d5fcbf5edf76f4693908b27eff2338: 21300000
+    - 2c058aff15d3513439252b2ea3db03b3: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d0b11b91f67922642a4b0a147e23d5fd, type: 3}
+  - {fileID: 21300000, guid: 95fc9aa1085a0334893488bf9389ec7e, type: 3}
+  - {fileID: 21300000, guid: df017152bd49e3c4a820ca0412985336, type: 3}
+  - {fileID: 21300000, guid: f69e0c233d3aaf846959da3a8019c4fc, type: 3}
+  - {fileID: 21300000, guid: deb41d232b2fb844b836367b75256fb8, type: 3}
+  - {fileID: 21300000, guid: eacd9074b431a6d4b9feffecce8e71b1, type: 3}
+  - {fileID: 21300000, guid: ee75f22574c93674a8ccadad1ec8eddf, type: 3}
+  - {fileID: 21300000, guid: fefe3895abfdde54abd8f189a3dabe50, type: 3}
+  - {fileID: 21300000, guid: 496c26a525936d1409a629f07588905c, type: 3}
+  - {fileID: 21300000, guid: 92dd46e60bbbcec419a13a7301061234, type: 3}
+  - {fileID: 21300000, guid: d75ed1976f857a741bebdc9aed6b6749, type: 3}
+  - {fileID: 21300000, guid: 3752b139e3ccc1346be643035777a7e9, type: 3}
+  - {fileID: 21300000, guid: c87b566a0638dad429c3fc9e811e8248, type: 3}
+  - {fileID: 21300000, guid: 68492ebc4c3750048ac0a27713ee7615, type: 3}
+  - {fileID: 21300000, guid: cbcdce0f8fe84a2449a8afeddf67e8f7, type: 3}
+  - {fileID: 21300000, guid: f4d5fcbf5edf76f4693908b27eff2338, type: 3}
+  - {fileID: 21300000, guid: 2c058aff15d3513439252b2ea3db03b3, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - UI_Title_Icon
+  - UI_VomitCOLOUR_BAR
+  - UI_HealthCOLOUR_BAR
+  - UI_Eye
+  - UI_MrVomitMan
+  - UI_Vomit_RING
+  - UI_Leg
+  - UI_Sanity_RING
+  - UI_SanityBrain
+  - UI_Health_Ring
+  - UI_TeamLogo
+  - UI_PriceTag
+  - UI_EnemyHealth_BAR
+  - UI_Vomit_Intestine
+  - UI_EnemyHealth_BORDER
+  - UI_Health_Heart
+  - UI_SanityCOLOUR_BAR
+  m_RenderDataMap: {}
+  m_Tag: UpgradeAtlas
+  m_IsVariant: 0

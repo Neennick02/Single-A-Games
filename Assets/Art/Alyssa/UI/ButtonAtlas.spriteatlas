@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ButtonAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: d6ed901f88a745a4ba7ee0d73b0abd73, type: 3}
+    - {fileID: 2800000, guid: 25a2eff97ba3e5c48b4c4e752197b363, type: 3}
+    - {fileID: 2800000, guid: 784b9af84190df445b03272f1bf24bc9, type: 3}
+    - {fileID: 2800000, guid: 089acc0cf975125419d31b58c480bcad, type: 3}
+    - {fileID: 2800000, guid: 52f545d09e543c04697b21ad98b0ab99, type: 3}
+    - {fileID: 2800000, guid: 5e7bb2e6cce7fb84ab6c5472b9fb9e14, type: 3}
+    - {fileID: 2800000, guid: 8d6e844f4e0cb044988207c568a1d0f0, type: 3}
+    - {fileID: 2800000, guid: 01647ff4f5a0a2542b7ecd5e12500075, type: 3}
+    - {fileID: 2800000, guid: 5c1b7bdac7ede7a4ea3f7eb7b21cfb95, type: 3}
+    - {fileID: 2800000, guid: 35a0e57c7dd8eae439d884bb1680198d, type: 3}
+    - {fileID: 2800000, guid: 8951d3f184dfde84c9e710a3c5b67278, type: 3}
+    - {fileID: 2800000, guid: 180717a04d1dc9146938d03e9f818981, type: 3}
+    - {fileID: 2800000, guid: ad90058891d690a47a85060b38803ad3, type: 3}
+    - {fileID: 2800000, guid: 908a4790f9a5eb048be3f4cd3093a357, type: 3}
+    - {fileID: 2800000, guid: 18ab981e6866c0f47bc9a82f29cf0d09, type: 3}
+    - {fileID: 2800000, guid: 39927ea510a4a0946abe24a8359c8e1c, type: 3}
+    - {fileID: 2800000, guid: 140d21b2bb24e8848bc625efe85a7601, type: 3}
+    - {fileID: 2800000, guid: 0a94683fab328fb41ad3dca035a0478b, type: 3}
+    - {fileID: 2800000, guid: 609626ea2c1cd5148bb2ff2d7a1ae4b9, type: 3}
+    - {fileID: 2800000, guid: ecb19d2354d48944b9fa27381f4765d5, type: 3}
+    - {fileID: 2800000, guid: 46091129834342f43b76ed764cde0c95, type: 3}
+    - {fileID: 2800000, guid: d54ad79e1f8aa4e438462da5cb8d21e8, type: 3}
+    - {fileID: 2800000, guid: d3810f7326dd19e4a95cb5153cb397d5, type: 3}
+    - {fileID: 2800000, guid: b036eca5d81834543a4824edfa07d399, type: 3}
+    - {fileID: 2800000, guid: b3bf84ad0a908664e8afc523cf08bab7, type: 3}
+    - {fileID: 2800000, guid: 6338231709ea45b4796d6337dd4bc25a, type: 3}
+    - {fileID: 2800000, guid: ce1e7af3147cc554f959a4010246230a, type: 3}
+    - {fileID: 2800000, guid: d1d2c3af7dd9be447a93a9ea3f2381f8, type: 3}
+    - {fileID: 2800000, guid: 757eb9e4f015a094abbc38f77d7ab4e3, type: 3}
+    - {fileID: 2800000, guid: 6e7ad437a08760c40b646f11d537c4c4, type: 3}
+    - {fileID: 2800000, guid: 2425dfd1dfdf4c84da330b4a7a23473d, type: 3}
+    - {fileID: 2800000, guid: 3f9d6df351c4f084392fc26949e88e2d, type: 3}
+    - {fileID: 2800000, guid: c4e23e7c357d920458ff6642ba19912e, type: 3}
+    - {fileID: 2800000, guid: 2ece78210274d8a42af07dba3485c47d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 908a4790f9a5eb048be3f4cd3093a357: 21300000
+    - 180717a04d1dc9146938d03e9f818981: 21300000
+    - 52f545d09e543c04697b21ad98b0ab99: 21300000
+    - 2ece78210274d8a42af07dba3485c47d: 21300000
+    - 2425dfd1dfdf4c84da330b4a7a23473d: 21300000
+    - 8951d3f184dfde84c9e710a3c5b67278: 21300000
+    - 140d21b2bb24e8848bc625efe85a7601: 21300000
+    - ecb19d2354d48944b9fa27381f4765d5: 21300000
+    - d3810f7326dd19e4a95cb5153cb397d5: 21300000
+    - ce1e7af3147cc554f959a4010246230a: 21300000
+    - 3f9d6df351c4f084392fc26949e88e2d: 21300000
+    - 757eb9e4f015a094abbc38f77d7ab4e3: 21300000
+    - 01647ff4f5a0a2542b7ecd5e12500075: 21300000
+    - 39927ea510a4a0946abe24a8359c8e1c: 21300000
+    - 5e7bb2e6cce7fb84ab6c5472b9fb9e14: 21300000
+    - 6338231709ea45b4796d6337dd4bc25a: 21300000
+    - 6e7ad437a08760c40b646f11d537c4c4: 21300000
+    - ad90058891d690a47a85060b38803ad3: 21300000
+    - 784b9af84190df445b03272f1bf24bc9: 21300000
+    - 46091129834342f43b76ed764cde0c95: 21300000
+    - 25a2eff97ba3e5c48b4c4e752197b363: 21300000
+    - 5c1b7bdac7ede7a4ea3f7eb7b21cfb95: 21300000
+    - 609626ea2c1cd5148bb2ff2d7a1ae4b9: 21300000
+    - 089acc0cf975125419d31b58c480bcad: 21300000
+    - 35a0e57c7dd8eae439d884bb1680198d: 21300000
+    - c4e23e7c357d920458ff6642ba19912e: 21300000
+    - b3bf84ad0a908664e8afc523cf08bab7: 21300000
+    - 18ab981e6866c0f47bc9a82f29cf0d09: 21300000
+    - d54ad79e1f8aa4e438462da5cb8d21e8: 21300000
+    - d6ed901f88a745a4ba7ee0d73b0abd73: 21300000
+    - 0a94683fab328fb41ad3dca035a0478b: 21300000
+    - 8d6e844f4e0cb044988207c568a1d0f0: 21300000
+    - d1d2c3af7dd9be447a93a9ea3f2381f8: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 908a4790f9a5eb048be3f4cd3093a357, type: 3}
+  - {fileID: 21300000, guid: 180717a04d1dc9146938d03e9f818981, type: 3}
+  - {fileID: 21300000, guid: 52f545d09e543c04697b21ad98b0ab99, type: 3}
+  - {fileID: 21300000, guid: 2ece78210274d8a42af07dba3485c47d, type: 3}
+  - {fileID: 21300000, guid: 2425dfd1dfdf4c84da330b4a7a23473d, type: 3}
+  - {fileID: 21300000, guid: 8951d3f184dfde84c9e710a3c5b67278, type: 3}
+  - {fileID: 21300000, guid: 140d21b2bb24e8848bc625efe85a7601, type: 3}
+  - {fileID: 21300000, guid: ecb19d2354d48944b9fa27381f4765d5, type: 3}
+  - {fileID: 21300000, guid: d3810f7326dd19e4a95cb5153cb397d5, type: 3}
+  - {fileID: 21300000, guid: ce1e7af3147cc554f959a4010246230a, type: 3}
+  - {fileID: 21300000, guid: 3f9d6df351c4f084392fc26949e88e2d, type: 3}
+  - {fileID: 21300000, guid: 757eb9e4f015a094abbc38f77d7ab4e3, type: 3}
+  - {fileID: 21300000, guid: 01647ff4f5a0a2542b7ecd5e12500075, type: 3}
+  - {fileID: 21300000, guid: 39927ea510a4a0946abe24a8359c8e1c, type: 3}
+  - {fileID: 21300000, guid: 5e7bb2e6cce7fb84ab6c5472b9fb9e14, type: 3}
+  - {fileID: 21300000, guid: 6338231709ea45b4796d6337dd4bc25a, type: 3}
+  - {fileID: 21300000, guid: 6e7ad437a08760c40b646f11d537c4c4, type: 3}
+  - {fileID: 21300000, guid: ad90058891d690a47a85060b38803ad3, type: 3}
+  - {fileID: 21300000, guid: 784b9af84190df445b03272f1bf24bc9, type: 3}
+  - {fileID: 21300000, guid: 46091129834342f43b76ed764cde0c95, type: 3}
+  - {fileID: 21300000, guid: 25a2eff97ba3e5c48b4c4e752197b363, type: 3}
+  - {fileID: 21300000, guid: 5c1b7bdac7ede7a4ea3f7eb7b21cfb95, type: 3}
+  - {fileID: 21300000, guid: 609626ea2c1cd5148bb2ff2d7a1ae4b9, type: 3}
+  - {fileID: 21300000, guid: 089acc0cf975125419d31b58c480bcad, type: 3}
+  - {fileID: 21300000, guid: 35a0e57c7dd8eae439d884bb1680198d, type: 3}
+  - {fileID: 21300000, guid: c4e23e7c357d920458ff6642ba19912e, type: 3}
+  - {fileID: 21300000, guid: b3bf84ad0a908664e8afc523cf08bab7, type: 3}
+  - {fileID: 21300000, guid: 18ab981e6866c0f47bc9a82f29cf0d09, type: 3}
+  - {fileID: 21300000, guid: d54ad79e1f8aa4e438462da5cb8d21e8, type: 3}
+  - {fileID: 21300000, guid: d6ed901f88a745a4ba7ee0d73b0abd73, type: 3}
+  - {fileID: 21300000, guid: 0a94683fab328fb41ad3dca035a0478b, type: 3}
+  - {fileID: 21300000, guid: 8d6e844f4e0cb044988207c568a1d0f0, type: 3}
+  - {fileID: 21300000, guid: d1d2c3af7dd9be447a93a9ea3f2381f8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - UI_SETTINGS1
+  - UI_SELECT_Start
+  - UI_UNSELECT_ToTitle
+  - UI_DEATH
+  - UI_CREDITS1
+  - UI_SELECT_SkipShop
+  - UI_SELECT_Restart
+  - UI_QUITGAME1
+  - UI_Paused
+  - UI_MouseRIGHT
+  - UI_CreditsText
+  - UI_ExitGameText
+  - UI_UNSELECT_Restart
+  - UI_SELECT_Quit
+  - UI_UNSELECT_Credits
+  - UI_MouseLEFT
+  - UI_Floor
+  - UI_SELECT_ToTitle
+  - UI_UNSELECT_SkipShop
+  - UI_RESTART1
+  - UI_UNSELECT_Settings
+  - UI_StartGameText
+  - UI_SELECT_Settings
+  - UI_UNSELECT_Start
+  - UI_STARTGAME1
+  - UI_ButtonLoose_CONTROLS
+  - UI_KeyBoardButtons_CONTROLS
+  - UI_SELECT_Credits
+  - UI_ROOM
+  - UI_UNSELECT_Resume
+  - UI_SELECT_Resume
+  - UI_UNSELECT_Quit
+  - UI_SpaceBar_CONTROLS
+  m_RenderDataMap: {}
+  m_Tag: ButtonAtlas
+  m_IsVariant: 0

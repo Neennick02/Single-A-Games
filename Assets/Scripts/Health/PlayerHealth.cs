@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -13,9 +14,9 @@ public class PlayerHealth : BaseHealth
 
     public static event Action<float> OnSetRunTime;
     public static event Action<int> OnSetFloorCount;
-    public AudioClip DamageClip;
+    [SerializeField] private List<AudioClip> damageClips;
     public AudioClip DeathClip;
-
+    private bool isdead;
     #region OnEnable
     private void OnEnable()
     {
@@ -34,6 +35,7 @@ public class PlayerHealth : BaseHealth
     #endregion
     public override void TakeDamage(float amount)
     {
+        if (isdead) return;
         //add vignette effect
         _damageEffect.weight = 1;
 
@@ -43,18 +45,20 @@ public class PlayerHealth : BaseHealth
         OnHealthChange?.Invoke(currentHealth);
 
         CameraShakeManager.Instance.CameraShake(gameObject, 0.7f);
-        AudioManager.Instance.PlayClip(DamageClip, 1, UnityEngine.Random.Range(0.8f, 1.1f));
 
         if (currentHealth <= 0)
         {
-            AudioManager.Instance.PlayClip(DeathClip, 1, UnityEngine.Random.Range(0.8f, 1.1f));
             Die();
+            isdead = true;
             return;
         }
+
+            AudioManager.Instance.PlayClips(damageClips, 1, UnityEngine.Random.Range(0.8f, 1.1f));
     }
 
     private void Update()
     {
+        if(isdead ) return;
         if (_damageEffect.weight > 0)
         {
             _damageEffect.weight -= Time.deltaTime * _effectDissolveSpeed;
@@ -73,6 +77,7 @@ public class PlayerHealth : BaseHealth
     {
         Cursor.lockState = CursorLockMode.None;
         OnDeath?.Invoke();
+        AudioManager.Instance.PlayClip(DeathClip, 1, UnityEngine.Random.Range(0.8f, 1.1f));
         OnSetRunTime?.Invoke(GameManager.Instance.RunTime);
         OnSetFloorCount?.Invoke(GameManager.Instance.FloorCount);
     }

@@ -292,7 +292,13 @@ MonoBehaviour:
   currentHealth: 0
   PlayerObject: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
   _damageEffect: {fileID: 3684926239414253786}
-  DamageClip: {fileID: 0}
+  damageClips:
+  - {fileID: 8300000, guid: d76d393fd736ef74c94d4dfce93aa00a, type: 3}
+  - {fileID: 8300000, guid: b7462fe2ffff087438fa6e9991a1970e, type: 3}
+  - {fileID: 8300000, guid: 5902b63eb529f444a903e1503738c432, type: 3}
+  - {fileID: 8300000, guid: 36ffcdb6b138e6348be7d083f0e551a4, type: 3}
+  - {fileID: 8300000, guid: c1cfcbc909038be4a832ee9647b25963, type: 3}
+  - {fileID: 8300000, guid: 95043d1a1c05cd84c84cf10d2773f404, type: 3}
   DeathClip: {fileID: 8300000, guid: 984b7635443158545a1f1c82c430eef2, type: 3}
 --- !u!114 &2580446650109701349
 MonoBehaviour:
