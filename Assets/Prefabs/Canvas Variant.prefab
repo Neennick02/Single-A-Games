@@ -7406,7 +7406,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2136d442627415d42a9b5f5275a84f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeControls
-  Icons: []
+  Icons:
+  - {fileID: 7786544072769986670}
+  - {fileID: 6946861324437889859}
+  - {fileID: 5348661062281012284}
+  - {fileID: 2813458604074441856}
+  - {fileID: 6550493651356492644}
   YOffSet: 150
 --- !u!222 &1005746931941518555
 CanvasRenderer:
