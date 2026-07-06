@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155545485558934735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16832663, y: 0.6827625, z: -0.16841882, w: 0.6907508}
-  m_LocalPosition: {x: -8.247615, y: -13.776809, z: -26.906109}
+  m_LocalRotation: {x: -0.06586365, y: 0.8373251, z: 0.103516206, w: 0.5327599}
+  m_LocalPosition: {x: -0.0087862015, y: 1.9975648, z: 0.004108429}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -293,6 +293,7 @@ MonoBehaviour:
   PlayerObject: {fileID: 11400000, guid: 73f950a843f421747b52ae96e5534cf2, type: 2}
   _damageEffect: {fileID: 3684926239414253786}
   DamageClip: {fileID: 0}
+  DeathClip: {fileID: 8300000, guid: 984b7635443158545a1f1c82c430eef2, type: 3}
 --- !u!114 &2580446650109701349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,7 +1178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
       propertyPath: VoiceClips.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
       propertyPath: 'VoiceClips.Array.data[0]'
@@ -1203,6 +1204,18 @@ PrefabInstance:
       propertyPath: 'VoiceClips.Array.data[5]'
       value: 
       objectReference: {fileID: 8300000, guid: e0f9f457bd7ef6c4a86cd579bada6b2f, type: 3}
+    - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: 'VoiceClips.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ed6fc203fb888484c91c1ed43dc25235, type: 3}
+    - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: 'VoiceClips.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cdf93181c1d9ae94aa33d47a43c323aa, type: 3}
+    - target: {fileID: 5410970725056352762, guid: 9ec2ce90d0366d94e88663e9d5117c14, type: 3}
+      propertyPath: 'VoiceClips.Array.data[8]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c24e6470f853ada48ab61c5719a8b4d3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

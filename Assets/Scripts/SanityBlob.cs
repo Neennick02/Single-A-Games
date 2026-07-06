@@ -8,6 +8,7 @@ public class SanityBlob : MonoBehaviour
     public float _startSpeed = 1;
     public float _speedIncrease = 0.1f;
     private float xAngle = 1f, yAngle = 1f, zAngle = 1f;
+    public AudioClip Clip;
     private void Start()
     {
         target = Camera.main.transform;
@@ -28,6 +29,7 @@ public class SanityBlob : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlayClip(Clip, 1, Random.Range(0.6f, 1.5f));
             Destroy(gameObject);
         }
     }

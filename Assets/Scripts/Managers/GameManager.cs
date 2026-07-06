@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public enum UpgradeType { Vomit, Eye, Arm, Bud, Leg }
 
     public static event Action<string> OnShowObjectiveText;
-    public string ObjectiveText = "hello";
+    public string ObjectiveText;
     //scores
     public float RunTime { get; private set; }
     public int FloorCount {get; private set; }

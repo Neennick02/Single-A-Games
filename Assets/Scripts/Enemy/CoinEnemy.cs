@@ -11,6 +11,7 @@ public class CoinEnemy : Enemy
 
     private bool _cd;
     [SerializeField] private Animator _animator;
+    public AudioClip AttackClip;
     protected override void MyUpdate()
     {
         AssignTarget();
@@ -66,7 +67,7 @@ public class CoinEnemy : Enemy
     private IEnumerator Attack()
     {
         CurrentState = EnemyState.Attacking;
-
+        AudioManager.Instance.PlayClip(AttackClip, 1, Random.Range(0.8f, 1.2f));
         //Look at the player and set every bit of velocity to 0 before applying the force to the object and disable their navmesh agent.
         transform.LookAt(_target.transform);
 

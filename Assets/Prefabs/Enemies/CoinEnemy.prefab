@@ -508,6 +508,7 @@ MonoBehaviour:
   enemyObject: {fileID: 11400000, guid: a5dd25e28f4d84140bb0a2283af87f97, type: 2}
   CurrentState: 0
   _animator: {fileID: 4565043779540369067}
+  AttackClip: {fileID: 8300000, guid: 99e1874a40c82a4458e104384648855f, type: 3}
 --- !u!114 &4722377552823595641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,9 +527,10 @@ MonoBehaviour:
   - {fileID: 1982532292065577019}
   _damageMat: {fileID: 2100000, guid: a5b6f6b286bcced418472b2c2fe4ae60, type: 2}
   _healthBar: {fileID: 6553485459679930349}
-  _cameraShakeManager: {fileID: 0}
   _deathParticle: {fileID: 436327167026063250, guid: e8284b91d81e0cd4ab198d91b109b630, type: 3}
   BlobPrerfab: {fileID: 4829963867601924179, guid: d295220c7240dca41812e87c94f106f7, type: 3}
+  LaughClip: {fileID: 8300000, guid: 86cfe5d28b567af47bb27bf7f62b45cd, type: 3}
+  DieClip: {fileID: 8300000, guid: 1a26d604a37fbdc4283e2160e8207ae9, type: 3}
 --- !u!54 &5584303322223499876
 Rigidbody:
   m_ObjectHideFlags: 0

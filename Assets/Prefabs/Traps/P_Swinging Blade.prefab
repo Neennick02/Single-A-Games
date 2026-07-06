@@ -96,6 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Blade
   Speed: 0.5
   Damage: 10
+  Source: {fileID: 6607278526173550277}
+  Swing1: {fileID: 8300000, guid: 95458c1715d8a8f4096875118bbba980, type: 3}
+  Swing2: {fileID: 8300000, guid: 331e9a697335f1e4dac187fe53413d63, type: 3}
 --- !u!95 &4146064559972094128
 Animator:
   serializedVersion: 7
@@ -155,11 +158,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: ef131282c66b7e24bbb4250d0f84e7a4, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: 331e9a697335f1e4dac187fe53413d63, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

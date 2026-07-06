@@ -14,6 +14,8 @@ public class PlayerHealth : BaseHealth
     public static event Action<float> OnSetRunTime;
     public static event Action<int> OnSetFloorCount;
     public AudioClip DamageClip;
+    public AudioClip DeathClip;
+
     #region OnEnable
     private void OnEnable()
     {
@@ -45,6 +47,7 @@ public class PlayerHealth : BaseHealth
 
         if (currentHealth <= 0)
         {
+            AudioManager.Instance.PlayClip(DeathClip, 1, UnityEngine.Random.Range(0.8f, 1.1f));
             Die();
             return;
         }
