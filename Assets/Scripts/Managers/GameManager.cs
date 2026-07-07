@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public enum UpgradeType { Vomit, Eye, Arm, Bud, Leg }
 
     public static event Action<string> OnShowObjectiveText;
-    public string ObjectiveText;
+    public string ObjectiveText = "Kill enemies to gain sanity.Use sanity to buy upgrades.";
     //scores
     public float RunTime { get; private set; }
     public int FloorCount {get; private set; }
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
     {
         Vector3 startPos = new Vector3(0, -2.1f, 0);
 
-        if (SceneManager.GetActiveScene().name == "MainScene" && !gameStarted)
+        if (!gameStarted)
         {
             //create player
             _currentPlayer = Instantiate(PlayerPrefab, startPos, Quaternion.identity);

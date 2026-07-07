@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Others
+  m_Name: Figures
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -45,41 +45,33 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
+    - {fileID: 2800000, guid: d0b11b91f67922642a4b0a147e23d5fd, type: 3}
     - {fileID: 2800000, guid: fd3b238f19407f947ae045fa75820325, type: 3}
     - {fileID: 2800000, guid: 29984d67f4b05894e8ec95a570bff19f, type: 3}
-    - {fileID: 2800000, guid: d5eb3c603af06c3468deab39dbbf5ce5, type: 3}
-    - {fileID: 2800000, guid: d0b11b91f67922642a4b0a147e23d5fd, type: 3}
-    - {fileID: 2800000, guid: d75ed1976f857a741bebdc9aed6b6749, type: 3}
     - {fileID: 2800000, guid: 36a85663a6dcd494a8173e13fa42792d, type: 3}
     - {fileID: 2800000, guid: 0dc1e7e8a48c8be4f866fa32fcf2055c, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
-    - d5eb3c603af06c3468deab39dbbf5ce5: 21300000
     - d0b11b91f67922642a4b0a147e23d5fd: 21300000
     - 36a85663a6dcd494a8173e13fa42792d: 21300000
     - 29984d67f4b05894e8ec95a570bff19f: 21300000
-    - d75ed1976f857a741bebdc9aed6b6749: 21300000
     - 0dc1e7e8a48c8be4f866fa32fcf2055c: 21300000
     - fd3b238f19407f947ae045fa75820325: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: d5eb3c603af06c3468deab39dbbf5ce5, type: 3}
   - {fileID: 21300000, guid: d0b11b91f67922642a4b0a147e23d5fd, type: 3}
   - {fileID: 21300000, guid: 36a85663a6dcd494a8173e13fa42792d, type: 3}
   - {fileID: 21300000, guid: 29984d67f4b05894e8ec95a570bff19f, type: 3}
-  - {fileID: 21300000, guid: d75ed1976f857a741bebdc9aed6b6749, type: 3}
   - {fileID: 21300000, guid: 0dc1e7e8a48c8be4f866fa32fcf2055c, type: 3}
   - {fileID: 21300000, guid: fd3b238f19407f947ae045fa75820325, type: 3}
   m_PackedSpriteNamesToIndex:
-  - UI_Credits_Backgorund
   - UI_Title_Icon
   - UI_ShopBackground
   - SP_ShadowGuy_Test
-  - UI_TeamLogo
   - UI_ShopButton
   - Mr_MultiHand
   m_RenderDataMap: {}
-  m_Tag: Others
+  m_Tag: Figures
   m_IsVariant: 0

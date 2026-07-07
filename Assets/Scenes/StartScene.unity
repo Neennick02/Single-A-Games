@@ -19256,7 +19256,7 @@ MonoBehaviour:
   HasBud: 0
   HasLeg: 0
   PickedUpUpgrades: []
-  ObjectiveText: hello
+  ObjectiveText: Kill enemies to gain sanity.Use sanity to buy upgrades.
   OwnedUpgrades: []
 --- !u!4 &1339017038
 Transform:

@@ -29,6 +29,7 @@ public class ObjectivePopup : MonoBehaviour
 
     public void InstantMessage(string message, bool clear)
     {
+        _textObject.enabled = true;
         _textObject.color = Color.black;
         _textObject.text = message;
 

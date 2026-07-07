@@ -46,8 +46,8 @@ public class PlayerLook : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            mouseX *= 0.3f;
-            mouseY *= 0.3f;
+            mouseX *= 0.1f;
+            mouseY *= 0.1f;
         }
 
 

@@ -40,15 +40,12 @@ public class MeleeEnemy : Enemy
         if (CanSeeTarget(_target))
         {
             _isWandering = false;
-            _agent.speed = _agent.speed * 1.15f;
             _agent.SetDestination(_target.transform.position);
         }
         else
         {
             if (!_isWandering)
             {
-                _agent.speed = _agent.speed / 1.15f;
-
                 FindTargetLocation();
             }
 
